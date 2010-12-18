@@ -1,24 +1,20 @@
 class UsersController < ApplicationController
+  before_filter :authenticate, :only => [:edit, :update]
+  before_filter :correct_user, :only => [:edit, :update]
   # GET /users
   # GET /users.xml
   def index
-    @users = User.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @users }
-    end
+    #@users = User.all
+    @title = "All Users"
+    @users = User.paginate(:page => params[:page])
   end
 
   # GET /users/1
   # GET /users/1.xml
   def show
     @user = User.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @user }
-    end
+    @title = @user.name
+    
   end
 
   # GET /users/new
@@ -78,4 +74,15 @@ class UsersController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  private
+    def authenticate
+      deny_access unless signed_in?
+    end
+  
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_path, :notice => "Insufficient rights to prevented me from showing you this page") unless current_user?(@user) 
+    end
+  
 end

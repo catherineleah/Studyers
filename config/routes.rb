@@ -1,5 +1,7 @@
 Studyr::Application.routes.draw do
 
+  #resources :notebooks
+
   match "/home", :to => "pages#home"
 
   match "/about", :to => "pages#about"
@@ -8,7 +10,9 @@ Studyr::Application.routes.draw do
   
   match "/signup", :to => "users#new"
   
-  resources :users
+  resources :users do
+    resources :notebooks
+  end
   
   resources :sessions, :only => [:new, :create, :destroy]
   

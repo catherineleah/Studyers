@@ -2,6 +2,13 @@ require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
   setup do
+    
+    @update = {
+      :name => "shlomi",
+      :email => "shlomi@ben.com",
+      :password => "123456",
+      :password_confirmation => "123456"
+    }
     @user = users(:one)
   end
 
@@ -18,7 +25,7 @@ class UsersControllerTest < ActionController::TestCase
 
   test "should create user" do
     assert_difference('User.count') do
-      post :create, :user => @user.attributes
+      post :create, :user => @update
     end
 
     assert_redirected_to user_path(assigns(:user))
@@ -30,12 +37,14 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should get edit" do
+    login_as(:one)
     get :edit, :id => @user.to_param
     assert_response :success
   end
 
   test "should update user" do
-    put :update, :id => @user.to_param, :user => @user.attributes
+    login_as(:one)
+    put :update, :id => @user.to_param, :user => @update
     assert_redirected_to user_path(assigns(:user))
   end
 

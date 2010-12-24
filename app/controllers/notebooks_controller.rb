@@ -12,7 +12,8 @@ class NotebooksController < ApplicationController
   # GET /notebooks/1
   # GET /notebooks/1.xml
   def show
-    @notebook = Notebook.find(params[:id])
+    @user = current_user
+    @notebook = @user.notebooks.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb

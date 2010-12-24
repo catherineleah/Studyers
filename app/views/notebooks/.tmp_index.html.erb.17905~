@@ -13,9 +13,9 @@
   <tr>
     <td><%= notebook.name %></td>
     <td><%= notebook.user_id %></td>
-    <td><%= link_to 'Show', user_notebook_path(@user, notebook) %></td>
-    <td><%= link_to 'Edit', edit_user_notebook_path(@user, notebook) %></td>
-    <td><%= link_to 'Destroy', [@user, notebook], :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', notebook %></td>
+    <td><%= link_to 'Edit', edit_notebook_path(notebook) %></td>
+    <td><%= link_to 'Destroy', notebook, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

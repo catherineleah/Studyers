@@ -1,15 +1,12 @@
 class NotebooksController < ApplicationController
   before_filter :authenticate, :only => [:edit, :update]
-  before_filter :correct_user, :only => [:edit, :update]
+  before_filter :correct_user, :only => [:show, :edit, :update]
   # GET /notebooks
   # GET /notebooks.xml
   def index
-    @notebooks = Notebook.all
+    @user = current_user
+    @notebooks = @user.notebooks
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @notebooks }
-    end
   end
 
   # GET /notebooks/1
@@ -26,44 +23,39 @@ class NotebooksController < ApplicationController
   # GET /notebooks/new
   # GET /notebooks/new.xml
   def new
+    #@user = current_user
     @notebook = Notebook.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @notebook }
-    end
   end
 
   # GET /notebooks/1/edit
   def edit
-    @notebook = Notebook.find(params[:id])
+    @user = current_user
+    @notebook = @user.notebooks.find(params[:id])
   end
 
   # POST /notebooks
   # POST /notebooks.xml
   def create
-    @notebook = Notebook.new(params[:notebook])
-
-    respond_to do |format|
+    @notebook = current_user.notebooks.build(params[:notebook])
+    
       if @notebook.save
-        format.html { redirect_to(@notebook, :notice => 'Notebook was successfully created.') }
-        format.xml  { render :xml => @notebook, :status => :created, :location => @notebook }
+        flash[:notice] =" Success"
+        redirect_to user_notebooks_path
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @notebook.errors, :status => :unprocessable_entity }
+        render :action => "new" 
       end
-    end
   end
 
   # PUT /notebooks/1
   # PUT /notebooks/1.xml
   def update
-    @notebook = Notebook.find(params[:id])
+    @user = current_user
+    @notebook = @user.notebooks.find(params[:id])
 
     respond_to do |format|
       if @notebook.update_attributes(params[:notebook])
-        format.html { redirect_to(@notebook, :notice => 'Notebook was successfully updated.') }
-        format.xml  { head :ok }
+        flash[:notice] = "Successfully updated"
+        redirect_to user_notebooks_path
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @notebook.errors, :status => :unprocessable_entity }
@@ -74,11 +66,12 @@ class NotebooksController < ApplicationController
   # DELETE /notebooks/1
   # DELETE /notebooks/1.xml
   def destroy
-    @notebook = Notebook.find(params[:id])
+    @user = current_user
+    @notebook = @user.notebooks.find(params[:id])
     @notebook.destroy
 
     respond_to do |format|
-      format.html { redirect_to(notebooks_url) }
+      format.html { redirect_to user_notebooks_path }
       format.xml  { head :ok }
     end
   end

@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-link_to 'Show', user_notebook_path(@user, notebook) %> |
+<%= link_to 'Show', @notebook %> |
  link_to 'Back', notebooks_path %>

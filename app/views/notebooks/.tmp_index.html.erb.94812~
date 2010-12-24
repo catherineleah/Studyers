@@ -13,8 +13,8 @@
   <tr>
     <td><%= notebook.name %></td>
     <td><%= notebook.user_id %></td>
-    <td><%= link_to 'Show', notebook %></td>
-    <td><%= link_to 'Edit', edit_notebook_path(notebook) %></td>
+    <td><%= link_to 'Show', user_notebook %></td>
+    <td><%= link_to 'Edit', edit_user_notebook_path(notebook) %></td>
     <td><%= link_to 'Destroy', notebook, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
@@ -22,4 +22,4 @@
 
 <br />
 
-<%= link_to 'New Notebook', new_notebook_path %>
+<%= link_to 'New Notebook', new_user_notebook_path %>

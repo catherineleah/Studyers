@@ -22,4 +22,4 @@
 
 <br />
 
-<%= link_to 'New Notebook', new_notebook_path %>
+<%= link_to 'New Notebook', new_user_notebook_path %>

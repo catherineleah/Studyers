@@ -41,7 +41,7 @@ class NotebooksController < ApplicationController
     
       if @notebook.save
         flash[:notice] =" Success"
-        redirect_to user_notebooks_path
+        redirect_to notebooks_path
       else
         render :action => "new" 
       end
@@ -56,7 +56,7 @@ class NotebooksController < ApplicationController
     respond_to do |format|
       if @notebook.update_attributes(params[:notebook])
         flash[:notice] = "Successfully updated"
-        redirect_to user_notebooks_path
+        redirect_to notebooks_path
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @notebook.errors, :status => :unprocessable_entity }

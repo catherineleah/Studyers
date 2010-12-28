@@ -14,6 +14,10 @@ Studyr::Application.routes.draw do
     resources :notebooks
   end
   
+  resources :notebooks do
+    resources :lessons
+  end
+  
   resources :sessions, :only => [:new, :create, :destroy]
   
   match '/signin',  :to => 'sessions#new'

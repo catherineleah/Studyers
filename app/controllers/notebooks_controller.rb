@@ -14,7 +14,7 @@ class NotebooksController < ApplicationController
   def show
     @user = current_user
     @notebook = @user.notebooks.find(params[:id])
-
+    @lessons = @notebook.lessons
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @notebook }
@@ -52,15 +52,11 @@ class NotebooksController < ApplicationController
   def update
     @user = current_user
     @notebook = @user.notebooks.find(params[:id])
-
-    respond_to do |format|
-      if @notebook.update_attributes(params[:notebook])
-        flash[:notice] = "Successfully updated"
-        redirect_to notebooks_path
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @notebook.errors, :status => :unprocessable_entity }
-      end
+    if @notebook.update_attributes(params[:notebook])
+      flash[:notice] = "Successfully updated"
+      redirect_to notebooks_path
+    else
+      render :action => "edit" 
     end
   end
 

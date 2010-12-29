@@ -1,24 +1,12 @@
-<h1>Listing notebooks</h1>
+<h1>My notebooks</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
 <% @notebooks.each do |notebook| %>
-  <tr>
-    <td><%= notebook.name %></td>
-    <td><%= notebook.user_id %></td>
-    <td><%= link_to 'Show', user_notebook_path(@user, notebook) %></td>
-    <td><%= link_to 'Edit', edit_user_notebook_path(@user, notebook) %></td>
-    <td><%= link_to 'Destroy', [@user, notebook], :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+    <div><%= link_to notebook.name, user_notebook_path(@user, notebook) %></div>
+    <div style="display:none;"><%= link_to 'Edit', edit_user_notebook_path(@user, notebook) %></div>
+    <div style="display:none;"><%= link_to 'Destroy', [@user, notebook], :confirm => 'Are you sure?', :method => :delete %></div>
 <% end %>
-</table>
+
 
 <br />
 

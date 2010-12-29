@@ -1,2 +1,8 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+Welcome back <%= @user.name %>
+<div>	
+	<% @notebooks.each do |notebook| %>
+    <div><%= link_to notebook.name, user_notebook_path(@user, notebook) %></div>
+<% end %>
+
+<div><%= link_to "My notebooks", user_notebooks_path(@user) %></div>
+</div>

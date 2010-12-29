@@ -1,4 +1,6 @@
 class LessonsController < ApplicationController
+  #before_filter :authenticate, :only => [:edit, :update]
+  #before_filter :correct_user, :only => [:show, :edit, :update]
   # GET /lessons
   # GET /lessons.xml
   def index
@@ -41,7 +43,8 @@ class LessonsController < ApplicationController
     @lesson.user_id = @notebook.user_id
 
       if @lesson.save
-      redirect_to(@lesson, :notice => 'Lesson was successfully created.') 
+      flash[:notice] =" Success"
+      redirect_to notebook_lessons_path
       else
          render :action => "new" 
       end
@@ -71,7 +74,7 @@ class LessonsController < ApplicationController
     @lesson.destroy
 
     respond_to do |format|
-      format.html { redirect_to(lessons_url) }
+      format.html { redirect_to(notebook_lessons_path) }
       format.xml  { head :ok }
     end
   end

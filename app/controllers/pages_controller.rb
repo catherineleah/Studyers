@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
   def home
+    @user = current_user
+    @notebooks = @user.notebooks
     @title = "The home of studyrs"
   end
 

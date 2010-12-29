@@ -10,7 +10,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101221195926) do
+ActiveRecord::Schema.define(:version => 20101229092843) do
+
+  create_table "lessons", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "notebook_id"
+    t.integer  "user_id"
+    t.integer  "permission"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "notebooks", :force => true do |t|
     t.string   "name"

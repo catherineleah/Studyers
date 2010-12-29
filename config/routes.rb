@@ -1,6 +1,5 @@
 Studyr::Application.routes.draw do
 
-  #resources :notebooks
 
   match "/home", :to => "pages#home"
 
@@ -17,6 +16,8 @@ Studyr::Application.routes.draw do
   resources :notebooks do
     resources :lessons
   end
+  
+  #resources :lessons
   
   resources :sessions, :only => [:new, :create, :destroy]
   

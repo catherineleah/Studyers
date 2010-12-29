@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   after_destroy :ensure_an_admin_remains
   
   has_many :notebooks
+  has_many :lessons, :through => :notebooks
   
   def ensure_an_admin_remains
     if User.count.zero?

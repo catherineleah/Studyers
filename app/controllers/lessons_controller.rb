@@ -18,10 +18,6 @@ class LessonsController < ApplicationController
     @notebook = Notebook.find(params[:notebook_id])
     @lesson =  @notebook.lessons.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @lesson }
-    end
   end
 
   # GET /lessons/new
@@ -42,6 +38,7 @@ class LessonsController < ApplicationController
     #@lesson = Lesson.new(params[:lesson])
     @notebook = Notebook.find(params[:notebook_id])
     @lesson =  @notebook.lessons.build(params[:lesson])
+    @lesson.user_id = @notebook.user_id
 
       if @lesson.save
       redirect_to(@lesson, :notice => 'Lesson was successfully created.') 

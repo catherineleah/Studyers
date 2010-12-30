@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :authenticate, :only => [:edit, :update]
-  before_filter :correct_user, :only => [:edit, :update]
+  before_filter :authenticate, :only => [:show, :edit, :update]
+  before_filter :correct_user, :only => [:show, :edit, :update]
   # GET /users
   # GET /users.xml
   def index
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @title = @user.name
-    
+    @notebooks = @user.notebooks
   end
 
   # GET /users/new

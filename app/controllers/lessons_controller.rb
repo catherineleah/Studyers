@@ -1,8 +1,9 @@
 class LessonsController < ApplicationController
   before_filter :authenticate, :only => [:index, :show, :edit, :update]
-  # @TODO: add a filter for current user
-  # before_filter :notebook_owner, :only => [:show, :edit, :update]
-  before_filter :find_album
+  # A filter for current user
+  before_filter :notebook_owner, :only => [:show, :edit, :update]
+  
+  before_filter :find_notebook
   
   # GET notebook/:id/lessons
   def index
@@ -80,14 +81,19 @@ class LessonsController < ApplicationController
   end
   
   protected
-    def find_album
+    def find_notebook
       @notebook = current_user.notebooks.find(params[:notebook_id])
     end
   
   private
+    ##
+    # A method to make sure that the lesson is watched / edited 
+    # by the notebook owner. 
+    # (Not sure the best way it can be done - but it works)
+    ##
     def notebook_owner
-      @notebook = current_user.notebooks.find(params[:notebook_id])
-      @user = User.find(params[@notebook.user_id])
-      redirect_to(root_path, :notice => "Insufficient rights to prevented me from showing you this page") unless current_user?(@user) 
+      @notebook = Notebook.find(params[:notebook_id])
+      @user = User.find(@notebook.user_id)
+      redirect_to(root_path, :notice => "This Lesson is marked as private, and can not be watched.") unless current_user?(@user) 
     end
 end

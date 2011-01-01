@@ -12,6 +12,8 @@ gem 'gravatar_image_tag', '1.0.0.pre2'
 gem 'will_paginate', '3.0.pre2'
 # Use unicorn as the web server
 # gem 'unicorn'
+# Enable jquery
+gem 'jquery-rails'
 
 # Deploy with Capistrano
 # gem 'capistrano'

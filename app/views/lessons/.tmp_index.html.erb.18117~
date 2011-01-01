@@ -3,16 +3,23 @@
 <table>
   <tr>
     <th>Title</th>
-    <th>Created at</th>
+    <th>Body</th>
+    <th>Notebook</th>
+    <th>User</th>
+    <th>Permission</th>
+    <th></th>
     <th></th>
     <th></th>
   </tr>
 
 <% @lessons.each do |lesson| %>
   <tr>
-    <td><%= link_to lesson.title, notebook_lesson_path(@notebook, lesson) %></td>
-    <td><%= lesson.created_at %></td>
-
+    <td><%= lesson.title %></td>
+    <td><%= lesson.body %></td>
+    <td><%= lesson.notebook_id %></td>
+    <td><%= lesson.user_id %></td>
+    <td><%= lesson.permission %></td>
+    <td><%= link_to 'Show', notebook_lesson_path(@notebook, lesson) %></td>
     <td><%= link_to 'Edit', edit_notebook_lesson_path(@notebook, lesson) %></td>
     <td><%= link_to 'Destroy', [@notebook, lesson], :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>

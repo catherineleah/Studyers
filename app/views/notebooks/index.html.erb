@@ -2,7 +2,7 @@
 
 
 <% @notebooks.each do |notebook| %>
-    <div><%= link_to notebook.name, user_notebook_path(@user, notebook) %></div>
+    <div><%= link_to notebook.name, notebook_lessons_path(notebook) %></div>
     <div style="display:none;"><%= link_to 'Edit', edit_user_notebook_path(@user, notebook) %></div>
     <div style="display:none;"><%= link_to 'Destroy', [@user, notebook], :confirm => 'Are you sure?', :method => :delete %></div>
 <% end %>

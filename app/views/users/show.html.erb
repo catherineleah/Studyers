@@ -2,7 +2,7 @@
 Welcome back <%= @user.name %>
 <div>	
 	<% @notebooks.each do |notebook| %>
-    <div><%= link_to notebook.name, user_notebook_path(@user, notebook) %></div>
+    <div><%= link_to notebook.name, notebook_lessons_path(notebook) %></div>
 <% end %>
 
 <div><%= link_to "My notebooks", user_notebooks_path(@user) %></div>

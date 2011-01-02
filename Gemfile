@@ -15,6 +15,9 @@ gem 'will_paginate', '3.0.pre2'
 # Enable jquery
 gem 'jquery-rails'
 
+# Enable tiny_mce
+gem 'tiny_mce'
+
 # Deploy with Capistrano
 # gem 'capistrano'
 

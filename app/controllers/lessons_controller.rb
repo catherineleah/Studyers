@@ -5,6 +5,15 @@ class LessonsController < ApplicationController
   
   before_filter :find_notebook
   
+  uses_tiny_mce :options => {
+                              :theme => 'advanced',
+                              :theme_advanced_resizing => true,
+                              :theme_advanced_resize_horizontal => false,
+                              :theme_advanced_toolbar_location => "top",
+                              :theme_advanced_toolbar_align => "left",
+                              :plugins => %w{ table fullscreen }
+                            }
+  
   # GET notebook/:id/lessons
   def index
     

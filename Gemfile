@@ -18,6 +18,9 @@ gem 'jquery-rails'
 # Enable tiny_mce
 gem 'tiny_mce'
 
+# Enable amistad friendship mgr
+gem 'amistad'
+
 # Deploy with Capistrano
 # gem 'capistrano'
 

@@ -1,6 +1,9 @@
 require 'digest/sha2'
 
 class User < ActiveRecord::Base
+  # Added friendship model Amistad
+  include Amistad::FriendModel
+  
   validates :name, :presence => true, :uniqueness => true
   
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

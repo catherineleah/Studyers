@@ -28,6 +28,7 @@ GEM
       activemodel (= 3.0.3)
       activesupport (= 3.0.3)
     activesupport (3.0.3)
+    amistad (0.6.0)
     arel (2.0.4)
     builder (2.1.2)
     erubis (2.6.6)
@@ -75,6 +76,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  amistad
   gravatar_image_tag (= 1.0.0.pre2)
   jquery-rails
   rails (= 3.0.3)

@@ -11,3 +11,6 @@ Welcome back <%= @user.name %>
 <% if current_user?(@user) %>
 	<%= link_to 'Edit Profile', edit_user_path(@user) %>
 <% end %>
+
+Testing friendship:<br />
+<%= @user.friend_with? current_user %>

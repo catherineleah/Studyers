@@ -18,6 +18,8 @@ Studyr::Application.routes.draw do
   match "/about", :to => "pages#about"
   match "/contact", :to => "pages#contact"
   match "/signup", :to => "users#new"
+  match "/profile", :to => "users#show"
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

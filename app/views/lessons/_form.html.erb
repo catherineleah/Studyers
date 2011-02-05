@@ -22,7 +22,8 @@
   
   <div class="field">
     <%= f.label :permission %><br />
-    <%= f.text_field :permission %>
+    <%= f.radio_button :permission, 0 %> Private
+		<%= f.radio_button :permission, 1 %> Public
   </div>
   <div class="actions">
     <%= f.submit %>

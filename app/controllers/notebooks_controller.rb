@@ -1,12 +1,12 @@
 class NotebooksController < ApplicationController
   before_filter :authenticate, :only => [:show, :edit, :update]
-  before_filter :correct_user, :only => [:show, :edit, :update]
+  before_filter :correct_user, :only => [:edit, :update]
   # GET /notebooks
   # GET /notebooks.xml
   def index
     @user = current_user
     @notebooks = @user.notebooks
-
+    @title = "My notebooks"
   end
 
   # GET /notebooks/1
@@ -14,6 +14,7 @@ class NotebooksController < ApplicationController
   def show
     @user = current_user
     @notebook = @user.notebooks.find(params[:id])
+    @title = @notebook.name
     @lessons = @notebook.lessons
     respond_to do |format|
       format.html # show.html.erb

@@ -1,9 +1,9 @@
 class LessonsController < ApplicationController
   before_filter :authenticate, :only => [:index, :show, :edit, :update]
   # A filter for current user
-  before_filter :notebook_owner, :only => [:show, :edit, :update]
+  #before_filter :notebook_owner, :only => [:index, :show, :edit, :update]
   
-  before_filter :find_notebook
+  #before_filter :find_notebook
   
   uses_tiny_mce :options => {
                               :theme => 'advanced',
@@ -15,20 +15,17 @@ class LessonsController < ApplicationController
                             }
   
   # GET notebook/:id/lessons
-  def index
-    
-    @notebook = current_user.notebooks.find(params[:notebook_id])
+  def index  
+    #@notebook = current_user.notebooks.find(params[:notebook_id])
+    @notebook = Notebook.find(params[:notebook_id])
     @lessons = @notebook.lessons
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @lessons }
-    end
+    @title = @notebook.name   
   end
 
   # GET notebook/:id/lessons/1
   def show
-    @notebook = current_user.notebooks.find(params[:notebook_id])
+    #@notebook = current_user.notebooks.find(params[:notebook_id])
+    @notebook = Notebook.find(params[:notebook_id])
     @lesson =  @notebook.lessons.find(params[:id])
   end
 
@@ -88,11 +85,6 @@ class LessonsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
-  protected
-    def find_notebook
-      @notebook = current_user.notebooks.find(params[:notebook_id])
-    end
   
   private
     ##

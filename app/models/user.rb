@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   # Added friendship model Amistad
   include Amistad::FriendModel
   
-  validates :name, :presence => true, :uniqueness => true
+  validates :name, :presence => true
   
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, :presence => true,

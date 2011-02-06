@@ -22,6 +22,12 @@ class UsersController < ApplicationController
     @notebooks = @user.notebooks
   end
 
+  def friends
+    @user = current_user
+    @title = @user.name + " Friends"
+    @pending = @user.pending_invited_by
+    @friends = @user.friends
+  end
   # GET /users/new
   # GET /users/new.xml
   def new

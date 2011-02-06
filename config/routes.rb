@@ -19,7 +19,17 @@ Studyr::Application.routes.draw do
   match "/contact", :to => "pages#contact"
   match "/signup", :to => "users#new"
   match "/profile", :to => "users#show"
+  match "/profile/friends", :to => "users#friends"
   
+  
+  resources :friends do
+  member do
+    get "invite"
+    get "approve"
+    #get "block"
+    #get "remove"
+  end
+end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

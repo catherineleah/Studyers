@@ -1,9 +1,9 @@
 class LessonsController < ApplicationController
   before_filter :authenticate, :only => [:index, :show, :edit, :update]
   # A filter for current user
-  #before_filter :notebook_owner, :only => [:index, :show, :edit, :update]
+  before_filter :notebook_owner, :only => [:index, :show, :edit, :update]
   
-  #before_filter :find_notebook
+  before_filter :find_notebook, :only => [:new]
   
   uses_tiny_mce :options => {
                               :theme => 'advanced',
@@ -85,6 +85,12 @@ class LessonsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  protected
+    def find_notebook
+      @notebook = current_user.notebooks.find(params[:notebook_id])
+    end
+
   
   private
     ##

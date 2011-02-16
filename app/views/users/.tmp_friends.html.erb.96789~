@@ -1,0 +1,17 @@
+<div>
+	<div class=""><%= @user.name %> Friends</div>
+	<ul class="friends">
+		<% @friends.each do |friend| %>
+			<li><%= link_to friend.name, user_path(friend)%></li>
+		<% end %>
+	</ul>
+	
+	<% unless @pending.empty? %>
+	<div class="">Pending invitation</div>
+	<ul class="invitations">
+		<% @pending.each do |pend| %>
+			<li><%= pend.name %>, <%= link_to "Approve", approve_friend_path(pend) %> </li>
+		<% end %>
+	</ul>
+	<% end %>
+</div>

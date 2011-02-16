@@ -18,6 +18,6 @@ class ActiveSupport::TestCase
     session.delete :user_id
   end
   def setup
-    login_as :one
+    login_as :one if defined? session
   end
 end

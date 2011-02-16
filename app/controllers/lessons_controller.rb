@@ -58,12 +58,6 @@ class LessonsController < ApplicationController
   def update
     @notebook = current_user.notebooks.find(params[:notebook_id])
     @lesson = @notebook.lessons.find(params[:id])
-      ################################
-      ## Bug here with form...      ##
-      ## @notebook in the form      ##
-      ## will work (but then it     ##
-      ## screws create)  FIXED??    ##
-      ################################
     if @lesson.update_attributes(params[:lesson])
       flash[:notice] = 'Lesson was successfully updated.'
       redirect_to notebook_lessons_path

@@ -1,7 +1,7 @@
 class LessonsController < ApplicationController
-  before_filter :authenticate, :only => [:index, :show, :edit, :update]
+  before_filter :authenticate, :only => [:index, :show, :edit, :update, :destroy]
   # A filter for current user
-  before_filter :notebook_owner, :only => [:index, :show, :edit, :update]
+  before_filter :notebook_owner, :only => [:edit, :update, :destroy]
   
   before_filter :find_notebook, :only => [:new]
   
@@ -81,6 +81,9 @@ class LessonsController < ApplicationController
   end
   
   protected
+    ##
+    # Make sure the notebook is picked when creating a new lesson
+    ##
     def find_notebook
       @notebook = current_user.notebooks.find(params[:notebook_id])
     end

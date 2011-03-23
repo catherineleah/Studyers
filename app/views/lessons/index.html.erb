@@ -12,13 +12,15 @@
   <tr>
     <td><%= link_to lesson.title, notebook_lesson_path(@notebook, lesson) %></td>
     <td><%= lesson.created_at %></td>
-
+		<% if @current_user.id == lesson.user_id %>
     <td><%= link_to 'Edit', edit_notebook_lesson_path(@notebook, lesson) %></td>
     <td><%= link_to 'Destroy', [@notebook, lesson], :confirm => 'Are you sure?', :method => :delete %></td>
+		<% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
-
+<% if @current_user.id == @notebook.user_id %>
 <%= link_to 'New Lesson', new_notebook_lesson_path %>
+<% end %>

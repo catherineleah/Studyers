@@ -5,17 +5,19 @@ class LessonsController < ApplicationController
   
   before_filter :find_notebook, :only => [:new]
   
-  uses_tiny_mce :options => {
-                              :theme => 'advanced',
-                              :theme_advanced_resizing => true,
-                              :theme_advanced_resize_horizontal => false,
-                              :theme_advanced_toolbar_location => "top",
-                              :theme_advanced_toolbar_align => "left",
-                              :plugins => %w{ table fullscreen }
-                            }
+  load_and_authorize_resource 
+  #uses_tiny_mce :options => {
+  #                            :theme => 'advanced',
+  #                            :theme_advanced_resizing => true,
+  #                            :theme_advanced_resize_horizontal => false,
+  #                            :theme_advanced_toolbar_location => "top",
+  #                            :theme_advanced_toolbar_align => "left",
+  #                            :plugins => %w{ table fullscreen }
+  #                          }
   
   # GET notebook/:id/lessons
-  def index  
+  def index
+    @current_user = current_user
     #@notebook = current_user.notebooks.find(params[:notebook_id])
     @notebook = Notebook.find(params[:notebook_id])
     @lessons = @notebook.lessons
@@ -25,6 +27,7 @@ class LessonsController < ApplicationController
   # GET notebook/:id/lessons/1
   def show
     #@notebook = current_user.notebooks.find(params[:notebook_id])
+    @current_user = current_user
     @notebook = Notebook.find(params[:notebook_id])
     @lesson =  @notebook.lessons.find(params[:id])
   end

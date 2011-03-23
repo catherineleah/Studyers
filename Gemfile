@@ -16,10 +16,13 @@ gem 'will_paginate', '3.0.pre2'
 gem 'jquery-rails'
 
 # Enable tiny_mce
-gem 'tiny_mce'
+#gem 'tiny_mce'
 
-# Enable amistad friendship mgr
+# Enable amistad friendship manager
 gem 'amistad'
+
+# Enable authorization manager for user (who can see what)
+gem 'cancan'
 
 # Deploy with Capistrano
 # gem 'capistrano'

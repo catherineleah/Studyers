@@ -5,7 +5,7 @@ class LessonsController < ApplicationController
   
   before_filter :find_notebook, :only => [:new]
   
-  load_and_authorize_resource 
+  authorize_resource 
   #uses_tiny_mce :options => {
   #                            :theme => 'advanced',
   #                            :theme_advanced_resizing => true,

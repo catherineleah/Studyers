@@ -18,26 +18,8 @@
   <div class="field">
     <%= f.label :body %><br />
     <%= f.text_area :body %>
-		<script type="text/javascript">
-
-		$(document).ready(function() {
-			iView.document.designMode = 'On'; 
-			var htmlCode = $('#lesson_body').val();
-			iView.document.write(htmlCode);
-			$('#lesson_body').hide();
-			
-			$('#lesson_submit').click(function() {
-			  var saveHtml = iView.document.body.innerHTML;
-				$('#lesson_body').val(saveHtml);
-			});
-		});
-
-
-</script>
   </div>
-	
-  <iframe id="iView" style="width: 600px; height:400px"></iframe> 
-
+  
   <div class="field">
     <%= f.label :permission %><br />
     <%= f.radio_button :permission, 0 %> Private

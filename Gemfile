@@ -24,6 +24,9 @@ gem 'amistad'
 # Enable authorization manager for user (who can see what)
 gem 'cancan'
 
+# Paperclip to add attachments to files
+gem "paperclip", "~> 2.3"
+
 # Deploy with Capistrano
 # gem 'capistrano'
 

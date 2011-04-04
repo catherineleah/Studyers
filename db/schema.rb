@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110115211038) do
+ActiveRecord::Schema.define(:version => 20110404184845) do
 
   create_table "friendships", :force => true do |t|
     t.integer "user_id"
@@ -29,6 +29,10 @@ ActiveRecord::Schema.define(:version => 20110115211038) do
     t.integer  "permission"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "attachement_file_name"
+    t.string   "attachement_content_type"
+    t.integer  "attachement_file_size"
+    t.datetime "attachement_updated_at"
   end
 
   create_table "notebooks", :force => true do |t|

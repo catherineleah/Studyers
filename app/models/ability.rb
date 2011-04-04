@@ -26,10 +26,11 @@ class Ability
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
     can :read, Lesson do |lesson|
       @user = User.find(lesson.try(:user_id))
+      # If owner | if public | if friends & permission for friends.
       lesson.try(:user_id) == user.id || lesson.try(:permission) == 2 || (lesson.try(:permission) == 1 && (user.friend_with? @user))
     end
     
-    can :update, Lesson do |lesson|
+    can :manage, Lesson do |lesson|
       lesson.try(:user_id) == user.id 
     end
   end

@@ -13,7 +13,7 @@
   <b>Notebook:</b>
   <%= @lesson.notebook_id %>
 </p>
-<%= image_tag @lesson.attachement.url %>
+
 <p>
   <b>User:</b>
   <%= @lesson.user_id %>

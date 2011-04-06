@@ -4,7 +4,7 @@
             var i = 0;
           var textArea = this.find('textarea');
             htmlCode = textArea.val();
-            textArea.after('<div contentEditable="true" id="iView" style="min-width: 900px; min-height:400px">'+htmlCode+'</div> ');
+            textArea.after('<div contentEditable="true" id="iView" style="float: left; width: 500px; min-height:400px">'+htmlCode+'</div> ');
             textArea.hide();
             var fd = document.getElementById('iView');
             fd.designMode = "on";
@@ -12,34 +12,27 @@
             
             
             $("#lesson_submit").click(function(){
-                for (var j = 0; j < i; j++) {
-                    var oCanvas = document.getElementById("canvas-" + j);
-                    $("#lesson_attachment64").val(oCanvas.toDataURL());
-                    
-                    $(oCanvas).before(oImgPNG);
-                    $(oCanvas).remove();
-                }
-                
+            
+                var oCanvas = document.getElementById("lesson-canvas");
+                $("#lesson_attachment64").val(oCanvas.toDataURL());
+
                 var saveHtml = $('#iView').html();
                 //alert(saveHtml); return false;
                 textArea.val(saveHtml);
       });
-      // Buttons
-      $('#buttons input[type="button"]').click(function() {
-        var cmd = $(this).attr('id');
+      	// Buttons
+      	$('#buttons input[type="button"]').click(function() {
+        	var cmd = $(this).attr('id');
           document.execCommand(cmd,false, null);
-      });
-      
-            $('#add-draw').click(function() {
-                $("#iView").append('<canvas class="canvas" id="canvas-'+i+'" width="200" height="200" style="float:left; margin: 5px; border: 1px solid red"></canvas>');
-                canvasInit(i);
-              i++;
-            });
+      	});
       };
 })( jQuery );
-function canvasInit(i) {
-    context = document.getElementById('canvas-'+i).getContext("2d");
-  $('#iView #canvas-'+i).mousedown(function(e){
+function canvasInit() {
+    context = document.getElementById("lesson-canvas").getContext("2d");
+		var image = document.getElementById("canvas-image");
+		$("#canvas-image").remove();
+	  context.drawImage(image, 0, 0);
+  $("#lesson-canvas").mousedown(function(e){
       var mouseX = e.pageX - this.offsetLeft;
       var mouseY = e.pageY - this.offsetTop;
             
@@ -48,18 +41,18 @@ function canvasInit(i) {
       redraw();
     });
 
-   $('#iView #canvas-'+i).mousemove(function(e){
+   $("#lesson-canvas").mousemove(function(e){
       if(paint){
         addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
         redraw();
       }
     });
 
-   $('#iView #canvas-'+i).mouseup(function(e){
+   $("#lesson-canvas").mouseup(function(e){
       paint = false;
     });
 
-   $('#iView #canvas-'+i).mouseleave(function(e){
+   $("#lesson-canvas").mouseleave(function(e){
       paint = false;
     });
 
@@ -102,6 +95,10 @@ function canvasInit(i) {
 <script>
 $(document).ready(function() {
     $("form").studyEditor();
+		canvasInit();
+//		var canvas = document.getElementById("area");
+//	    var context = canvas.getContext("2d");
+	    
 });
 </script>
 <div id="buttons">
@@ -109,7 +106,6 @@ $(document).ready(function() {
     <input type="button" id="italic" value="Italic" />
 </div>
 
-<div id="add-draw">Add a draw</div>
 <%= form_for([@notebook, @lesson]) do |f| %>
   <% if @lesson.errors.any? %>
     <div id="error_explanation">
@@ -122,7 +118,7 @@ $(document).ready(function() {
       </ul>
     </div>
   <% end %>
-
+	
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
@@ -130,13 +126,12 @@ $(document).ready(function() {
   <div class="field">
     <%= f.label :body %><br />
     <%= f.text_area :body %>
-		<script type="text/javascript">
 		
-		</script>
-  </div>
-	
+			<canvas class="canvas" id="lesson-canvas" width="500" height="500" style="float:right; margin: 5px; border: 1px solid red"></canvas>	
 
-  <div class="field">
+  </div>
+
+  <div class="field" style="clear:both;">
     <%= f.label :permission %><br />
     <%= f.radio_button :permission, 0 %> Private
 		<%= f.radio_button :permission, 1 %> Friends
@@ -146,4 +141,7 @@ $(document).ready(function() {
   <div class="actions">
     <%= f.submit %>
   </div>
+	<% if @lesson.attachement.present? %>
+		<%= image_tag @lesson.attachement.url, :id=>"canvas-image" %>
+	<% end %>
 <% end %>

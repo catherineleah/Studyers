@@ -17,7 +17,9 @@ class Lesson < ActiveRecord::Base
                                
   private
     def save_attachment64
-      File.open("tmp/reply.png", "wb") { |f| f.write(Datafy::decode_data_uri(attachment64)[0]) }  
-      self.attachement = File.open("tmp/reply.png", "r")
+      if attachment64.present?
+        File.open("tmp/lesson.png", "wb") { |f| f.write(Datafy::decode_data_uri(attachment64)[0]) }  
+        self.attachement = File.open("tmp/lesson.png", "r")
+      end
     end
 end

@@ -1,110 +1,146 @@
 <script>
 (function( $ ){
       $.fn.studyEditor = function() {
-            var i = 0;
-          var textArea = this.find('textarea');
-            htmlCode = textArea.val();
-            textArea.after('<div contentEditable="true" id="iView" style="float: left; width: 500px; min-height:400px">'+htmlCode+'</div> ');
-            textArea.hide();
-            var fd = document.getElementById('iView');
-            fd.designMode = "on";
-            
-            
+          //var textArea = this.find('textarea');
+          //htmlCode = textArea.val();
+          //textArea.after('<div contentEditable="true" id="iView" style="float: left; width: 500px; min-height:400px">'+htmlCode+'</div> ');
+          //textArea.hide();
+          //var fd = document.getElementById('iView');
+          //fd.designMode = "on";
             
             $("#lesson_submit").click(function(){
             
                 var oCanvas = document.getElementById("lesson-canvas");
                 $("#lesson_attachment64").val(oCanvas.toDataURL());
 
-                var saveHtml = $('#iView').html();
-                //alert(saveHtml); return false;
-                textArea.val(saveHtml);
-      });
+              //  var saveHtml = $('#iView').html();
+              //  //alert(saveHtml); return false;
+              //  textArea.val(saveHtml);
+            });
       	// Buttons
-      	$('#buttons input[type="button"]').click(function() {
-        	var cmd = $(this).attr('id');
-          document.execCommand(cmd,false, null);
-      	});
+      	//$('#buttons input[type="button"]').click(function() {
+        //	var cmd = $(this).attr('id');
+        //  document.execCommand(cmd,false, null);
+      	//});
       };
 })( jQuery );
-function canvasInit() {
-    context = document.getElementById("lesson-canvas").getContext("2d");
-		var image = document.getElementById("canvas-image");
-		$("#canvas-image").remove();
-	  context.drawImage(image, 0, 0);
-  $("#lesson-canvas").mousedown(function(e){
+</script>
+<script>
+(function( $ ){
+  $.fn.lessonCanvas = function() {
+    var paint= false;
+    var canvas = document.getElementById('lesson-canvas');
+    var context = canvas.getContext("2d");
+
+    // Colors:
+    var colorPurple = "#cb3594";
+    var colorGreen = "#659b41";
+    var colorYellow = "#ffcf33";
+    var colorBrown = "#986928";
+    var colorBlack ="#333333";
+
+    var curColor = colorBlack;
+    var clickColor = new Array();
+    
+    if ($("#canvas-image")) {
+      var lessonImage = new Image();
+      lessonImage.src = $("#canvas-image").attr("src");
+      lessonImage.onload = function() {
+        context.drawImage(lessonImage, 0,0);
+      }
+      $("#canvas-image").remove();
+    }
+    context.lineWidth = 2;
+    context.lineCap = "round";
+
+    $('.color').click(function() {
+      var color = $(this).attr("id");
+      //alert(color);
+      switch (color) {
+        case "colorBrown":
+          curColor = colorBrown;
+          break;
+        case "colorYellow":
+          curColor = colorYellow;
+          break;
+        case "colorGreen":
+          curColor = colorGreen;
+          break;
+        case "colorBlack":
+          curColor = colorBlack;
+          break;
+      }
+    });
+
+
+    this.mousedown(function(e){
       var mouseX = e.pageX - this.offsetLeft;
       var mouseY = e.pageY - this.offsetTop;
-            
+              
       paint = true;
       addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
       redraw();
     });
 
-   $("#lesson-canvas").mousemove(function(e){
+    this.mousemove(function(e){
       if(paint){
-        addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
-        redraw();
+         addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
+         redraw();
       }
     });
 
-   $("#lesson-canvas").mouseup(function(e){
+    this.mouseleave(function(e){
       paint = false;
     });
 
-   $("#lesson-canvas").mouseleave(function(e){
+    this.mouseup(function(e){
       paint = false;
     });
 
-   var clickX = new Array();
-   var clickY = new Array();
-   var clickDrag = new Array();
-   var paint;
+    var clickX = new Array();
+    var clickY = new Array();
+    var clickDrag = new Array();
+    var paint;
 
-   function addClick(x, y, dragging)
-   {
-     clickX.push(x);
-     clickY.push(y);
-     clickDrag.push(dragging);
-   }
+    function addClick(x, y, dragging){
+      clickX.push(x);
+      clickY.push(y);
+      clickDrag.push(dragging);
+      clickColor.push(curColor);
+    }
 
-   function redraw(){
-      //canvas.width = canvas.width; // Clears the canvas
-      
-      context.strokeStyle = "#df4b26";
-      context.lineJoin = "round";
-      context.lineWidth = 2;
-                
-      for(var i=0; i < clickX.length; i++)
-      {clickX
+    function redraw() {
+      for(var i=0; i < clickX.length; i++) {
         context.beginPath();
         if(clickDrag[i] && i){
-          context.moveTo(clickX[i-1], clickY[i-1]);
-         }else{
+           context.moveTo(clickX[i-1], clickY[i-1]);
+        }else{
            context.moveTo(clickX[i]-1, clickY[i]);
-         }
-         context.lineTo(clickX[i], clickY[i]);
-         context.closePath();
-         context.stroke();
+        }
+        context.lineTo(clickX[i], clickY[i]);
+        context.closePath();
+        context.strokeStyle = clickColor[i];
+        context.stroke();
       }
     }
 
+  };
+})( jQuery );
+
+function clearCanvas() {
+  var canvas = document.getElementById('lesson-canvas');
+  var context = canvas.getContext('2d');
+  context.clearRect(1, 1, 500, 500);
 }
 </script>
 
 <script>
 $(document).ready(function() {
     $("form").studyEditor();
-		canvasInit();
-//		var canvas = document.getElementById("area");
-//	    var context = canvas.getContext("2d");
+    $('#lesson-canvas').lessonCanvas();
 	    
 });
 </script>
-<div id="buttons">
-    <input type="button" id="bold" value="Bold" `/>
-    <input type="button" id="italic" value="Italic" />
-</div>
 
 <%= form_for([@notebook, @lesson]) do |f| %>
   <% if @lesson.errors.any? %>
@@ -125,19 +161,22 @@ $(document).ready(function() {
   </div>
   <div class="field">
     <%= f.label :body %><br />
-    <%= f.text_area :body %>
-		
-			<canvas class="canvas" id="lesson-canvas" width="500" height="500" style="float:right; margin: 5px; border: 1px solid red"></canvas>	
-
+    <%= f.text_area :body, :class => "mceEditor" %>
+    <canvas class="canvas" id="lesson-canvas" width="500" height="500" style="cursor: crosshair;float:right; margin: 5px; border: 1px solid red"></canvas>
+    <div class="colors" style="clear:both; float: left;">
+      <div class="color" id="colorGreen">Gr</div>
+      <div class="color" id="colorYellow">Yel</div>
+      <div onclick="clearCanvas();">Cle</div>
+    </div>    
   </div>
 
   <div class="field" style="clear:both;">
     <%= f.label :permission %><br />
-    <%= f.radio_button :permission, 0 %> Private
-		<%= f.radio_button :permission, 1 %> Friends
-		<%= f.radio_button :permission, 2 %> Public
+    <%= f.radio_button :permission, 0 %> Only me
+    <%= f.radio_button :permission, 1 %> My friends
+    <%= f.radio_button :permission, 2 %> Everyone
   </div>
-	<%= f.hidden_field :attachment64 %>
+  <%= f.hidden_field :attachment64 %>
   <div class="actions">
     <%= f.submit %>
   </div>

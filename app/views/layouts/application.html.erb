@@ -4,10 +4,13 @@
   <title><%= title %></title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag 'jquery' %>
-	<%= javascript_include_tag 'jquery.jeditable.min' %>
-	<%= javascript_include_tag 'rails' %>
-	<%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag 'jquery.jeditable.min' %>
+  <%= javascript_include_tag 'rails' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tag %>
+	<%= include_tiny_mce_if_needed %>
+  <script type="text/javascript" src="http://use.typekit.com/exq8til.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 </head>
 <body>
 <div id="container">

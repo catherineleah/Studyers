@@ -1,28 +1,11 @@
 
-<p>
-  <b>Title:</b>
+<div class="lesson-show">
   <%= @lesson.title %>
-</p>
-
-<p>
-  <b>Body:</b>
   <%=sanitize @lesson.body %>
-</p>
+</div>
 
-<p>
-  <b>Notebook:</b>
-  <%= @lesson.notebook_id %>
-</p>
-<%= image_tag @lesson.attachement.url %>
-<p>
-  <b>User:</b>
-  <%= @lesson.user_id %>
-</p>
+<%= image_tag @lesson.attachement.url, :class=>"attahced-image" %>
 
-<p>
-  <b>Permission:</b>
-  <%= @lesson.permission %>
-</p>
 
 <% if @current_user.id == @lesson.user_id %>
 <%= link_to 'Edit', edit_notebook_lesson_path %> |

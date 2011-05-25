@@ -1,7 +1,7 @@
 
 <div class="lesson-show">
   <%= @lesson.title %>
-  <%=sanitize @lesson.body, :attributes => %w(id class style) %>
+  <%=sanitize @lesson.body %>
 </div>
 
 <%= image_tag @lesson.attachement.url, :class=>"attahced-image" %>

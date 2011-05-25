@@ -7,19 +7,10 @@
 <script> 
 (function( $ ){
   $.fn.studyEditor = function() {
-		var lessonText = $("#lesson_body").val();
-		//console.log(lessonText);
-		$("#lesson_body").hide();
-		$("#lesson_body").after('<div id="text-editor" contentEditable="true">'+lessonText+'</div>');
-
     $("#lesson_submit").click(function(){
-	    var oCanvas = document.getElementById("imageView");
-  	  $("#lesson_attachment64").val(oCanvas.toDataURL());
-			
-			var textSave = $("#text-editor").html();
-			$("#lesson_body").val(textSave);
-				
-  	});
+    var oCanvas = document.getElementById("imageView");
+    $("#lesson_attachment64").val(oCanvas.toDataURL());
+  });
 };
 })( jQuery );
 </script>
@@ -50,8 +41,6 @@ $(document).ready(function() {
     <%= f.text_field :title %>
   </div>
   <div class="field">
-  	<input onclick="document.execCommand('bold',false,null);" value="bold" type="button" />
-		<input onclick="document.execCommand('italic',false,null);" value="italic" type="button" />
     <%= f.label :body %><br />
     <%= f.text_area :body%>
 		

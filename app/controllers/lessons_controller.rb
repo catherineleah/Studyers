@@ -10,11 +10,12 @@ class LessonsController < ApplicationController
 
   uses_tiny_mce :options => {
                               :theme => 'advanced',
+                              :width => '800px',
                               :theme_advanced_resizing => false,
                               :theme_advanced_resize_horizontal => false,
                               :theme_advanced_toolbar_location => "top",
                               :theme_advanced_toolbar_align => "left",
-                              :theme_advanced_buttons1 => "bold,italic,underline,separator,justifyleft,justifycenter,justifyright,justifyfull,separator,bullist,numlist,separator,outdent,indent,separator,undo,redo,separator,link,unlink,table,tablecontrols",
+                              :theme_advanced_buttons1 => "bold,italic,underline,separator,justifyleft,justifycenter,justifyright,justifyfull,separator,bullist,numlist,separator,outdent,indent,separator,undo,redo,separator,link,unlink,table,tablecontrols,|,insertdate,inserttime,preview,|,forecolor,backcolor",
                               :theme_advanced_buttons2 => "",
                               :theme_advanced_buttons3 => "",
                               :plugins => %w{ table fullscreen }

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag 'jquery' %>
+  <%= javascript_include_tag 'jquery.jeditable.min' %>
+  <%= javascript_include_tag 'rails' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tag %>
+	<%= include_tiny_mce_if_needed %>
+  <script type="text/javascript" src="http://use.typekit.com/exq8til.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+</head>
+<body>
+<div id="container">
+	<%= render 'layouts/header' %>
+	<% flash.each do |key, value| %>
+  	<div class="flash <%= key %>"><%= value %></div>
+  <% end %>
+	
+	<section class="round" id="main">
+		<%= yield %>		
+	</section>
+	<%= render 'layouts/footer' %>
+	
+	Debugger <br />
+	<%= debug(params) if Rails.env.development? %>
+</div>
+
+
+</body>
+</html>

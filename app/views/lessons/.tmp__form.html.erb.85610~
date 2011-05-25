@@ -2,34 +2,24 @@
       #container { position: relative; }
       #imageView { border: 1px solid #000; }
       #imageTemp { position: absolute; top: 1px; left: 1px; }
-			.dtool {width: 200px; border: 2px solid red; cursor: pointer;}
     --></style>
-<script> 
+<script> /*
 (function( $ ){
   $.fn.studyEditor = function() {
-		var lessonText = $("#lesson_body").val();
-		//console.log(lessonText);
-		$("#lesson_body").hide();
-		$("#lesson_body").after('<div id="text-editor" contentEditable="true">'+lessonText+'</div>');
-
     $("#lesson_submit").click(function(){
-	    var oCanvas = document.getElementById("imageView");
-  	  $("#lesson_attachment64").val(oCanvas.toDataURL());
-			
-			var textSave = $("#text-editor").html();
-			$("#lesson_body").val(textSave);
-				
-  	});
+    var oCanvas = document.getElementById("lesson-canvas");
+    $("#lesson_attachment64").val(oCanvas.toDataURL());
+  });
 };
-})( jQuery );
+})( jQuery );*/
 </script>
 
-<script>
+<script>/*
 $(document).ready(function() {
     $("form").studyEditor();
     //$('#lesson-canvas').lessonCanvas();
 	    
-});
+}); */
 </script>
 
 <%= form_for([@notebook, @lesson]) do |f| %>
@@ -50,21 +40,26 @@ $(document).ready(function() {
     <%= f.text_field :title %>
   </div>
   <div class="field">
-  	<input onclick="document.execCommand('bold',false,null);" value="bold" type="button" />
-		<input onclick="document.execCommand('italic',false,null);" value="italic" type="button" />
     <%= f.label :body %><br />
     <%= f.text_area :body%>
 		
 		
-		 <p><label>Drawing tool: </label><div id="dtool">
-        <div class="dtool" id="line">Line</div>
-        <div class="dtool" id="rect">Rectangle</div>
-        <div class="dtool" id="pencil">Pencil</div>
-    </div></p>
+		 <p><label>Drawing tool: <select id="dtool">
+        <option value="line">Line</option>
+        <option value="rect">Rectangle</option>
+        <option value="pencil">Pencil</option>
+    </select></label></p>
 
     <div id="container">
       <canvas id="imageView" width="400" height="300">
-        
+        <p>Unfortunately, your browser is currently unsupported by our web 
+        application.  We are sorry for the inconvenience. Please use one of the 
+        supported browsers listed below, or draw the image you want using an 
+        offline tool.</p>
+        <p>Supported browsers: <a href="http://www.opera.com">Opera</a>, <a 
+          href="http://www.mozilla.com">Firefox</a>, <a 
+          href="http://www.apple.com/safari">Safari</a>, and <a 
+          href="http://www.konqueror.org">Konqueror</a>.</p>
       </canvas>
     </div>
 		
@@ -79,6 +74,9 @@ $(document).ready(function() {
 
 
 <script type="text/javascript">
+/* © 2009 ROBO Design
+ * http://www.robodesign.ro
+ */
 
 // Keep everything in anonymous function, called on window load.
 if(window.addEventListener) {
@@ -125,18 +123,13 @@ window.addEventListener('load', function () {
     context = canvas.getContext('2d');
 
     // Get the tool select input.
-    var tool_select = document.getElementsByClassName('dtool');
-		//console.log(tool_select);
+    var tool_select = document.getElementById('dtool');
     if (!tool_select) {
       alert('Error: failed to get the dtool element!');
       return;
     }
-		
-		for (var i = 0 ; i < tool_select.length; i++) {
-			//console.log(i);
-			tool_select[i].addEventListener('click', ev_tool_change, false);
-		}
-    
+    tool_select.addEventListener('change', ev_tool_change, false);
+
     // Activate the default tool.
     if (tools[tool_default]) {
       tool = new tools[tool_default]();
@@ -169,10 +162,9 @@ window.addEventListener('load', function () {
 
   // The event handler for any changes made to the tool selector.
   function ev_tool_change (ev) {
-		console.log(ev);
-    //if (tools[this.value]) {
-      tool = new tools[this.id]();
-    //}
+    if (tools[this.value]) {
+      tool = new tools[this.value]();
+    }
   }
 
   // This function draws the #imageTemp canvas on top of #imageView, after which 
@@ -297,6 +289,8 @@ window.addEventListener('load', function () {
 }, false); }
 
 </script>
+
+
 
 
   <div class="field" style="clear:both;">

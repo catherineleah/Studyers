@@ -6,7 +6,7 @@ class Lesson < ActiveRecord::Base
   validates :user_id, :presence => true
   
   
-  ####
+  #### Attach canvas as png
   include Datafy
   
   attr_accessor :attachment64
@@ -14,7 +14,13 @@ class Lesson < ActiveRecord::Base
   before_validation :save_attachment64
 
   has_attached_file :attachement, :styles => { :normal => ['200x200>'], :stack => ['137x133>'] }
-                               
+  
+  # send id & title as url param
+  def to_param
+    "#{id}-#{title.parameterize}"
+  end
+                           
+                             
   private
     def save_attachment64
       if attachment64.present?

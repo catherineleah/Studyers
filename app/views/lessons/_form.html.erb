@@ -50,8 +50,24 @@ $(document).ready(function() {
     <%= f.text_field :title %>
   </div>
   <div class="field">
-  	<input onclick="document.execCommand('bold',false,null);" value="bold" type="button" />
-		<input onclick="document.execCommand('italic',false,null);" value="italic" type="button" />
+  	<input id="bold" class="edit-buttons" value="bold" type="button" />
+		<input id="italic" class="edit-buttons" value="italic" type="button" />
+		<input id="underline" class="edit-buttons" value="Underline" type="button" />
+		<input id="hilitecolor" class="edit-buttons" attribute="yellow" value="hilite yellow" type="button" />
+		<input id="hilitecolor" class="edit-buttons" attribute="#659b41" value="hilite green" type="button" />
+		
+		<input id="increasefontsize" class="edit-buttons" value="A+" type="button"  />
+		<input id="decreasefontsize" class="edit-buttons" value="A-" type="button"  />
+		
+		<script>
+			$('.edit-buttons').click(function() {
+				var command = $(this).attr('id');
+				var Attribute = $(this).attr('attribute') ? $(this).attr('attribute') : null;  
+				document.execCommand(command,false,Attribute);
+			});
+		
+		</script>
+		
     <%= f.label :body %><br />
     <%= f.text_area :body%>
 		
@@ -61,18 +77,24 @@ $(document).ready(function() {
         <div class="dtool" id="rect">Rectangle</div>
         <div class="dtool" id="pencil">Pencil</div>
     </div></p>
+		<div class="colors">
+      <div class="color" id="colorGreen">Green</div>
+      <div class="color" id="colorYellow">Yellow</div>
+			<div class="color" id="colorBlack">Black</div>
+			<div class="color" id="colorBlue">Blue</div>
+			<div class="color" id="colorBrown">Brown</div>
+    </div>
+		<div class="widths">
+			<div class="width" id="smallWidth">small</div>
+			<div class="width" id="mediumWidth">medium</div>
+			<div class="width" id="largeWidth">large</div>
+			
+		</div>
 
     <div id="container">
       <canvas id="imageView" width="400" height="300">
         
       </canvas>
-    </div>
-		
-		
-    <div class="colors" style="clear:both; float: left;">
-      <div class="color" id="colorGreen">Gr</div>
-      <div class="color" id="colorYellow">Yel</div>
-      <div id="clear-canvas">Cle</div>
     </div>
 		 
   </div>
@@ -87,7 +109,7 @@ window.addEventListener('load', function () {
 
   // The active tool instance.
   var tool;
-  var tool_default = 'line';
+  var tool_default = 'pencil';
 
   function init () {
     // Find the canvas element.
@@ -123,6 +145,15 @@ window.addEventListener('load', function () {
     container.appendChild(canvas);
 
     context = canvas.getContext('2d');
+		
+		var img = new Image();
+		img.onload = function(){
+    	canvas.width = img.width;
+    	canvas.height = img.height;
+    	context.drawImage(img, 0, 0, img.width, img.height);
+		}
+		var image = document.getElementById("canvas-image");
+		img.src = image.src;
 
     // Get the tool select input.
     var tool_select = document.getElementsByClassName('dtool');
@@ -149,6 +180,64 @@ window.addEventListener('load', function () {
     canvas.addEventListener('mouseup',   ev_canvas, false);
   }
 
+
+	//color handling:
+	// Colors:
+  var colorBlue = "#cb3594";
+  var colorGreen = "#659b41";
+  var colorYellow = "#ffcf33";
+  var colorBrown = "#986928";
+  var colorBlack ="#333333";
+	
+	//Default color.
+	var curColor = colorBlack;
+	// change colors
+	$('.color').click(function() {
+    var color = $(this).attr("id");
+    switch (color) {
+      case "colorBrown":
+        curColor = colorBrown;
+        break;
+      case "colorYellow":
+        curColor = colorYellow;
+        break;
+      case "colorGreen":
+        curColor = colorGreen;
+        break;
+      case "colorBlack":
+        curColor = colorBlack;
+        break;	
+			case "colorBlue":
+        curColor = colorBlue;
+        break;
+    }
+  });
+		
+	//context.lineWidth
+	// Width 
+	var smallWidth = 1;
+	var mediumWidth = 4;
+	var largeWidth = 8;
+	
+	// Default width
+	var curWidth = smallWidth;
+	
+	// Width picker
+	$('.width').click(function() {
+		var toolWidth = $(this).attr("id");
+		switch (toolWidth) {
+			case "smallWidth":
+				curWidth = smallWidth;
+				break;
+			case "mediumWidth":
+				curWidth = mediumWidth;
+				break;
+			case "largeWidth":
+				curWidth = largeWidth;
+				break;
+		}
+	});
+			
   // The general-purpose event handler. This function just determines the mouse 
   // position relative to the canvas element.
   function ev_canvas (ev) {
@@ -169,7 +258,6 @@ window.addEventListener('load', function () {
 
   // The event handler for any changes made to the tool selector.
   function ev_tool_change (ev) {
-		console.log(ev);
     //if (tools[this.value]) {
       tool = new tools[this.id]();
     //}
@@ -205,6 +293,8 @@ window.addEventListener('load', function () {
     this.mousemove = function (ev) {
       if (tool.started) {
         context.lineTo(ev._x, ev._y);
+				context.strokeStyle = curColor;
+				context.lineWidth = curWidth;
         context.stroke();
       }
     };
@@ -245,7 +335,9 @@ window.addEventListener('load', function () {
       if (!w || !h) {
         return;
       }
-
+			
+			context.strokeStyle = curColor;
+			context.lineWidth = curWidth;
       context.strokeRect(x, y, w, h);
     };
 
@@ -277,6 +369,8 @@ window.addEventListener('load', function () {
       context.clearRect(0, 0, canvas.width, canvas.height);
 
       context.beginPath();
+			context.strokeStyle = curColor;
+			context.lineWidth = curWidth;
       context.moveTo(tool.x0, tool.y0);
       context.lineTo(ev._x,   ev._y);
       context.stroke();
@@ -300,7 +394,7 @@ window.addEventListener('load', function () {
 
 
   <div class="field" style="clear:both;">
-    <%= f.label :permission %><br />
+    <%= f.label :permission, "Who can see this lesson?" %><br />
     <%= f.radio_button :permission, 0 %> Only me
     <%= f.radio_button :permission, 1 %> My friends
     <%= f.radio_button :permission, 2 %> Everyone

@@ -13,7 +13,9 @@ class SessionsController < ApplicationController
     else
       # Sign the user in and redirect to the user's show page.
       sign_in user
-      redirect_back_or profile_path
+      # Need to consider
+      # redirect_back_or profile_path
+      redirect_to profile_path
     end
   end
 

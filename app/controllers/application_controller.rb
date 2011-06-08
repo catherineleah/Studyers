@@ -2,6 +2,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   include SessionsHelper
   
+  ## Cancan
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:error] = "Access denied."
+    redirect_to root_url
+  end
+  
   private
     def authenticate
       deny_access unless signed_in?

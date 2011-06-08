@@ -16,7 +16,6 @@
 	<div><%= link_to "My friends", profile_friends_path %></div>
 <% end %>
 
-<br />Testing friendship:<br />
 <% if @user.friend_with? current_user %>
 	you are friends with <%= @user.name %>
 <% elsif !@user.friend_with? current_user and !@user.connected_with? current_user and @user != current_user %>

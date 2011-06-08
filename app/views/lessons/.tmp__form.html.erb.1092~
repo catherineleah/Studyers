@@ -1,4 +1,12 @@
+<style type="text/css"><!--
+      #container { position: relative; }
+      #imageView { border: 1px solid #000; }
+      #imageTemp { position: absolute; top: 1px; left: 1px; }
+			.dtool {width: 200px; border: 2px solid red; cursor: pointer;}
+    --></style>
+
 <script type="text/javascript" src="/javascripts/editor.js"></script>
+
 <script>
 $(document).ready(function() {
     $("form").studyEditor();	    
@@ -35,8 +43,7 @@ $(document).ready(function() {
     <%= f.label :body %><br />
     <%= f.text_area :body%>
 			
-		<p><label>Drawing tool: </label>
-		<div id="dtool">
+		<p><label>Drawing tool: </label><div id="dtool">
       <div class="dtool" id="line">Line</div>
       <div class="dtool" id="rect">Rectangle</div>
       <div class="dtool" id="pencil">Pencil</div>

@@ -54,3 +54,9 @@ div.field, div.actions {
   font-size: 12px;
   list-style: square;
 }
+
+
+#container { position: relative; }
+#imageView { border: 1px solid #000; }
+#imageTemp { position: absolute; top: 1px; left: 1px; }
+.dtool {width: 200px; border: 2px solid red; cursor: pointer;}

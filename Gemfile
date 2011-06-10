@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.3'
+gem 'rails', '3.0.7'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -16,7 +16,7 @@ gem 'will_paginate', '3.0.pre2'
 gem 'jquery-rails'
 
 # Enable tiny_mce
-gem 'tiny_mce'
+# gem 'tiny_mce'
 
 # Enable amistad friendship manager
 gem 'amistad'
@@ -46,3 +46,12 @@ gem "paperclip", "~> 2.3"
 # group :development, :test do
 #   gem 'webrat'
 # end
+
+group :development do
+  gem 'rspec-rails', '2.5.0'
+end
+
+group :test do
+  gem 'rspec', '2.5.0'
+  gem 'webrat', '0.7.3'
+end

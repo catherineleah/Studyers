@@ -30,8 +30,11 @@ class Ability
       lesson.try(:user_id) == user.id || lesson.try(:permission) == 2 || (lesson.try(:permission) == 1 && (user.friend_with? @user))
     end
     
-    can :manage, Lesson do |lesson|
-      lesson.try(:user_id) == user.id 
-    end
+    #can :manage, Lesson do |lesson|
+    #  lesson.try(:user_id) == user.id 
+    #end
+    
+    can :manage, Lesson
+    
   end
 end

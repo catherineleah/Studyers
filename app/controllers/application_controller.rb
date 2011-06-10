@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   
   ## Cancan
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:error] = "Access denied."
+    flash[:error] = "Access denied !!!!"
     redirect_to root_url
   end
   
@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   
     def correct_user
       @user = User.find(params[:user_id])
-      redirect_to(root_path, :notice => "Insufficient rights to prevented me from showing you this page") unless current_user?(@user) 
+      redirect_to(root_path, :notice => "Access denied !!") unless current_user?(@user) 
     end
 
 end

@@ -56,7 +56,35 @@ div.field, div.actions {
 }
 
 
+/*
+ * My stylings 
+ * 
+ */
+
+
+
+
 #container { position: relative; }
 #imageView { border: 1px solid #000; }
 #imageTemp { position: absolute; top: 1px; left: 1px; }
 .dtool {width: 200px; border: 2px solid red; cursor: pointer;}
+
+
+#write {
+	clear: both;
+  float: left;
+  height: 400px;
+  width: 60%;
+}
+
+#text-editor {
+	border: 3px dashed grey;
+  height: 400px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+#draw {
+	float: left;
+	margin-left: 10px;
+}

@@ -34,7 +34,7 @@ class Ability
     #  lesson.try(:user_id) == user.id 
     #end
     
-    can :manage, Lesson
+    can :manage, Lesson, :user_id => user.id
     
   end
 end

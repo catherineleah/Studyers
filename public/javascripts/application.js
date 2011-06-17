@@ -13,6 +13,12 @@
 			
 			var textSave = $("#text-editor").html();
 			$("#lesson_body").val(textSave);
+			
+			if (!$("#lesson_title").val()){
+				var today = new Date();
+				$("#lesson_title").val(today);
+			} 
+				
 				
   	});
 };

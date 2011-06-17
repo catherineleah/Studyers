@@ -23,42 +23,48 @@ $(document).ready(function() {
     <%= f.text_field :title %>
   </div>
   <div class="field">
-  	<input id="bold" class="edit-buttons" value="bold" type="button" />
-		<input id="italic" class="edit-buttons" value="italic" type="button" />
-		<input id="underline" class="edit-buttons" value="Underline" type="button" />
-		<input id="hilitecolor" class="edit-buttons" attribute="yellow" value="hilite yellow" type="button" />
-		<input id="hilitecolor" class="edit-buttons" attribute="#659b41" value="hilite green" type="button" />
+  	<div id="write">
+  		<input id="bold" class="edit-buttons" value="bold" type="button" />
+			<input id="italic" class="edit-buttons" value="italic" type="button" />
+			<input id="underline" class="edit-buttons" value="Underline" type="button" />
+			|
+			<input id="hilitecolor" class="edit-buttons" attribute="yellow" value="hilite yellow" type="button" />
+			<input id="hilitecolor" class="edit-buttons" attribute="#659b41" value="hilite green" type="button" />
+			|
+			<input id="insertunorderedlist" class="edit-buttons" value="List" type="button" />
+			<input id="insertorderedlist" class="edit-buttons" value="Numbered List" type="button" />
+			|
+			<input id="increasefontsize" class="edit-buttons" value="A+" type="button"  />
+			<input id="decreasefontsize" class="edit-buttons" value="A-" type="button"  />
 		
-		<input id="increasefontsize" class="edit-buttons" value="A+" type="button"  />
-		<input id="decreasefontsize" class="edit-buttons" value="A-" type="button"  />
+	    <%= f.label :body %><br />
+	    <%= f.text_area :body%>
+			</div>	
+		<div id="draw">
+			<div id="dtool">
+	      <div class="dtool" id="line">Line</div>
+	      <div class="dtool" id="rect">Rectangle</div>
+	      <div class="dtool" id="pencil">Pencil</div>
+				<div class="dtool" id="circle">Circle</div>
+	    </div>
+			<div class="colors">
+	      <div class="color" id="colorGreen">Green</div>
+	      <div class="color" id="colorYellow">Yellow</div>
+				<div class="color" id="colorBlack">Black</div>
+				<div class="color" id="colorBlue">Blue</div>
+				<div class="color" id="colorBrown">Brown</div>
+	    </div>
+			<div class="widths">
+				<div class="width" id="smallWidth">small</div>
+				<div class="width" id="mediumWidth">medium</div>
+				<div class="width" id="largeWidth">large</div>
+				
+			</div>
 	
-    <%= f.label :body %><br />
-    <%= f.text_area :body%>
-			
-		<p><label>Drawing tool: </label>
-		<div id="dtool">
-      <div class="dtool" id="line">Line</div>
-      <div class="dtool" id="rect">Rectangle</div>
-      <div class="dtool" id="pencil">Pencil</div>
-    </div></p>
-		<div class="colors">
-      <div class="color" id="colorGreen">Green</div>
-      <div class="color" id="colorYellow">Yellow</div>
-			<div class="color" id="colorBlack">Black</div>
-			<div class="color" id="colorBlue">Blue</div>
-			<div class="color" id="colorBrown">Brown</div>
-    </div>
-		<div class="widths">
-			<div class="width" id="smallWidth">small</div>
-			<div class="width" id="mediumWidth">medium</div>
-			<div class="width" id="largeWidth">large</div>
-			
-		</div>
-
-    <div id="container">
-      <canvas id="imageView" width="400" height="300"></canvas>
-    </div>
-		 
+	    <div id="container">
+	      <canvas id="imageView" width="400" height="300"></canvas>
+	    </div>
+		</div> 
   </div>
 
   <div class="field" style="clear:both;">

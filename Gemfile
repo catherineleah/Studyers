@@ -47,11 +47,13 @@ gem "paperclip", "~> 2.3"
 #   gem 'webrat'
 # end
 
-group :development do
+# Autotest
+gem "autotest"
+
+group :development, :test do
   gem 'rspec-rails', '2.5.0'
 end
 
 group :test do
-  gem 'rspec', '2.5.0'
-  gem 'webrat', '0.7.3'
+  gem 'webrat', '0.7.1'
 end

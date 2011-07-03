@@ -1,4 +1,3 @@
-
 /**
  * @author Shlomi Zadok
  * @version 1.0
@@ -298,7 +297,16 @@ if (window.addEventListener) {
             };
         };
         
-        
+        // The clear tool
+				tools.clear = function() {
+					var tool = this;
+					this.started = true;
+					contexto.clearRect(0, 0, canvas.width, canvas.height);
+					context.clearRect(0, 0, canvas.width, canvas.height);
+					tool.started = false;
+					img_update();
+				}
+				
         // The line tool.
         tools.line = function(){
             var tool = this;

@@ -39,7 +39,14 @@ module Studyr
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
     
-#    config.gem 'tiny_mce'
+    # config.gem 'tiny_mce'
+
+    # Configure cancan gem for can do stuff
     config.gem 'cancan'
+
+    config.after_initialize do
+      HTML::WhiteListSanitizer.allowed_protocols << 'data'
+    end
+
   end
 end

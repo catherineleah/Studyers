@@ -1,4 +1,9 @@
-body { background-color: #fff; color: #333; }
+body { 
+  background-color: #fff; 
+  color: #333;
+  padding: 0px;
+  margin: 0px;
+}
 
 body, p, ol, ul, td {
   #font-family: verdana, arial, helvetica, sans-serif;
@@ -13,8 +18,8 @@ pre {
 }
 
 a { color: #000; }
-a:visited { color: #666; }
-a:hover { color: #fff; background-color:#000; }
+/*a:visited { color: #666; }
+a:hover { color: #fff; background-color:#000; }*/
 
 div.field, div.actions {
   margin-bottom: 10px;
@@ -62,8 +67,75 @@ div.field, div.actions {
  */
 
 
+header {
+  background: #f5f5f5;
+  height: 40px;
+  -moz-box-shadow: 1px 1px 1px #dbdbdb;
+  -webkit-box-shadow: 1px 1px 1px #dbdbdb;
+  box-shadow:1px 1px 1px #dbdbdb;
+}
+
+header #logo {
+  float: left;
+  padding: 2px 0px 0px 80px;
+}
+
+header #logo a#logo_url {
+  text-decoration: none;
+  font: 28px Trebuchet MS;
+  color: #524F50;
+  text-shadow: 1px 1px 1px #333;
+}
+
+header #logo span {
+  color: #1DE1E1;
+  font: 10px tahoma;
+  position: relative;
+  top: 7px;
+}
+
+header .top_nav  {
+  float: right;
+  margin-right: 80px;
+}
+
+header .top_nav li {
+  float: left;
+  font: 13px tahoma;
+  list-style: none inside none;
+  padding: 0px 7px;
+}
+
+header .top_nav li a {
+  text-decoration: none;
+}
+
+header .top_nav li a.top_user {
+  color: #1DE1E1;
+}
 
 
+section#main {
+  min-height: 500px;
+  padding: 16px 80px;
+}
+
+.notebook {
+  border: 2px dashed grey;
+  float: left;
+  margin: 5px;
+  padding: 11px;
+  width: 30%;
+  background: transparent url(images/notebook.png) repeat-x 0px 0px;
+}
+
+.notebook .notebook-name a {
+  font: 22px tahoma;
+  color: #2F5471;
+  text-decoration: none;
+}
+
+/* canvas */
 #container { position: relative; }
 #imageView { border: 1px solid #000; }
 #imageTemp { position: absolute; top: 1px; left: 1px; }
@@ -87,4 +159,26 @@ div.field, div.actions {
 #draw {
 	float: left;
 	margin-left: 10px;
+}
+
+
+
+/* Footer */
+footer {
+  border-top: 1px solid #E3E3E3;
+  margin: 10px 80px;
+}
+
+footer .bottom {
+  text-align: center;
+}
+
+footer .bottom ul li {
+  float: left;
+  padding-left: 20px;
+  list-style: none;
+}
+
+footer #copy {
+  float: right;
 }

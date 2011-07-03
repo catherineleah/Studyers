@@ -1,5 +1,5 @@
 <script type="text/javascript" src="/javascripts/editor.js"></script>
-<script>
+<script type="text/javascript">
 $(document).ready(function() {
     $("form").studyEditor();	    
 });
@@ -36,7 +36,9 @@ $(document).ready(function() {
 			|
 			<input id="increasefontsize" class="edit-buttons" value="A+" type="button"  />
 			<input id="decreasefontsize" class="edit-buttons" value="A-" type="button"  />
-		
+			
+			<div id="copy-image">copy image</div>
+					
 	    <%= f.label :body %><br />
 	    <%= f.text_area :body%>
 			</div>	
@@ -46,6 +48,7 @@ $(document).ready(function() {
 	      <div class="dtool" id="rect">Rectangle</div>
 	      <div class="dtool" id="pencil">Pencil</div>
 				<div class="dtool" id="circle">Circle</div>
+				<div class="dtool" id="clear">Clear</div>
 	    </div>
 			<div class="colors">
 	      <div class="color" id="colorGreen">Green</div>

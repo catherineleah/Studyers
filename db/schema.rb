@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110404184845) do
+ActiveRecord::Schema.define(:version => 20110703115851) do
 
   create_table "friendships", :force => true do |t|
     t.integer "user_id"
@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(:version => 20110404184845) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "course"
+    t.string   "lecturer"
   end
 
   add_index "notebooks", ["user_id"], :name => "index_notebooks_on_user_id"

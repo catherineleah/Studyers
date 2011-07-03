@@ -17,9 +17,7 @@
 			if (!$("#lesson_title").val()){
 				var today = new Date();
 				$("#lesson_title").val(today);
-			} 
-				
-				
+			} 				
   	});
 };
 })( jQuery );
@@ -32,4 +30,16 @@ $(document).ready(function() {
 		var Attribute = $(this).attr('attribute') ? $(this).attr('attribute') : null;  
 		document.execCommand(command,false,Attribute);
 	});
+	
+	$("#copy-image").click(function() {
+		var oCanvas = document.getElementById("imageView");
+                var img_dataurl = oCanvas.toDataURL("image/png");
+		var img = document.createElement('img'); 
+		img.src = oCanvas.toDataURL();
+		img.width="250";
+                img.align="left";
+		//console.log(img);
+		$("#text-editor").append(img);
+	});
+
 });

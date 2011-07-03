@@ -1,14 +1,17 @@
 <header>
-  LOGO HERE
-  <nav class="round">
+  <div id="logo">
+    <%= link_to "Studyers", root_path, :id => "logo_url" %>
+    <span>alpha</span>
+  </div>
+  <nav class="top_nav">
     <ul>
-      <li><%= link_to "Home", root_path %></li>
       <% if signed_in? %>
-      	<li><%= link_to "Profile", profile_path %></li>
-				<li><%= link_to "Settings", edit_user_path(current_user) %></li>
-      	<li><%= link_to "Sign out", signout_path, :method => :delete %></li>
+        <li>Welcome, <%= link_to current_user.name, profile_path, :class => 'top_user' %></li>
+        <li><%= link_to "Notebooks", notebooks_path, :class => current_class?(notebooks_path) %></li>
+        <li><%= link_to "Profile", profile_path, :class => current_class?(profile_path) %></li>
+      	<li><%= link_to "Logout", signout_path, :method => :delete %></li>
       <% else %>
-      	<li><%= link_to "Sign in", signin_path %></li>
+      	<li><%= link_to "Alpha sign in", signin_path %></li>
       <% end %>
     </ul>
   </nav>

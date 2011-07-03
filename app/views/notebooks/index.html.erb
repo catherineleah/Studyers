@@ -1,13 +1,30 @@
 <h1>My notebooks</h1>
 
-
+<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
 <% @notebooks.each do |notebook| %>
-    <div><%= link_to notebook.name, notebook_lessons_path(notebook) %></div>
-    <div style="display:none;"><%= link_to 'Edit', edit_user_notebook_path(@user, notebook) %></div>
-    <div style="display:none;"><%= link_to 'Destroy', [@user, notebook], :confirm => 'Are you sure?', :method => :delete %></div>
+  <div class="notebook">
+    <div class="notebook-name" id="notebook-<%= notebook.id %>"><%= link_to notebook.name, notebook_lessons_path(notebook) %></div>
+    <script type="text/javascript">
+      /*
+      $("#notebook-<%= notebook.id %>").editable("<%= edit_user_notebook_path(@user, notebook) %>", {
+        type    :   'text',
+        cancel  :   'Cancel',
+        submit  :   'OK',
+        indicator   :   'Saving...',
+        tooltip :   'Click to rename...',
+        method      :       "put",
+        submitdata  :   {id: <%= notebook.id %>, name:"notebook[name]" }
+      });
+      */
+    </script>
+    <div class="notebook-date">Created: <%= notebook.created_at %></div>
+    <div class="edit-notebook"><%= link_to 'Rename', edit_user_notebook_path(@user, notebook) %></div>
+    <div class="delete-notebook"><%= link_to 'Delete', [@user, notebook], :confirm => 'Are you sure?', :method => :delete %></div>
+  </div>
 <% end %>
 
 
 <br />
-
-<%= link_to 'New Notebook', new_notebook_path %>
+<div class="new-notebook">
+  <%= link_to 'New Notebook', new_notebook_path %>
+</div>

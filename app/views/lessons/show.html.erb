@@ -1,6 +1,6 @@
 <div class="lesson-show">
   <h3><%= @lesson.title %></h3>
-  <%=sanitize @lesson.body, :attributes => %w(id class style) %>
+  <%=sanitize @lesson.body %>
 </div>
 
 <div class="lesson-image">

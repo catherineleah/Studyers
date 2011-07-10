@@ -19,7 +19,8 @@ class UsersController < ApplicationController
       @user = current_user
     end 
     @title = @user.name
-    @notebooks = @user.notebooks
+    @notebooks = @user.notebooks.limit(3).order("updated_at DESC")
+    @lessons = @user.lessons
   end
 
   def friends

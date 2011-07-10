@@ -13,8 +13,7 @@ gem 'will_paginate', '3.0.pre2'
 # Use unicorn as the web server
 # gem 'unicorn'
 # Enable jquery
-gem 'jquery-rails'
-
+gem 'jquery-rails', '>= 1.0.12'
 # Enable tiny_mce
 # gem 'tiny_mce'
 
@@ -26,6 +25,8 @@ gem 'cancan'
 
 # Paperclip to add attachments to files
 gem "paperclip", "~> 2.3"
+
+gem "heroku"
 
 # Deploy with Capistrano
 # gem 'capistrano'
@@ -51,7 +52,7 @@ gem "paperclip", "~> 2.3"
 gem "autotest"
 
 group :development, :test do
-  gem 'rspec-rails', '2.5.0'
+  gem 'rspec-rails'
 end
 
 group :test do

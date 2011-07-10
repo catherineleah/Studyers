@@ -51,7 +51,10 @@ if (window.addEventListener) {
             img.onload = function(){
                 canvas.width = img.width;
                 canvas.height = img.height;
+                // update temp canvas
                 context.drawImage(img, 0, 0, img.width, img.height);
+                // update canvas
+                img_update();
             }
             var image = document.getElementById("canvas-image");
             img.src = image.src;

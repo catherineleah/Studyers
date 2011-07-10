@@ -1,15 +1,17 @@
-<div class="lesson-show">
-  <h3><%= @lesson.title %></h3>
-  <%=sanitize @lesson.body %>
-</div>
+<div class="lesson-show-wrapper">
+  <div class="lesson-show">
+    <h3><%= @lesson.title %></h3>
+    <%=sanitize @lesson.body %>
+  </div>
 
-<div class="lesson-image">
-	<%= image_tag @lesson.attachement.url, :class=>"attached-image" %>
-</div>
+  <div class="lesson-image">
+    <%= image_tag @lesson.attachement.url, :class=>"attached-image" %>
+  </div>
 
-<div class="user-menu">
-	<% if @current_user.id == @lesson.user_id %>
-	<%= link_to 'Edit', edit_notebook_lesson_path %> |
-	<% end %>
-	<%= link_to 'Back', notebook_lessons_path %>
+  <div class="user-menu">
+    <% if @current_user.id == @lesson.user_id %>
+      <%= link_to 'Edit', edit_notebook_lesson_path %> |
+    <% end %>
+      <%= link_to 'Back', notebook_lessons_path %>
+  </div>
 </div>

@@ -1,25 +1,18 @@
-<h1><%= @notebook.name %> lessons</h1>
+<h1 class="notebook-name"><%= @notebook.name %></h1>
+<h2 class="lesson-list">list of lessons</h2>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Created at</th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @lessons.each do |lesson| %>
-  <tr>
-    <td><%= link_to lesson.title, notebook_lesson_path(@notebook, lesson) %></td>
-    <td><%= lesson.created_at %></td>
-  <% if can? :update, lesson %>
-    <td><%= link_to 'Edit', edit_notebook_lesson_path(@notebook, lesson) %></td>
-    <td><%= link_to 'Destroy', [@notebook, lesson], :confirm => 'Are you sure?', :method => :delete %></td>
-  <% end %>
-  </tr>
+<div class="notebook-wide">
+  <% @lessons.each do |lesson| %>
+    <div class="lesson">  
+      <div class="lesson-title"><%= link_to lesson.title, notebook_lesson_path(@notebook, lesson) %></div>
+      <div class="lesson-date"><span>Created at:</span> <%= lesson.created_at %></div>
+      <% if can? :update, lesson %>
+        <div class="edit-lesson"><%= link_to 'Edit', edit_notebook_lesson_path(@notebook, lesson), :title => "Edit lesson"  %></div>
+        <div class="delete-lesson"><%= link_to 'Del', [@notebook, lesson], :confirm => 'Are you sure?', :method => :delete, :title => "Delete lesson" %></div>
+      <% end %>
+    </div>
 <% end %>
-</table>
-
+</div>
 <br />
 <% if @current_user.id == @notebook.user_id %>
 <%= link_to 'New Lesson', new_notebook_lesson_path %>

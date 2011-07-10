@@ -1,11 +1,13 @@
-
 <div><%= gravatar_for @user %></div><h2><%= @user.name %></h2>
 <div>	
-	
-	<% @notebooks.each do |notebook| %>
+  <% @notebooks.each do |notebook| %>
     <div><%= link_to notebook.name, notebook_lessons_path(notebook) %></div>
-<% end %>
+  <% end %>
 
+  <!-- test -->---
+  <% @lessons.each do |lesson| %>
+    <div><%= link_to lesson.title, notebook_lesson_path(lesson.notebook_id, lesson) %></div>
+  <% end %>
 
 </div>
 ---------------- 

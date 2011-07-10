@@ -24,7 +24,21 @@
 
 
 // Text editor buttons
-$(document).ready(function() { 
+$(document).ready(function() {
+
+        /*$("#home-wrapper #cycle").cycle({
+          fx: 'fade',
+          timeout: 6000, // milliseconds between slide transitions
+          pause: 1,
+          cleartype: 1,
+          cleartypeNoBg: 1,
+          pager: '#pager'
+        });
+        
+        $("#home-wrapper #pager a").click(function() {
+          $('#home-wrapper #cycle').cycle('pause');
+        }); */
+
 	$('.edit-buttons').click(function() {
 		var command = $(this).attr('id');
 		var Attribute = $(this).attr('attribute') ? $(this).attr('attribute') : null;  

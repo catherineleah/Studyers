@@ -6,7 +6,7 @@ body {
 }
 
 body, p, ol, ul, td {
-  #font-family: verdana, arial, helvetica, sans-serif;
+  font-family: tahoma, sans-serif;
   font-size:   13px;
   line-height: 18px;
   margin: 0px;
@@ -120,6 +120,19 @@ section#main {
   min-height: 500px;
   padding: 16px 28px;
   clear: both;
+}
+
+#home-wrapper #cycle {
+  margin: 0px auto;
+  width: 800px;
+  height: 600px;
+}
+
+#home-wrapper img.image {
+  width: 300px;
+  border: 1px solid #efefef;
+  box-shadow: 1px 1px 4px 1px #333;
+  border-radius: 6px;
 }
 
 #my-notebooks, h1.notebook-name, h2.lesson-list {

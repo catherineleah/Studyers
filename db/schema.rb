@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110703115851) do
+ActiveRecord::Schema.define(:version => 20110710215011) do
 
   create_table "friendships", :force => true do |t|
     t.integer "user_id"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(:version => 20110703115851) do
     t.string   "salt"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "admin",           :default => false
   end
 
 end

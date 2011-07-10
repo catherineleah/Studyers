@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_filter :authenticate, :only => [:index, :show, :edit, :update, :destroy]
-  before_filter :correct_user, :only => [:edit, :update, :destroy]
+  before_filter :correct_user, :only => [:edit, :update]
+  before_filter :admin_user, :only => [:new, :destroy]
   # GET /users
   # GET /users.xml
   def index
@@ -93,6 +94,10 @@ class UsersController < ApplicationController
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_path, :notice => "Insufficient rights to prevented me from showing you this page") unless current_user?(@user) 
+    end
+
+    def admin_user
+      redirect_to(root_path) unless current_user.admin?
     end
   
 end

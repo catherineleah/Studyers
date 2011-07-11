@@ -1,11 +1,11 @@
 class LessonsController < ApplicationController
   # cancan authorize
-  #load_and_authorize_resource
+  load_and_authorize_resource
   
   before_filter :authenticate, :only => [:index, :show, :edit, :update, :destroy]
   
   # A filter for current user
-  before_filter :notebook_owner, :only => [:edit, :update, :destroy]
+  #before_filter :notebook_owner, :only => [:edit, :update, :destroy]
   
   before_filter :find_notebook, :only => [:new]
   

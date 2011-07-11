@@ -2,7 +2,7 @@
 <h2 class="lesson-list">list of lessons</h2>
 
 <div class="notebook-wide">
-  <% if @lessons.count > 1 %>
+  <% if @lessons.count > 0 %>
     <% @lessons.each do |lesson| %>
       <div class="lesson">  
         <div class="lesson-title"><%= link_to lesson.title, notebook_lesson_path(@notebook, lesson) %></div>

@@ -26,18 +26,13 @@
 // Text editor buttons
 $(document).ready(function() {
 
-        /*$("#home-wrapper #cycle").cycle({
+        $("#home-wrapper #cycle").cycle({
           fx: 'fade',
           timeout: 6000, // milliseconds between slide transitions
           pause: 1,
           cleartype: 1,
-          cleartypeNoBg: 1,
-          pager: '#pager'
+          cleartypeNoBg: 1
         });
-        
-        $("#home-wrapper #pager a").click(function() {
-          $('#home-wrapper #cycle').cycle('pause');
-        }); */
 
 	$('.edit-buttons').click(function() {
 		var command = $(this).attr('id');

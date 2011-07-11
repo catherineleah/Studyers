@@ -124,15 +124,21 @@ section#main {
 
 #home-wrapper #cycle {
   margin: 0px auto;
-  width: 800px;
-  height: 600px;
+  width: 750px;
 }
 
-#home-wrapper img.image {
-  width: 300px;
+#home-wrapper .paragraph img.image {
+  width: 400px;
   border: 1px solid #efefef;
-  box-shadow: 1px 1px 4px 1px #333;
   border-radius: 6px;
+  float: left
+}
+
+#home-wrapper .paragraph div.text {
+  float: left;
+  font: 36px "Love Ya Like A Sister";
+  margin: 5px 20px;
+  width: 300px;
 }
 
 #my-notebooks, h1.notebook-name, h2.lesson-list {

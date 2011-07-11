@@ -11,7 +11,7 @@
         <li><%= link_to "Profile", profile_path, :class => current_class?(profile_path) %></li>
       	<li><%= link_to "Logout", signout_path, :method => :delete %></li>
       <% else %>
-      	<li><%= link_to "Alpha sign in", signin_path %></li>
+      	<li><%= link_to "Alpha users sign in", signin_path %></li>
       <% end %>
     </ul>
   </nav>

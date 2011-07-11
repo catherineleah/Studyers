@@ -5,13 +5,14 @@
   </div>
 
   <div class="lesson-image">
+    <div class="show-image">Show saved image from canvas</div>
     <%= image_tag @lesson.attachement.url, :class=>"attached-image" %>
   </div>
 
   <div class="user-menu">
     <% if @current_user.id == @lesson.user_id %>
-      <%= link_to 'Edit', edit_notebook_lesson_path %> |
+      <%= link_to 'Edit lesson', edit_notebook_lesson_path %> |
     <% end %>
-      <%= link_to 'Back', notebook_lessons_path %>
+      <%= link_to 'Back to lessons list', notebook_lessons_path %>
   </div>
 </div>

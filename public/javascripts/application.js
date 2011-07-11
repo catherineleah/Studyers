@@ -26,6 +26,10 @@
 // Text editor buttons
 $(document).ready(function() {
 
+        $(".show-image").click(function() {
+          $(this).next(".attached-image").toggle("slow");
+        });
+
         $("#home-wrapper #cycle").cycle({
           fx: 'fade',
           timeout: 6000, // milliseconds between slide transitions

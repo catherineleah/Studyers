@@ -288,6 +288,14 @@ h1.edit-header {
   float: left;
 }
 
+.notebook-wide .empty-lesson {
+  margin: 5px 20px 5px 50px;
+  padding:10px 20px;
+  width:90%;
+  float: left;
+}
+
+
 .notebook-wide .lesson-title a {
   float: left;
   margin-right: 18px;
@@ -339,6 +347,23 @@ h1.edit-header {
   box-shadow: 1px 1px 4px 1px #333;
   padding: 2px 10px;
 }
+
+.lesson-show-wrapper .lesson-image .show-image {
+  cursor: pointer;
+  font-size: 10px;
+  color: DarkGray;
+}
+
+.lesson-show-wrapper .lesson-image .show-image:hover {
+  color: black;
+}
+
+.lesson-show-wrapper .lesson-image .attached-image {
+  margin: 0px auto;
+  display: none;
+}
+
+
 
 /* Editor */
 

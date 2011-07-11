@@ -1,0 +1,28 @@
+  <div class="user-details">
+      <div id="gravatar">
+        <%= gravatar_for @user %>
+      </div>
+      <div id="name">
+        <%= @user.name %>
+      </div>
+        <%= link_to 'Edit Profile', edit_user_path(@user), :class => "edit-profile" %>
+        <div><%= link_to "Notebooks", notebooks_path %></div>
+        <div><%= link_to "Friends", profile_friends_path %></div>
+  </div>
+  <div id="notebooks">
+    <span class="title">Recently created notebooks</span>
+    <% @notebooks.each do |notebook| %>
+      <div class="recent-notebook">
+        <%= link_to notebook.name, notebook_lessons_path(notebook), :class => "lesson-title" %>
+        <%= link_to "new lesson", new_notebook_lesson_path(notebook), :class => "new-lesson" %>
+      </div>
+    <% end %>
+  </div>
+  <div id="lessons">
+    <span class="title">Recently saved lessons</span>
+    <% @lessons.each do |lesson| %>
+      <div class="recent-lesson">
+        <%= link_to lesson.title, notebook_lesson_path(lesson.notebook_id, lesson) %>
+      </div>
+    <% end %>
+  </div>

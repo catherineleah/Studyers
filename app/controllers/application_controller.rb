@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
   
   ## Cancan
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:error] = "Access denied !!!!"
-    redirect_to root_url
+    flash[:error] = "You have no permission to view this page"
+    redirect_to profile_path
   end
   
   private

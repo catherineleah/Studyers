@@ -499,6 +499,78 @@ h1.edit-header {
   margin: 10px;
 }
 
+#profile {
+  background: #f5f5f5;
+  border: 1px solid black;
+  border-radius: 8px;
+  box-shadow: 1px 1px 4px 1px #333;
+  min-height: 360px;
+  padding: 20px;
+  position: relative;
+}
+
+#profile .user-details {
+  width: 190px;
+  float: left;
+}
+
+#profile .user-details .edit-profile {
+  color: white;
+  font-size: 10px;
+  position: absolute;
+  top: 16px;
+}
+
+#profile .user-details .edit-profile:hover {
+  background: black;
+}
+
+#profile .user-details #name {
+  font-size: 16px;
+}
+
+#profile .user-details .friendship {
+  font-size: 10px;
+}
+
+#profile #notebooks, #profile #lessons {
+  float: left;
+  max-width: 41%;
+  min-width: 32%;
+  padding: 5px;
+}
+
+#profile #notebooks {
+  border-right: 1px solid grey;
+}
+
+#profile #notebooks span.title, #profile #lessons span.title {
+  font: 20px tahoma;
+}
+
+#profile #notebooks .recent-notebook a.lesson-title,
+#profile #lessons .recent-lesson a {
+  color: SteelBlue;
+  font-size: 18px;
+  line-height: 30px;
+  text-decoration: none;
+}
+
+#profile #notebooks .recent-notebook a.lesson-title:hover,
+#profile #lessons .recent-lesson a:hover {
+  color: #6374AB;
+}
+
+#profile #notebooks .recent-notebook a.new-lesson {
+  color: #2D2D2D;
+  font-size: 8px;
+  line-height: 30px;
+  opacity: 0.4;
+}
+
+#profile #notebooks .recent-notebook a.new-lesson:hover {
+  opacity: 1;
+}
 
 /* Footer */
 footer {

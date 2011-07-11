@@ -73,11 +73,11 @@ $(document).ready(function() {
     <%= f.radio_button :permission, 1 %> My friends
     <%= f.radio_button :permission, 2 %> Everyone
   </div>
-  <%= f.hidden_field :attachment64 %>
+  <% #f.hidden_field :attachment64 %>
   <div class="actions">
     <%= f.submit %>
   </div>
-  <% if @lesson.attachement.present? %>
-    <%= image_tag @lesson.attachement.url, :id=>"canvas-image", :style=>"display:none;" %>
-  <% end %>
+  <% #if @lesson.attachement.present? %>
+    <%# image_tag @lesson.attachement.url, :id=>"canvas-image", :style=>"display:none;" %>
+  <% #end %>
 <% end %>

@@ -7,16 +7,16 @@ class Lesson < ActiveRecord::Base
   
   
   #### Attach canvas as png
-  include Datafy
+  #include Datafy
   
-  attr_accessor :attachment64
+  #attr_accessor :attachment64
 
-  before_validation :save_attachment64
+  #before_validation :save_attachment64
 
-  has_attached_file :attachement, 
-    :storage => :s3,
-    :bucket => 'israel-hosting.net',
-    :s3_credentials => "#{RAILS_ROOT}/config/s3.yml"
+  #has_attached_file :attachement, 
+  #  :storage => :s3,
+  #  :bucket => 'israel-hosting.net',
+  #  :s3_credentials => "#{RAILS_ROOT}/config/s3.yml"
   
   # send id & title as url param
   def to_param

@@ -47,7 +47,7 @@ if (window.addEventListener) {
             
             context = canvas.getContext('2d');
             
-            var img = new Image();
+            /*var img = new Image();
             img.onload = function(){
                 canvas.width = img.width;
                 canvas.height = img.height;
@@ -57,7 +57,7 @@ if (window.addEventListener) {
                 img_update();
             }
             var image = document.getElementById("canvas-image");
-            img.src = image.src;
+            img.src = image.src;*/
             
             // Get the tool select input.
             var tool_select = document.getElementsByClassName('dtool');

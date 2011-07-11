@@ -8,8 +8,20 @@
     $("#lesson_body").after('<div id="text-editor" contentEditable="true">'+lessonText+'</div>');
 
     $("#lesson_submit").click(function(){
-      var oCanvas = document.getElementById("imageView");
-      $("#lesson_attachment64").val(oCanvas.toDataURL());
+      /*
+        Due to cross domain on s3 can't save as attachment.. :(
+        var oCanvas = document.getElementById("imageView");
+        $("#lesson_attachment64").val(oCanvas.toDataURL()); 
+       */
+       // Save to lesson text...
+       var oCanvas = document.getElementById("imageView");
+       var img_dataurl = oCanvas.toDataURL();
+       var img = document.createElement('img');
+       img.src = oCanvas.toDataURL();
+       img.width="250";
+       img.align="left";
+       //console.log(img);
+       $("#text-editor").append(img);
 			
       var textSave = $("#text-editor").html();
       $("#lesson_body").val(textSave);
@@ -30,14 +42,15 @@ $(document).ready(function() {
           $(this).next(".attached-image").toggle("slow");
         });
 
-        $("#home-wrapper #cycle").cycle({
-          fx: 'fade',
-          timeout: 6000, // milliseconds between slide transitions
-          pause: 1,
-          cleartype: 1,
-          cleartypeNoBg: 1
-        });
-
+        if ($("#home-wrapper #cycle")) {
+          $("#home-wrapper #cycle").cycle({
+            fx: 'fade',
+            timeout: 6000, // milliseconds between slide transitions
+            pause: 1,
+            cleartype: 1,
+            cleartypeNoBg: 1
+          });
+        }
 	$('.edit-buttons').click(function() {
 		var command = $(this).attr('id');
 		var Attribute = $(this).attr('attribute') ? $(this).attr('attribute') : null;  
@@ -46,7 +59,7 @@ $(document).ready(function() {
 	
 	$("#copy-image").click(function() {
 		var oCanvas = document.getElementById("imageView");
-                var img_dataurl = oCanvas.toDataURL("image/png");
+                var img_dataurl = oCanvas.toDataURL();
 		var img = document.createElement('img'); 
 		img.src = oCanvas.toDataURL();
 		img.width="250";

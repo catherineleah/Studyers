@@ -44,7 +44,7 @@ class LessonsController < ApplicationController
     @lesson.user_id = @notebook.user_id
 
     if @lesson.save
-    flash[:notice] =" Success"
+    flash[:notice] ="Saved lesson successfully"
     redirect_to notebook_lessons_path
     else
        render :action => "new" 

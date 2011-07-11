@@ -13,7 +13,10 @@ class Lesson < ActiveRecord::Base
 
   before_validation :save_attachment64
 
-  has_attached_file :attachement, :styles => { :normal => ['200x200>'], :stack => ['137x133>'] }
+  has_attached_file :attachement, 
+    :storage => :s3,
+    :bucket => 'israel-hosting.net',
+    :s3_credentials => "#{RAILS_ROOT}/config/s3.yml"
   
   # send id & title as url param
   def to_param

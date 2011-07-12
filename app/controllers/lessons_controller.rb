@@ -14,7 +14,7 @@ class LessonsController < ApplicationController
     @current_user = current_user
     #@notebook = current_user.notebooks.find(params[:notebook_id])
     @notebook = Notebook.find(params[:notebook_id])
-    @lessons = @notebook.lessons
+    @lessons = @notebook.lessons.order("updated_at DESC")
     @title = @notebook.name   
   end
 

@@ -1,7 +1,20 @@
 <script type="text/javascript" src="/javascripts/editor.js"></script>
+<script type="text/javascript" src="/javascripts/calculator.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-    $("form").studyEditor();	    
+  $("form").studyEditor();
+  $.fn.calculator.hide = function(calc) {
+    calc.fadeOut(500);
+  };
+  $('#calculator').calculator({movable:false,resizable:true, width:160,defaultOpen:false});
+  $("#calc-title").click(function() {
+    $("#draw").hide("slow");
+    $("#calculator").show("slow");  
+  });
+  $("#draw-title").click(function() {
+    $("#draw").show("slow");
+    $("#calculator").hide("slow");  
+  });
 });
 </script>
 
@@ -40,7 +53,11 @@ $(document).ready(function() {
 					
       <%= f.label :body %><br />
       <%= f.text_area :body%>
-    </div>	
+    </div>
+    <div id="features">
+      <div class="buttons" id="draw-title">Draw</div>
+      <div class="buttons" id="calc-title">Calculator</div>
+    </div>
     <div id="draw">
       <div id="dtool">
         <div class="dtool" id="pencil" title="Pencil tool"></div>
@@ -64,7 +81,10 @@ $(document).ready(function() {
       <div id="container">
         <canvas id="imageView" width="400" height="300"></canvas>
       </div>
-    </div> 
+    </div>
+    <div id="calc">
+      <div id="calculator"></div>
+    </div>
   </div>
 
   <div class="field" id="permission">

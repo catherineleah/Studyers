@@ -509,7 +509,39 @@ h1.edit-header {
 
 #draw .colors #colorBlue {
   background: transparent url(images/blue-tool.png) no-repeat 50% 50%;
-} 
+}
+
+#calc {
+  float: left;
+  margin-left: 20px;
+}
+
+#calc #calculator .calc-title-bar {
+  display: none;
+}
+
+#calc #calculator {
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+#features {
+  position: absolute;
+  top: 10px;
+  right: 40px;
+}
+
+#features .buttons {
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 4px;
+  box-shadow: 1px 1px 4px 1px #333;
+  height: 36px;
+  padding: 0px 5px;
+  margin: 5px;
+  line-height: 36px;
+  float: left;
+}
 
 #permission {
   clear: both;

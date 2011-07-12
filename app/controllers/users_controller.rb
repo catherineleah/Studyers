@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     end 
     @title = @user.name
     @notebooks = @user.notebooks.limit(3).order("updated_at DESC")
-    @lessons = @user.lessons
+    @lessons = @user.lessons.limit(3).order("updated_at DESC")
   end
 
   def friends

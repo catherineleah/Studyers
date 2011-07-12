@@ -28,7 +28,7 @@
       
       if (!$("#lesson_title").val()){
 	var today = new Date();
-	$("#lesson_title").val(today);
+	$("#lesson_title").val(today + "(auto title)");
       } 				
     });
 };

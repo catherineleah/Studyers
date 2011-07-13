@@ -13,7 +13,8 @@
         var oCanvas = document.getElementById("imageView");
         $("#lesson_attachment64").val(oCanvas.toDataURL()); 
        */
-       // Save to lesson text...
+     /**
+      * Need to think of a better way to save the drafted image
        var oCanvas = document.getElementById("imageView");
        var img_dataurl = oCanvas.toDataURL();
        var img = document.createElement('img');
@@ -22,6 +23,7 @@
        img.align="left";
        //console.log(img);
        $("#text-editor").append(img);
+     */
 			
       var textSave = $("#text-editor").html();
       $("#lesson_body").val(textSave);

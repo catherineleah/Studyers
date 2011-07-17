@@ -189,7 +189,7 @@ h1.edit-header {
   background: transparent url(images/notepad-add.png) no-repeat 0px 0px;
 }
 
-.notebook {
+.notebook, .recent-notebook {
   border-radius: 6px;
   float: left;
   margin: 10px 15px 5px 0px;
@@ -202,6 +202,12 @@ h1.edit-header {
   position: relative;
   box-shadow: 1px 1px 4px 1px #333;
 }
+
+.recent-notebook {
+  width: 70%;
+  min-height: 32px;
+  background-image: none;
+} 
 
 .notebook-wide {
   width:98%;
@@ -590,18 +596,13 @@ h1.edit-header {
   font-size: 10px;
 }
 
-#profile #notebooks, #profile #lessons {
+#profile #notebooks {
   float: left;
-  max-width: 41%;
-  min-width: 32%;
+  width: 78%;
   padding: 5px;
 }
 
-#profile #notebooks {
-  border-right: 1px solid grey;
-}
-
-#profile #notebooks span.title, #profile #lessons span.title {
+#profile #notebooks .title {
   font: 20px tahoma;
 }
 

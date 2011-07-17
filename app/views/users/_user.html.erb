@@ -17,15 +17,18 @@
     <span class="title">Some of <%= @user.name %>'s notebooks</span>
     <% @notebooks.each do |notebook| %>
       <div class="recent-notebook">
-        <%= link_to notebook.name, notebook_lessons_path(notebook), :class => "lesson-title" %> 
-      </div>
-    <% end %>
-  </div>
-  <div id="lessons">
-    <span class="title"><%= @user.name %> recently saved lessons</span>
-    <% @lessons.each do |lesson| %>
-      <div class="recent-lesson">
-        <%= link_to lesson.title, notebook_lesson_path(lesson.notebook_id, lesson) %>
+        <%= link_to notebook.name, notebook_lessons_path(notebook), :class => "lesson-title" %>
+        <div class="notebook-lessons">
+        <%@lessons = notebook.lessons.limit(3).order("updated_at DESC") %>
+        <% if @lessons.size > 0 %>
+        <ul class="lessons">
+        <% @lessons.each do |lesson| %>
+          <li class="lesson"><%= link_to lesson.title, notebook_lesson_path(notebook, lesson) %> </li>
+        <% end %>
+          <li class="class all"><%= link_to "All Lessons", notebook_lessons_path(notebook) %></li>
+        </ul>
+        <% end %>
+        </div> 
       </div>
     <% end %>
   </div>

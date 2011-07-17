@@ -10,19 +10,22 @@
         <div><%= link_to "Friends", profile_friends_path %></div>
   </div>
   <div id="notebooks">
-    <span class="title">Recently created notebooks</span>
+    <div class="title">Recently created notebooks</div>
     <% @notebooks.each do |notebook| %>
       <div class="recent-notebook">
         <%= link_to notebook.name, notebook_lessons_path(notebook), :class => "lesson-title" %>
         <%= link_to "new lesson", new_notebook_lesson_path(notebook), :class => "new-lesson" %>
+        <div class="notebook-lessons">
+          <%@lessons = notebook.lessons.limit(3).order("updated_at DESC") %>
+          <% if @lessons.size > 0 %>
+            <ul class="lessons">
+              <% @lessons.each do |lesson| %>
+                <li class="lesson"><%= link_to lesson.title, notebook_lesson_path(notebook, lesson) %> </li>
+              <% end %>
+              <li class="class all"><%= link_to "All Lessons", notebook_lessons_path(notebook) %></li>
+            </ul>
+          <% end %>
+        </div>
       </div>
-    <% end %>
-  </div>
-  <div id="lessons">
-    <span class="title">Recently saved lessons</span>
-    <% @lessons.each do |lesson| %>
-      <div class="recent-lesson">
-        <%= link_to lesson.title, notebook_lesson_path(lesson.notebook_id, lesson) %>
-      </div>
-    <% end %>
+    <% end %>  
   </div>

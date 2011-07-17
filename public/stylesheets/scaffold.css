@@ -200,6 +200,7 @@ h1.edit-header {
   line-height: 25px;
   min-height: 270px;
   position: relative;
+  -webkit-box-shadow: 1px 1px 4px 1px #333;
   box-shadow: 1px 1px 4px 1px #333;
 }
 

@@ -1,10 +1,14 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.7'
+gem 'rails', '3.1.0'
+gem 'sqlite3'
+gem 'sass'
+gem 'coffee-script'
+gem 'uglifier'
 
 ### Test support for mongodb ###
-gem "mongoid", "~> 2.1"
-gem "bson_ext", "~> 1.3"
+#gem "mongoid", "~> 2.1"
+#gem "bson_ext", "~> 1.3"
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

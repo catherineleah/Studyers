@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Studyr::Application.config.secret_token = 'f80ff09c445b3489e390e20e808ccd0be85938d38d424e0022e4b46abc8d3a5e9497010315635873b5ba352baa6cc53c1e1215602f33327fe801bca335e7ad26'
+Studyr::Application.config.secret_token = '86c2abbfcae819f7be0c6dc65aac0ac948266e0cd035a7f11f3309052b4973b8ac0cb0c4965a499aefc1ebf067cde619e132984f77eb7739df2354be06565860'

@@ -1,23 +1,4 @@
-<script type="text/javascript" src="/javascripts/editor.js"></script>
-<script type="text/javascript" src="/javascripts/calculator.js"></script>
-<script type="text/javascript">
-$(document).ready(function() {
-  $("form").studyEditor();
-  $.fn.calculator.hide = function(calc) {
-    calc.fadeOut(500);
-  };
-  $('#calculator').calculator({movable:false,resizable:true, width:160,defaultOpen:false});
-  $("#calc-title").click(function() {
-    $("#draw").hide("slow");
-    $("#calculator").show("slow");  
-  });
-  $("#draw-title").click(function() {
-    $("#draw").show("slow");
-    $("#calculator").hide("slow");  
-  });
-});
-</script>
-
+<%= javascript_include_tag 'editor2' %>
 <%= form_for([@notebook, @lesson]) do |f| %>
   <% if @lesson.errors.any? %>
     <div id="error_explanation">
@@ -36,55 +17,14 @@ $(document).ready(function() {
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <div id="write">
-      <div class="editor-buttons">
-  	<input id="bold" class="edit-buttons" value="B" type="button" />
-	<input id="italic" class="edit-buttons" value="I" type="button" />
-	<input id="underline" class="edit-buttons" value="U" type="button" />
-	<input id="hilitecolor" class="edit-buttons" attribute="yellow" value="hilite yellow" type="button" />
-	<input id="hilitecolor" class="edit-buttons" attribute="#659b41" value="hilite green" type="button" />
-	<input id="insertunorderedlist" class="edit-buttons" value="List" type="button" />
-	<input id="insertorderedlist" class="edit-buttons" value="Numbered List" type="button" />
-	<input id="increasefontsize" class="edit-buttons" value="A+" type="button"  />
-        <input id="decreasefontsize" class="edit-buttons" value="A-" type="button"  />
-      </div>
-			
-      <div id="copy-image"></div>
 					
       <%= f.label :body %><br />
       <%= f.text_area :body%>
     </div>
     <div id="features">
-      <div class="buttons" id="draw-title">Draw</div>
-      <div class="buttons" id="calc-title">Calculator</div>
+      <div class="buttons" id="add-draw">Add Draw</div>
+      <div class="buttons" id="add-text">Add Text</div>
     </div>
-    <div id="draw">
-      <div id="dtool">
-        <div class="dtool" id="pencil" title="Pencil tool"></div>
-	<div class="dtool" id="line" title="Line tool"></div>
-	<div class="dtool" id="rect" title="Rectangle tool"></div>
-	<div class="dtool" id="circle" title="Circle tool"></div>
-	<div class="dtool" id="clear" title="Clear canvas"></div>
-      </div>
-      <div class="widths">
-        <div class="width" id="smallWidth">small</div>
-        <div class="width" id="mediumWidth">medium</div>
-        <div class="width" id="largeWidth">large</div>
-      </div>
-      <div class="colors">
-        <div class="color" id="colorBlack"></div>
-        <div class="color" id="colorGreen"></div>
-        <div class="color" id="colorYellow"></div>
-	<div class="color" id="colorBlue"></div>
-        <!-- <div class="color" id="colorBrown">Brown</div> -->
-      </div>
-      <div id="container">
-        <canvas id="imageView" width="400" height="300"></canvas>
-      </div>
-    </div>
-      <div id="calc">
-        <div id="calculator"></div>
-      </div>
       <input id="spellcheckinput" type="text"> <span id="spellcheckresult"></span>
   </div>
 

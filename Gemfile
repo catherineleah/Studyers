@@ -31,6 +31,9 @@ gem 'cancan'
 gem "paperclip", "~> 2.3"
 
 gem "heroku"
+## Needed to deploy in heroku
+gem "pg"
+
 
 # Deploy with Capistrano
 # gem 'capistrano'

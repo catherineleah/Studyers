@@ -32,7 +32,7 @@ gem "paperclip", "~> 2.3"
 
 gem "heroku"
 ## Needed to deploy in heroku
-gem "pg"
+gem "activerecord-postgresql-adapter"
 
 
 # Deploy with Capistrano

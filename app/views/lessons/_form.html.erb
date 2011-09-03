@@ -36,9 +36,6 @@
   </div>
   <% #f.hidden_field :attachment64 %>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :id => "lesson_submit" %>
   </div>
-  <% #if @lesson.attachement.present? %>
-    <%# image_tag @lesson.attachement.url, :id=>"canvas-image", :style=>"display:none;" %>
-  <% #end %>
 <% end %>

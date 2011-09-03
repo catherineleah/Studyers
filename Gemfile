@@ -10,6 +10,13 @@ gem 'rails', '3.1.0'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
+
+group :production do
+  gem 'pg'
+end
+group :development, :test do
+  gem 'sqlite3'
+end
 # Enable gravatar
 gem 'gravatar_image_tag', '1.0.0.pre2'
 # Enable pagination
@@ -31,8 +38,6 @@ gem 'cancan'
 gem "paperclip", "~> 2.3"
 
 gem "heroku"
-## Needed to deploy in heroku
-gem "activerecord-postgresql-adapter"
 
 
 # Deploy with Capistrano

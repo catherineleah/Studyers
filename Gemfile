@@ -2,9 +2,13 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.0'
 
-### Test support for mongodb ###
-#gem "mongoid", "~> 2.1"
-#gem "bson_ext", "~> 1.3"
+group :development, :test do
+  gem 'sqlite3'
+end
+
+group :production do
+  gem 'pg'
+end
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -53,7 +57,7 @@ gem 'aws-s3'
 # end
 
 # Autotest
-gem "autotest"
+#gem "autotest"
 
 group :development, :test do
   gem 'rspec-rails'

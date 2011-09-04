@@ -1,7 +1,6 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    #ZenTest (4.6.2)
     actionmailer (3.1.0)
       actionpack (= 3.1.0)
       mail (~> 2.3.0)
@@ -34,8 +33,6 @@ GEM
     addressable (2.2.6)
     amistad (0.7.4)
     arel (2.2.1)
-    autotest (4.4.6)
-      ZenTest (>= 4.4.1)
     aws-s3 (0.6.2)
       builder
       mime-types
@@ -71,6 +68,7 @@ GEM
       activesupport (>= 2.3.2)
       cocaine (>= 0.0.2)
       mime-types
+    pg (0.11.0)
     polyglot (0.3.2)
     rack (1.3.2)
     rack-cache (1.0.3)
@@ -140,15 +138,16 @@ PLATFORMS
 
 DEPENDENCIES
   amistad
-  autotest
   aws-s3
   cancan
   gravatar_image_tag (= 1.0.0.pre2)
   heroku
   jquery-rails (>= 1.0.12)
   paperclip (~> 2.3)
+  pg
   rails (= 3.1.0)
   rspec-rails
+  sqlite3
   sqlite3-ruby
   webrat (= 0.7.1)
   will_paginate (= 3.0.pre2)

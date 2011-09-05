@@ -430,8 +430,10 @@ h1.edit-header {
 }
 
 .dtools {
-	height: 50px;
-	width: 100%;
+	float: left;
+	position: absolute;
+	top: 1px;
+	left: 1px;
 }
 
 .dtool {
@@ -495,7 +497,7 @@ h1.edit-header {
 
 .text {
   border: 3px dashed grey;
-  min-height: 300px;
+  min-height: 100px;
 }
 
 #draw {

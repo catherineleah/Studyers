@@ -7,14 +7,17 @@ class SessionsController < ApplicationController
     user = User.authenticate(params[:session][:email], params[:session][:password])
     if user.nil?
       # Create an error message and re-render the signin form.
-      flash.now[:error] = "Invalid username / password combination."
+      flash.now[:error] = "Invalid Email / password combination." 
       @title = "Sign in"
       render 'new'
     else
       # Sign the user in and redirect to the user's show page.
-      sign_in user
-      # Need to consider
-      # redirect_back_or profile_path
+      if params[:session][:remember_me] == "1"
+        cookies.permanent.signed[:remember_token] = [user.id, user.salt]
+      else
+        cookies.signed[:remember_token] = [user.id, user.salt]
+      end
+      current_user = user
       redirect_to profile_path
     end
   end

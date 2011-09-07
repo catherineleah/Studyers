@@ -23,8 +23,8 @@ class User < ActiveRecord::Base
   has_many :lessons, :through => :notebooks
   
   def ensure_an_admin_remains
-    if User.count.zero?
-      raise "Can't delete last user"
+    if User.find_by_admin(true)
+      raise "Can't delete admin user"
     end
   end
   

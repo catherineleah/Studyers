@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   # GET /users/new.xml
   def new
     @user = User.new
-    @title = "Signup to Studyr"
+    @title = "Signup to Studyers"
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @user }
@@ -53,7 +53,7 @@ class UsersController < ApplicationController
 
       if @user.save
         sign_in @user
-        flash[:success] = "Welcome to Studyr!"
+        flash[:success] = "Welcome to Studyers!"
         redirect_to @user
       else
         render 'new'

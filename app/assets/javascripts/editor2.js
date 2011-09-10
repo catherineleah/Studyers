@@ -21,9 +21,11 @@ function TextEditor(putAfter) {
 		this.textWrapper.appendChild(this.textDiv);
 		if (putAfter) {
 			$(putAfter).after(this.textWrapper);
+			$(this.textWrapper).hide().show("slow");
 		}
 		else {
 			$("#text-editor").append(this.textWrapper);
+			$(this.textWrapper).hide().show("slow");
 		}
     
 }
@@ -63,10 +65,12 @@ function DrawEditor(ID, putAfter) {
 	this.containerDiv.className = "canvas-container";
 	this.containerDiv.id = "canvas-container-" + this.ID;
 	if (putAfter) {
-		$(putAfter).after(this.containerDiv);
+		$(putAfter).after(this.containerDiv)/*.animate({opacity: 0.25}, 2500, function() {})*/;
+		$(this.containerDiv).hide().show("slow");
 	}
 	else {
 		$("#text-editor").append(this.containerDiv);
+		$(this.containerDiv).hide().show("slow");
 	}
 	
 	//Create first canvas

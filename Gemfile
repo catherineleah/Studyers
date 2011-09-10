@@ -64,10 +64,10 @@ gem 'aws-s3'
 # Autotest
 #gem "autotest"
 
-group :development, :test do
-  gem 'rspec-rails'
-end
+gem "rspec-rails", :group => [:test, :development]
 
 group :test do
-  gem 'webrat', '0.7.1'
+	gem "factory_girl_rails"
+	gem "capybara"
+	gem "guard-rspec"
 end

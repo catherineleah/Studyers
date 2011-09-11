@@ -88,7 +88,7 @@ function DrawEditor(ID, putAfter) {
 	this.containerDiv.appendChild(this.canvas);
 	this.context = this.canvas.getContext('2d');
 	//Attach controls
-	$("#canvas-container-" + this.ID).append('<div class="dtools"><div class="dtool dtool-'+ this.ID +'" id="pencil" title="Pencil tool">p</div><div class="dtool dtool-'+ this.ID +'" id="line" title="Line tool">l</div><div class="dtool dtool-'+ this.ID +'" id="rect" title="Rectangle tool">r</div><div class="dtool dtool-'+ this.ID +'" id="circle" title="Circle tool">c</div><div class="dtool dtool-'+ this.ID +'" id="clear" title="Clear canvas">cls</div></div>');
+	$("#canvas-container-" + this.ID).append('<div class="dtools"><div class="dtool dtool-'+ this.ID +'" id="text" title="Pencil tool">TEXT</div><div class="dtool dtool-'+ this.ID +'" id="pencil" title="Pencil tool">p</div><div class="dtool dtool-'+ this.ID +'" id="line" title="Line tool">l</div><div class="dtool dtool-'+ this.ID +'" id="rect" title="Rectangle tool">r</div><div class="dtool dtool-'+ this.ID +'" id="circle" title="Circle tool">c</div><div class="dtool dtool-'+ this.ID +'" id="clear" title="Clear canvas">cls</div></div>');
 	$("#canvas-container-" + this.ID).append('<div class="text-after" after="#canvas-container-'+ this.ID +'">Add text</div><div class="draw-after" after="#canvas-container-'+ this.ID +'">Add draw</div>');
 	var canvas = this.canvas;
 	var context = this.context;
@@ -379,6 +379,29 @@ function DrawEditor(ID, putAfter) {
 		context.clearRect(0, 0, canvas.width, canvas.height);
 		tool.started = false;
 		img_update();
+	}
+	
+	tools.text = function() {
+		var tool = this;
+		this.started = false;
+		this.mousedown = function(ev) {
+			var text = prompt("Enter text to add to draw", "Enter text to add to draw")
+			context.beginPath();
+			context.moveTo(ev._x, ev._y);
+			tool.started = true;
+			if (text)
+				context.strokeText(text, ev._x, ev._y); 
+			// need to update here as there is no mouse move.
+			img_update();
+		}
+		
+		this.mouseup = function(ev) {
+			if (tool.started) {
+				tool.started = false;
+				img_update();
+			}
+		}
+		
 	}
 
   // The line tool.

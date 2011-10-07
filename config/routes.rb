@@ -1,5 +1,7 @@
 Studyr::Application.routes.draw do
   
+  resources :class_resources
+
   resources :users do
     resources :notebooks
   end

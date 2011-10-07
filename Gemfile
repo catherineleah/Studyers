@@ -37,7 +37,9 @@ gem 'amistad'
 gem 'cancan'
 
 # Paperclip to add attachments to files
-gem "paperclip", "~> 2.3"
+#gem "paperclip", "~> 2.4"
+gem "carrierwave"
+gem "docsplit"
 
 gem "heroku"
 

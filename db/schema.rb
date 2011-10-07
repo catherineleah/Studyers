@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110710215011) do
+ActiveRecord::Schema.define(:version => 20111005123734) do
+
+  create_table "class_resources", :force => true do |t|
+    t.string   "title"
+    t.string   "presentation"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "friendships", :force => true do |t|
     t.integer "user_id"

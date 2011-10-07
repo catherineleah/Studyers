@@ -6,3 +6,6 @@ tmp/**/*
 *~
 .project
 .rvmrc
+.DS_Store
+public/uploads/*
+

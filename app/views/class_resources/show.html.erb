@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+
+<div class="file-link"><%= link_to "file", @class_resource.presentation.url %></div>
+<div class="resource-images">
+  <% Dir["public/" + @class_resource.presentation.store_dir + "/*.png"].each do |image| %>
+    <% #Bad way to display - need to fix... %>
+    <%= image_tag(image[6, 100], :size => "250x250") %>
+  <% end %>
+</div>
+
+
+
+<%= link_to 'Edit', edit_class_resource_path(@class_resource) %> |
+<%= link_to 'Back', class_resources_path %>

@@ -1,0 +1,25 @@
+<h1>Listing class_resources</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Presentation</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @class_resources.each do |class_resource| %>
+  <tr>
+    <td><%= class_resource.title %></td>
+    <td><%= class_resource.presentation %></td>
+    <td><%= link_to 'Show', class_resource %></td>
+    <td><%= link_to 'Edit', edit_class_resource_path(class_resource) %></td>
+    <td><%= link_to 'Destroy', class_resource, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Class resource', new_class_resource_path %>

@@ -1,4 +1,4 @@
-  <div class="user-details">
+  <div class="user-details span3">
       <div id="gravatar">
         <%= gravatar_for @user %>
       </div>
@@ -13,7 +13,7 @@
         <% end %>
       </div>
   </div>
-  <div id="notebooks">
+  <div id="notebooks" class="span8">
     <span class="title">Some of <%= @user.name %>'s notebooks</span>
     <% @notebooks.each do |notebook| %>
       <div class="recent-notebook">

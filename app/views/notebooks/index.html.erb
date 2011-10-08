@@ -1,46 +1,31 @@
-<h1 id="my-notebooks">My notebooks</h1>
-<div class="new-notebook">
-  <%= link_to 'New', new_notebook_path, :title => "Add a new notebook" %>
-</div>
-
-
-<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
-<div class="clear-both"></div>
-<% @notebooks.each do |notebook| %>
-  <div class="notebook">
-    <div class="notebook-name" id="notebook-<%= notebook.id %>">
-      <%= link_to notebook.name, notebook_lessons_path(notebook), :title=>"View all lessons" %>
-    </div>
-    <script type="text/javascript">
-      /*
-      $("#notebook-<%= notebook.id %>").editable("<%= edit_user_notebook_path(@user, notebook) %>", {
-        type    :   'text',
-        cancel  :   'Cancel',
-        submit  :   'OK',
-        indicator   :   'Saving...',
-        tooltip :   'Click to rename...',
-        method      :       "put",
-        submitdata  :   {id: <%= notebook.id %>, name:"notebook[name]" }
-      });
-      */
-    </script>
-    <div class="notebook-date"><span>Created:</span> <%= notebook.created_at %></div>
-    <% if notebook.lecturer %>
-      <div class="notebook-lecturer"><span>Lecturer:</span> <%= notebook.lecturer %></div>
-    <% end %>
-    <div class="recent-lessons">
-      <% @lessons = notebook.lessons.limit(3).order("created_at DESC") %>
-      <% if @lessons.size > 1 %>
-        <span class="lessons-title">Recently saved </span> 
-        <ul>
-          <% @lessons.each do |lesson| %>
-            <li class="recent-lesson"><%= lesson.title %> </li>
-          <%end%>
-        </ul>
-      <% end %>
-    </div>
-    <div class="edit-notebook"><%= link_to 'edit', edit_user_notebook_path(@user, notebook), :title => "edit notebook preferences" %></div>
-    <div class="delete-notebook"><%= link_to "delete", [@user, notebook], :title => "Delete this notebook", :confirm => 'Are you sure?', :method => :delete %></div>
+<div class="row">
+  <h1 id="my-notebooks" class="span8">My notebooks</h1>
+  <div class="new-notebook">
+    <%= link_to '+ Create a new notebook', new_notebook_path, :title => "Add a new notebook", :class => "btn" %>
   </div>
-<% end %>
-
+</div>
+  <div class="clear-both"></div>
+  <% @notebooks.each do |notebook| %>
+    <div class="notebook span12">
+      <div class="notebook-name span8" id="notebook-<%= notebook.id %>">
+        <%= link_to notebook.name, notebook_lessons_path(notebook), :title=>"View all lessons" %>
+      </div>
+      <%= link_to "+ Create a new lesson", new_notebook_lesson_path(notebook), :class => "new-lesson btn info" %>
+      <div class="notebook-date"><span>Created:</span> <%= notebook.created_at %></div>
+      <% if notebook.lecturer %>
+        <div class="notebook-lecturer"><span>Lecturer:</span> <%= notebook.lecturer %></div>
+      <% end %>
+      <div class="recent-lessons">
+        <% @lessons = notebook.lessons.order("created_at DESC") %>
+        <% if @lessons.size > 1 %>
+          <ul>
+          <% @lessons.each do |lesson| %>
+            <li class="recent-lesson"><%= link_to lesson.title, notebook_lesson_path(notebook, lesson)  %> </li>
+          <%end%>
+          </ul>
+        <% end %>
+      </div>
+      <div class="edit-notebook"><%= link_to 'edit', edit_user_notebook_path(@user, notebook), :title => "edit notebook preferences", :class => "btn" %></div>
+      <div class="delete-notebook"><%= link_to "delete", [@user, notebook], :class =>"btn", :title => "Delete this notebook", :confirm => 'Are you sure?', :method => :delete %></div>
+    </div>
+  <% end %>

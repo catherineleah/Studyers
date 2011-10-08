@@ -1,4 +1,4 @@
-  <div class="user-details">
+  <div class="user-details span3">
       <div id="gravatar">
         <%= gravatar_for @user %>
       </div>
@@ -9,23 +9,24 @@
         <div><%= link_to "Notebooks", notebooks_path %></div>
         <div><%= link_to "Friends", profile_friends_path %></div>
   </div>
-  <div id="notebooks">
-    <div class="title">Recently created notebooks</div>
+  <div id="notebooks" class="span8">
+    <h3 class="title">Recently saved notebooks</h3>
     <% @notebooks.each do |notebook| %>
-      <div class="recent-notebook">
-        <%= link_to notebook.name, notebook_lessons_path(notebook), :class => "lesson-title" %>
-        <%= link_to "new lesson", new_notebook_lesson_path(notebook), :class => "new-lesson" %>
+      <div class="notebook">
+        <h4>
+          <%= link_to notebook.name, notebook_lessons_path(notebook), :class => "lesson-title" %>
+        </h4>
         <div class="notebook-lessons">
-          <%@lessons = notebook.lessons.limit(3).order("updated_at DESC") %>
+          <% @lessons = notebook.lessons.limit(3).order("updated_at DESC") %>
           <% if @lessons.size > 0 %>
             <ul class="lessons">
               <% @lessons.each do |lesson| %>
                 <li class="lesson"><%= link_to lesson.title, notebook_lesson_path(notebook, lesson) %> </li>
               <% end %>
-              <li class="class all"><%= link_to "All Lessons", notebook_lessons_path(notebook) %></li>
             </ul>
           <% end %>
         </div>
+        <%= link_to "+ Create a new lesson", new_notebook_lesson_path(notebook), :class => "new-lesson btn info" %>
       </div>
     <% end %>  
   </div>

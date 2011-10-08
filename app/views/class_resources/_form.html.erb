@@ -12,14 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br />
+    <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :presentation %><br />
+    <%= f.label :presentation %>
     <%= f.file_field :presentation %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="">
+    <%= f.submit "Save", :class => "btn primary" %>
   </div>
 <% end %>

@@ -9,6 +9,6 @@ module ApplicationHelper
   end
 
   def current_class?(test_path)
-    return 'current' if request.fullpath == test_path
+    return 'active' if request.fullpath == test_path
   end
 end

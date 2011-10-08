@@ -1,6 +1,7 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
-
+//= require jquery  
+//= require jquery_ujs  
+//= require_self  
+//= require_directory .
 
 $(document).ready(function() {
 
@@ -18,64 +19,27 @@ $(document).ready(function() {
      });
   }
 
-  $(".delete-notebook a, .new-notebook a").poshytip({
-      className: 'tip-twitter',
-            showTimeout: 1,
-            alignTo: 'target',
-            alignX: 'left',
-            alignY: 'center',
-            offsetX: 5,
-            allowTipHover: false,
-            fade: false,
-            slide: false
-        });
-
-        $(".edit-notebook a").poshytip({
-          className: 'tip-twitter',
-          showTimeout: 1,
-          alignTo: 'target',
-          alignX: 'right',
-          alignY: 'center',
-          offsetX: 5,
-          allowTipHover: false,
-          fade: false,
-          slide: false
-        });
-
-        $(".edit-lesson a, .delete-lesson a").poshytip({
-          className: 'tip-twitter',
-          showTimeout: 1,
-          alignTo: 'target',
-          alignX: 'center',
-          alignY: 'bottom',
-          offsetX: 0,
-          offsetY: 5,
-          allowTipHover: false,
-          fade: false,
-          slide: false
-        });
-
-        setTimeout(function() {
-              $('.notice').fadeOut('slow');
-        }, 5000);
+  setTimeout(function() {
+    $('.notice').fadeOut('slow');
+  }, 5000);
       
-        /*
-         * Wiki test
-         */
+  /*
+   * Wiki test
+   */
          
-        $("#spellcheckinput").keyup(function () {
-          var value = $(this).val();
-          if (! value)
-            return;
+  $("#spellcheckinput").keyup(function () {
+    var value = $(this).val();
+    if (! value)
+    return;
              
-          url = 'http://en.wikipedia.org/w/api.php?action=opensearch&search='+value+'&format=json&callback=spellcheck';
+    url = 'http://en.wikipedia.org/w/api.php?action=opensearch&search='+value+'&format=json&callback=spellcheck';
                
-          document.getElementById ('spellcheckresult').innerHTML = 'Checking ...';
-          var elem = document.createElement ('script');
-          elem.setAttribute ('src', url);
-          elem.setAttribute ('type','text/javascript');
-          document.getElementsByTagName ('head') [0].appendChild (elem);
-        });
+    document.getElementById ('spellcheckresult').innerHTML = 'Checking ...';
+    var elem = document.createElement ('script');
+    elem.setAttribute ('src', url);
+    elem.setAttribute ('type','text/javascript');
+    document.getElementsByTagName ('head') [0].appendChild (elem);
+  });
 
 });
 

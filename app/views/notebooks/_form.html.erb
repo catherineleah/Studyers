@@ -13,21 +13,21 @@
 
   <div class="field">
     <%= f.label :name, "Name (or course name)" %><br />
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :class => "span6" %>
   </div>
 
   <div class="field">
      <%= f.label :course, "Course code / ID" %><br />
-     <%= f.text_field :course %>
+     <%= f.text_field :course, :class => "span6" %>
   </div>
 
   <div class="field">
      <%= f.label :lecturer %><br />
-     <%= f.text_field :lecturer %>
+     <%= f.text_field :lecturer, :class => "span6" %>
   </div>
 
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="">
+    <%= f.submit :class => "btn primary"%>
   </div>
 <% end %>

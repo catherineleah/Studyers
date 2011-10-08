@@ -1,5 +1,5 @@
-<%= javascript_include_tag 'editor' %>
-<%= form_for([@notebook, @lesson]) do |f| %>
+<%= javascript_include_tag 'editor/editor' %>
+<%= form_for([@notebook, @lesson], :html => { :class => "span16"} ) do |f| %>
   <% if @lesson.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@lesson.errors.count, "error") %> prohibited this lesson from being saved:</h2>
@@ -13,18 +13,13 @@
   <% end %>
 	
   <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <%= f.label :title %>
+    <%= f.text_field :title, :class => "span16 xlarge" %>
   </div>
   <div class="field">
-					
-      <%= f.label :body %><br />
+      <%= f.label :body %>
       <%= f.text_area :body%>
    </div>
-    <div id="features">
-      <div class="buttons" id="add-draw">Add Draw</div>
-      <div class="buttons" id="add-text">Add Text</div>
-    </div>
       <input id="spellcheckinput" type="text"> <span id="spellcheckresult"></span>
 
   <div class="field" id="permission">
@@ -33,8 +28,12 @@
     <%= f.radio_button :permission, 1 %> My friends
     <%= f.radio_button :permission, 2 %> Everyone
   </div>
-  <% #f.hidden_field :attachment64 %>
-  <div class="actions">
-    <%= f.submit :id => "lesson_submit" %>
+  <div class="">
+    <%= f.submit :id => "lesson_submit", :class => "btn primary" %>
+    
   </div>
 <% end %>
+<div id="features">
+  <div class="btn" id="add-draw">Add Draw</div>
+  <div class="btn" id="add-text">Add Text</div>
+</div>

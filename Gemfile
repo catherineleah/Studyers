@@ -6,6 +6,8 @@ gem 'sass-rails'
 gem 'coffee-script'
 gem 'uglifier'
 
+#gem 'less-rails-bootstrap'
+
 group :development, :test do
   gem 'sqlite3'
 end
@@ -27,8 +29,7 @@ gem 'will_paginate', '3.0.pre2'
 # gem 'unicorn'
 # Enable jquery
 gem 'jquery-rails', '>= 1.0.12'
-# Enable tiny_mce
-# gem 'tiny_mce'
+
 
 # Enable amistad friendship manager
 gem 'amistad'
@@ -36,11 +37,11 @@ gem 'amistad'
 # Enable authorization manager for user (who can see what)
 gem 'cancan'
 
-# Paperclip to add attachments to files
-#gem "paperclip", "~> 2.4"
+# Use carrierwave to attach files and docsplit to extract them
 gem "carrierwave"
 gem "docsplit"
 
+#Deploy in Heroku
 gem "heroku"
 
 # Deploy with Capistrano

@@ -1,6 +1,6 @@
 /*
  *= require bootstrap
-*/
+ */
 
 
 body {
@@ -24,6 +24,13 @@ a {
 
 ul {
   list-style:none;
+}
+
+header {
+  .gravatar {
+    margin-top: 7px;
+    border: 2px solid black;
+  }
 }
 .notebook {
   border: 1px solid #EEE;

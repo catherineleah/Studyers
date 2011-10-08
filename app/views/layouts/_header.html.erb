@@ -19,10 +19,11 @@
       </nav>
       <div class="pull-right">
         <% if signed_in? %>
-          <%= gravatar_for current_user, options = { :size => 25, :default => 'mm' } %>
+          <div class="pull-left"><%= gravatar_for current_user, options = { :size => 25, :default => 'mm' } %></div>
           <ul class="nav secondary-nav">
             <li><%= link_to current_user.name, "#", :class => 'top_user dropdown-toggle' %>
               <ul class="menu-dropdown">
+                <li><%= link_to "Settings", edit_user_path(current_user) %></li>
     	          <li><%= link_to "Logout", signout_path, :method => :delete %></li>
     	        </ul>
     	      </li>

@@ -4,7 +4,9 @@
 //= require_directory .
 
 $(document).ready(function() {
-
+  
+  $('.secondary-nav').dropdown();
+  
    $(".show-image").click(function() {
      $(this).next(".attached-image").toggle("slow");
    });

@@ -184,6 +184,7 @@ h1.edit-header {
 	position: absolute;
 	top: 1px;
 	left: 1px;
+	margin: 0px 15%;
 }
 
 .dtool {
@@ -227,8 +228,8 @@ h1.edit-header {
 
 /* canvas */
 .canvas-container { position: relative; }
-.imageView { border: 1px solid #000; }
-.imageTemp { position: absolute; top: 1px; left: 1px; }
+.imageView { border: 1px solid #000; margin: 0px 15%; }
+.imageTemp { position: absolute; top: 1px; left: 1px; margin: 0px 15%; }
 
 
 #write {
@@ -246,9 +247,10 @@ h1.edit-header {
 }
 
 #text-editor .text {
-  border: 3px dashed grey;
-  min-height: 100px;
-  width: 500px;
+  border: 2px dashed grey;
+  min-height: 150px;
+  width: 100%;
+  border-radius: 8px;
 }
 
 #draw {
@@ -284,9 +286,11 @@ h1.edit-header {
 }
 
 #features {
+  /*
   position: fixed;
-  right: 30px;
-  width: 60px;
+    right: 30px;
+    width: 60px;*/
+  
 }
 
 #features .btn {
@@ -311,6 +315,37 @@ h1.edit-header {
   font-size: 16px;
 }
 
+.pull-resource {
+  padding-top: 10px;
+}
+
+.resources{
+  padding-top: 18px;
+  
+  .alert-message {
+    margin-bottom: 10px;
+    padding: 7px;
+  }
+  #resource-images {
+    padding: 0px;
+    margin: 0px;
+    
+    img {
+      border: 2px dotted grey;
+    }
+  }
+}
+
+.class-resources-image .resource-image {
+  border: 2px dotted grey;
+  margin-left: 0px;
+}
+
+
+
+#get-resource {
+  width: 40px;
+}
 
 /* Footer */
 footer {
@@ -326,7 +361,7 @@ footer {
 
 .clear-both {clear:both;}
 
-.notice {
+div.notice {
   background: none repeat scroll 0 0 #333333;
   border-radius: 4px 4px 4px 4px;
   color: #FFFFFF;
@@ -344,4 +379,8 @@ footer {
   display: inline;
   float: none;
   margin-left: 0px;
+}
+
+.alert-message .btn {
+  line-height: normal;
 }

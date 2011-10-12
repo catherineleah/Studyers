@@ -2,12 +2,12 @@
 
 
 <div class="file-link"><%= link_to "file", @class_resource.presentation.url %></div>
-<div class="resource-images">
+<ul class="images" id="resource-images">
   <% Dir["public/" + @class_resource.presentation.store_dir + "/*.png"].each do |image| %>
     <% #Bad way to display - need to fix... %>
-    <%= image_tag(image[6, 100], :size => "250x250") %>
+    <li><%= image_tag(image[6, 100], :size => "218x218") %></li>
   <% end %>
-</div>
+</ul>
 
 
 

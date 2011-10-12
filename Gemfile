@@ -40,6 +40,8 @@ gem 'cancan'
 # Use carrierwave to attach files and docsplit to extract them
 gem "carrierwave"
 gem "docsplit"
+## Optional for cloud storage
+#gem "fog"
 
 #Deploy in Heroku
 gem "heroku"

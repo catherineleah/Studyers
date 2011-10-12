@@ -33,9 +33,6 @@ module Studyers
 
       def extract_images
         ::Docsplit.extract_images(self.pdf, :size => %w{1000x}, :format => :png, output: output_path)
-        #FileUtils.mv output_path + "180x", output_path + "small"
-        #FileUtils.mv output_path + "700x", output_path + "normal"
-        #FileUtils.rm output_path + "*.png"
         self
       end
 
@@ -47,7 +44,7 @@ module Studyers
       private
 
       def output_path
-        "public/#{store_dir}/"
+        "public/#{store_dir}"
       end
     end
   end

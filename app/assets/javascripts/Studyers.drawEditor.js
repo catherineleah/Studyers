@@ -1,73 +1,19 @@
-/*
-	Editor V2.0 
-	@Author: Shlomi Zadok.
-	@project: Studyers
-*/
 
 /*
- * Class for the wysiwyg editor
- * Appends contenteditable div to text editor.
- */
-function TextEditor(putAfter) {
-		this.ID = uniqueId();
-    this.textWrapper = document.createElement("div");
-		this.textWrapper.className = "text-wrapper";
-		this.textWrapper.id = "wrapper-" + this.ID;
-		this.textDiv = document.createElement("div");
-    this.textDiv.contentEditable="true";
-    
-    this.textDiv.className="text text_" + this.ID;
-		this.textDiv.id = "text-" + this.ID;
-		this.textWrapper.appendChild(this.textDiv);
-		if (putAfter) {
-			$(putAfter).after(this.textWrapper);
-			$(this.textWrapper).hide().show("slow");
-		}
-		else {
-			$("#text-editor").append(this.textWrapper);
-			$(this.textWrapper).hide().show("slow");
-		}
-    
-}
-
-/*
-	append the buttons into the text
-*/
-TextEditor.prototype.showControls = function(){
-	$("#text-" + this.ID).before('<div class="editor-buttons buttons" id="buttons-'+this.ID+'"><input id="bold" class="edit-buttons" value="B" type="button" /><input id="italic" class="edit-buttons" value="I" type="button" /><input id="underline" class="edit-buttons" value="U" type="button" /><input id="hilitecolor" class="edit-buttons" attribute="yellow" value="hilite yellow" type="button" /><input id="hilitecolor" class="edit-buttons" attribute="#659b41" value="hilite green" type="button" /><input id="insertunorderedlist" class="edit-buttons" value="List" type="button" /><input id="insertorderedlist" class="edit-buttons" value="Numbered List" type="button" /><input id="increasefontsize" class="edit-buttons" value="A+" type="button"  /><input id="decreasefontsize" class="edit-buttons" value="A-" type="button"  /></div>');
-	$("#text-" + this.ID).after('<div class="text-after btn" after="#wrapper-'+ this.ID +'">Add text</div><div class="draw-after btn" after="#wrapper-'+ this.ID +'">Add draw</div>');
-	/*
-		
-	*/
-	$('#buttons-' + this.ID + ' .edit-buttons').click(function() {
-		$("#text-" + this.ID).focus();
-    var command = $(this).attr('id');
-    var Attribute = $(this).attr('attribute') ? $(this).attr('attribute') : null;  
-    document.execCommand(command,false,Attribute);
-  });
-}
-/*
-	For editing, append edited text into first instance of the TextEditor.
-*/
-TextEditor.prototype.savedText = function(savedText) {
-	$("#text-" + this.ID).append(savedText);
-}
-
-/*
-	The class for the drawing tool.
+  The class for the drawing tool.
 */
 function DrawEditor(ID, putAfter) {
-	this.ID = ID;
-	this.tool_select;
-	this.containerDiv;
-	// Create container and append it to text editor.
-	this.containerDiv = document.createElement("div");
-	this.containerDiv.className = "canvas-container";
-	this.containerDiv.id = "canvas-container-" + this.ID;
-	if (putAfter) {
-		$(putAfter).after(this.containerDiv)/*.animate({opacity: 0.25}, 2500, function() {})*/;
-		$(this.containerDiv).hide().show("slow");
-	}
+  this.ID = ID;
+  this.tool_select;
+  this.containerDiv;
+  // Create container and append it to text editor.
+  this.containerDiv = document.createElement("div");
+  this.containerDiv.className = "canvas-container";
+  this.containerDiv.id = "canvas-container-" + this.ID;
+  if (putAfter) {
+    $(putAfter).after(this.containerDiv)/*.animate({opacity: 0.25}, 2500, function() {})*/;
+    $(this.containerDiv).hide().show("slow");
+  }
 	else {
 		$("#text-editor").append(this.containerDiv);
 		$(this.containerDiv).hide().show("slow");
@@ -89,7 +35,7 @@ function DrawEditor(ID, putAfter) {
 	this.context = this.canvas.getContext('2d');
 	//Attach controls
 	$("#canvas-container-" + this.ID).append('<div class="dtools"><div class="dtool dtool-'+ this.ID +'" id="text" title="Pencil tool">TEXT</div><div class="dtool dtool-'+ this.ID +'" id="pencil" title="Pencil tool">p</div><div class="dtool dtool-'+ this.ID +'" id="line" title="Line tool">l</div><div class="dtool dtool-'+ this.ID +'" id="rect" title="Rectangle tool">r</div><div class="dtool dtool-'+ this.ID +'" id="circle" title="Circle tool">c</div><div class="dtool dtool-'+ this.ID +'" id="clear" title="Clear canvas">cls</div></div>');
-	$("#canvas-container-" + this.ID).append('<div class="text-after btn" after="#canvas-container-'+ this.ID +'">Add text</div><div class="draw-after btn" after="#canvas-container-'+ this.ID +'">Add draw</div>');
+	$("#canvas-container-" + this.ID).append('<div class="text-after btn" after="#canvas-container-'+ this.ID +'">+ textarea</div><div class="draw-after btn" after="#canvas-container-'+ this.ID +'">+ drawpad</div>');
 	var canvas = this.canvas;
 	var context = this.context;
 	var canvaso = this.canvaso
@@ -440,73 +386,3 @@ function DrawEditor(ID, putAfter) {
       };
   };
 }
-
-/*
-	Create a unique id according to timestamp.
-*/
-function uniqueId() {
-    return 'id_' + new Date().getTime();
-}
-
-
-$(document).ready(function() {
-	var lessonText = $("#lesson_body").val();
-  //console.log(lessonText);
-  $("#lesson_body").hide();
-  $("#lesson_body").after('<div id="text-editor"></div>');
-	var text = new TextEditor();
-	text.showControls();
-	if (lessonText)
-		text.savedText(lessonText);
-	
-	
-	$("#add-text").click(function() {
-  	var text = new TextEditor();
-		text.showControls();
-  });
-
-	$(".text-after").live('click', function() {
-		var putAfter = $(this).attr('after');
-  	var text = new TextEditor(putAfter);
-		text.showControls();
-  });
-
-	$(".draw-after").live('click', function() {
-		var putAfter = $(this).attr('after');
-		var ID = uniqueId();
-  	var draw = new DrawEditor(ID, putAfter);
-		draw.drawInit(ID);
-  });
-
-	$("#add-draw").click(function() {
-		var ID = uniqueId();
-		var draw = new DrawEditor(ID);
-		draw.drawInit(ID);
-	});
-
-  $("#lesson_submit").click(function(){
-		// Cleanup tools
-	  $("#text-editor .buttons, #text-editor .dtool, #text-editor .text-after, #text-editor .draw-after").remove();
-		// create images from canvases
-		var canvases = document.getElementsByClassName('imageView');
-		for (var i = 0; i < canvases.length; i++) {
-			var data = canvases[i].toDataURL();
-			var container = canvases[i].parentNode;
-			
-			var img = document.createElement('img');
-			img.src = data;
-			container.insertBefore(img);
-		}
-		$(".canvas-container canvas").remove();
-		$(".canvas-container img").addClass("SavedImage")
-		$(".text").removeClass().addClass('SavedText');
-    var textSave = $("#text-editor").html();
-		//console.log(textSave);
-    $("#lesson_body").val(textSave);
-    
-    if (!$("#lesson_title").val()){
-			var today = new Date();
-			$("#lesson_title").val(today + "- auto title");
-    }
-  });
-});

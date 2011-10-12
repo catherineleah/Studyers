@@ -1,7 +1,8 @@
 //= require jquery  
 //= require jquery_ujs  
 //= require_self  
-//= require_directory .
+//= require bootstrap-dropdown
+//= require jquery.cycle
 
 $(document).ready(function() {
   
@@ -22,7 +23,7 @@ $(document).ready(function() {
   }
 
   setTimeout(function() {
-    $('.notice').fadeOut('slow');
+    $('div.notice').fadeOut('slow');
   }, 5000);
       
   /*

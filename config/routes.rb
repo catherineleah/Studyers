@@ -9,9 +9,7 @@ Studyr::Application.routes.draw do
   resources :notebooks do
     resources :lessons
   end
-  
-  #resources :lessons
-  
+    
   resources :sessions, :only => [:new, :create, :destroy]
   
   match '/signin',  :to => 'sessions#new'
@@ -25,13 +23,13 @@ Studyr::Application.routes.draw do
   
   
   resources :friends do
-  member do
-    get "invite"
-    get "approve"
-    #get "block"
-    #get "remove"
+    member do
+      get "invite"
+      get "approve"
+      #get "block"
+      #get "remove"
+    end
   end
-end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

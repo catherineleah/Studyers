@@ -330,14 +330,21 @@ h1.edit-header {
     padding: 0px;
     margin: 0px;
     
+    a {
+      margin: 0px;
+    }
+    
     img {
-      border: 2px dotted grey;
+      border: 1px solid #ddd;
     }
   }
 }
 
 .class-resources-image .resource-image {
-  border: 2px dotted grey;
+  border: 2px solid #ddd;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
   margin-left: 0px;
 }
 

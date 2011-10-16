@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111005123734) do
+ActiveRecord::Schema.define(:version => 20111013161325) do
 
   create_table "class_resources", :force => true do |t|
     t.string   "title"
@@ -28,6 +28,12 @@ ActiveRecord::Schema.define(:version => 20111005123734) do
   end
 
   add_index "friendships", ["user_id", "friend_id"], :name => "index_friendships_on_user_id_and_friend_id", :unique => true
+
+  create_table "images", :force => true do |t|
+    t.text     "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "lessons", :force => true do |t|
     t.string   "title"
@@ -53,6 +59,24 @@ ActiveRecord::Schema.define(:version => 20111005123734) do
   end
 
   add_index "notebooks", ["user_id"], :name => "index_notebooks_on_user_id"
+
+  create_table "presentaions", :force => true do |t|
+    t.text     "slide"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "presentations", :force => true do |t|
+    t.text     "slide"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "texts", :force => true do |t|
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"

@@ -38,7 +38,9 @@ $(document).ready(function() {
       });
     }
   });
-  
+  /*
+    All slides
+  */
   $("#photocopy").live('click', function(e){
     e.preventDefault();
     $(".resources #resource-images img").each(function(index){
@@ -47,5 +49,14 @@ $(document).ready(function() {
       var classImage = new classResources(imageSrc, index);
       classImage.showControls();
     });
+  });
+  /*
+    One slide
+  */
+  $(".one-slide").live('click', function(e) {
+    e.preventDefault();
+    var imageSrc = $(this).find("img").attr('src');
+    var classImage = new classResources(imageSrc, 0);
+    classImage.showControls();
   });
 });

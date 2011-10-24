@@ -1,4 +1,4 @@
-<%= javascript_include_tag 'lessons.js' %>
+<%= javascript_include_tag 'lessons.js', 'jquery.tokeninput.js' %>
 <%= form_for([@notebook, @lesson], :html => { :class => "span16"} ) do |f| %>
   <% if @lesson.errors.any? %>
     <div id="error_explanation">
@@ -39,13 +39,11 @@
       <%= f.text_area :body%>
     </div>
       <!--<input id="spellcheckinput" type="text"> <span id="spellcheckresult"></span>-->
-
-    <div class="field" id="permission">
-      <%= f.label :permission, "Who can see this lesson?" %><br />
-      <%= f.radio_button :permission, 0 %> Only me
-      <%= f.radio_button :permission, 1 %> My friends
-      <%= f.radio_button :permission, 2 %> Everyone
-    </div>
+      
+    <%= f.fields_for :shares do |builder| %>
+      <%= builder.label :shared_ids, "Share with" %>
+      <%= builder.text_field :shared_ids, "data-pre" => @shared_ids %>
+    <% end %>
     <div class="">
       <%= f.submit :id => "lesson_submit", :class => "btn primary" %>
     </div>

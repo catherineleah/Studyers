@@ -1,17 +1,17 @@
-<div>
-	<div class=""><%= @user.name %> Friends</div>
-	<ul class="friends">
-		<% @friends.each do |friend| %>
-			<li><%= link_to friend.name, user_path(friend)%></li>
-		<% end %>
-	</ul>
-	
-	<% unless @pending.empty? %>
-	<div class="">Pending invitation</div>
-	<ul class="invitations">
-		<% @pending.each do |pend| %>
-			<li><%= pend.name %>, <%= link_to "Approve", approve_friend_path(pend) %> </li>
-		<% end %>
-	</ul>
-	<% end %>
+<div class="raw">
+  <h4><%= @user.name %> Friends</h4>
+  <ul class="friends">
+    <% @friends.each do |friend| %>
+      <li class="friend"><%= gravatar_for friend, options = { :size => 25, :default => 'mm' } %> <%= link_to friend.name, user_path(friend)%></li>
+    <% end %>
+  </ul>
+
+  <% unless @pending.empty? %>
+  <h4>Pending invitation</h4>
+  <ul class="invitations">
+    <% @pending.each do |pend| %>
+      <li class="friend"><%= gravatar_for pend, options = { :size => 25, :default => 'mm' } %> <%= pend.name %>, <%= link_to "Approve", approve_friend_path(pend) %> </li>
+    <% end %>
+  </ul>
+  <% end %>
 </div>

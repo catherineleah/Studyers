@@ -1,5 +1,6 @@
 /*
  *= require bootstrap
+ *= require token-input
  */
 
 
@@ -30,6 +31,9 @@ header {
   .gravatar {
     margin-top: 7px;
     border: 2px solid black;
+  }
+  .alpha-signin {
+    padding-top: 14px;
   }
 }
 .notebook {
@@ -62,7 +66,7 @@ header {
   }
 }
 
-.lesson {
+.lesson, .friend {
   border: 1px solid whiteSmoke;
   background: #eee;
   padding: 10px;
@@ -285,13 +289,6 @@ h1.edit-header {
   background: transparent url(images/blue-tool.png) no-repeat 50% 50%;
 }
 
-#features {
-  /*
-  position: fixed;
-    right: 30px;
-    width: 60px;*/
-  
-}
 
 #features .btn {
   min-width: 58px;
@@ -348,7 +345,13 @@ h1.edit-header {
   margin-left: 0px;
 }
 
+span.mini {
+  font-size: 70%;
+}
 
+span.new {
+  color: #339BB9;
+}
 
 #get-resource {
   width: 40px;
@@ -364,10 +367,13 @@ footer {
   }
 }
 
-
+input.btn.primary {
+  margin-top: 10px;
+}
 
 .clear-both {clear:both;}
 
+/*
 div.notice {
   background: none repeat scroll 0 0 #333333;
   border-radius: 4px 4px 4px 4px;
@@ -379,9 +385,13 @@ div.notice {
   right: 38%;
   top: 45px;
   z-index: 1000;
-}
+}*/
+
 
 /*collapses with bootstrap*/
+ul, ol {
+  margin: 0px;
+}
 [class*="style-span"] {
   display: inline;
   float: none;

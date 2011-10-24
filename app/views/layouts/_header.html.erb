@@ -11,6 +11,15 @@
             <li class="<%= current_class?(notebooks_path) %>">
               <%= link_to "Notebooks", notebooks_path, :class => current_class?(notebooks_path) %>
             </li>
+            <li class="<%= current_class?(profile_friends_path) %>">
+              <% if (current_user.pending_invited_by.count > 0) %>
+                <%= link_to(profile_friends_path, :class => current_class?(profile_friends_path)) do %>
+                  Friends<span class="new">*</span>   
+                <% end %>
+              <% else %>
+                <%= link_to "Friends" , profile_friends_path, :class => current_class?(profile_friends_path) %>
+              <% end %>
+            </li>
             <li class="<%= current_class?(new_notebook_path) %>">
               <%= link_to "+ Create a new notebook", new_notebook_path, :class => current_class?(new_notebook_path) %>
             </li>
@@ -29,7 +38,7 @@
     	      </li>
     	    </ul>
         <% else %>
-      	  <div><%= link_to "Alpha users sign in", signin_path %></div>
+      	  <div class="alpha-signin"><%= link_to "Alpha users sign in", signin_path %></div>
         <% end %>
       </div>
     </div>

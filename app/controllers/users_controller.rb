@@ -8,6 +8,14 @@ class UsersController < ApplicationController
     #@users = User.all
     @title = "All Users"
     @users = User.paginate(:page => params[:page])
+    #json_users is an api to all users but current user
+    @json_users = User.where("name like ? and id != ?", "%#{params[:q]}%", current_user.id)
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json do
+        render :json => @json_users.map { |user| {:id => user.id, :name => user.name} }
+      end
+    end
   end
 
   # GET /users/1
@@ -21,7 +29,6 @@ class UsersController < ApplicationController
     end 
     @title = @user.name
     @notebooks = @user.notebooks.limit(3).order("updated_at DESC")
-    @lessons = @user.lessons.limit(3).order("updated_at DESC")
   end
 
   def friends
@@ -29,6 +36,13 @@ class UsersController < ApplicationController
     @title = @user.name + " Friends"
     @pending = @user.pending_invited_by
     @friends = @user.friends
+    
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json do
+        render :json => @friends.map { |friend| {:id => friend.id, :name => friend.name} }
+      end
+    end
   end
   # GET /users/new
   # GET /users/new.xml

@@ -18,6 +18,12 @@ function uniqueId() {
 
 
 $(document).ready(function() {
+  
+  $("#lesson_shares_attributes_0_shared_ids").tokenInput("/users.json", {
+    crossDomain: false,
+    prePopulate: $("#lesson_shares_attributes_0_shared_ids").data("pre")
+  });
+  
 	var lessonText = $("#lesson_body").val();
   //console.log(lessonText);
   $("#lesson_body").hide();

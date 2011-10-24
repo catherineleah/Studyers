@@ -12,19 +12,10 @@ $(document).ready(function() {
      $(this).next(".attached-image").toggle("slow");
    });
 
-   if ($("#home-wrapper #cycle")) {
-    $("#home-wrapper #cycle").cycle({
-      fx: 'fade',
-      timeout: 6000, // milliseconds between slide transitions
-      pause: 1,
-      cleartype: 1,
-      cleartypeNoBg: 1
-     });
-  }
-
+  /*
   setTimeout(function() {
-    $('div.notice').fadeOut('slow');
-  }, 5000);
+      $('div.notice').fadeOut('slow');
+    }, 5000);*/
       
   /*
    * Wiki test

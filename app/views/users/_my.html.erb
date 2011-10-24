@@ -7,7 +7,12 @@
       </div>
         <%= link_to 'Edit Profile', edit_user_path(@user), :class => "edit-profile" %>
         <div><%= link_to "Notebooks", notebooks_path %></div>
-        <div><%= link_to "Friends", profile_friends_path %></div>
+        <div>
+          <%= link_to "Friends", profile_friends_path %>
+            <% if (@user.pending_invited_by.count > 0) %>
+              <span class="mini">(<%= @user.pending_invited_by.count %> pending)</span>
+            <% end %>
+        </div>
   </div>
   <div id="notebooks" class="span8">
     <h3 class="title">Recently saved notebooks</h3>

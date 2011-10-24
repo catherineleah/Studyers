@@ -1,4 +1,5 @@
 class ClassResourcesController < ApplicationController
+  before_filter :authenticate, :only => [:index, :show, :edit, :update, :destroy, :new]
   # GET /class_resources
   # GET /class_resources.json
   def index

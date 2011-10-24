@@ -1,7 +1,17 @@
+<%= @lessons_count %>
+<%= @users_count %>
+<%= @notebooks_count %>
+
+<div class="container">
+  <div class="hero-unit">
+    <img class="image" src="/images/Fotolia_23624870_S.jpg" />
+    Welcome to Studyers
+  </div>
+</div>
+
 <div id="home-wrapper">
-  <div id="cycle">
     <div class="paragraph">
-      <img class="image" src="/images/Fotolia_23624870_S.jpg" />
+      
       <div class="text">Save all your notes in a central place, safe and always available.</div>
     </div>
     <div class="paragraph">
@@ -16,5 +26,34 @@
       <img class="image" src="/images/Fotolia_24835805_S.jpg" />
       <div class="text">So all you need to carry with you to class, is an apple (or any other laptop ;).</div>
     </div>
-  </div>
 </div>
+<script src="http://widgets.twimg.com/j/2/widget.js"></script>
+<script>
+new TWTR.Widget({
+  version: 2,
+  type: 'search',
+  search: 'studyers',
+  interval: 30000,
+  title: 'thoughts about',
+  subject: 'Studyers',
+  width: 250,
+  height: 300,
+  theme: {
+    shell: {
+      background: '#8ec1da',
+      color: '#ffffff'
+    },
+    tweets: {
+      background: '#ffffff',
+      color: '#444444',
+      links: '#1985b5'
+    }
+  },
+  features: {
+    scrollbar: false,
+    loop: true,
+    live: true,
+    behavior: 'all'
+  }
+}).render().start();
+</script>

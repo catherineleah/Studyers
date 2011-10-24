@@ -29,12 +29,22 @@ class LessonsController < ApplicationController
   # GET notebook/:id/lessons/new
   def new
     @lesson = Lesson.new
+    @lesson.shares.build
   end
 
   # GET notebook/:id/lessons/1/edit
   def edit
     @notebook = current_user.notebooks.find(params[:notebook_id])
     @lesson =  @notebook.lessons.find(params[:id])
+    shared_ids = @lesson.shares.map(&:shared_ids).split(",")
+    logger.info shared_ids
+    
+    #@shared_ids = @lesson.shares.map(&:shared_ids).split(",").collect! 
+    @shared_ids = []
+    shared_ids.each do | id |
+      @shared_ids << User.find(id).to_json
+    end
+    @shared_ids.to_json
   end
 
   # POST notebook/:id/lessons
@@ -56,7 +66,7 @@ class LessonsController < ApplicationController
     @notebook = current_user.notebooks.find(params[:notebook_id])
     @lesson = @notebook.lessons.find(params[:id])
     if @lesson.update_attributes(params[:lesson])
-      flash[:notice] = 'Lesson was successfully updated.'
+      flash[:success] = 'Lesson was successfully updated.'
       redirect_to notebook_lessons_path
     else
       render :action => "edit" 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111013161325) do
+ActiveRecord::Schema.define(:version => 20111022143129) do
 
   create_table "class_resources", :force => true do |t|
     t.string   "title"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20111013161325) do
     t.text     "image"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "lesson_id"
   end
 
   create_table "lessons", :force => true do |t|
@@ -43,10 +44,6 @@ ActiveRecord::Schema.define(:version => 20111013161325) do
     t.integer  "permission"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "attachement_file_name"
-    t.string   "attachement_content_type"
-    t.integer  "attachement_file_size"
-    t.datetime "attachement_updated_at"
   end
 
   create_table "notebooks", :force => true do |t|
@@ -70,12 +67,21 @@ ActiveRecord::Schema.define(:version => 20111013161325) do
     t.text     "slide"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "lesson_id"
+  end
+
+  create_table "shares", :force => true do |t|
+    t.integer  "lesson_id"
+    t.string   "shared_ids"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "texts", :force => true do |t|
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "lesson_id"
   end
 
   create_table "users", :force => true do |t|

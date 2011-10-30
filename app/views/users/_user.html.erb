@@ -5,13 +5,6 @@
       <div id="name">
         <%= @user.name %>
       </div>
-      <div class="friendship">
-        <% if @user.friend_with? current_user %>
-          you are friends with <%= @user.name %>
-        <% elsif !@user.friend_with? current_user and !@user.connected_with? current_user and @user != current_user %>
-          <%= link_to "Add as a friend", invite_friend_path(@user) %>
-        <% end %>
-      </div>
   </div>
   <div id="notebooks" class="span8">
     <span class="title">Some of <%= @user.name %>'s notebooks</span>
@@ -19,13 +12,12 @@
       <div class="recent-notebook">
         <%= link_to notebook.name, notebook_lessons_path(notebook), :class => "lesson-title" %>
         <div class="notebook-lessons">
-        <%@lessons = notebook.lessons.limit(3).order("updated_at DESC") %>
+        <%@lessons = notebook.lessons.order("updated_at DESC") %>
         <% if @lessons.size > 0 %>
         <ul class="lessons">
         <% @lessons.each do |lesson| %>
           <li class="lesson"><%= link_to lesson.title, notebook_lesson_path(notebook, lesson) %> </li>
         <% end %>
-          <li class="class all"><%= link_to "All Lessons", notebook_lessons_path(notebook) %></li>
         </ul>
         <% end %>
         </div> 

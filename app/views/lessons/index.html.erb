@@ -1,6 +1,7 @@
 <div class="row">
-  <h1 class="notebook-name span12"><%= @notebook.name %></h1><% if @current_user.id == @notebook.user_id %>
-  <%= link_to '+ Create a new Lesson', new_notebook_lesson_path, :class => "btn info" %>
+  <h1 class="notebook-name span12"><%= @notebook.name %></h1>
+  <% if @current_user.id == @notebook.user_id %>
+    <%= link_to '+ Create a new Lesson', new_notebook_lesson_path, :class => "btn info" %>
   <% end %>
   <h2 class="lesson-list">list of lessons</h2>
 </div>

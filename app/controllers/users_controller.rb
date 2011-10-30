@@ -28,22 +28,9 @@ class UsersController < ApplicationController
       @user = current_user
     end 
     @title = @user.name
-    @notebooks = @user.notebooks.limit(3).order("updated_at DESC")
+    @notebooks = @user.notebooks.order("updated_at DESC")
   end
 
-  def friends
-    @user = current_user
-    @title = @user.name + " Friends"
-    @pending = @user.pending_invited_by
-    @friends = @user.friends
-    
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json do
-        render :json => @friends.map { |friend| {:id => friend.id, :name => friend.name} }
-      end
-    end
-  end
   # GET /users/new
   # GET /users/new.xml
   def new

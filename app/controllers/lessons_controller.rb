@@ -3,16 +3,12 @@ class LessonsController < ApplicationController
   load_and_authorize_resource
   
   before_filter :authenticate, :only => [:index, :show, :edit, :update, :destroy]
-  
-  # A filter for current user
-  #before_filter :notebook_owner, :only => [:edit, :update, :destroy]
-  
+    
   before_filter :find_notebook, :only => [:new]
   
   # GET notebook/:id/lessons
   def index
-    @current_user = current_user
-    #@notebook = current_user.notebooks.find(params[:notebook_id])
+    @user = current_user
     @notebook = Notebook.find(params[:notebook_id])
     @lessons = @notebook.lessons.order("updated_at DESC")
     @title = @notebook.name   
@@ -20,31 +16,43 @@ class LessonsController < ApplicationController
 
   # GET notebook/:id/lessons/1
   def show
-    #@notebook = current_user.notebooks.find(params[:notebook_id])
-    @current_user = current_user
+    @user = current_user
     @notebook = Notebook.find(params[:notebook_id])
     @lesson =  @notebook.lessons.find(params[:id])
   end
 
   # GET notebook/:id/lessons/new
   def new
+    @user = current_user
     @lesson = Lesson.new
     @lesson.shares.build
   end
 
   # GET notebook/:id/lessons/1/edit
   def edit
+    @user = current_user
     @notebook = current_user.notebooks.find(params[:notebook_id])
     @lesson =  @notebook.lessons.find(params[:id])
-    shared_ids = @lesson.shares.map(&:shared_ids).split(",")
-    logger.info shared_ids
+    # THE ugliest way, but it's working 
+    # @TODO: Find a better, smarter way to work that out...
     
-    #@shared_ids = @lesson.shares.map(&:shared_ids).split(",").collect! 
-    @shared_ids = []
-    shared_ids.each do | id |
-      @shared_ids << User.find(id).to_json
+    shared = @lesson.shares.map(&:shared_ids).to_s unless @lesson.shares.map(&:shared_ids).empty?
+    if (shared)
+      shared["["] = ""
+      shared["]"] = ""
+      shared["\""] = ""
+      shared["\""] = ""
+    
+      shared_ids = shared.split(",")
+      #puts shared_ids
+      # probably the ugliest piece of code... but it's working
+      @shared_ids = []
+      shared_ids.each do | id |
+        @user = User.find(id, :select => "id, name")
+        @shared_ids.push(@user)
+      end
+      @shared_ids = @shared_ids.to_json
     end
-    @shared_ids.to_json
   end
 
   # POST notebook/:id/lessons
@@ -54,7 +62,7 @@ class LessonsController < ApplicationController
     @lesson.user_id = @notebook.user_id
 
     if @lesson.save
-      flash[:notice] ="Saved lesson successfully"
+      flash[:success] ="Saved lesson successfully"
       redirect_to notebook_lessons_path
     else
        render :action => "new" 
@@ -94,17 +102,5 @@ class LessonsController < ApplicationController
     def find_notebook
       @notebook = current_user.notebooks.find(params[:notebook_id])
     end
-
-  
-  private
-    ##
-    # A method to make sure that the lesson is watched / edited 
-    # by the notebook owner. 
-    # (Not sure the best way it can be done - but it works)
-    ##
-    def notebook_owner
-      @notebook = Notebook.find(params[:notebook_id])
-      @user = User.find(@notebook.user_id)
-      redirect_to(root_path, :notice => "This Lesson is marked as private, and can not be watched.") unless current_user?(@user) 
-    end
+    
 end

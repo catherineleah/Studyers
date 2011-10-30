@@ -3,32 +3,28 @@
 <head>
   <title><%= title %></title>
   <%= stylesheet_link_tag 'application' %>
-  <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister&v1' %>
 
   <%= javascript_include_tag 'application' %>
   
   <%= csrf_meta_tag %>
 </head>
 <body>
-	<!-- Header -->
-	<%= render 'layouts/header' %>
-	<!-- /Header -->
-	<div class="container">
-	<!-- Errors -->
-	  <% flash.each do |key, value| %>
-  	  <div class="alert-message <%= key %>"><%= value %></div>
+  <%= render 'layouts/header' %>
+  <div class="container">
+    <% if current_user %>
+      <section class="sidebar">
+        <%= render 'layouts/profile' %>
+      </section>
+    <% end %>
+    <section class="content">
+      <% flash.each do |key, value| %>
+        <div class="alert-message <%= key %>"><%= value %></div>
       <% end %>
-	<!-- /Errors -->
-	<!-- Main -->	
-	  <section class="content">
-	    <%= yield %>		
-	  </section>
-	</div>
-	<!-- /Main -->
-	
-	<!-- Footer -->
-	<%= render 'layouts/footer' %>
-	<!-- /Footer -->
+        
+      <%= yield %>		
+    </section>
+  </div>
+  <% #render 'layouts/footer' %>
 
 </body>
 </html>

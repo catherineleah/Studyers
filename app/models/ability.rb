@@ -27,7 +27,24 @@ class Ability
     can :read, Lesson do |lesson|
       @user = User.find(lesson.try(:user_id))
       # If owner | if public | if friends & permission for friends.
-      lesson.try(:user_id) == user.id || (lesson.shares.map(&:shared_ids).split(",").include?(user.id))
+      # THE ugliest way, but it's working 
+      # @TODO: Find a better, smarter way to work that out...
+      shared = lesson.shares.map(&:shared_ids).to_json unless lesson.shares.map(&:shared_ids).empty?
+      if (shared)
+        shared["["] = ""
+        shared["]"] = ""
+        shared["\""] = ""
+        shared["\""] = ""
+
+        shared_ids = shared.split(",")
+      
+        # probably the ugliest piece of code... but it's working
+        
+        shared_ids.each do |id| puts (id.to_i == user.id) end
+        lesson.try(:user_id) == user.id || (shared_ids.each { |id| (id.to_i == user.id) })
+      else
+        lesson.try(:user_id) == user.id
+      end
     end
     
     #can :manage, Lesson do |lesson|

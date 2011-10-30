@@ -20,15 +20,6 @@ ActiveRecord::Schema.define(:version => 20111022143129) do
     t.datetime "updated_at"
   end
 
-  create_table "friendships", :force => true do |t|
-    t.integer "user_id"
-    t.integer "friend_id"
-    t.integer "blocker_id"
-    t.boolean "pending",    :default => true
-  end
-
-  add_index "friendships", ["user_id", "friend_id"], :name => "index_friendships_on_user_id_and_friend_id", :unique => true
-
   create_table "images", :force => true do |t|
     t.text     "image"
     t.datetime "created_at"

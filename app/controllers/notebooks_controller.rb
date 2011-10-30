@@ -41,7 +41,7 @@ class NotebooksController < ApplicationController
     @notebook = current_user.notebooks.build(params[:notebook])
     
       if @notebook.save
-        flash[:notice] =" Success"
+        flash[:success] ="Saved a new notebook"
         redirect_to notebooks_path
       else
         render :action => "new" 

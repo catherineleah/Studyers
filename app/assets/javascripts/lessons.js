@@ -16,11 +16,40 @@ function uniqueId() {
     return 'id_' + new Date().getTime();
 }
 
+function modifyCanvasAndImageWidth() {
+  var newWidth = $("#text-editor").width();
+  var canvases = document.getElementsByTagName('canvas');
+  for (i = 0; i < canvases.length; i++) {
+    canvases[i].width = newWidth;
+  }
+  var images = $("#text-editor img");
+  for (i = 0; i < images.length; i++) {
+    images[i].width = newWidth;
+  }
+}
 
 $(document).ready(function() {
+  $(".resource").live('click', function(e) {
+    e.preventDefault();
+    $(".pull-resource").hide();
+    var option = $(this).attr("id") + "-form";
+    $("#side-resources").show("slide", {direction: "right"});
+    $("#" + option).show("slide", {direction: "right"});
+    $("#text-editor").addClass("minified");
+    modifyCanvasAndImageWidth();
+  });
+  
+  $(".pull-resource .close").live('click', function(e) {
+    e.preventDefault();
+    $("#side-resources").hide("slide", {direction: "right"});
+    $("#text-editor").removeClass("minified");
+    modifyCanvasAndImageWidth();
+  });
+  
   $("#lesson_shares_attributes_0_shared_ids").tokenInput("/users.json", {
     crossDomain: false,
-    prePopulate: $("#lesson_shares_attributes_0_shared_ids").data("pre")
+    prePopulate: $("#lesson_shares_attributes_0_shared_ids").data("pre"),
+    theme: 'facebook' 
   });
   
 	var lessonText = $("#lesson_body").val();

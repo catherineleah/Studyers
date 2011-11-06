@@ -9,7 +9,7 @@ module ApplicationHelper
   end
   
   def current_class?(test_path)
-    return 'active' if request.fullpath == test_path
+    return 'active' if current_page?(test_path)
   end
   
   def user_notebooks

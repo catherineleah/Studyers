@@ -9,11 +9,11 @@ function classResources(imageSrc, imageIndex){
   this.imageWrapper = document.createElement('div');
   this.imageWrapper.className = "class-resources-image";
   this.imageWrapper.id = "image-wrapper-" + this.ID;
-  
   this.image = document.createElement('img');
   this.image.className = "resource-image span12";
   this.image.src = imageSrc;
-/*  this.image.width = "500";*/
+  var imageWidth = $("#text-editor").width()-5;
+  this.image.width = imageWidth;
   this.image.id = "resource-image-" + this.ID;
   
   this.imageWrapper.appendChild(this.image);
@@ -29,12 +29,12 @@ $(document).ready(function() {
     e.preventDefault();
     if ($("#get-resource") != null) {
       var rId = $("#get-resource").val();
-      $(".resources").load("/class_resources/" + rId + " #resource-images", function(response, status, xhr) {
+      $(".presentation-embed").load("/class_resources/" + rId + " #resource-images", function(response, status, xhr) {
         if (status == "error") {
-          $(".resources").html("Can't find selected resource");
+          $(".presentation-embed").html("Can't find selected resource");
           return;
         }
-        $(".resources").prepend('<div class="alert-message block-message info"><a href="#" id="photocopy">Copy presentation to the lesson</a></div>');
+        $(".presentation-embed").prepend('<div class="alert-message block-message info"><a href="#" id="photocopy">Copy presentation to the lesson</a></div>');
       });
     }
   });
@@ -43,18 +43,23 @@ $(document).ready(function() {
   */
   $("#photocopy").live('click', function(e){
     e.preventDefault();
-    $(".resources #resource-images img").each(function(index){
+    $("#text-editor").removeClass("minified");
+    $(".presentation-embed #resource-images img").each(function(index){
       var imageSrc = $(this).attr('src');
       // index is passed to make sure uninque id for image.
       var classImage = new classResources(imageSrc, index);
       classImage.showControls();
     });
+    // Close the sidebar
+    $("#side-resources").hide("slide", {direction: "right"});
+    modifyCanvasAndImageWidth();
   });
   /*
     One slide
   */
   $(".one-slide").live('click', function(e) {
     e.preventDefault();
+    $("#text-editor").removeClass("minified");
     var imageSrc = $(this).find("img").attr('src');
     var classImage = new classResources(imageSrc, 0);
     classImage.showControls();

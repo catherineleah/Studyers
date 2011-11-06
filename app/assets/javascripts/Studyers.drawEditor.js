@@ -18,19 +18,21 @@ function DrawEditor(ID, putAfter) {
 		$("#text-editor").append(this.containerDiv);
 		$(this.containerDiv).hide().show("slow");
 	}
-	
+	var canvasWidth = $("#text-editor").width();
 	//Create first canvas
 	this.canvaso = document.createElement("canvas");
 	this.canvaso.id = "imageView-" + this.ID;
 	this.canvaso.className = "canvas canvas-draw imageView"
-	this.canvaso.width = this.canvaso.height = "400";
+	this.canvaso.width = canvasWidth;
+	this.canvaso.height = "400";
 	this.containerDiv.appendChild(this.canvaso);
 	this.contexto = this.canvaso.getContext('2d');
 	// Create 2nd canvas (temp)
 	this.canvas = document.createElement("canvas");
 	this.canvas.id = "imageTemp-" +this.ID;
 	this.canvas.className = "canvas canvas-draw-temp imageTemp";
-	this.canvas.width = this.canvas.height = "400";
+	this.canvas.width = canvasWidth;
+	this.canvas.height = "400";
 	this.containerDiv.appendChild(this.canvas);
 	this.context = this.canvas.getContext('2d');
 	//Attach controls
@@ -302,10 +304,10 @@ function DrawEditor(ID, putAfter) {
 
           context.strokeStyle = curColor;
           context.lineWidth = curWidth;
-					context.beginPath();
+          context.beginPath();
           context.arc(x, y, w, 0, Math.PI * 2, true);
-					context.closePath();
-					context.stroke();
+          context.closePath();
+          context.stroke();
       };
 
       this.mouseup = function(ev){

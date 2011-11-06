@@ -1,21 +1,21 @@
 
   <div id="notebooks">
-    <% @notebooks.each do |notebook| %>
-      <div class="notebook">
+    <% @notebooks.each_with_index do |notebook, key| %>
+      <div class="notebook notebook-<%= key %>">
         <h4>
           <%= link_to notebook.name, notebook_lessons_path(notebook), :class => "lesson-title" %>
         </h4>
         <div class="notebook-lessons">
           <% @lessons = notebook.lessons.limit(3).order("updated_at DESC") %>
           <% if @lessons.size > 0 %>
-            <ul class="lessons">
+            <div class="lessons">
               <% @lessons.each do |lesson| %>
-                <li class="lesson"><%= link_to lesson.title, notebook_lesson_path(notebook, lesson) %> </li>
+                <div class="lesson"><%= link_to lesson.title, notebook_lesson_path(notebook, lesson) %> </div>
               <% end %>
-            </ul>
+            </div>
           <% end %>
         </div>
-        <%= link_to "+ Create a new lesson", new_notebook_lesson_path(notebook), :class => "new-lesson btn info" %>
+        <%= link_to "+ Create a new lesson", new_notebook_lesson_path(notebook), :class => "new-lesson btn primary" %>
       </div>
     <% end %>  
   </div>

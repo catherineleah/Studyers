@@ -42,16 +42,16 @@ class ClassResourcesController < ApplicationController
   # POST /class_resources.json
   def create
     @class_resource = ClassResource.new(params[:class_resource])
-
-    respond_to do |format|
       if @class_resource.save
-        format.html { redirect_to @class_resource, notice: 'Class resource was successfully created.' }
-        format.json { render json: @class_resource, status: :created, location: @class_resource }
+        if params[:edit] 
+          redirect_to edit_class_resource_path(@class_resource)
+        else
+          redirect_to class_resource_path(@class_resource)
+        end
       else
-        format.html { render action: "new" }
-        format.json { render json: @class_resource.errors, status: :unprocessable_entity }
+        render :action => 'new'
       end
-    end
+    
   end
 
   # PUT /class_resources/1
@@ -61,7 +61,7 @@ class ClassResourcesController < ApplicationController
 
     respond_to do |format|
       if @class_resource.update_attributes(params[:class_resource])
-        format.html { redirect_to @class_resource, notice: 'Class resource was successfully updated.' }
+        format.html { redirect_to @class_resource, notice: "The ID for this class presentation is: #{@class_resource.id}" }
         format.json { head :ok }
       else
         format.html { render action: "edit" }

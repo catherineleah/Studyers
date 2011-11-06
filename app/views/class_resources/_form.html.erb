@@ -15,11 +15,16 @@
     <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
-  <div class="field">
-    <%= f.label :presentation %>
-    <%= f.file_field :presentation %>
-  </div>
-  <div class="">
-    <%= f.submit "Save", :class => "btn primary" %>
-  </div>
+  <% if !@class_resource.id   %>
+    <%= f.submit "Upload File", :class => "btn primary", :name =>"edit" %>
+  <% end %>
+  <% if @class_resource.id %>
+    <div class="field">
+      <%= f.label :presentation %>
+      <%= f.file_field :presentation %>
+    </div>
+    <div class="">
+      <%= f.submit "Save", :class => "btn primary", :name =>"save" %>
+    </div>
+  <% end %>
 <% end %>

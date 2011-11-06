@@ -5,7 +5,7 @@
 <ul class="images media-grid" id="resource-images">
   <% Dir["public/" + @class_resource.presentation.store_dir + "/*.png"].each do |image| %>
     <% #Bad way to display - need to fix... %>
-    <li><a href="#" class="one-slide"><%= image_tag(image[6, 100], :size => "210x210") %></a></li>
+    <li><a href="#" class="one-slide"><%= image_tag(image[6..-1], :size => "346x346") %></a></li>
   <% end %>
 </ul>
 

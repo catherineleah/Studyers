@@ -4,10 +4,10 @@
 <div class="user-info"><%= link_to current_user.name, profile_path %></div>
 
 <div class="notebooks">
-  <h2>Notebooks</h2>
-  <div><%= link_to '+ Create a new notebook', new_notebook_path, :title => "Add a new notebook", :class => "btn"%></div>
+  <h2 class="notebooks-title">Notebooks</h2>
+  <div class="add-new"><%= link_to '+ New notebook', new_notebook_path, :title => "Add a new notebook", :class => "btn small"%></div>
   <% user_notebooks.each do |notebook| %>
-    <div class="side-notebook"><%= link_to notebook.name, notebook_lessons_path(notebook) %></div>
+    <div class="side-notebook"><%= link_to notebook.name, notebook_lessons_path(notebook), :class => current_class?(notebook_lessons_path(notebook)) %></div>
   <% end %>
 </div>
 <%= link_to "Settings", edit_user_path(current_user) %>

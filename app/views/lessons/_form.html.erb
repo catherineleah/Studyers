@@ -11,46 +11,45 @@
       </ul>
     </div>
   <% end %>
-<div class="row">
-  <div class="span12">
-    <div class="field">
-      <%= f.label :title %>
-      <%= f.text_field :title, :class => "span12 xlarge" %>
-    </div>
-    <div class="pull-resource">
-      <div class="alert-message block-message info">
-        <a class="close" href="#">×</a>
-        <p>If your lecturer or a classmate has provided you with an ID to this lesson's presentation add it here: </p>
-        <div class="alert-actions">
-          (<%= root_url %>class_resources/<input type="text" id="get-resource" class="span1 mini" />)
-          <a href="#" class="btn small" id="fetch-resource">Get</a>
-        </div>
+<div class="side-menu">
+  <a class="resource btn" id="show-embed" href="#">Embed lesson presentation</a>
+  <a class="resource btn" id="share-lesson" href="#">Share this lesson</a>
+</div>
+<div id="side-resources">
+  <div class="pull-resource" id="show-embed-form">
+    <div class="alert-message block-message info">
+      <a class="close" href="#">×</a>
+      <p>If your lecturer or a classmate has provided you with an ID to this lesson's presentation add it here: </p>
+      <div class="alert-actions">
+        (<%= root_url %>class_resources/<input type="text" id="get-resource" class="span1 mini" />)
+        <a href="#" class="btn small" id="fetch-resource">Get</a>
       </div>
     </div>
-    <% #Show the following alert only on new lessons (i.e with no id) %>
-    <% if (!@lesson.id) %>
-    <div id="features" class="alert-message block-message info">
-      <p>Or start taking your notes</p>
-      <div class="btn" id="add-text">+ Textarea</div>
-      <div class="btn" id="add-draw">+ Drawpad</div>
-    </div>
-    <% end %>
-    <div class="field">
-      <%= f.text_area :body%>
-    </div>
-      <!--<input id="spellcheckinput" type="text"> <span id="spellcheckresult"></span>-->
-      
-    <%= f.fields_for :shares do |builder| %>
-      <%= builder.label :shared_ids, "Share with" %>
-      <%= builder.text_field :shared_ids, "data-pre" => @shared_ids %>
-    <% end %>
-    <div class="">
-      <%= f.submit :id => "lesson_submit", :class => "btn primary" %>
-    </div>
+      <div class="presentation-embed">
+      </div>
   </div>
-  <div class="span4">
-    <div class="resources"></div>
+  <div class="pull-resource" id="share-lesson-form">
+    <div class="alert-message block-message info">
+      <a class="close" href="#">×</a>
+      <%= f.fields_for :shares do |builder| %>
+        <%= builder.label :shared_ids, "Type the user names you wish to share the lesson with:" %>
+        <%= builder.text_field :shared_ids, "data-pre" => @shared_ids %>
+      <% end %>
+    </div>
   </div>
 </div>
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title, :class => "span12 xlarge" %>
+  </div>
+    
+  <div class="field">
+    <%= f.text_area :body%>
+  </div>
+      <!--<input id="spellcheckinput" type="text"> <span id="spellcheckresult"></span>-->      
+    
+  <div class="field">
+    <%= f.submit :id => "lesson_submit", :class => "btn primary" %>
+  </div>
+
 <% end %>
-<!---->

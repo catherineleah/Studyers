@@ -4,6 +4,7 @@ class PagesController < ApplicationController
     @lessons_count = Lesson.count
     @users_count = User.count
     @notebooks_count = Notebook.count
+    @share_count = Share.count
     @title = "The home of studyers"
   end
 

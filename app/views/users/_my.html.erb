@@ -11,6 +11,7 @@
             <div class="lessons">
               <% @lessons.each do |lesson| %>
                 <div class="lesson"><%= link_to lesson.title, notebook_lesson_path(notebook, lesson) %> </div>
+                <div><%#sanitize lesson.body.gsub(/^(.{550}[\w.]*)(.*)/) {$2.empty? ? $1 : $1 + '...'}%></div>
               <% end %>
             </div>
           <% end %>

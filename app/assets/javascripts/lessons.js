@@ -1,5 +1,6 @@
 //= require Studyers.textEditor
 //= require Studyers.drawEditor
+//= require Studyers.graphEditor
 //= require Studyers.classResources
 
 /*
@@ -36,6 +37,12 @@ $(document).ready(function() {
     $("#side-resources").show("slide", {direction: "right"});
     $("#" + option).show("slide", {direction: "right"});
     $("#text-editor").addClass("minified");
+    modifyCanvasAndImageWidth();
+  },
+  function(e){
+    e.preventDefault();
+    $("#side-resources").hide("slide", {direction: "right"});
+    $("#text-editor").removeClass("minified");
     modifyCanvasAndImageWidth();
   });
   
@@ -78,6 +85,13 @@ $(document).ready(function() {
 		var ID = uniqueId();
   	var draw = new DrawEditor(ID, putAfter);
 		draw.drawInit(ID);
+  });
+  
+  $(".graph-after").live('click', function() {
+		var putAfter = $(this).attr('after');
+		var ID = uniqueId();
+  	var graph = new graphEditor(ID, putAfter);
+  	graph.drawInit(ID);
   });
 
 	$("#add-draw").click(function() {

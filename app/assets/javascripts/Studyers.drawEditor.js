@@ -5,7 +5,6 @@
 function DrawEditor(ID, putAfter) {
   this.ID = ID;
   this.tool_select;
-  this.containerDiv;
   // Create container and append it to text editor.
   this.containerDiv = document.createElement("div");
   this.containerDiv.className = "canvas-container";
@@ -37,7 +36,7 @@ function DrawEditor(ID, putAfter) {
 	this.context = this.canvas.getContext('2d');
 	//Attach controls
 	$("#canvas-container-" + this.ID).append('<div class="dtools"><div class="dtool dtool-'+ this.ID +'" id="text" title="Pencil tool">TEXT</div><div class="dtool dtool-'+ this.ID +'" id="pencil" title="Pencil tool">p</div><div class="dtool dtool-'+ this.ID +'" id="line" title="Line tool">l</div><div class="dtool dtool-'+ this.ID +'" id="rect" title="Rectangle tool">r</div><div class="dtool dtool-'+ this.ID +'" id="circle" title="Circle tool">c</div><div class="dtool dtool-'+ this.ID +'" id="clear" title="Clear canvas">cls</div></div>');
-	$("#canvas-container-" + this.ID).append('<div class="text-after btn" after="#canvas-container-'+ this.ID +'">+ textarea</div><div class="draw-after btn" after="#canvas-container-'+ this.ID +'">+ drawpad</div>');
+	$("#canvas-container-" + this.ID).append('<div class="text-after btn" after="#canvas-container-'+ this.ID +'">+ textarea</div><div class="draw-after btn" after="#canvas-container-'+ this.ID +'">+ drawpad</div><div class="graph-after btn" after="#canvas-container-'+ this.ID +'">+ graph</div>');
 	var canvas = this.canvas;
 	var context = this.context;
 	var canvaso = this.canvaso

@@ -28,7 +28,7 @@ function TextEditor(putAfter) {
 */
 TextEditor.prototype.showControls = function(){
   $("#text-" + this.ID).before('<div class="editor-buttons buttons" id="buttons-'+this.ID+'"><input id="bold" class="edit-buttons" value="B" type="button" /><input id="italic" class="edit-buttons" value="I" type="button" /><input id="underline" class="edit-buttons" value="U" type="button" /><input id="hilitecolor" class="edit-buttons" attribute="yellow" value="hilite yellow" type="button" /><input id="hilitecolor" class="edit-buttons" attribute="#659b41" value="hilite green" type="button" /><input id="insertunorderedlist" class="edit-buttons" value="List" type="button" /><input id="insertorderedlist" class="edit-buttons" value="Numbered List" type="button" /><input id="increasefontsize" class="edit-buttons" value="A+" type="button"  /><input id="decreasefontsize" class="edit-buttons" value="A-" type="button"  /></div>');
-  $("#text-" + this.ID).after('<div class="text-after btn" after="#wrapper-'+ this.ID +'">+ textarea</div><div class="draw-after btn" after="#wrapper-'+ this.ID +'">+ drawpad</div>');
+  $("#text-" + this.ID).after(buttonsAppend("#wrapper-" + this.ID));
   /*
   */
   $('#buttons-' + this.ID + ' .edit-buttons').click(function() {

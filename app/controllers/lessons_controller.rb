@@ -33,6 +33,7 @@ class LessonsController < ApplicationController
     @user = current_user
     @notebook = current_user.notebooks.find(params[:notebook_id])
     @lesson =  @notebook.lessons.find(params[:id])
+
     # THE ugliest way, but it's working 
     # @TODO: Find a better, smarter way to work that out...
     

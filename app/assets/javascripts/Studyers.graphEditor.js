@@ -1,6 +1,6 @@
 function graphEditor(ID, putAfter) {
   this.ID = ID;
-  DrawEditor.call(this, ID, putAfter);
+  //DrawEditor.call(this, ID, putAfter);
   this.containerDiv = document.createElement("div");
   this.containerDiv.className = "graph-container";
   this.containerDiv.id = "graph-container-" + this.ID;
@@ -23,12 +23,34 @@ function graphEditor(ID, putAfter) {
   $("#graph-form-" + this.ID).append('<label for="graph-data">Input data:</label><input name="graph-data" id="graph-data-'+ this.ID +'" type="text" />');
   $("#graph-form-" + this.ID).append('<label for="graph-desc">Input labels:</label><input name="graph-desc" id="graph-desc-'+ this.ID +'" type="text" />');
   $("#graph-form-" + this.ID).append('<div class="graphus" id="submit-'+ this.ID +'">submit</div>');
-  /*var el = document.getElementById("submit-" + this.ID);
-    el.addEventListener("click", this.submit(), false);*/
+  
+  var submitDiv = document.getElementById("submit-" + this.ID);
+  //console.log(submitDiv);
+  submitDiv.addEventListener('click', function() {submitGraph(ID)}, false)
+  
+  $("#graph-container-" + this.ID).append(buttonsAppend("#graph-container-" + this.ID));
 }
+function submitGraph(ID) {
+  var type = $("#graph-type-" + ID).val();
+  var data = $("#graph-data-" + ID).val();
+  var labels = $("#graph-desc-" + ID).val();
+  
+  var dataArray = data.split(",");
+  var highest = 0;
+  var smallest = 0
+  for (i = 0; i < dataArray.length; i++) {
+    //console.log(dataArray[i]);
+    if (dataArray[i] > highest) {
+      highest = dataArray[i];
+    }
+    if (dataArray[i] < smallest) {
+      smallest = dataArray[i];
+    }
+  }
 
-graphEditor.prototype.submit = function() {
-  console.log(this.graphForm.id);
-  return false;
+  var graphImage = new Image();
+  graphImage.src = "http://chart.apis.google.com/chart?chxt=y&chds="+smallest+","+highest+"&chxr=0,"+smallest+","+highest+"&chbh=a&chs=600x350&cht="+type+"&chd=t:"+data+"&chl="+labels+"";
+  
+  $("#graph-container-" + ID).append(graphImage);
+  $("#graph-form-" + ID).remove();
 }
-

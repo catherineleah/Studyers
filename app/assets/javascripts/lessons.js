@@ -1,3 +1,4 @@
+//= require Studyers.miscTools
 //= require Studyers.textEditor
 //= require Studyers.drawEditor
 //= require Studyers.graphEditor
@@ -8,26 +9,6 @@
 	@Author: Shlomi Zadok.
 	@project: Studyers
 */
-
-
-/*
-	Create a unique id according to timestamp.
-*/
-function uniqueId() {
-    return 'id_' + new Date().getTime();
-}
-
-function modifyCanvasAndImageWidth() {
-  var newWidth = $("#text-editor").width();
-  var canvases = document.getElementsByTagName('canvas');
-  for (i = 0; i < canvases.length; i++) {
-    canvases[i].width = newWidth;
-  }
-  var images = $("#text-editor img");
-  for (i = 0; i < images.length; i++) {
-    images[i].width = newWidth;
-  }
-}
 
 $(document).ready(function() {
   $(".resource").live('click', function(e) {
@@ -91,7 +72,6 @@ $(document).ready(function() {
 		var putAfter = $(this).attr('after');
 		var ID = uniqueId();
   	var graph = new graphEditor(ID, putAfter);
-  	graph.drawInit(ID);
   });
 
 	$("#add-draw").click(function() {
@@ -100,9 +80,9 @@ $(document).ready(function() {
 		draw.drawInit(ID);
 	});
 
-  $("#lesson_submit").click(function(){
+  $("#lesson_submit").click(function(e){
 		// Cleanup tools
-	  $("#text-editor .buttons, #text-editor .dtool, #text-editor .text-after, #text-editor .draw-after").remove();
+	  $("#text-editor .buttons, #text-editor .dtool, #text-editor .dont-save").remove();
 		// create images from canvases
 		var canvases = document.getElementsByClassName('imageView');
 		for (var i = 0; i < canvases.length; i++) {

@@ -11,12 +11,12 @@ class SessionsController < ApplicationController
       @title = "Sign in"
       render 'new'
     else
-      # Sign the user in and redirect to the user's show page.
       if params[:session][:remember_me] == "1"
         cookies.permanent.signed[:remember_token] = [user.id, user.salt]
       else
         cookies.signed[:remember_token] = [user.id, user.salt]
       end
+      # Sign the user in and redirect to the user's show page.
       current_user = user
       redirect_to profile_path
     end

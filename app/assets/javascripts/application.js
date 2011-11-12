@@ -7,16 +7,18 @@
 
 $(document).ready(function() {
   
-  $('.secondary-nav').dropdown();
+  $('.delete-lesson, .delete-notebook').bind('ajax:success', function() {  
+      $(this).parent().hide("slow");  
+  });
   
    $(".show-image").click(function() {
      $(this).next(".attached-image").toggle("slow");
    });
 
-  /*
+  
   setTimeout(function() {
-      $('div.notice').fadeOut('slow');
-    }, 5000);*/
+      $('div.alert-message').fadeOut('slow');
+    }, 7000);
       
   /*
    * Wiki test

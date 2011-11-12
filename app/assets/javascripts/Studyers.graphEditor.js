@@ -19,16 +19,22 @@ function graphEditor(ID, putAfter) {
   
   this.containerDiv.appendChild(this.graphForm);
   
+  this.graphDiv = document.createElement("div");
+  this.graphDiv.className = "graph-wrapper";
+  this.graphDiv.id = "graph-wrapper-" + this.ID;
+  
+  this.containerDiv.appendChild(this.graphDiv);
+  
   $("#graph-form-" + this.ID).append('<label for="graph-type">Graph type:</label><select name="graph-type" id="graph-type-'+ this.ID +'"><option value="bvg">Vertical Bar</option><option value="bhg">Horizontal Bar</option><option value="p">Pie chart</option><option value="lc">Line chart</option></select>');
   $("#graph-form-" + this.ID).append('<label for="graph-data">Input data:</label><input name="graph-data" id="graph-data-'+ this.ID +'" type="text" />');
   $("#graph-form-" + this.ID).append('<label for="graph-desc">Input labels:</label><input name="graph-desc" id="graph-desc-'+ this.ID +'" type="text" />');
-  $("#graph-form-" + this.ID).append('<div class="graphus" id="submit-'+ this.ID +'">submit</div>');
+  $("#graph-form-" + this.ID).append('<div class="graphus btn" id="submit-'+ this.ID +'">Create chart</div>');
   
   var submitDiv = document.getElementById("submit-" + this.ID);
   //console.log(submitDiv);
   submitDiv.addEventListener('click', function() {submitGraph(ID)}, false)
   
-  $("#graph-container-" + this.ID).append(buttonsAppend("#graph-container-" + this.ID));
+  $("#graph-container-" + this.ID).after(buttonsAppend("#graph-container-" + this.ID));
 }
 function submitGraph(ID) {
   var type = $("#graph-type-" + ID).val();
@@ -49,8 +55,9 @@ function submitGraph(ID) {
   }
 
   var graphImage = new Image();
+  graphImage.id = "image-graph-" + ID;
   graphImage.src = "http://chart.apis.google.com/chart?chxt=y&chds="+smallest+","+highest+"&chxr=0,"+smallest+","+highest+"&chbh=a&chs=600x350&cht="+type+"&chd=t:"+data+"&chl="+labels+"";
   
-  $("#graph-container-" + ID).append(graphImage);
-  $("#graph-form-" + ID).remove();
+  $("#graph-wrapper-" + ID).append(graphImage);
+/*  $("#graph-form-" + ID).remove();*/
 }

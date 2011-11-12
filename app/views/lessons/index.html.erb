@@ -1,19 +1,18 @@
-<div class="row">
-  <h1 class="notebook-name span12"><%= @notebook.name %></h1>
+<div class="notebook">
+  <h1 class="notebook-name"><%= @notebook.name %></h1>
   <% if @current_user.id == @notebook.user_id %>
-    <%= link_to '+ Create a new Lesson', new_notebook_lesson_path, :class => "btn info" %>
+    <%= link_to '+ Create a new Lesson', new_notebook_lesson_path, :class => "new-lesson btn primary" %>
   <% end %>
-  <h2 class="lesson-list">list of lessons</h2>
-</div>
-<div class="row">
+  <h2 class="lessons-list">list of lessons</h2>
+
   <% if @lessons.count > 0 %>
     <% @lessons.each do |lesson| %>
       <div class="lesson">  
         <h3 class="lesson-title"><%= link_to lesson.title, notebook_lesson_path(@notebook, lesson) %></h3>
         <div class="lesson-date"><span>Created at:</span> <%= lesson.created_at %></div>
         <% if can? :update, lesson %>
-          <div class="edit-lesson"><%= link_to 'Edit this lesson', edit_notebook_lesson_path(@notebook, lesson), :class =>"btn", :title => "Edit lesson"  %></div>
-          <div class="delete-lesson"><%= link_to '- Delete this lesson', [@notebook, lesson], :class =>"btn", :confirm => 'Are you sure?', :method => :delete, :title => "Delete lesson" %></div>
+          <div class="edit-lesson"><%= link_to 'Edit this lesson', edit_notebook_lesson_path(@notebook, lesson), :class =>"btn info", :title => "Edit lesson"  %></div>
+          <div class="delete-lesson"><%= link_to '- Delete this lesson', [@notebook, lesson], :class =>"btn delete-lesson", :confirm => 'Are you sure?', :method => :delete, :remote => true, :title => "Delete lesson" %></div>
         <% end %>
       </div>
     <% end %>

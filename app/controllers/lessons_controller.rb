@@ -92,7 +92,7 @@ class LessonsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(notebook_lessons_path) }
-      format.xml  { head :ok }
+      format.js  { render :nothing => true }
     end
   end
   

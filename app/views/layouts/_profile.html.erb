@@ -1,14 +1,15 @@
 <div class="home-link"><h1><%= link_to "Studyers", root_path %></h1></div>
 <div class="gravatar"><%= gravatar_for current_user %></div>
-
+<div class="user-settings">
+  <div><%= link_to "Settings", edit_user_path(current_user) %></div>
+  <div><%= link_to "Logout", signout_path, :method => :delete %></div>
+</div>
 <div class="user-info"><%= link_to current_user.name, profile_path %></div>
 
-<div class="notebooks">
-  <h2 class="notebooks-title">Notebooks</h2>
+<div class="notebooks" id="side-notebooks">
+  <h2 class="notebooks-title"><%= link_to "Notebooks", notebooks_path %></h2>
   <div class="add-new"><%= link_to '+ New notebook', new_notebook_path, :title => "Add a new notebook", :class => "btn small"%></div>
   <% user_notebooks.each do |notebook| %>
     <div class="side-notebook"><%= link_to notebook.name, notebook_lessons_path(notebook), :class => current_class?(notebook_lessons_path(notebook)) %></div>
   <% end %>
 </div>
-<%= link_to "Settings", edit_user_path(current_user) %>
-<%= link_to "Logout", signout_path, :method => :delete %>

@@ -6,26 +6,31 @@
 </div>
   <div class="clear-both"></div>
   <% @notebooks.each do |notebook| %>
-    <div class="notebook span12">
-      <div class="notebook-name span8" id="notebook-<%= notebook.id %>">
+    <div class="notebook">
+      <div class="notebook-name" id="notebook-<%= notebook.id %>">
         <%= link_to notebook.name, notebook_lessons_path(notebook), :title=>"View all lessons" %>
       </div>
-      <%= link_to "+ Create a new lesson", new_notebook_lesson_path(notebook), :class => "new-lesson btn info" %>
+      <%= link_to "+ Create a new lesson", new_notebook_lesson_path(notebook), :class => "new-lesson btn primary" %>
       <div class="notebook-date"><span>Created:</span> <%= notebook.created_at %></div>
-      <% if notebook.lecturer %>
+      <% if (!notebook.lecturer.empty?) %>
         <div class="notebook-lecturer"><span>Lecturer:</span> <%= notebook.lecturer %></div>
       <% end %>
       <div class="recent-lessons">
         <% @lessons = notebook.lessons.order("created_at DESC") %>
-        <% if @lessons.size > 1 %>
-          <ul>
+        <% if @lessons.size > 0 %>
+          <h2 class="lessons-list">Lessons</h2>
+          <div class="lessons">
           <% @lessons.each do |lesson| %>
-            <li class="recent-lesson"><%= link_to lesson.title, notebook_lesson_path(notebook, lesson)  %> </li>
+            <div class="lesson">
+              <%= link_to lesson.title, notebook_lesson_path(notebook, lesson), :class => "lesson-link", :title => "Click to view"  %>
+              <%= link_to "Edit", edit_notebook_lesson_path(notebook, lesson), :class => "lesson-edit-link" %>
+            </div>
           <%end%>
-          </ul>
+          </div>
         <% end %>
       </div>
-      <div class="edit-notebook"><%= link_to 'edit', edit_user_notebook_path(@user, notebook), :title => "edit notebook preferences", :class => "btn" %></div>
-      <div class="delete-notebook"><%= link_to "delete", [@user, notebook], :class =>"btn", :title => "Delete this notebook", :confirm => 'Are you sure?', :method => :delete %></div>
+      
+      <div class="edit-notebook"><%= link_to 'Edit notebook', edit_user_notebook_path(@user, notebook), :title => "edit notebook preferences", :class => "btn info" %></div>
+      <div class="delete-notebook"><%= link_to "- Delete this notebook", [@user, notebook], :class =>"btn delete-notebook", :title => "Delete this notebook", :confirm => 'Are you sure?', :remote => true, :method => :delete %></div>
     </div>
   <% end %>

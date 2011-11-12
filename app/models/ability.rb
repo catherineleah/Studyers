@@ -40,8 +40,7 @@ class Ability
       
         # probably the ugliest piece of code... but it's working
         
-        shared_ids.each do |id| puts (id.to_i == user.id) end
-        lesson.try(:user_id) == user.id || (shared_ids.each { |id| (id.to_i == user.id) })
+        lesson.try(:user_id) == user.id || shared_ids.include?(user.id.to_s) 
       else
         lesson.try(:user_id) == user.id
       end

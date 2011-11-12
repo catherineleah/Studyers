@@ -1,24 +1,25 @@
-  <div class="user-details span3">
+  <div class="user-details">
       <div id="gravatar">
         <%= gravatar_for @user %>
       </div>
       <div id="name">
-        <%= @user.name %>
+        <%= @user.name %> notebooks
       </div>
   </div>
-  <div id="notebooks" class="span8">
-    <span class="title">Some of <%= @user.name %>'s notebooks</span>
+  <div id="notebooks" class="">
     <% @notebooks.each do |notebook| %>
-      <div class="recent-notebook">
-        <%= link_to notebook.name, notebook_lessons_path(notebook), :class => "lesson-title" %>
+      <div class="notebook">
+        <h4 class="notebook-name">
+          <%= link_to notebook.name, notebook_lessons_path(notebook), :class => "lesson-title" %>
+        </h4>
         <div class="notebook-lessons">
         <%@lessons = notebook.lessons.order("updated_at DESC") %>
         <% if @lessons.size > 0 %>
-        <ul class="lessons">
-        <% @lessons.each do |lesson| %>
-          <li class="lesson"><%= link_to lesson.title, notebook_lesson_path(notebook, lesson) %> </li>
-        <% end %>
-        </ul>
+          <div class="lessons">
+          <% @lessons.each do |lesson| %>
+            <div class="lesson"><%= link_to lesson.title, notebook_lesson_path(notebook, lesson) %> </div>
+          <% end %>
+          </div>
         <% end %>
         </div> 
       </div>

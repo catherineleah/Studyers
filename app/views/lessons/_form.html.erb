@@ -12,12 +12,12 @@
     </div>
   <% end %>
 <div class="side-menu">
-  <a class="resource btn" id="show-embed" href="#">Embed lesson presentation</a>
+  <a class="resource btn" id="show-embed" href="#">+ lecturer presentation</a>
   <a class="resource btn" id="share-lesson" href="#">Share this lesson</a>
 </div>
 <div id="side-resources">
   <div class="pull-resource" id="show-embed-form">
-    <div class="alert-message block-message info">
+    <div class="block-message side-message info">
       <a class="close" href="#">×</a>
       <p>If your lecturer or a classmate has provided you with an ID to this lesson's presentation add it here: </p>
       <div class="alert-actions">
@@ -29,7 +29,7 @@
       </div>
   </div>
   <div class="pull-resource" id="share-lesson-form">
-    <div class="alert-message block-message info">
+    <div class="block-message side-message info">
       <a class="close" href="#">×</a>
       <%= f.fields_for :shares do |builder| %>
         <%= builder.label :shared_ids, "Type the user names you wish to share the lesson with:" %>

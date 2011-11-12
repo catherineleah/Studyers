@@ -14,7 +14,7 @@ function graphEditor(ID, putAfter) {
   }
   
   this.graphForm = document.createElement("form");
-  this.graphForm.className = "graph-form";
+  this.graphForm.className = "graph-form dont-save";
   this.graphForm.id = "graph-form-" + this.ID;
   
   this.containerDiv.appendChild(this.graphForm);

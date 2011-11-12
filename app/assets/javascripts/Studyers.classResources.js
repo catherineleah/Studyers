@@ -21,7 +21,7 @@ function classResources(imageSrc, imageIndex){
 }
 
 classResources.prototype.showControls = function() {
-  $("#resource-image-" + this.ID).after('<div class="text-after btn" after="#image-wrapper-'+ this.ID +'">+ textarea</div><div class="draw-after btn" after="#image-wrapper-'+ this.ID +'">+ drawpad</div>');
+  $("#resource-image-" + this.ID).after(buttonsAppend("#image-wrapper-" + this.ID));
 }
 
 $(document).ready(function() {
@@ -34,7 +34,7 @@ $(document).ready(function() {
           $(".presentation-embed").html("Can't find selected resource");
           return;
         }
-        $(".presentation-embed").prepend('<div class="alert-message block-message info"><a href="#" id="photocopy">Copy presentation to the lesson</a></div>');
+        $(".presentation-embed").prepend('<div class="side-message block-message info">To embed the presentation into the lesson <br /><a href="#" id="photocopy" class="btn">Click here</a><br /> or click on each slide to embed seperately</div>');
       });
     }
   });

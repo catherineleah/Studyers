@@ -10,7 +10,7 @@ function classResources(imageSrc, imageIndex){
   this.imageWrapper.className = "class-resources-image";
   this.imageWrapper.id = "image-wrapper-" + this.ID;
   this.image = document.createElement('img');
-  this.image.className = "resource-image span12";
+  this.image.className = "resource-image";
   this.image.src = imageSrc;
   var imageWidth = $("#text-editor").width()-5;
   this.image.width = imageWidth;
@@ -30,7 +30,7 @@ $(document).ready(function() {
     if ($("#get-resource") != null) {
       var rId = $("#get-resource").val();
       $(".presentation-embed").load("/class_resources/" + rId + " #resource-images", function(response, status, xhr) {
-        if (status == "error") {
+        if (status == "error" || $(".presentation-embed img").length == 0 ) {
           $(".presentation-embed").html("Can't find selected resource");
           return;
         }
@@ -38,6 +38,12 @@ $(document).ready(function() {
       });
     }
   });
+  $("#upload-resource").click(function(e) {
+    e.preventDefault();
+    $(".presentation-embed").load("/class_resources/new #upload-class_resource", function(response, status, xhr){
+      
+    });
+  })
   /*
     All slides
   */

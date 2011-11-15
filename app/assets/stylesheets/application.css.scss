@@ -52,6 +52,72 @@ a {
   }
 }
 
+.home-container {
+  max-width: 960px;
+  margin: 0px auto;
+  background: whiteSmoke;
+  
+  .hero-unit {
+    background-color:#f5f5f5;
+    margin-bottom:30px;
+    padding: 22px 60px;
+    -webkit-border-radius:6px;
+    -moz-border-radius:6px;
+    border-radius:6px;
+  
+    h1 {
+      margin-bottom:0;
+      font-size:60px;
+      line-height:1;
+      letter-spacing:-1px;
+    }
+    p {
+      font-size:18px;
+      font-weight:200;
+      line-height:27px;
+    }
+  }
+  .home-signin {
+    position: absolute;
+    top: 10px;
+    right: 267px;
+  }
+  
+  .home-signin-form {
+    position: absolute;
+    top: 30px;
+    right: 160px;
+    background: #E5E5E5;
+    padding: 3px;
+    border-radius: 6px;
+    width: 224px;
+    
+    .field {
+      margin: 5px;
+      
+      input {
+        width: 200px;
+      }
+    }
+    .remember {
+      float: left;
+      
+      #session_remember_me {
+        width: auto;
+      }
+    }
+    
+    .signin-button {
+      float: right;
+      margin-right: 10px;
+      
+      input.btn.primary {
+        margin-top: 0px;
+      }
+    }
+  }
+}
+
 .home-link{
   a {
     

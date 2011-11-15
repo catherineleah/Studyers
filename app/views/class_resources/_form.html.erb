@@ -16,7 +16,7 @@
     <%= f.text_field :title %>
   </div>
   <% if !@class_resource.id   %>
-    <%= f.submit "Upload File", :class => "btn primary", :name =>"edit" %>
+    <%= f.submit "Upload File", :class => "btn primary", :name =>"edit", :remote => true %>
   <% end %>
   <% if @class_resource.id %>
     <div class="field">

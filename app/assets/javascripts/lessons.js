@@ -2,6 +2,7 @@
 //= require Studyers.textEditor
 //= require Studyers.drawEditor
 //= require Studyers.graphEditor
+//= require Studyers.wikiFinder
 //= require Studyers.classResources
 
 /*
@@ -73,6 +74,12 @@ $(document).ready(function() {
 		var ID = uniqueId();
   	var graph = new graphEditor(ID, putAfter);
   });
+  
+  $(".wiki-after").live('click', function() {
+		var putAfter = $(this).attr('after');
+		var ID = uniqueId();
+  	var graph = new wikiFinder(ID, putAfter);
+  });
 
 	$("#add-draw").click(function() {
 		var ID = uniqueId();
@@ -105,4 +112,5 @@ $(document).ready(function() {
 			$("#lesson_title").val(today + "- auto title");
     }
   });
+  
 });

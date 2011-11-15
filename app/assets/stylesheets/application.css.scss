@@ -424,7 +424,9 @@ h2.lesson-list {
 #draw .colors #colorBlue {
   background: transparent url(images/blue-tool.png) no-repeat 50% 50%;
 }
-
+.graph-wrapper {
+  min-height: 100px;
+}
 #lesson_submit {
   clear: both;
   /*float: left;*/

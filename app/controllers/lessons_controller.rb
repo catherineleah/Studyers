@@ -36,10 +36,12 @@ class LessonsController < ApplicationController
 
     shared_ids = @lesson.shares.map(&:shared_ids) unless @lesson.shares.map(&:shared_ids).empty?
     @shared_ids = []
-    shared_ids.each do | id |
-      if !id.empty? 
-        @user = User.find(id, :select => "id, name")
-        @shared_ids.push(@user)
+    if !shared_ids.empty?
+      shared_ids.each do | id |
+        if !id.empty? 
+          @user = User.find(id, :select => "id, name")
+          @shared_ids.push(@user)
+        end
       end
     end
     @shared_ids = @shared_ids.to_json

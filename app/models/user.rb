@@ -1,8 +1,6 @@
 require 'digest/sha2'
 
 class User < ActiveRecord::Base
-  # Added friendship model Amistad
-  include Amistad::FriendModel
   
   validates :name, :presence => true
   

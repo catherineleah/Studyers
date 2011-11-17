@@ -34,26 +34,17 @@ class LessonsController < ApplicationController
     @notebook = current_user.notebooks.find(params[:notebook_id])
     @lesson =  @notebook.lessons.find(params[:id])
 
-    # THE ugliest way, but it's working 
-    # @TODO: Find a better, smarter way to work that out...
-    
-    shared = @lesson.shares.map(&:shared_ids).to_s unless @lesson.shares.map(&:shared_ids).empty?
-    if (shared)
-      shared["["] = ""
-      shared["]"] = ""
-      shared["\""] = ""
-      shared["\""] = ""
-    
-      shared_ids = shared.split(",")
-      #puts shared_ids
-      # probably the ugliest piece of code... but it's working
-      @shared_ids = []
-      shared_ids.each do | id |
+    shared_ids = @lesson.shares.map(&:shared_ids) unless @lesson.shares.map(&:shared_ids).empty?
+    @shared_ids = []
+    shared_ids.each do | id |
+      if !id.empty? 
         @user = User.find(id, :select => "id, name")
         @shared_ids.push(@user)
       end
-      @shared_ids = @shared_ids.to_json
     end
+    @shared_ids = @shared_ids.to_json
+    @shared_ids["["] =""
+    @shared_ids["]"] =""
   end
 
   # POST notebook/:id/lessons

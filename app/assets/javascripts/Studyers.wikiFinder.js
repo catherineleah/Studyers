@@ -1,42 +1,17 @@
-function wikiFinder(ID, putAfter) {
-  this.ID = ID;
-  this.containerDiv = document.createElement("div");
-  this.containerDiv.className = "wiki-container";
-  this.containerDiv.id = "wiki-container-" + this.ID;
-  if (putAfter) {
-    $(putAfter).after(this.containerDiv);
-    $(this.containerDiv).hide().show("slow");
-  }
-  else {
-    $("#text-editor").append(this.containerDiv);
-    $(this.containerDiv).hide().show("slow");
-  }
+$("#wiki-submit").live('click', function(e) {
+  e.preventDefault();
+  $(".pull-resource").hide();
+  $("#wiki-finder-results").addClass("loading");
+  $("#wiki-finder-results p, #wiki-finder-results a.wiki-read-more").remove();
+  $("#side-resources").show("slide", {direction: "right"});
+  $("#wiki-results").show("slide", {direction: "right"});
+  $("#text-editor").addClass("minified");
+  modifyCanvasAndImageWidth();
   
-  this.wikiForm = document.createElement("form");
-  this.wikiForm.className = "wiki-form dont-save";
-  this.wikiForm.id = "wiki-form-" + this.ID;
-  
-  this.containerDiv.appendChild(this.wikiForm);
-  
-  this.wikiDiv = document.createElement("div");
-  this.wikiDiv.className = "wiki-wrapper";
-  this.wikiDiv.id = "wiki-wrapper-" + this.ID;
-  
-  this.containerDiv.appendChild(this.wikiDiv);
-  
-  $("#wiki-form-" + this.ID).append('<label for="wiki-value">Search for a term in Wikipedia</label><input type="text" class="wiki-value" id="wiki-term-' + this.ID + '" autocomplete="off" />');
-  $("#wiki-form-" + this.ID).append('<div class="wiki-find btn" id="wiki-submit-'+ this.ID +'">Find on Wikipedia</div>');
-  
-  var submitDiv = document.getElementById("wiki-submit-" + this.ID);
-  //console.log(submitDiv);
-  submitDiv.addEventListener('click', function() {wikiFind(ID)}, false)
-  
-  $("#wiki-container-" + this.ID).after(buttonsAppend("#wiki-container-" + this.ID));
-}
-function wikiFind(ID) {
-  var title = $("#wiki-term-" + ID).val();
+  var title = $("#wiki-term-input").val();
   if (!title) {
-    $("#wiki-wrapper-" + ID).append("Please add a term to search on Wikipedia");
+    $("#wiki-finder-results").append("Please add a term to search on Wikipedia");
+    return;
   }
   var checkIfExists = false;
   
@@ -49,9 +24,8 @@ function wikiFind(ID) {
     },
     dataType:'jsonp',
     success: function(data, textStatus, jqXHR) {
-      console.log(data);
       if (data [1].length == 0) {
-        return $("#wiki-wrapper-" + ID).append("Sorry, I can't find that term on Wikipedia.");
+        return $("#wiki-finder-results").removeClass("loading").append("Sorry, I can't find that term on Wikipedia.");
       }
       title = title.replace(' ', '_');
       $.ajax({
@@ -65,16 +39,34 @@ function wikiFind(ID) {
       dataType:'jsonp',
       success: function(data) {
         wikipage = $("<div>"+data.parse.text['*']+"<div>").children('p:first');
+        wikipage.addClass("wiki-content");
         wikipage.find('sup').remove();
         wikipage.find('a').each(function() {
           $(this)
           .attr('href', 'http://en.wikipedia.org'+$(this).attr('href'))
           .attr('target','wikipedia');
         });
-        $("#wiki-wrapper-" + ID).append(wikipage);
-        $("#wiki-wrapper-" + ID).append("<a href='http://en.wikipedia.org/wiki/"+title+"' target='wikipedia'>Read more on Wikipedia</a>");
+        $("#wiki-finder-results").removeClass("loading");
+        $("#wiki-finder-results").append(wikipage);
+        $("#wiki-finder-results").append('<a class="wiki-read-more" href="http://en.wikipedia.org/wiki/'+title+'" target="wikipedia"">Read more on Wikipedia</a>');
+        $("#wiki-finder-results").append('<p><a href="#" class="btn" id="copy-wiki">Copy to the lesson</a></p>');
       }
       });
     }
   });
-}
+});
+
+$("#copy-wiki").live('click', function(e) {
+  e.preventDefault();
+  var wikiContent = $(this).parent().parent().find(".wiki-content");
+  var wikiReadMore = $(this).parent().parent().find(".wiki-read-more");
+  var text = new TextEditor();
+  text.showControls();
+  text.savedText(wikiContent);
+  text.savedText(wikiReadMore);
+  
+  $(this).remove();
+  $("#side-resources").hide("slide", {direction: "right"});
+  $("#text-editor").removeClass("minified");
+  modifyCanvasAndImageWidth();
+});

@@ -15,6 +15,11 @@
   <a class="resource btn" id="show-embed" href="#">+ lecturer presentation</a>
   <a class="resource btn" id="share-lesson" href="#">Share this lesson</a>
 </div>
+<div id="wiki-find-form">
+  <label for="wiki-value">Search on Wikipedia</label><br />
+  <input type="text" class="wiki-value" id="wiki-term-input" autocomplete="off" />
+  <a class="wiki-find btn" id="wiki-submit">Find</a>
+</div>
 <div id="side-resources">
   <div class="pull-resource" id="show-embed-form">
     <div class="block-message side-message info">
@@ -33,9 +38,14 @@
     <div class="block-message side-message info">
       <a class="close" href="#">×</a>
       <%= f.fields_for :shares do |builder| %>
-        <%= builder.label :shared_ids, "Type the user names you wish to share the lesson with:" %>
-        <%= builder.text_field :shared_ids, "data-pre" => @shared_ids %>
+        <%= builder.label :shared_token, "Type the user names you wish to share the lesson with:" %>
+        <%= builder.text_field :shared_token, "data-pre" => @shared_ids %>
       <% end %>
+    </div>
+  </div>
+  <div class="pull-resource" id="wiki-results">
+    <div class="block-message side-message info loading" id="wiki-finder-results">
+      <a class="close" href="#">×</a>
     </div>
   </div>
 </div>

@@ -1,4 +1,5 @@
 <p id="notice"><%= notice %></p>
+  <% if @notebooks.length > 0 %>
   <div id="notebooks">
     <% @notebooks.each_with_index do |notebook, key| %>
       <div class="notebook notebook-<%= key %>">
@@ -21,3 +22,10 @@
       </div>
     <% end %>  
   </div>
+  <% else %>
+  <div>
+    Welcome to Studyers<br />
+    It appears you don't have notebooks yet (notebooks are where you save all your class lessons).<br />
+    <%= link_to 'Click here to add your first notebook', new_notebook_path, :title => "Add a new notebook", :class => "btn small"%>
+  </div> 
+  <% end %>

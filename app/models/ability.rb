@@ -29,21 +29,8 @@ class Ability
       # If owner | if public | if friends & permission for friends.
       # THE ugliest way, but it's working 
       # @TODO: Find a better, smarter way to work that out...
-      shared = lesson.shares.map(&:shared_ids).to_json unless lesson.shares.map(&:shared_ids).empty?
-      if (shared)
-        shared["["] = ""
-        shared["]"] = ""
-        shared["\""] = ""
-        shared["\""] = ""
-
-        shared_ids = shared.split(",")
-      
-        # probably the ugliest piece of code... but it's working
-        
-        lesson.try(:user_id) == user.id || shared_ids.include?(user.id.to_s) 
-      else
-        lesson.try(:user_id) == user.id
-      end
+      shared_ids = lesson.shares.map(&:shared_ids).to_json unless lesson.shares.map(&:shared_ids).empty?  
+      lesson.try(:user_id) == user.id || shared_ids.include?(user.id.to_s) 
     end
     
     #can :manage, Lesson do |lesson|

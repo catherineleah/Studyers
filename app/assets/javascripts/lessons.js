@@ -35,9 +35,9 @@ $(document).ready(function() {
     modifyCanvasAndImageWidth();
   });
   
-  $("#lesson_shares_attributes_0_shared_ids").tokenInput("/users.json", {
+  $("#lesson_shares_attributes_0_shared_token").tokenInput("/users.json", {
     crossDomain: false,
-    prePopulate: $("#lesson_shares_attributes_0_shared_ids").data("pre"),
+    prePopulate: $("#lesson_shares_attributes_0_shared_token").data("pre"),
     theme: 'facebook' 
   });
   
@@ -75,12 +75,6 @@ $(document).ready(function() {
   	var graph = new graphEditor(ID, putAfter);
   });
   
-  $(".wiki-after").live('click', function() {
-		var putAfter = $(this).attr('after');
-		var ID = uniqueId();
-  	var graph = new wikiFinder(ID, putAfter);
-  });
-
 	$("#add-draw").click(function() {
 		var ID = uniqueId();
 		var draw = new DrawEditor(ID);

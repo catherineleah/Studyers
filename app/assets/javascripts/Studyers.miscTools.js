@@ -18,5 +18,5 @@ function modifyCanvasAndImageWidth() {
 }
 
 function buttonsAppend(afterID) {
-  return '<div class="dont-save text-after btn" after="'+ afterID +'">+ textarea</div><div class="dont-save draw-after btn" after="'+ afterID +'">+ drawpad</div><div class="dont-save graph-after btn" after="'+ afterID +'">+ graph</div><div class="dont-save wiki-after btn" after="'+ afterID +'">Find on Wikipedia</div>';
+  return '<div class="dont-save text-after btn" after="'+ afterID +'">+ textarea</div><div class="dont-save draw-after btn" after="'+ afterID +'">+ drawpad</div><div class="dont-save graph-after btn" after="'+ afterID +'">+ graph</div>';
 }

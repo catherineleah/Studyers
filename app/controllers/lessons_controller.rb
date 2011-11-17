@@ -36,7 +36,7 @@ class LessonsController < ApplicationController
 
     shared_ids = @lesson.shares.map(&:shared_ids) unless @lesson.shares.map(&:shared_ids).empty?
     @shared_ids = []
-    if !shared_ids.empty?
+    unless shared_ids.nil?
       shared_ids.each do | id |
         if !id.empty? 
           @user = User.find(id, :select => "id, name")

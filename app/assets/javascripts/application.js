@@ -22,3 +22,12 @@ $(document).ready(function() {
       
 
 });
+
+function exposeImages(ID) {
+  console.log(ID);
+  $("#upload-class_resource").remove();
+  $("#presentation-loader").remove();
+  $("#show-embed-form .side-message").show();
+  $("#show-embed-form .side-message #get-resource").val(ID);
+  $("#show-embed-form .side-message #fetch-resource").click();
+}

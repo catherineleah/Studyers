@@ -1,4 +1,23 @@
-<%= form_for(@class_resource) do |f| %>
+<style>
+  html {
+    overflow-y: hidden !important;
+  }
+  
+</style>
+<%= stylesheet_link_tag 'application' %>
+
+<%= javascript_include_tag 'application' %>
+
+<%= csrf_meta_tag %>
+<script>
+$(document).ready(function() {
+  $("#class_resource_submit").click(function() {
+    $(".edit_class_resource").css("opacity", "0.6");
+    $(".loading").show();
+  });
+});
+</script>
+<%= form_for(@class_resource, :html => {:multipart => true}) do |f| %>
   <% if @class_resource.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@class_resource.errors.count, "error") %> prohibited this class_resource from being saved:</h2>
@@ -10,21 +29,22 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
   <% if !@class_resource.id   %>
-    <%= f.submit "Upload File", :class => "btn primary", :name =>"edit", :remote => true %>
+    <%= f.submit "Upload File", :id => "continue-upload", :class => "btn primary", :name =>"edit", :remote => true %>
   <% end %>
   <% if @class_resource.id %>
+  <%= hidden_field_tag 'resource_id', @class_resource.id%>
+    <div class="field">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
     <div class="field">
       <%= f.label :presentation %>
       <%= f.file_field :presentation %>
     </div>
     <div class="">
-      <%= f.submit "Save", :class => "btn primary", :name =>"save" %>
+      <%= f.submit "Save", :class => "btn primary", :name =>"save", :id => "class_resource_submit" %>
     </div>
   <% end %>
 <% end %>
+ <div class="loading" style="display: none;">converting pdf</div>

@@ -7,11 +7,12 @@ function uniqueId() {
 
 function modifyCanvasAndImageWidth() {
   var newWidth = $("#text-editor").width();
-  var canvases = document.getElementsByTagName('canvas');
-  for (i = 0; i < canvases.length; i++) {
-    canvases[i].width = newWidth;
-  }
-  var images = $("#text-editor img");
+  /*bug with changing canvases width - it deletes drawn images*/
+  /*var canvases = document.getElementsByTagName('canvas');
+    for (i = 0; i < canvases.length; i++) {
+      canvases[i].width = newWidth;
+    }*/
+  var images = $("#text-editor img.resource-image");
   for (i = 0; i < images.length; i++) {
     images[i].width = newWidth;
   }

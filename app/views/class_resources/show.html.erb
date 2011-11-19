@@ -1,5 +1,10 @@
+<script>
+$(document).ready(function() {
+  window.parent.exposeImages($("#resource_id").text());
+});
+</script>
 <p id="notice"><%= notice %></p>
-
+<div id="resource_id" style="display:none;"><%= @class_resource.id %></div>
 
 <div class="file-link"><%= link_to "file", @class_resource.presentation.url %></div>
 <ul class="images media-grid" id="resource-images">

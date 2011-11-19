@@ -36,6 +36,7 @@ class ClassResourcesController < ApplicationController
   # GET /class_resources/1/edit
   def edit
     @class_resource = ClassResource.find(params[:id])
+    render :layout => false
   end
 
   # POST /class_resources

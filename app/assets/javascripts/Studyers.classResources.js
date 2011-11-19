@@ -34,16 +34,35 @@ $(document).ready(function() {
           $(".presentation-embed").html("Can't find selected resource");
           return;
         }
+        $(this).parent().find(".block-message").hide();
         $(".presentation-embed").prepend('<div class="side-message block-message info">To embed the presentation into the lesson <br /><a href="#" id="photocopy" class="btn">Click here</a><br /> or click on each slide to embed seperately</div>');
       });
     }
   });
   $("#upload-resource").click(function(e) {
     e.preventDefault();
-    $(".presentation-embed").load("/class_resources/new #upload-class_resource", function(response, status, xhr){
-      
+    $(this).parent().parent().hide();
+    $(".presentation-embed").load("/class_resources/new #upload-class_resource", function(response, status, xhr){});
+  });
+  
+  $("#continue-upload").live('click', function(e) {
+    e.preventDefault();
+    var postUrl = $(this).parent().attr("action");
+    
+    $.ajax({
+      type: "POST",
+      url: postUrl,
+      data: {
+        edit: "true"
+      },
+      success: function(data) {
+        
+        var resourceId = $(data).find("#resource_id").val();
+        $("#upload-class_resource").after('<iframe id="presentation-loader" class="side-message block-message info" src="/class_resources/'+resourceId+'/edit" frameborder="0"></iframe>');
+      }
     });
-  })
+  });
+  
   /*
     All slides
   */

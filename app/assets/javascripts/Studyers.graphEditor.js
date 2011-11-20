@@ -29,6 +29,7 @@ function graphEditor(ID, putAfter) {
   $("#graph-form-" + this.ID).append('<label for="graph-data">Input data:</label><input name="graph-data" id="graph-data-'+ this.ID +'" type="text" />');
   $("#graph-form-" + this.ID).append('<label for="graph-desc">Input labels:</label><input name="graph-desc" id="graph-desc-'+ this.ID +'" type="text" />');
   $("#graph-form-" + this.ID).append('<div class="graphus btn" id="submit-'+ this.ID +'">Create chart</div>');
+  $("#graph-form-" + this.ID).append('<div class="explain-graph">First choose chart type, then on the input field add numerical values in the format: 1,2,3 (no spaces) and in the label field add the corresponding labels in the format: a|b|c (no spaces)</div>');
   
   var submitDiv = document.getElementById("submit-" + this.ID);
   //console.log(submitDiv);

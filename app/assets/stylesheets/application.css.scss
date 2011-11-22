@@ -71,6 +71,10 @@ a {
       line-height:1;
       letter-spacing:-1px;
     }
+    
+    .home-image {
+      opacity: 0.2;
+    }
     p {
       font-size:18px;
       font-weight:200;
@@ -582,6 +586,10 @@ div.token-input-dropdown-facebook {
       border: 1px solid #ddd;
     }
   }
+}
+
+#presentation-loader {
+  z-index: 1000;
 }
 
 .class-resources-image .resource-image {

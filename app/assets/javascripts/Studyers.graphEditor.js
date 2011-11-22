@@ -25,7 +25,7 @@ function graphEditor(ID, putAfter) {
   
   this.containerDiv.appendChild(this.graphDiv);
   
-  $("#graph-form-" + this.ID).append('<label for="graph-type">Graph type:</label><select name="graph-type" id="graph-type-'+ this.ID +'"><option value="bvg">Vertical Bar</option><option value="bhg">Horizontal Bar</option><option value="p">Pie chart</option><option value="lc">Line chart</option></select>');
+  $("#graph-form-" + this.ID).append('<label for="graph-type">chart type:</label><select name="graph-type" id="graph-type-'+ this.ID +'"><option value="bvg">Vertical Bar</option><option value="bhg">Horizontal Bar</option><option value="p">Pie chart</option><option value="lc">Line chart</option></select>');
   $("#graph-form-" + this.ID).append('<label for="graph-data">Input data:</label><input name="graph-data" id="graph-data-'+ this.ID +'" type="text" />');
   $("#graph-form-" + this.ID).append('<label for="graph-desc">Input labels:</label><input name="graph-desc" id="graph-desc-'+ this.ID +'" type="text" />');
   $("#graph-form-" + this.ID).append('<div class="graphus btn" id="submit-'+ this.ID +'">Create chart</div>');

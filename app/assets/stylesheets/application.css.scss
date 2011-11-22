@@ -165,6 +165,7 @@ header {
     clear:both;
     padding-top: 8px;
   }
+  
   h2.notebooks-title {
     float: left;
     margin: 10px 0px;
@@ -302,23 +303,11 @@ label {
   float: none;
 }
 
-#home-wrapper #cycle {
-  margin: 0px auto;
-  width: 750px;
-}
-
 #home-wrapper .paragraph img.image {
   width: 400px;
   border: 1px solid #efefef;
   border-radius: 6px;
   float: left
-}
-
-#home-wrapper .paragraph div.text {
-  float: left;
-  font: 36px "Love Ya Like A Sister";
-  margin: 5px 20px;
-  width: 300px;
 }
 
 h1 {

@@ -1,4 +1,8 @@
 /*
+ * @package: Studyers core JS
+ * Misc. tools that serve lessons classes
+ */
+/*
 	Create a unique id according to timestamp.
 */
 function uniqueId() {

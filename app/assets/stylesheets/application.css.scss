@@ -52,6 +52,7 @@ a {
   }
 }
 
+
 .home-container {
   max-width: 960px;
   margin: 0px auto;
@@ -276,7 +277,7 @@ header {
   
   .edit-notebook, .delete-notebook, .edit-lesson, .delete-lesson {
     float: left;
-    margin: 3px;
+    margin: 0px 3px;
   }
 }
 
@@ -445,7 +446,6 @@ h2.lesson-list {
   background: #fff url(images/clear-tool.png) no-repeat 50% 50%;
 }
 
-
 /* canvas */
 .canvas-container { position: relative; }
 .imageView { border: 1px solid #000; }
@@ -456,14 +456,14 @@ h2.lesson-list {
   border: both;
   float: left;
   width: 60%;
-}
-
-#write #copy-image {
-  float: right;
-  margin-top: -20px;
-  background: transparent url(images/copy-tool.png) no-repeat 50% 50%;
-  width: 56px;
-  height: 36px;
+  
+  #copy-image {
+    float: right;
+    margin-top: -20px;
+    background: transparent url(images/copy-tool.png) no-repeat 50% 50%;
+    width: 56px;
+    height: 36px;
+  }
 }
 
 #text-editor.minified {

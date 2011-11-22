@@ -20,7 +20,6 @@ $(document).ready(function() {
 
 });
 
-
 function exposeImages(ID) {
   $("#upload-class_resource").remove();
   $("#presentation-loader").remove();

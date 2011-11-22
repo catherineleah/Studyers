@@ -484,33 +484,34 @@ h2.lesson-list {
   float: left;
   margin-left: 10px;
   position: relative;
+  
+  .colors {
+    position: absolute;
+    right: -48px;
+    
+    .color {
+      width: 32px;
+      height: 32px;
+    }
+    
+    #colorGreen {
+      background: transparent url(images/green-tool.png) no-repeat 50% 50%;
+    }
+    
+    #colorBlack {
+      background: transparent url(images/black-tool.png) no-repeat 50% 50%;
+    }
+    
+    #colorYellow {
+      background: transparent url(images/yellow-tool.png) no-repeat 50% 50%;
+    }
+    
+    #colorBlue {
+      background: transparent url(images/blue-tool.png) no-repeat 50% 50%;
+    }
+  }
 }
-
-#draw .colors {
-  position: absolute;
-  right: -48px;
-}
-
-#draw .colors .color {
-  width: 32px;
-  height: 32px;
-}
-
-#draw .colors #colorGreen {
-  background: transparent url(images/green-tool.png) no-repeat 50% 50%;
-}
-
-#draw .colors #colorBlack {
-  background: transparent url(images/black-tool.png) no-repeat 50% 50%;
-}
-
-#draw .colors #colorYellow {
-  background: transparent url(images/yellow-tool.png) no-repeat 50% 50%;
-} 
-
-#draw .colors #colorBlue {
-  background: transparent url(images/blue-tool.png) no-repeat 50% 50%;
-}
+ 
 .graph-wrapper {
   min-height: 100px;
 }

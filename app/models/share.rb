@@ -4,7 +4,7 @@ class Share < ActiveRecord::Base
   
   attr_reader :shared_token
   serialize :shared_ids
-  
+  # @Todo: save each seperately #
   def shared_token=(ids)
     self.shared_ids = ids.split(",")
   end

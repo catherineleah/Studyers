@@ -13,13 +13,13 @@ $(document).ready(function() {
      $(this).next(".attached-image").toggle("slow");
    });
 
-  
   setTimeout(function() {
-      $('div.alert-message').fadeOut('slow');
-    }, 7000);
+    $('div.alert-message').fadeOut('slow');
+  }, 7000);
       
 
 });
+
 
 function exposeImages(ID) {
   $("#upload-class_resource").remove();

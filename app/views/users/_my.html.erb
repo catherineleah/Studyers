@@ -8,7 +8,7 @@
         </h4>
         <%= link_to "+ Create a new lesson", new_notebook_lesson_path(notebook), :class => "new-lesson btn primary" %>
         <div class="notebook-lessons">
-          <% @lessons = notebook.lessons.limit(3).order("updated_at DESC") %>
+          <% @lessons = notebook.lessons.order("updated_at DESC") %>
           <% if @lessons.size > 0 %>
             <div class="lessons">
               <% @lessons.each do |lesson| %>

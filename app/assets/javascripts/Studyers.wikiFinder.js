@@ -1,7 +1,7 @@
 $("#wiki-submit").live('click', function(e) {
   var title = $("#wiki-term-input").val();
   if (!title) {
-    $(this).after('<span class="empty-notice">Please add a term to search on Wikipedia</span>');
+    $(this).after('<span class="empty-notice label warning">Please add a term to search on Wikipedia</span>');
     setTimeout(function() {
       $(".empty-notice").fadeOut('slow');
     }, 3000);

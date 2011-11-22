@@ -2,8 +2,6 @@
 //= require jquery-ui
 //= require jquery_ujs  
 //= require_self  
-//= require bootstrap-dropdown
-//= require jquery.cycle
 
 $(document).ready(function() {
   

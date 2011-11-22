@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
 <div class="home-container">
   <div class="hero-unit">
+    <% flash.each do |key, value| %>
+      <div class="alert-message <%= key %>"><%= value %></div>
+    <% end %>
     <h1>Sign in</h1>
     <%= form_for(:session, :url => sessions_path) do |f| %>
       <div class="field">

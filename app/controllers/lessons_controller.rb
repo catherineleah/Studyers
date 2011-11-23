@@ -43,10 +43,12 @@ class LessonsController < ApplicationController
           @shared_ids.push(@user)
         end
       end
+      @shared_ids = @shared_ids.to_json
+      @shared_ids["["] =""
+      @shared_ids["]"] =""
+    else
+      @lesson.shares.build
     end
-    @shared_ids = @shared_ids.to_json
-    @shared_ids["["] =""
-    @shared_ids["]"] =""
   end
 
   # POST notebook/:id/lessons

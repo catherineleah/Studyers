@@ -58,7 +58,7 @@ function submitGraph(ID) {
   var graphImage = new Image();
   graphImage.id = "image-graph-" + ID;
   graphImage.src = "http://chart.apis.google.com/chart?chxt=y&chds="+smallest+","+highest+"&chxr=0,"+smallest+","+highest+"&chbh=a&chs=600x350&cht="+type+"&chd=t:"+data+"&chl="+labels+"";
-  $("#graph-wrapper-" + ID).append('<div class="graph-remove">remove graph</div>');
+  $("#graph-wrapper-" + ID).append('<div class="graph-remove dont-save">remove graph</div>');
   $("#graph-wrapper-" + ID).append(graphImage);
 /*  $("#graph-form-" + ID).remove();*/
 }

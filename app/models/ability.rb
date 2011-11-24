@@ -29,7 +29,7 @@ class Ability
       # If owner | if public | if friends & permission for friends.
       # THE ugliest way, but it's working 
       # @TODO: Find a better, smarter way to work that out...
-      shared_ids = lesson.shares.map(&:shared_ids).to_json unless lesson.shares.map(&:shared_ids).empty?  
+      shared_ids = lesson.shares.map(&:shared_ids).to_json
       lesson.try(:user_id) == user.id || shared_ids.include?(user.id.to_s) 
     end
     

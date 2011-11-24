@@ -12,6 +12,16 @@
 */
 
 $(document).ready(function() {
+  
+  $(".remove-object").live('click', function(e) {
+    $(this).parent().remove();
+  });
+  
+  $(".graph-remove").live('click', function(e) {
+    $(this).next("img").remove();
+    $(this).remove();
+  })
+  
   $(".resource").live('click', function(e) {
     e.preventDefault();
     $(".pull-resource").hide();
@@ -20,15 +30,9 @@ $(document).ready(function() {
     $("#" + option).show("slide", {direction: "right"});
     $("#text-editor").addClass("minified");
     modifyCanvasAndImageWidth();
-  },
-  function(e){
-    e.preventDefault();
-    $("#side-resources").hide("slide", {direction: "right"});
-    $("#text-editor").removeClass("minified");
-    modifyCanvasAndImageWidth();
   });
   
-  $(".pull-resource .close").live('click', function(e) {
+  $(".pull-resource .close, .pull-resource .close-btn").live('click', function(e) {
     e.preventDefault();
     $("#side-resources").hide("slide", {direction: "right"});
     $("#text-editor").removeClass("minified");
@@ -38,7 +42,8 @@ $(document).ready(function() {
   $("#lesson_shares_attributes_0_shared_token").tokenInput("/users.json", {
     crossDomain: false,
     prePopulate: $("#lesson_shares_attributes_0_shared_token").data("pre"),
-    theme: 'facebook' 
+    theme: 'facebook',
+    hintText: 'Type in friends names...'
   });
   
 	var lessonText = $("#lesson_body").val();
@@ -95,8 +100,10 @@ $(document).ready(function() {
 			container.insertBefore(img);
 		}
 		$(".canvas-container canvas").remove();
-		$(".canvas-container img").addClass("SavedImage")
+		$(".canvas-container img").addClass("SavedImage");
+    $(".field-container").removeClass();
 		$(".text").removeClass().addClass('SavedText');
+    $(".SavedText div:empty").remove();
     var textSave = $("#text-editor").html();
 		//console.log(textSave);
     $("#lesson_body").val(textSave);

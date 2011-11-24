@@ -135,12 +135,7 @@ GEM
     sprockets (2.1.2)
       hike (~> 1.2)
       rack (~> 1.0)
-<<<<<<< HEAD
       tilt (~> 1.1, != 1.3.0)
-    spruz (0.2.13)
-=======
-      tilt (!= 1.3.0, ~> 1.1)
->>>>>>> de79dd6502196a113cce72d8d3824fd65e7c48c5
     sqlite3 (1.3.4)
     sqlite3-ruby (1.3.3)
       sqlite3 (>= 1.3.3)

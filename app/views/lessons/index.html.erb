@@ -12,7 +12,7 @@
         <div class="lesson-date"><span>Created at:</span> <%= lesson.created_at %></div>
         <% if can? :update, lesson %>
           <div class="edit-lesson"><%= link_to 'Edit this lesson', edit_notebook_lesson_path(@notebook, lesson), :class =>"btn info", :title => "Edit lesson"  %></div>
-          <div class="delete-lesson"><%= link_to '- Delete this lesson', [@notebook, lesson], :class =>"btn delete-lesson", :confirm => 'Are you sure?', :method => :delete, :remote => true, :title => "Delete lesson" %></div>
+          <div class="delete-lesson"><%= link_to '- Delete this lesson', [@notebook, lesson], :class =>"btn delete-lesson", :confirm => 'Are you sure you want to delete this lesson?', :method => :delete, :remote => true, :title => "Delete lesson" %></div>
         <% end %>
       </div>
     <% end %>

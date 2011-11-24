@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0'
+gem 'rails', '>=3.1.0'
 
 gem 'therubyracer'
 gem 'sass-rails'
@@ -48,7 +48,7 @@ gem "docsplit"
 
 
 # Test environment
-gem "rspec-rails", :group => [:test, :development]
+gem "rspec-rails", ">= 2.7.0", :group => [:test, :development]
 
 group :test do
 	gem "factory_girl_rails"

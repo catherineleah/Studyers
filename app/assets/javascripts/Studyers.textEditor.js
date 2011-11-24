@@ -5,11 +5,10 @@
 function TextEditor(putAfter) {
   this.ID = uniqueId();
   this.textWrapper = document.createElement("div");
-  this.textWrapper.className = "text-wrapper";
+  this.textWrapper.className = "text-wrapper field-container";
   this.textWrapper.id = "wrapper-" + this.ID;
   this.textDiv = document.createElement("div");
-  this.textDiv.contentEditable="true";
-    
+  this.textDiv.contentEditable="true"; 
   this.textDiv.className="text text_" + this.ID;
   this.textDiv.id = "text-" + this.ID;
   this.textWrapper.appendChild(this.textDiv);
@@ -28,7 +27,7 @@ function TextEditor(putAfter) {
 */
 TextEditor.prototype.showControls = function(){
   $("#text-" + this.ID).before('<div class="editor-buttons buttons" id="buttons-'+this.ID+'"><input id="bold" class="edit-buttons" value="B" type="button" /><input id="italic" class="edit-buttons" value="I" type="button" /><input id="underline" class="edit-buttons" value="U" type="button" /><input id="hilitecolor" class="edit-buttons" attribute="yellow" value="hilite yellow" type="button" /><input id="hilitecolor" class="edit-buttons" attribute="#659b41" value="hilite green" type="button" /><input id="insertunorderedlist" class="edit-buttons" value="List" type="button" /><input id="insertorderedlist" class="edit-buttons" value="Numbered List" type="button" /><input id="increasefontsize" class="edit-buttons" value="A+" type="button"  /><input id="decreasefontsize" class="edit-buttons" value="A-" type="button"  /></div>');
-  $("#text-" + this.ID).after(buttonsAppend("#wrapper-" + this.ID));
+  $("#text-" + this.ID).after(buttonsAppend("#wrapper-" + this.ID, 'textarea'));
   /*
   */
   $('#buttons-' + this.ID + ' .edit-buttons').click(function() {

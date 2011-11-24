@@ -4,11 +4,12 @@ $("#wiki-submit").live('click', function(e) {
     $(this).after('<span class="empty-notice label warning">Please add a term to search on Wikipedia</span>');
     setTimeout(function() {
       $(".empty-notice").fadeOut('slow');
-    }, 3000);
+    }, 5000);
     return;
   }
   e.preventDefault();
   $(".pull-resource").hide();
+  $("#wiki-finder-results #not-found").remove();
   $("#wiki-finder-results").addClass("loading");
   $("#wiki-finder-results p, #wiki-finder-results a.wiki-read-more").remove();
   $("#side-resources").show("slide", {direction: "right"});
@@ -16,11 +17,6 @@ $("#wiki-submit").live('click', function(e) {
   $("#text-editor").addClass("minified");
   modifyCanvasAndImageWidth();
   
-  var title = $("#wiki-term-input").val();
-  if (!title) {
-    $("#wiki-finder-results").append("Please add a term to search on Wikipedia");
-    return;
-  }
   var checkIfExists = false;
   
   $.ajax({
@@ -33,7 +29,7 @@ $("#wiki-submit").live('click', function(e) {
     dataType:'jsonp',
     success: function(data, textStatus, jqXHR) {
       if (data [1].length == 0) {
-        return $("#wiki-finder-results").removeClass("loading").append("Sorry, I can't find that term on Wikipedia.");
+        return $("#wiki-finder-results").removeClass("loading").append('<span class"label" id="not-found">Sorry, I can\'t find that term on Wikipedia.</span>');
       }
       title = title.replace(' ', '_');
       $.ajax({
@@ -55,6 +51,7 @@ $("#wiki-submit").live('click', function(e) {
           .attr('target','wikipedia');
         });
         $("#wiki-finder-results").removeClass("loading");
+        $("#wiki-finder-results #not-found").remove();
         $("#wiki-finder-results").append(wikipage);
         $("#wiki-finder-results").append('<a class="wiki-read-more" href="http://en.wikipedia.org/wiki/'+title+'" target="wikipedia"">Read more on Wikipedia</a>');
         $("#wiki-finder-results").append('<p><a href="#" class="btn" id="copy-wiki">Copy to the lesson</a></p>');

@@ -22,6 +22,6 @@ function modifyCanvasAndImageWidth() {
   }
 }
 
-function buttonsAppend(afterID) {
-  return '<div class="dont-save text-after btn" after="'+ afterID +'">+ textarea</div><div class="dont-save draw-after btn" after="'+ afterID +'">+ drawpad</div><div class="dont-save graph-after btn" after="'+ afterID +'">+ graph</div>';
+function buttonsAppend(afterID, type) {
+  return '<div class="add dont-save text-after btn info" after="'+ afterID +'">+ textarea</div><div class="add dont-save draw-after btn info" after="'+ afterID +'">+ drawpad</div><div class="add dont-save graph-after btn info" after="'+ afterID +'">+ graph</div><div class="add dont-save remove-object btn" after="'+ afterID +'">- remove this '+ type +'</div>';
 }

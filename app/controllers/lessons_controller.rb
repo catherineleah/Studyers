@@ -26,6 +26,9 @@ class LessonsController < ApplicationController
     @user = current_user
     @lesson = Lesson.new
     @lesson.shares.build
+    
+    # Start of work on fields instead of bulk lesson body
+    #@lesson.contents.build
   end
 
   # GET notebook/:id/lessons/1/edit
@@ -33,7 +36,7 @@ class LessonsController < ApplicationController
     @user = current_user
     @notebook = current_user.notebooks.find(params[:notebook_id])
     @lesson =  @notebook.lessons.find(params[:id])
-
+    
     shared_ids = @lesson.shares.map(&:shared_ids) unless @lesson.shares.map(&:shared_ids).empty?
     @shared_ids = []
     unless shared_ids.nil?
@@ -49,6 +52,11 @@ class LessonsController < ApplicationController
     else
       @lesson.shares.build
     end
+    
+    
+    #if @lesson.contents.empty?
+    #  @lesson.contents.build
+    #end
   end
 
   # POST notebook/:id/lessons

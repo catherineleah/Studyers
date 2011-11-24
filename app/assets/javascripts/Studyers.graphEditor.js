@@ -2,7 +2,7 @@ function graphEditor(ID, putAfter) {
   this.ID = ID;
   //DrawEditor.call(this, ID, putAfter);
   this.containerDiv = document.createElement("div");
-  this.containerDiv.className = "graph-container";
+  this.containerDiv.className = "graph-container field-container";
   this.containerDiv.id = "graph-container-" + this.ID;
   if (putAfter) {
     $(putAfter).after(this.containerDiv);
@@ -35,7 +35,7 @@ function graphEditor(ID, putAfter) {
   //console.log(submitDiv);
   submitDiv.addEventListener('click', function() {submitGraph(ID)}, false)
   
-  $("#graph-container-" + this.ID).after(buttonsAppend("#graph-container-" + this.ID));
+  $("#graph-wrapper-" + this.ID).after(buttonsAppend("#graph-container-" + this.ID, 'charts'));
 }
 function submitGraph(ID) {
   var type = $("#graph-type-" + ID).val();
@@ -58,7 +58,7 @@ function submitGraph(ID) {
   var graphImage = new Image();
   graphImage.id = "image-graph-" + ID;
   graphImage.src = "http://chart.apis.google.com/chart?chxt=y&chds="+smallest+","+highest+"&chxr=0,"+smallest+","+highest+"&chbh=a&chs=600x350&cht="+type+"&chd=t:"+data+"&chl="+labels+"";
-  
+  $("#graph-wrapper-" + ID).append('<div class="graph-remove">remove graph</div>');
   $("#graph-wrapper-" + ID).append(graphImage);
 /*  $("#graph-form-" + ID).remove();*/
 }

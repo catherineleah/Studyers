@@ -41,6 +41,8 @@
         <%= builder.label :shared_token, "Type the user names you wish to share the lesson with:" %>
         <%= builder.text_field :shared_token, "data-pre" => @shared_ids %>
       <% end %>
+      <br />
+      <a class="close-btn btn small" href="#">Done</a>
     </div>
   </div>
   <div class="pull-resource" id="wiki-results">
@@ -55,7 +57,10 @@
   </div>
   <div class="field">
     <%= f.text_area :body%>
-  </div>    
+  </div> 
+  <%# f.fields_for :contents do |build| %>
+    <%# render 'content_fields', :f => build %>
+  <%# end %>
   <div class="field">
     <%= f.submit :id => "lesson_submit", :class => "btn primary" %>
   </div>

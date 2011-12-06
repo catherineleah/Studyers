@@ -46,7 +46,7 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
   end
-
+  
   # POST /users
   # POST /users.xml
   def create
@@ -100,5 +100,5 @@ class UsersController < ApplicationController
     def admin_user
       redirect_to(root_path, :notice => "We are in alpha mode and can't create new users yet") unless current_user.admin?
     end
-  
+    
 end

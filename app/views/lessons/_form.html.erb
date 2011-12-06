@@ -37,10 +37,13 @@
   <div class="pull-resource" id="share-lesson-form">
     <div class="block-message side-message info">
       <a class="close" href="#">×</a>
-      <%= f.fields_for :shares do |builder| %>
-        <%= builder.label :shared_token, "Type the user names you wish to share the lesson with:" %>
-        <%= builder.text_field :shared_token, "data-pre" => @shared_ids %>
-      <% end %>
+      <%# f.fields_for :shares do |builder| %>
+        <%# builder.label :shared_token, "Type the user names you wish to share the lesson with:" %>
+        <%# builder.text_field :shared_token, "data-pre" => @shared_ids %>
+      <%# end %>
+      <%# Ugly hack until we find a way to add alway only one (id=0) text field. #%>
+      <label for="lesson_shares_attributes_0_shared_token">Type the user names you wish to share the lesson with:</label>
+      <input data-pre="<%= @shared_ids %>" id="lesson_shares_attributes_0_shared_token" name="lesson[shares_attributes][0][shared_token]" size="30" type="text" style="display: none; ">
       <br />
       <a class="close-btn btn small" href="#">Done</a>
     </div>
@@ -58,9 +61,6 @@
   <div class="field">
     <%= f.text_area :body%>
   </div> 
-  <%# f.fields_for :contents do |build| %>
-    <%# render 'content_fields', :f => build %>
-  <%# end %>
   <div class="field">
     <%= f.submit :id => "lesson_submit", :class => "btn primary" %>
   </div>

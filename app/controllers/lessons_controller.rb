@@ -2,7 +2,7 @@ class LessonsController < ApplicationController
   # cancan authorize
   load_and_authorize_resource
   
-  before_filter :authenticate, :only => [:index, :show, :edit, :update, :destroy]
+  before_filter :authenticate, :only => [:index, :show, :edit, :update, :destroy, :shared]
     
   before_filter :find_notebook, :only => [:new]
   
@@ -19,6 +19,7 @@ class LessonsController < ApplicationController
     @user = current_user
     @notebook = Notebook.find(params[:notebook_id])
     @lesson =  @notebook.lessons.find(params[:id])
+    @author = User.find(@lesson.user_id)
   end
 
   # GET notebook/:id/lessons/new
@@ -37,26 +38,21 @@ class LessonsController < ApplicationController
     @notebook = current_user.notebooks.find(params[:notebook_id])
     @lesson =  @notebook.lessons.find(params[:id])
     
-    shared_ids = @lesson.shares.map(&:shared_ids) unless @lesson.shares.map(&:shared_ids).empty?
+    shared_ids = []
+    shared_ids = @lesson.shares.where("lesson_id = ?", @lesson.id)
     @shared_ids = []
     unless shared_ids.nil?
       shared_ids.each do | id |
-        if !id.empty? 
-          @user = User.find(id, :select => "id, name")
+        if !id[:shared_ids].empty? 
+          @user = User.find(id[:shared_ids], :select => "id, name")
           @shared_ids.push(@user)
         end
       end
       @shared_ids = @shared_ids.to_json
-      @shared_ids["["] =""
-      @shared_ids["]"] =""
     else
       @lesson.shares.build
     end
-    
-    
-    #if @lesson.contents.empty?
-    #  @lesson.contents.build
-    #end
+    @lesson.shares.build
   end
 
   # POST notebook/:id/lessons
@@ -64,7 +60,9 @@ class LessonsController < ApplicationController
     @notebook = current_user.notebooks.find(params[:notebook_id])
     @lesson =  @notebook.lessons.build(params[:lesson])
     @lesson.user_id = @notebook.user_id
-
+    @ids = params[:lesson][:shares_attributes]['0'][:shared_token].split(',')
+    @lesson.build_shares_from_list @ids
+    
     if @lesson.save
       flash[:success] ="Saved lesson successfully"
       redirect_to notebook_lessons_path
@@ -77,6 +75,9 @@ class LessonsController < ApplicationController
   def update
     @notebook = current_user.notebooks.find(params[:notebook_id])
     @lesson = @notebook.lessons.find(params[:id])
+    Share.destroy(@lesson.shares)
+    @ids = params[:lesson][:shares_attributes]['0'][:shared_token].split(',')
+    @lesson.build_shares_from_list @ids
     if @lesson.update_attributes(params[:lesson])
       flash[:success] = 'Lesson was successfully updated.'
       redirect_to notebook_lessons_path
@@ -99,6 +100,12 @@ class LessonsController < ApplicationController
     end
   end
   
+  def shared
+    @user = current_user
+    @shared = shared_lesson @user.id
+  end
+  
+  
   protected
     ##
     # Make sure the notebook is picked when creating a new lesson
@@ -106,5 +113,22 @@ class LessonsController < ApplicationController
     def find_notebook
       @notebook = current_user.notebooks.find(params[:notebook_id])
     end
+    
+  private
+  
+    def shared_lesson(user)
+      lessons = Array.new { Hash.new }
+      l = Hash.new
+      shared = Share.where("shared_ids = ?", user)
+      shared.each do |share|
+        lesson = Lesson.find(share[:lesson_id])
+        notebook = Notebook.find(lesson.notebook_id)
+        user = User.find(lesson.user_id)
+        l = { lesson.title => notebook_lesson_path(lesson.notebook_id, lesson.id) }, { notebook.name => notebook_lessons_path(notebook.id) }, { user.name => user_path(user.id) }
+        lessons << l
+      end
+      return lessons
+    end
+    
     
 end

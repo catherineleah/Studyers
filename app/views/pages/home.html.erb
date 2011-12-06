@@ -1,31 +1,28 @@
-<div class="home-container">
-  <div class="hero-unit">
-    <p id="notice"><%= notice %></p>
-    <h1>Studyers</h1>
-    <p class="home-text">
-      Easy and fun way to take notes in class. <br />
-      Share in and beyond the individual classroom setting.<br />
-      Collaborative learning.<br />
-    </p>
-    <img class="home-image" src="/images/Fotolia_23624870_S.jpg" width="400" />
-    <p class="home-text"><span class="bolder"><%= @users_count %></span> users, who took <span class="bolder"><%= @lessons_count %></span> lessons in <span class="bolder"><%= @notebooks_count %></span> notebooks and shared them <span class="bolder"><%= @share_count %></span> times </div>
-  </p>
-  <div class="home-signin">Alpha users sign in</div>
+<div id="top-home">
+  <div id="splash">
+    <span class="huge">Studyers</span>
+    (Coming in winter semester)
+  </div>
+  Invitation users, sign in: <br />
   <%= form_for(:session, :url => sessions_path, :html => {:class => "home-signin-form"}) do |f| %>
     <div class="field">
-      <%= f.label :email %><br />
-      <%= f.text_field :email, :class => "email-field" %>
+      <%= f.label :email %>
+      <%= f.email_field :email, :class => "email-field" %>
     </div>
     <div class="field">
-      <%= f.label :password %><br />
+      <%= f.label :password %>
       <%= f.password_field :password, :class => "passwd-field" %>
     </div>
-  	<div class="field remember">
+    <div class="field remember">
       <%= f.check_box :remember_me %>
       <%= f.label "remember me?" %>
     </div>
     <div class="signin-button">
       <%= f.submit "Sign in", :class => "btn primary" %>
     </div>
-  <% end %>
+  <% end %> 
 </div>
+
+
+
+  

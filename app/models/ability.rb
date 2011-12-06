@@ -27,9 +27,8 @@ class Ability
     can :read, Lesson do |lesson|
       @user = User.find(lesson.try(:user_id))
       # If owner | if public | if friends & permission for friends.
-      # THE ugliest way, but it's working 
-      # @TODO: Find a better, smarter way to work that out...
-      shared_ids = lesson.shares.map(&:shared_ids).to_json
+      shared_ids = []
+      shared_ids = Share.where("lesson_id = ?", lesson.id).map(&:shared_ids)
       lesson.try(:user_id) == user.id || shared_ids.include?(user.id.to_s) 
     end
     

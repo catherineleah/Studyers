@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+<h4> List of lessons that are shared with you </h4>
+<% if @shared.length > 0 %>
+  <div id="notebooks">
+  <div class="lessons">
+  <% @shared.each do |lesson, notebook, user| %>
+    <div class="lesson">
+      <% lesson.each do |title, url| %>
+        <%= link_to title, url %>
+      <% end %>
+       from notebook: 
+      <% notebook.each do |name, url| %>
+        <%= link_to name, url %>
+      <% end %>
+       authored by:
+      <% user.each do |name, url| %>
+        <%= link_to name, url %>
+      <% end %>
+    </div>
+  <% end %>
+  </div>
+  </div>
+<% else %>
+
+<% end %>

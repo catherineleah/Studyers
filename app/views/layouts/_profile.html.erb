@@ -7,9 +7,8 @@
 <div class="user-info"><%= link_to current_user.name, profile_path %></div>
 
 <div class="notebooks" id="side-notebooks">
-  <h2 class="notebooks-title"><%= link_to "Notebooks", notebooks_path %></h2>
+  <h2 class="notebooks-title side-links"><%= link_to "Notebooks", notebooks_path %></h2>
   <div class="add-new"><%= link_to '+ New notebook', new_notebook_path, :title => "Add a new notebook", :class => "btn small"%></div>
-  <% user_notebooks.each do |notebook| %>
-    <div class="side-notebook"><%= link_to notebook.name, notebook_lessons_path(notebook), :class => current_class?(notebook_lessons_path(notebook)) %></div>
-  <% end %>
+  <h2 class="lessons-shared side-links"><%= link_to "Lessons shared with me", lessons_shared_path %></h2>
+  <h2 class="users-path side-links"><%= link_to "Users on Studyers", users_path %></h2>
 </div>

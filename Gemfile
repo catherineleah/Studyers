@@ -12,12 +12,9 @@ group :development, :test do
   gem 'sqlite3'
 end
 
-#Deploy in Heroku
-#gem "heroku"
-#group :production do
-#  gem 'pg'
-#  gem 'therubyracer-heroku', '0.8.1.pre3'
-#end
+gem 'mysql'
+gem 'yaml_db'
+
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
 

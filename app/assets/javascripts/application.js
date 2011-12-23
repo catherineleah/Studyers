@@ -1,12 +1,14 @@
 //= require jquery  
 //= require jquery-ui
-//= require jquery_ujs  
+//= require jquery_ujs
+//= require jquery.poshytip
+//= require jquery.watermark
 //= require_self  
 
 $(document).ready(function() {
   
-  $('.delete-lesson, .delete-notebook').bind('ajax:success', function() {  
-      $(this).parent().hide("slow");  
+  $('.del-lesson, .del-notebook').bind('ajax:success', function() {  
+      $(this).parent().parent().parent().hide("slow");  
   });
   
    $(".show-image").click(function() {
@@ -17,7 +19,10 @@ $(document).ready(function() {
     $('div.alert-message').fadeOut('slow');
   }, 7000);
       
-
+  $("#show-embed, #share-lesson").poshytip();
+  
+  $("#wiki-term-input").watermark("Search on Wikipedia");
+  $("#lesson_title").watermark("Lesson title");
 });
 
 function exposeImages(ID) {
@@ -27,3 +32,4 @@ function exposeImages(ID) {
   $("#show-embed-form .side-message #get-resource").val(ID);
   $("#show-embed-form .side-message #fetch-resource").click();
 }
+

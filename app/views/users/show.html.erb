@@ -1,7 +1,15 @@
-<div id="profile" class="row">
+<div class="banner profile">
+  <div class="container">
+    <h2>Profile</h2>
+  </div>
+</div>
+<div id="profile" class="container">
+  <p id="notice"><%= notice %></p>
   <% if current_user?(@user) %>
+    <%= render 'layouts/profile' %>
     <%= render 'my' %>
   <% else %>
+    <%= render 'layouts/profile' %>
     <%= render 'user' %>
   <% end %>
 </div>

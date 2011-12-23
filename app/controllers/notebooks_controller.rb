@@ -5,7 +5,7 @@ class NotebooksController < ApplicationController
   # GET /notebooks.xml
   def index
     @user = current_user
-    @notebooks = @user.notebooks
+    @notebooks = @user.notebooks.order("updated_at DESC")
     @title = "My notebooks"
   end
 
@@ -70,7 +70,7 @@ class NotebooksController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to user_notebooks_path }
-      format.xml  { head :ok }
+      format.js  { render :nothing => true }
     end
   end
 end

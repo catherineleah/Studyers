@@ -12,13 +12,12 @@
     </div>
   <% end %>
 <div class="side-menu">
-  <a class="resource btn" id="show-embed" href="#">+ lecturer presentation</a>
-  <a class="resource btn" id="share-lesson" href="#">Share this lesson</a>
+  <a class="resource btn" id="show-embed" href="#" title="Add your lecturer's presentation">lecturer presentation</a>
+  <a class="resource btn" id="share-lesson" href="#" title="Share with your friends">Share this lesson</a>
 </div>
 <div id="wiki-find-form">
-  <label for="wiki-value">Search on Wikipedia</label><br />
   <input type="text" class="wiki-value" id="wiki-term-input" autocomplete="off" />
-  <a class="wiki-find btn" id="wiki-submit">Find</a>
+  <a class="wiki-find btn" id="wiki-submit">Search</a>
 </div>
 <div id="side-resources">
   <div class="pull-resource" id="show-embed-form">
@@ -55,8 +54,7 @@
   </div>
 </div>
   <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title, :class => "span12 xlarge" %>
+    <%= f.text_field :title, :class => "edit-title" %>
   </div>
   <div class="field">
     <%= f.text_area :body%>

@@ -1,36 +1,52 @@
-<div class="row">
-  <h1 id="my-notebooks" class="span8">My notebooks</h1>
-  <div class="new-notebook">
-    <%= link_to '+ Create a new notebook', new_notebook_path, :title => "Add a new notebook", :class => "btn" %>
+<div class="banner profile notebooks">
+  <div class="container">
+    <h2>My notebooks</h2>
   </div>
 </div>
-  <div class="clear-both"></div>
-  <% @notebooks.each do |notebook| %>
-    <div class="notebook">
-      <div class="notebook-name" id="notebook-<%= notebook.id %>">
-        <%= link_to notebook.name, notebook_lessons_path(notebook), :title=>"View all lessons" %>
-      </div>
-      <%= link_to "+ Create a new lesson", new_notebook_lesson_path(notebook), :class => "new-lesson btn primary" %>
-      <div class="notebook-date"><span>Created:</span> <%= notebook.created_at %></div>
-      <% if (!notebook.lecturer.empty?) %>
-        <div class="notebook-lecturer"><span>Lecturer:</span> <%= notebook.lecturer %></div>
-      <% end %>
-      <div class="recent-lessons">
-        <% @lessons = notebook.lessons.order("created_at DESC") %>
+<div class="container">
+<p id="notice"><%= notice %></p>
+<%= render 'layouts/profile' %>
+<section class="pr_dash">
+  <%= link_to "+ New notebook", new_notebook_path, :class => "new-notebook"%>
+  <% if @notebooks.length > 0 %>
+  <div id="notebooks">
+    <% @notebooks.each_with_index do |notebook, key| %>
+      <div class="notebook notebook-<%= key %>">
+        <h3 class="notebook-name">
+          <%= link_to notebook.name, notebook_lessons_path(notebook), :class => "lesson-title" %>
+        </h3>
+        <div class="notebook-details">
+          Created <%= notebook.created_at.month %>, <%= notebook.created_at.year %> | Lecturer: <%= notebook.lecturer %> | <%= notebook.lessons.count %> lessons
+        </div>
+        <%= link_to "new lesson", new_notebook_lesson_path(notebook), :class => "new-lesson" %>
+        <% @lessons = notebook.lessons.order("updated_at DESC") %>
         <% if @lessons.size > 0 %>
-          <h2 class="lessons-list">Lessons</h2>
-          <div class="lessons">
-          <% @lessons.each do |lesson| %>
-            <div class="lesson">
-              <%= link_to lesson.title, notebook_lesson_path(notebook, lesson), :class => "lesson-link", :title => "Click to view"  %>
-              <%= link_to "(Edit)", edit_notebook_lesson_path(notebook, lesson), :class => "lesson-edit-link" %>
+          <div class="notebook-lessons">
+            <div class="lessons-title">Lessons</div>
+              <div class="lessons">
+                <% @lessons.each do |lesson| %>
+                  <div class="lesson"><%= link_to lesson.title, notebook_lesson_path(notebook, lesson) %> </div>
+                <% end %>
+              </div>
             </div>
-          <%end%>
+        <% else %>
+          <div class="notebook-lessons">
+            <div class="lessons-title"><%= link_to "Create a first lesson", new_notebook_lesson_path(notebook), :class => "no-lessons" %></div>
           </div>
         <% end %>
+        <div class="tools">
+          <div class="edit-notebook"><%= link_to 'Edit notebook', edit_user_notebook_path(@user, notebook), :title => "Edit notebook"  %></div>
+          <div class="delete-notebook"><%= link_to '- Delete notebook', notebook, :class =>"del-notebook", :method => :delete, :remote => true, :title => "Delete notebook" %></div>
+        </div>
       </div>
-      
-      <div class="edit-notebook"><%= link_to 'Edit notebook', edit_user_notebook_path(@user, notebook), :title => "edit notebook preferences", :class => "btn info" %></div>
-      <div class="delete-notebook"><%= link_to "- Delete this notebook", [@user, notebook], :class =>"btn delete-notebook", :title => "Delete this notebook", :confirm => 'Are you sure you want to delete this notebook?', :remote => true, :method => :delete %></div>
-    </div>
+    <% end %>
+  </div>
+  <% else %>
+  <div>
+    Welcome to Studyers<br />
+    It appears you don't have notebooks yet (notebooks are where you save all your class lessons).<br />
+    <%= link_to 'Click here to add your first notebook', new_notebook_path, :title => "Add a new notebook", :class => "btn small"%>
+  </div> 
   <% end %>
+</section>
+</div>

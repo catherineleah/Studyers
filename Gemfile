@@ -7,6 +7,8 @@ gem 'sass-rails'
 gem 'coffee-script'
 gem 'uglifier'
 
+# gem 'mongoid'
+# gem 'bson_ext'
 
 group :development, :test do
   gem 'sqlite3'

@@ -1,0 +1,6 @@
+<% if current_user %>
+<section class="sidebar mini">
+  <div class="gravatar"><%= gravatar_for current_user, :size => 75 %></div>
+  <div class="user-info"><%= link_to current_user.name, profile_path %></div>
+</section>
+<% end %>

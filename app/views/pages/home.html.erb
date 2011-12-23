@@ -1,28 +1,41 @@
-<div id="top-home">
-  <div id="splash">
-    <span class="huge">Studyers</span>
-    (Coming in winter 2012)
+<div class="tp_spl">
+  <div class="container">
+    <div class="tp_text">
+      
+    </div>
   </div>
-  Invitation users, sign in: <br />
-  <%= form_for(:session, :url => sessions_path, :html => {:class => "home-signin-form"}) do |f| %>
-    <div class="field">
-      <%= f.label :email %>
-      <%= f.email_field :email, :class => "email-field" %>
-    </div>
-    <div class="field">
-      <%= f.label :password %>
-      <%= f.password_field :password, :class => "passwd-field" %>
-    </div>
-    <div class="field remember">
-      <%= f.check_box :remember_me %>
-      <%= f.label "remember me?" %>
-    </div>
-    <div class="signin-button">
-      <%= f.submit "Sign in", :class => "btn primary" %>
-    </div>
-  <% end %> 
 </div>
-
+<div class="home_main">
+  <div class="container">
+    <div class="span3">
+      <div class="title first">
+        <h2>Easy to use</h2>
+      </div>
+      <div class="content">
+        <%= image_tag("take_notes.png") %>
+        Studyers note taking is the the easiest way to take notes on lessons.
+      </div>
+    </div>
+    <div class="span3">
+      <div class="title middle">
+        <h2>Sharing notes</h2>
+      </div>
+      <div class="content">
+        <%= image_tag("share_notes.png") %>
+        It is now easy to share notes, study together and enrich each other.
+      </div>
+    </div>
+    <div class="span3">
+      <div class="title last">
+        <h2>Organize your studies</h2>
+      </div>
+      <div class="content">
+        <%= image_tag("organize_lessons.png") %>
+        All of your notes are saved online
+      </div>
+    </div>
+  </div>
+</div>
 
 
   

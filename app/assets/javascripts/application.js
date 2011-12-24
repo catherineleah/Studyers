@@ -21,8 +21,8 @@ $(document).ready(function() {
       
   $("#show-embed, #share-lesson").poshytip();
   // @todo: need to fix watermark error,,,
-  $("#wiki-term-input").watermark("Search on Wikipedia");
-  $("#lesson_title").watermark("Lesson title");
+  //$("#wiki-term-input").watermark("Search on Wikipedia");
+  //$("#lesson_title").watermark("Lesson title");
 });
 
 function exposeImages(ID) {

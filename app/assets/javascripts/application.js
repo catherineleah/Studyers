@@ -32,4 +32,3 @@ function exposeImages(ID) {
   $("#show-embed-form .side-message #get-resource").val(ID);
   $("#show-embed-form .side-message #fetch-resource").click();
 }
-

@@ -2,6 +2,7 @@
 //= require jquery-ui
 //= require jquery_ujs
 
+//= require jquery.watermark
 //= require_self  
 
 $(document).ready(function() {
@@ -18,10 +19,10 @@ $(document).ready(function() {
     $('div.alert-message').fadeOut('slow');
   }, 7000);
       
-  /*$("#show-embed, #share-lesson").poshytip();
-    
-    $("#wiki-term-input").watermark("Search on Wikipedia");
-    $("#lesson_title").watermark("Lesson title");*/
+  //$("#show-embed, #share-lesson").poshytip();
+  
+  $("#wiki-term-input").watermark("Search on Wikipedia");
+  $("#lesson_title").watermark("Lesson title");
 });
 
 function exposeImages(ID) {

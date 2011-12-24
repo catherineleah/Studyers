@@ -333,7 +333,7 @@ $.fn.watermark = $.fn.watermark || function (text, options) {
 ﻿  ﻿  ﻿  ﻿  // Special processing for password type
 ﻿  ﻿  ﻿  ﻿  if (($input.attr("type") || "") === "password") {
 ﻿  ﻿  ﻿  ﻿  ﻿  var $wrap = $input.wrap("<span>").parent(),
-﻿  ﻿  ﻿  ﻿  ﻿  ﻿  $wm = $($wrap.html().replace(/type=["\']?password["\']?/i, 'type="text"'));
+﻿  ﻿  ﻿  ﻿  ﻿  ﻿  //$wm = $($wrap.html().replace(/type=["']?password["']?/i, "type=\"text\""));
 ﻿  ﻿  ﻿  ﻿  ﻿  
 ﻿  ﻿  ﻿  ﻿  ﻿  $wm.data(dataText, $input.data(dataText));
 ﻿  ﻿  ﻿  ﻿  ﻿  $wm.data(dataClass, $input.data(dataClass));

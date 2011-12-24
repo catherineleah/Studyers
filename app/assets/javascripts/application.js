@@ -2,7 +2,7 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require jquery.poshytip
-
+//= require jquery.watermark.min
 //= require_self  
 
 $(document).ready(function() {
@@ -21,7 +21,7 @@ $(document).ready(function() {
       
   $("#show-embed, #share-lesson").poshytip();
   // @todo: need to fix watermark error,,,
-  //$("#wiki-term-input").watermark("Search on Wikipedia");
+  $("#wiki-term-input").watermark("Search on Wikipedia");
   //$("#lesson_title").watermark("Lesson title");
 });
 

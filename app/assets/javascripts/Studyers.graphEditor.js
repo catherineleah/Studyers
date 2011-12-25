@@ -25,11 +25,12 @@ function graphEditor(ID, putAfter) {
   
   this.containerDiv.appendChild(this.graphDiv);
   
-  $("#graph-form-" + this.ID).append('<label for="graph-type">chart type:</label><select name="graph-type" id="graph-type-'+ this.ID +'"><option value="bvg">Vertical Bar</option><option value="bhg">Horizontal Bar</option><option value="p">Pie chart</option><option value="lc">Line chart</option></select>');
-  $("#graph-form-" + this.ID).append('<label for="graph-data">Input data:</label><input name="graph-data" id="graph-data-'+ this.ID +'" type="text" />');
-  $("#graph-form-" + this.ID).append('<label for="graph-desc">Input labels:</label><input name="graph-desc" id="graph-desc-'+ this.ID +'" type="text" />');
-  $("#graph-form-" + this.ID).append('<div class="graphus btn" id="submit-'+ this.ID +'">Create chart</div>');
-  $("#graph-form-" + this.ID).append('<div class="explain-graph"><span class="label">Choose a chart type, then on the input data add numerical values in the format: 1,2,3 (no spaces) and in the input label add the corresponding labels in the format: a|b|c (no spaces)</span></div>');
+  $("#graph-form-" + this.ID).append('<label for="graph-type">chart type:</label><select name="graph-type" id="graph-type-'+ this.ID +'"><option value="bvg">Vertical Bar</option><option value="bhg">Horizontal Bar</option><option value="p">Pie chart</option><option value="lc">Line chart</option></select><br />');
+  $("#graph-form-" + this.ID).append('<label for="graph-data">Input data:</label><input name="graph-data" class="gr-vals" id="graph-data-'+ this.ID +'" type="text" /><br />');
+  $(".gr-vals").watermark("values seperated by comma (e.g: 4,5,6)");
+  $("#graph-form-" + this.ID).append('<label for="graph-desc">Input labels:</label><input name="graph-desc" class="gr-lbl" id="graph-desc-'+ this.ID +'" type="text" />');
+  $(".gr-lbl").watermark("labels seperated by | (e.g: Harry|Barry|Ari)");
+  $("#graph-form-" + this.ID).append('<div class="graphus" id="submit-'+ this.ID +'">Create chart</div>');
   
   var submitDiv = document.getElementById("submit-" + this.ID);
   //console.log(submitDiv);

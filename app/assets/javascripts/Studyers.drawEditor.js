@@ -35,7 +35,7 @@ function DrawEditor(ID, putAfter) {
 	this.containerDiv.appendChild(this.canvas);
 	this.context = this.canvas.getContext('2d');
 	//Attach controls
-	$("#canvas-container-" + this.ID).append('<div class="dtools"><div class="dtool dtool-'+ this.ID +'" id="text" title="Pencil tool">TEXT</div><div class="dtool dtool-'+ this.ID +'" id="pencil" title="Pencil tool">p</div><div class="dtool dtool-'+ this.ID +'" id="line" title="Line tool">l</div><div class="dtool dtool-'+ this.ID +'" id="rect" title="Rectangle tool">r</div><div class="dtool dtool-'+ this.ID +'" id="circle" title="Circle tool">c</div><div class="dtool dtool-'+ this.ID +'" id="clear" title="Clear canvas">cls</div></div>');
+	$("#canvas-container-" + this.ID).append('<div class="dtools"><div class="dtool dtool-'+ this.ID +'" id="text" title="Text tool">Text</div><div class="dtool dtool-'+ this.ID +'" id="pencil" title="Pencil tool">p</div><div class="dtool dtool-'+ this.ID +'" id="line" title="Line tool">l</div><div class="dtool dtool-'+ this.ID +'" id="rect" title="Rectangle tool">r</div><div class="dtool dtool-'+ this.ID +'" id="circle" title="Circle tool">c</div><div class="dtool dtool-'+ this.ID +'" id="clear" title="Clear canvas">cls</div></div>');
 	$("#canvas-container-" + this.ID).append(buttonsAppend("#canvas-container-" + this.ID, 'drawpad'));
 	var canvas = this.canvas;
 	var context = this.context;
@@ -162,15 +162,15 @@ function DrawEditor(ID, putAfter) {
   // The general-purpose event handler. This function just determines the mouse 
   // position relative to the canvas element.
   function ev_canvas(ev){
-      if (ev.layerX || ev.layerX == 0) { // Firefox
-          ev._x = ev.layerX;
-          ev._y = ev.layerY;
+      if (ev.offsetX || ev.offsetX == 0) { // Opera
+          ev._x = ev.offsetX;
+          ev._y = ev.offsetY;
       }
       else 
-          if (ev.offsetX || ev.offsetX == 0) { // Opera
-              ev._x = ev.offsetX;
-              ev._y = ev.offsetY;
-          }
+         if (ev.layerX || ev.layerX == 0) { // Firefox
+             ev._x = ev.layerX;
+             ev._y = ev.layerY;
+         }
 
       // Call the event handler of the tool.
       var func = tool[ev.type];

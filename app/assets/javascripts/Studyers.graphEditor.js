@@ -2,7 +2,7 @@ function graphEditor(ID, putAfter) {
   this.ID = ID;
   //DrawEditor.call(this, ID, putAfter);
   this.containerDiv = document.createElement("div");
-  this.containerDiv.className = "graph-container field-container";
+  this.containerDiv.className = "graph-container field-container clear-both";
   this.containerDiv.id = "graph-container-" + this.ID;
   if (putAfter) {
     $(putAfter).after(this.containerDiv);

@@ -20,9 +20,9 @@ $(document).ready(function() {
   }, 7000);
       
   $("#show-embed, #share-lesson").poshytip();
-  // @todo: need to fix watermark error,,,
+  $(".add").poshytip({alignY: 'bottom'});
   $("#wiki-term-input").watermark("Search on Wikipedia");
-  //$("#lesson_title").watermark("Lesson title");
+  $("#lesson_title").watermark("Lesson title");
 });
 
 function exposeImages(ID) {

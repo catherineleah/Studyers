@@ -7,7 +7,7 @@ function DrawEditor(ID, putAfter) {
   this.tool_select;
   // Create container and append it to text editor.
   this.containerDiv = document.createElement("div");
-  this.containerDiv.className = "canvas-container";
+  this.containerDiv.className = "canvas-container clear-both";
   this.containerDiv.id = "canvas-container-" + this.ID;
   if (putAfter) {
     $(putAfter).after(this.containerDiv)/*.animate({opacity: 0.25}, 2500, function() {})*/;

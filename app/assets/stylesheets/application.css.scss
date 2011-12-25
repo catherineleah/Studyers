@@ -468,8 +468,10 @@ ul {
     width: 585px;
     height: 35px;
     border: 0px;
-    margin: -5px 0px;
+    margin: -5px 5px;
     padding: 0px;
+    font-size: 15px;
+    border-radius: 4px;
   }
 }
 
@@ -546,103 +548,90 @@ h2.lesson-list {
 }
 
 .edit-buttons {
-  background: #fff;
-  font: 25px;
+  background: transparent;
   padding: 0 5px;
   margin-right: 5px;
-  -webkit-box-shadow: 1px 1px 1px 1px #333;
-  box-shadow: 1px 1px 1px 1px #333;
-  border: 1px solid black;
+  border: 0px none;
   cursor: pointer;
-  height: 36px !important;
-  width: 36px !important;
-  border-radius: 4px;
-}
-
-.edit-buttons:hover {
-  -webkit-box-shadow: 0px 0px 0px 0px #fff;
-  box-shadow: 0px 0px 0px 0px #fff;
-}
-
-.editor-buttons #bold {
-  font-weight: bold;
-}
-
-.editor-buttons #italic {
-  font-style: italic;
-}
-
-.editor-buttons #underline {
-  text-decoration: underline;
-}
-
-.editor-buttons input#hilitecolor[attribute="yellow"] {
-  background: #fff url(images/hilite_yellow.png) no-repeat 50% 50%;
+  height: 24px !important;
+  width: 20px !important;
   text-indent: -9999px;
+   border: 0px solid black;
+  &:hover {
+    border-bottom: 1px solid gray;
+  }
+  &#bold {
+    background: transparent url(images/lesson_edits.png) no-repeat -181px 0px;
+  }
+  &#italic {
+    background: transparent url(images/lesson_edits.png) no-repeat -211px 0px;
+  }
+  
+  &#underline {
+    background: transparent url(images/lesson_edits.png) no-repeat -238px 2px;
+  }
+  
+  &#hilitecolor[attribute="yellow"] {
+    background: transparent url(images/lesson_edits.png) no-repeat -105px -40px;
+  }
+  
+  &#hilitecolor[attribute="#659b41"] {
+    background: transparent url(images/lesson_edits.png) no-repeat -139px -40px;
+  }
+  
+  &#insertunorderedlist {
+    background: transparent url(images/lesson_edits.png) no-repeat -175px -38px;
+  }
+  
+  &#insertorderedlist {
+    background: transparent url(images/lesson_edits.png) no-repeat -214px -37px;
+  }
 }
 
-.editor-buttons input#hilitecolor[attribute="#659b41"] {
-  background: #fff url(images/hilite_green.png) no-repeat 50% 50%;
-  text-indent: -9999px;
-}
-
-.editor-buttons input#insertunorderedlist {
-  background: #fff url(images/list.png) no-repeat 50% 50%;
-  text-indent: -9999px;
-}
-
-.editor-buttons input#insertorderedlist {
-  background: #fff url(images/num_list.png) no-repeat 50% 50%;
-  text-indent: -9999px;
-}
 
 .dtools {
-	float: left;
-	position: absolute;
-	top: 1px;
-	left: 1px;
-}
-
-.dtool {
-  width: 36px;
-  height: 36px;
-  color: #fff;
   float: left;
-  cursor: pointer;
-  border: 1px solid black;
-  -webkit-box-shadow: 1px 1px 1px 1px #333;
-  box-shadow: 1px 1px 1px 1px #333;
-  border-radius: 4px;
-  margin-right: 10px;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  
+  .dtool {
+    width: 24px;
+    height: 24px;
+    color: #fff;
+    float: left;
+    cursor: pointer;
+    margin-right: 10px;
+    border: 0px none;
+    text-indent: -9999px;
+    
+    &:hover {
+      border-bottom: 1px solid gray;
+    }
+    &#text {
+      background: transparent url(images/lesson_edits.png) no-repeat -141px 0px;
+    }
+    &#pencil {
+      background: transparent url(images/lesson_edits.png) no-repeat -36px 0px;
+    }
+    &#line {
+      background: transparent url(images/lesson_edits.png) no-repeat -246px -33px;
+    }
+    &#rect {
+      background: transparent url(images/lesson_edits.png) no-repeat 0px 0px;
+    }
+    &#circle {
+      background: transparent url(images/lesson_edits.png) no-repeat -73px 0px;
+    }
+    &#clear {
+      background: transparent url(images/lesson_edits.png) no-repeat -106px 0px;
+    }
+	}
 }
 
-.dtool:hover {
-  -webkit-box-shadow: 0px 0px 0px 0px #333;
-  box-shadow: 0px 0px 0px 0px #333;
-}
-
-.dtools #line {
-  background: #fff url(images/line-tool.png) no-repeat 50% 50%;
-}
-
-.dtools #rect {
-  background: #fff url(images/rect-tool.png) no-repeat 50% 50%;
-}
-
-.dtools #pencil {
-  background: #fff url(images/pencil-tool.png) no-repeat 50% 50%;
-}
-
-.dtools #circle {
-  background: #fff url(images/circle-tool.png) no-repeat 50% 50%;
-}
-
-.dtools #clear {
-  background: #fff url(images/clear-tool.png) no-repeat 50% 50%;
-}
 
 /* canvas */
-.canvas-container { 
+.canvas-container {
   margin-top: 10px;
   position: relative; 
   
@@ -684,7 +673,27 @@ h2.lesson-list {
 #text-editor {
 
   .add {
-    margin: 0px 4px;
+    margin: 8px 4px;
+    float: left;
+    background: #9D9D9D;
+    padding: 4px 4px;
+    border-radius: 3px;
+    cursor: pointer;
+    
+    &:hover {
+      color: white;
+    }
+  }
+  .add.remove-object {
+    background: transparent;
+    font: bold 27px Comic Sans MS;
+    color: #B6B6B6;
+    margin: 2px 30px;
+    padding: 0px;
+    
+    &:hover {
+      color: #b6b6b6;
+    }
   }
   .field-container {
     min-height: 150px;
@@ -697,6 +706,7 @@ h2.lesson-list {
       min-height: 150px;
       padding: 6px;
       word-wrap: break-word;
+      border-radius: 4px;
       
       a {
         color: #00438a;
@@ -752,6 +762,9 @@ h2.lesson-list {
   font-weight: bold;
 }
 
+.field-submit {
+  clear: both;
+}
 #lesson_submit {
   clear: both;
   /*float: left;*/
@@ -786,16 +799,23 @@ div.token-input-dropdown-facebook {
 #wiki-find-form {
   position: fixed;
   right: 25px;
-  background: #E5E5E5;
   padding: 7px;
-  border-radius: 6px;
   width: 280px;
   z-index: 100;
   top: 264px;
   
   input#wiki-term-input {
-    height: 18px;
+    height: 30px;
     width: 215px;
+    background: white;
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+  }
+  a#wiki-submit {
+    background: white;
+    margin: -4px;
+    padding: 6px 5px 7px;
   }
 }
 
@@ -838,11 +858,6 @@ span.new {
 
 #get-resource {
   width: 40px;
-}
-
-
-input.btn.primary {
-  margin-top: 10px;
 }
 
 .clear-both {clear:both;}

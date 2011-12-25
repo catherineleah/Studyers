@@ -5,7 +5,7 @@
 function TextEditor(putAfter) {
   this.ID = uniqueId();
   this.textWrapper = document.createElement("div");
-  this.textWrapper.className = "text-wrapper field-container";
+  this.textWrapper.className = "text-wrapper field-container clear-both";
   this.textWrapper.id = "wrapper-" + this.ID;
   this.textDiv = document.createElement("div");
   this.textDiv.contentEditable="true"; 

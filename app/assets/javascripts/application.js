@@ -19,10 +19,12 @@ $(document).ready(function() {
     $('div.alert-message').fadeOut('slow');
   }, 7000);
       
-  $("#show-embed, #share-lesson").poshytip();
-  // @todo: need to fix watermark error,,,
+  $("#show-embed, #share-lesson, #clear").poshytip();
+  $(".add").poshytip({alignY: 'bottom'});
+  
   $("#wiki-term-input").watermark("Search on Wikipedia");
-  //$("#lesson_title").watermark("Lesson title");
+  $("#lesson_title").watermark("Lesson title");
+
 });
 
 function exposeImages(ID) {

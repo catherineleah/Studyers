@@ -1,25 +1,44 @@
-<p id="notice"><%= notice %></p>
-<h4> List of lessons that are shared with you </h4>
-<% if @shared.length > 0 %>
-  <div id="notebooks">
-  <div class="lessons">
-  <% @shared.each do |lesson, notebook, user| %>
-    <div class="lesson">
-      <% lesson.each do |title, url| %>
-        <%= link_to title, url %>
-      <% end %>
-       from notebook: 
-      <% notebook.each do |name, url| %>
-        <%= link_to name, url %>
-      <% end %>
-       authored by:
-      <% user.each do |name, url| %>
-        <%= link_to name, url %>
-      <% end %>
+<div class="banner lessons notebooks">
+  <div class="container">
+    <h2>Lessons shared with you</h2>
+  </div>
+</div>
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <%= render 'layouts/profile' %>
+  <div class="lessons_dash">
+    <div class="notebook">
+      <h4> List of lessons that are shared with you </h4>
+      <% if @shared.length > 0 %>
+      <div id="notebooks">
+        <div class="lessons">
+        <% @shared.each do |lesson, notebook, user| %>
+          <div class="lesson">
+            <span class="lesson-title">
+            <% lesson.each do |title, url| %>
+              <%= link_to title, url %>
+            <% end %>
+            </span>
+            <span class="author-title">
+              shared by:
+              <% user.each do |name, url| %>
+                <%= link_to name, url %>
+              <% end %>
+            </span>
+            <span class="notebook-title">
+              [notebook: 
+                <% notebook.each do |name, url| %>
+                  <%= link_to name, url %>
+                <% end %>
+              ]
+            </span>
+          </div>
+        <% end %>
+      </div>
     </div>
-  <% end %>
   </div>
   </div>
+</div>
 <% else %>
 
 <% end %>

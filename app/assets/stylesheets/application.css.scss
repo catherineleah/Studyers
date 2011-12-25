@@ -240,7 +240,7 @@ ul {
        li.side-links {
          border-bottom: 1px dotted #D0CFCF;
          margin-right: 20px;
-         padding: 5px;
+         padding: 5px 16px;
          background: url(images/icons.png) no-repeat;
          background-position: 4px 7px;
        }
@@ -738,6 +738,7 @@ h2.lesson-list {
     padding: 3px;
     margin: 3px 0px;
     border-radius: 3px;
+    cursor: pointer;
   }
 }
 .SavedText ul {
@@ -777,6 +778,16 @@ h2.lesson-list {
  
 .graph-wrapper {
   min-height: 100px;
+  clear: both;
+  
+  .graph-remove {
+    float: right;
+    clear: both;
+    margin: 0px 90px;
+    font: bold 22px Comic Sans MS;
+    color: #B6B6B6;
+    cursor: pointer;
+  }
 }
 
 .explain-graph {

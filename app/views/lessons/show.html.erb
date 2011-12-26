@@ -14,10 +14,6 @@
       <h4><%= link_to @author.name, user_path(@author.id) %></h4>
     <% end %>
     <%= sanitize @lesson.body %>
-    
-    <%# for content in @lesson.contents %>
-      <%# sanitize content.content %>
-    <%# end %>
   </div>
 
   <div class="user-menu">

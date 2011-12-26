@@ -893,6 +893,37 @@ span.new {
   width: 40px;
 }
 
+
+.edit_user {
+  
+  .field {
+    padding: 10px;
+    
+    input {
+      width: 400px;
+      height: 28px;
+      font-size: 18px;
+      border: 0px none;
+      border-radius: 3px;
+    }
+  }
+  .save {
+    padding: 10px;
+    .primary {
+      background: #86C246;
+      border: 0px none;
+      color: white;
+      cursor: pointer;
+      font-size: 13px;
+      height: 29px;
+      min-width: 100px;
+    }
+  }
+}
+p.gravatar {
+  padding: 10px;
+}
+
 .clear-both {clear:both;}
 
 /*Taken from bootstrap css*/

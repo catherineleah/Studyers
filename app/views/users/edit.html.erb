@@ -1,8 +1,14 @@
-<h1>Editing user</h1>
-
-<%= render 'form' %>
-
-<p>We use <a href="http://en.gravatar.com/">Gravatar</a> to manage profile images.<br />
-To add / edit your profile image <a href="http://en.gravatar.com/site/login/" class="btn" target="gravatar">click here</a></p>
-
-<%= link_to 'My profile', @user %> 
+<div class="banner profile">
+  <div class="container">
+    <h2>Edit profile settings</h2>
+  </div>
+</div>
+<div id="profile" class="container">
+  <p id="notice"><%= notice %></p>
+  <%= render 'layouts/profile' %>
+  <section class="pr_dash">
+    <%= render 'form' %>
+    <p class="gravatar">We use <a href="http://en.gravatar.com/">Gravatar</a> to manage profile images.<br />To add / edit your profile image <a href="http://en.gravatar.com/site/login/" class="btn" target="gravatar">click here</a></p>
+    <%= link_to 'My profile', @user %> 
+  </section>
+</div>

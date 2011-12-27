@@ -22,7 +22,7 @@
         <% if can? :update, lesson %>
         <div class="tools">
           <div class="edit-lesson"><%= link_to 'Edit lesson', edit_notebook_lesson_path(@notebook, lesson), :class =>"btn info", :title => "Edit lesson"  %></div>
-          <div class="delete-lesson"><%= link_to '- Delete lesson', [@notebook, lesson], :class =>"del-lesson", :method => :delete, :remote => true, :title => "Delete lesson" %></div>
+          <div class="delete-lesson"><%= link_to '- Delete lesson', [@notebook, lesson], :class =>"del-lesson", :method => :delete, :remote => true, confirm: 'Are you sure you want to delete this lesson?', :title => "Delete lesson" %></div>
         </div>
         <% end %>
       </div>

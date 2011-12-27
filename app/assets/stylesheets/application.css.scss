@@ -411,7 +411,7 @@ ul {
      width: 100%
      ;
      &:hover {
-       background: white;
+       background: whiteSmoke;
        border-left: 6px solid #d6ef66;
      }
      
@@ -453,6 +453,7 @@ ul {
          padding: 4px;
          border-radius: 4px;
          color: white;
+         line-height: 24px;
        }
      }
      .lessons {
@@ -938,7 +939,7 @@ span.new {
 }
 
 
-.edit_user {
+.new_user, .edit_user, .new_notebook, .edit_notebook {
   
   .field {
     padding: 10px;

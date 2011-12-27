@@ -1,6 +1,13 @@
-<h1>Editing notebook</h1>
-
+<div class="banner profile notebooks">
+  <div class="container">
+    <h2>Edit "<%= @notebook.name %>" properties</h2>
+  </div>
+</div>
+<div class="container">
+<p id="notice"><%= notice %></p>
+<%= render 'layouts/profile' %>
+<section class="pr_dash">
 <%= render 'form' %>
 
-<%= link_to 'Show', user_notebook_path(@notebook) %> |
 <%= link_to 'Back', notebooks_path %>
+</section>

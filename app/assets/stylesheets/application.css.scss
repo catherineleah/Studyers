@@ -141,6 +141,48 @@ section.content {
       height: 360px;
       position: relative;
       top: -10px;
+      
+      #tp_text_spl {
+        position: absolute;
+        right: 50px;
+        top: 50px;
+        width: 350px;
+        
+        #e {
+          color: #F4702A;
+          font-size: 45px;
+        }
+        #to {
+          font-size: 30px;
+          color: #DFDDD9;
+          line-height: 38px;
+        }
+        #tn {
+          font-size: 40px;
+          text-transform: uppercase;
+          position: absolute;
+          top: 40px;
+          left: 33px;
+          line-height: 38px;
+          width: 290px;
+        }
+        #and {
+          position: absolute;
+          top: 102px;
+          font-size: 60px;
+          color: #DFDDD9;
+          right: 116px;
+          opacity: 0.8;
+        }
+        #shr {
+          position: absolute;
+          top: 118px;
+          font-size: 44px;
+          left: 62px;
+          color: #0087AB;
+          line-height: 37px;
+        }
+      }
     }
   }
 }
@@ -363,6 +405,7 @@ ul {
      margin-bottom: 26px;
      padding: 5px;
      border-left: 6px solid #d6ef66;
+     border-bottom: 2px solid #d6ef66;
      float: left;
      width: 100%
      ;

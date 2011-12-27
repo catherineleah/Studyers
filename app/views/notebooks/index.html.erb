@@ -36,7 +36,7 @@
         <% end %>
         <div class="tools">
           <div class="edit-notebook"><%= link_to 'Edit notebook', edit_user_notebook_path(@user, notebook), :title => "Edit notebook"  %></div>
-          <div class="delete-notebook"><%= link_to '- Delete notebook', notebook, :class =>"del-notebook", :method => :delete, :remote => true, :title => "Delete notebook" %></div>
+          <div class="delete-notebook"><%= link_to '- Delete notebook', notebook, :class =>"del-notebook", :method => :delete, :remote => true, confirm: 'Are you sure you want to delete this notebook?', :title => "Delete notebook" %></div>
         </div>
       </div>
     <% end %>

@@ -154,8 +154,9 @@ section.content {
         }
         #to {
           font-size: 30px;
-          color: #DFDDD9;
+          color: gray;
           line-height: 38px;
+          opacity: 0.6;
         }
         #tn {
           font-size: 40px;
@@ -170,9 +171,9 @@ section.content {
           position: absolute;
           top: 102px;
           font-size: 60px;
-          color: #DFDDD9;
+          color: gray;
           right: 116px;
-          opacity: 0.8;
+          opacity: 0.6;
         }
         #shr {
           position: absolute;

@@ -19,7 +19,9 @@
           <div class="lessons">
           <% @lessons.each do |lesson| %>
             <% if can? :read, lesson %>
-              <div class="lesson"><%= link_to lesson.title, notebook_lesson_path(notebook, lesson) %> [shared with you] </div>
+              <div class="lesson shared">
+                <%= link_to lesson.title, notebook_lesson_path(notebook, lesson) %> [shared with you] 
+              </div>
             <% else %>
               <div class="lesson"><%= lesson.title %> </div>
             <% end %>

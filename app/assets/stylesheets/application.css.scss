@@ -246,9 +246,20 @@ section.content {
 }
 .footer {
   background: #16414d;
-  height: 20px;
   float: left;
   width: 100%;
+  .container {
+    .fo_sq {
+      float: left;
+      width: 225px;
+      margin-right: 18px;
+      min-height: 50px;
+      color: #747373;
+      h3 {
+        color: #bebdbd;
+      }
+    }
+  }
 }
 .loading {
   background: #DDF4FB url(images/loading.gif) no-repeat 50% 50% !important;

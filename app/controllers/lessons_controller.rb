@@ -27,9 +27,6 @@ class LessonsController < ApplicationController
     @user = current_user
     @lesson = Lesson.new
     @lesson.shares.build
-    
-    # Start of work on fields instead of bulk lesson body
-    #@lesson.contents.build
   end
 
   # GET notebook/:id/lessons/1/edit
@@ -111,7 +108,9 @@ class LessonsController < ApplicationController
     # Make sure the notebook is picked when creating a new lesson
     ##
     def find_notebook
-      @notebook = current_user.notebooks.find(params[:notebook_id])
+      if(params[:notebook_id])
+        @notebook = current_user.notebooks.find(params[:notebook_id])
+      end
     end
     
   private

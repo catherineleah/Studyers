@@ -1,5 +1,7 @@
 Studyr::Application.routes.draw do
   
+  devise_for :users
+
   resources :class_resources
 
   resources :users do
@@ -10,14 +12,9 @@ Studyr::Application.routes.draw do
     resources :lessons
   end
     
-  resources :sessions, :only => [:new, :create, :destroy]
-  
-  match '/signin',  :to => 'sessions#new'
-  match '/signout', :to => 'sessions#destroy'
   match "/home", :to => "pages#home"
   match "/about", :to => "pages#about"
   match "/contact", :to => "pages#contact"
-  match "/signup", :to => "users#new"
   match "/profile", :to => "users#show"
   match "/lessons/shared", :to => "lessons#shared"
 

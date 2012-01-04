@@ -31,6 +31,7 @@ gem 'jquery-rails', '>= 1.0.12'
 # Enable amistad friendship manager
 gem 'amistad'
 
+gem 'devise'
 # Enable authorization manager for user (who can see what)
 gem 'cancan'
 

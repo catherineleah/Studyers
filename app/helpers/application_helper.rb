@@ -15,4 +15,8 @@ module ApplicationHelper
   def user_notebooks
     return current_user.notebooks.order("updated_at DESC")
   end
+  
+  def current_user?(user)
+    user == current_user
+  end
 end

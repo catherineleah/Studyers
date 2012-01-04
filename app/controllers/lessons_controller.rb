@@ -2,7 +2,7 @@ class LessonsController < ApplicationController
   # cancan authorize
   load_and_authorize_resource
   
-  before_filter :authenticate, :only => [:index, :show, :edit, :update, :destroy, :shared]
+  before_filter :authenticate_user!, :only => [:index, :show, :edit, :update, :destroy, :shared]
     
   before_filter :find_notebook, :only => [:new]
   

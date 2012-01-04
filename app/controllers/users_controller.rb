@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate, :only => [:index, :show, :edit, :update, :destroy, :new]
+  before_filter :authenticate_user!, :only => [:index, :show, :edit, :update, :destroy, :new]
   before_filter :correct_user, :only => [:edit, :update]
   before_filter :admin_user, :only => [:new, :destroy]
   # GET /users
@@ -101,4 +101,7 @@ class UsersController < ApplicationController
       redirect_to(root_path, :notice => "We are in alpha mode and can't create new users yet") unless current_user.admin?
     end
     
+    def current_user?(user)
+      user == current_user
+    end
 end

@@ -7,25 +7,24 @@
       <div class="user_info user">
         <div class="user_name logged_in">Hi, <span><%= current_user.name %></span></div>
         <div class="user_settings logged_in"><%= link_to "Settings", edit_user_path(current_user) %></div>
-        <div class="user_logout logged_in"><%= link_to "Logout", signout_path, :method => :delete %></div>
+        <div class="user_logout logged_in"><%= link_to "Logout", destroy_user_session_path, :method => :delete %></div>
       </div>
     <% else %>
       <div class="user_info">
-      <%= form_for(:session, :url => sessions_path, :html => {:class => "home-signin-form"}) do |f| %>
-        <div class="field">
-          <%= f.email_field :email, :class => "email-field login-input-field" %>
-        </div>
-        <div class="field">
-          <%= f.password_field :password, :class => "passwd-field login-input-field" %>
-        </div>
-        <div class="signin-button">
-          <%= f.submit "Sign in", :class => "btn signin" %>
-        </div>
-        <div class="field remember">
-          <%= f.check_box :remember_me %>
-          <%= f.label "remember me?" %>
-        </div>
-      <% end %>
+        <%= form_for("user", :html => {:class => "home-signin-form"}, :url => user_session_path) do |f| %>
+          <div class="field">
+            <%= f.email_field :email, :class => "email-field login-input-field" %>
+          </div>
+
+          <div class="field">
+            <%= f.password_field :password, :class => "passwd-field login-input-field" %>
+          </div>
+
+          <div class="signin-button"><%= f.submit "Sign in", :class => "btn signin" %></div>
+          
+          <div class="field remember"><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+        <% end %>
+      
       </div>
     <% end %>
   </div>

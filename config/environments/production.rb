@@ -3,7 +3,7 @@ Studyr::Application.configure do
 
   # Code is not reloaded between requests
   config.cache_classes = true
-  
+  config.action_mailer.delivery_method = :sendmail
   config.action_mailer.default_url_options = { :host => 'studyers.com' }
   
   # Full error reports are disabled and caching is turned on

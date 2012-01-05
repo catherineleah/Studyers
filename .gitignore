@@ -8,5 +8,6 @@ tmp/**/*
 .rvmrc
 .DS_Store
 public/uploads/*
+public/assets/*
 google150f67f895757147.html
 

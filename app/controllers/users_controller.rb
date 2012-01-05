@@ -94,7 +94,7 @@ class UsersController < ApplicationController
   
     def correct_user
       @user = User.find(params[:id])
-      redirect_to(root_path, :notice => "Insufficient rights to prevented me from showing you this page") unless current_user?(@user) 
+      redirect_to(root_path, :notice => "Insufficient rights to prevented me from showing you this page") unless current_user?(@user) or current_user.admin? 
     end
 
     def admin_user

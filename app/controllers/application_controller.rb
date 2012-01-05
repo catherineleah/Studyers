@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
     redirect_to profile_path
   end
   
+  def current_user?(user)
+    user == current_user
+  end
+  
   private
     def authenticate
       deny_access unless user_signed_in?

@@ -37,6 +37,7 @@ function graphEditor(ID, putAfter) {
   submitDiv.addEventListener('click', function() {submitGraph(ID)}, false)
   
   $("#graph-wrapper-" + this.ID).after(buttonsAppend("#graph-container-" + this.ID, 'charts'));
+  $(".add").poshytip();
 }
 function submitGraph(ID) {
   var type = $("#graph-type-" + ID).val();

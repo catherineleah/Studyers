@@ -8,12 +8,40 @@
       
     </div>
     <div class="fo_sq">
-      
+      <script src="http://widgets.twimg.com/j/2/widget.js"></script>
+      <script>
+      new TWTR.Widget({
+        version: 2,
+        type: 'profile',
+        rpp: 4,
+        interval: 30000,
+        width: 220,
+        height: 250,
+        theme: {
+          shell: {
+            background: '#1a414e',
+            color: '#ffffff'
+          },
+          tweets: {
+            background: '#1a414e',
+            color: '#ffffff',
+            links: '#747373'
+          }
+        },
+        features: {
+          scrollbar: false,
+          loop: false,
+          live: true,
+          behavior: 'all'
+        }
+      }).render().setUser('studyers').start();
+      </script>
     </div>
     <div class="fo_sq">
       <h3>Connect with us</h3>
       <%= link_to image_tag("facebook.png"), "http://www.facebook.com/studyers" %>
       <%= link_to image_tag("twitter.png"), "http://www.twitter.com/studyers" %>
+      <%= link_to image_tag("wordpress.png"), "http://studyers.wordpress.com/" %>
     </div>
   </div>
 </footer>

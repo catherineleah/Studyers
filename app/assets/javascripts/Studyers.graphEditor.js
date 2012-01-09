@@ -1,6 +1,5 @@
 function graphEditor(ID, putAfter) {
   this.ID = ID;
-  //DrawEditor.call(this, ID, putAfter);
   this.containerDiv = document.createElement("div");
   this.containerDiv.className = "graph-container field-container clear-both";
   this.containerDiv.id = "graph-container-" + this.ID;
@@ -33,7 +32,6 @@ function graphEditor(ID, putAfter) {
   $("#graph-form-" + this.ID).append('<div class="graphus" id="submit-'+ this.ID +'">Create chart</div>');
   
   var submitDiv = document.getElementById("submit-" + this.ID);
-  //console.log(submitDiv);
   submitDiv.addEventListener('click', function() {submitGraph(ID)}, false)
   
   $("#graph-wrapper-" + this.ID).after(buttonsAppend("#graph-container-" + this.ID, 'charts'));
@@ -48,7 +46,6 @@ function submitGraph(ID) {
   var highest = 0;
   var smallest = 0
   for (i = 0; i < dataArray.length; i++) {
-    //console.log(dataArray[i]);
     if (dataArray[i] > highest) {
       highest = dataArray[i];
     }
@@ -62,5 +59,4 @@ function submitGraph(ID) {
   graphImage.src = "http://chart.apis.google.com/chart?chxt=y&chds="+smallest+","+highest+"&chxr=0,"+smallest+","+highest+"&chbh=a&chs=600x350&cht="+type+"&chd=t:"+data+"&chl="+labels+"";
   $("#graph-wrapper-" + ID).append('<div class="graph-remove dont-save">X</div>');
   $("#graph-wrapper-" + ID).append(graphImage);
-/*  $("#graph-form-" + ID).remove();*/
 }

@@ -50,5 +50,7 @@ module Studyr
       HTML::WhiteListSanitizer.allowed_protocols << 'data'
     end
 
+    # Add PDF support
+    config.middleware.use "PDFKit::Middleware"
   end
 end

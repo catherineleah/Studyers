@@ -39,6 +39,9 @@ gem 'cancan'
 gem "carrierwave"
 gem "docsplit"
 
+# create pdfs
+gem "pdfkit"
+
 # Deploy with Capistrano
 # gem 'capistrano'
 

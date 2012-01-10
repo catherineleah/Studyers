@@ -1,6 +1,7 @@
 <footer class="footer">
   <div class="beautifier"></div>
   <div class="container">
+    <% if (controller.controller_name == "pages")%>
     <div class="fo_sq">
       
     </div>
@@ -43,5 +44,6 @@
       <%= link_to image_tag("twitter.png"), "http://www.twitter.com/studyers" %>
       <%= link_to image_tag("wordpress.png"), "http://studyers.wordpress.com/" %>
     </div>
+    <% end %>
   </div>
 </footer>

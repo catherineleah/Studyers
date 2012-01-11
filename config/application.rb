@@ -51,6 +51,7 @@ module Studyr
     end
 
     # Add PDF support
+    require 'pdfkit'
     config.middleware.use "PDFKit::Middleware"
   end
 end

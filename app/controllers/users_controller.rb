@@ -29,6 +29,8 @@ class UsersController < ApplicationController
     end 
     @title = @user.name
     @notebooks = @user.notebooks.order("updated_at DESC")
+    #@lesson = Lesson.new
+    #@lesson.shares.build
   end
 
   # GET /users/new

@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   #  :registerable (out for alpha)
   # Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :registerable
   
   after_destroy :ensure_an_admin_remains
   

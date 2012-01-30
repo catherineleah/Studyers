@@ -17,6 +17,7 @@ Studyr::Application.routes.draw do
   match "/contact", :to => "pages#contact"
   match "/profile", :to => "users#show"
   match "/lessons/shared", :to => "lessons#shared"
+  match "/class-resources/my", :to => "class_resources#my"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

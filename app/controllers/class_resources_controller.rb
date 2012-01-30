@@ -10,6 +10,15 @@ class ClassResourcesController < ApplicationController
       format.json { render json: @class_resources }
     end
   end
+  
+  def my
+    @class_resources = ClassResource.where("user_id = ?", current_user.id)
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @class_resources }
+    end
+  end
 
   # GET /class_resources/1
   # GET /class_resources/1.json
@@ -43,6 +52,7 @@ class ClassResourcesController < ApplicationController
   # POST /class_resources.json
   def create
     @class_resource = ClassResource.new(params[:class_resource])
+    @class_resource.user_id = current_user.id
       if @class_resource.save
         if params[:edit] 
           redirect_to edit_class_resource_path(@class_resource)

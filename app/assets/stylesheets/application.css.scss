@@ -1007,6 +1007,23 @@ p.gravatar {
 .alert-message.block-message.info, .side-message.block-message.info {background-color:#ddf4fb;border-color:#c6edf9;}
 .label{padding:1px 3px 2px;background-color:#bfbfbf;font-size:10.75px;font-weight:bold;color:#ffffff;white-space:nowrap;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}.label.important{background-color:#c43c35;}
 
+#fetch-resource, #upload-resource, #photocopy {
+  background: none repeat scroll 0 0 #D9D9D9;
+  border-radius: 4px 4px 4px 4px;
+  padding: 3px 5px;
+  
+  &:hover {
+    color: white;
+  }
+}
+
+#sharing-info {
+  font-weight: bold;
+  
+  span {
+    text-decoration: underline;
+  }
+}
 
 .tip-twitter {
 	opacity:0.8;

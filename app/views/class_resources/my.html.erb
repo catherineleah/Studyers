@@ -1,0 +1,20 @@
+<h1>My class resources</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Share ID</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @class_resources.each do |class_resource| %>
+  <tr>
+    <td><%= class_resource.title %></td>
+    <td><%= class_resource.id %></td>
+    <td><%= link_to 'Show', class_resource %></td>
+    <td><%= link_to 'Delete', class_resource, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+

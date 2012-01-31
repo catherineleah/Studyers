@@ -17,7 +17,7 @@ module Studyers
     end
 
     def pdf
-      current_path[0..current_path.rindex('.')] + 'pdf'
+      current_path
     end
 
     def length
@@ -30,7 +30,7 @@ module Studyers
     end
 
     def extract_images
-      ::Docsplit.extract_images(self.pdf, :size => %w{1000x}, :format => :png, output: output_path)
+      ::Docsplit.extract_images(current_path, :size => %w{1000x}, :format => :png, output: output_path)
       self
     end
 

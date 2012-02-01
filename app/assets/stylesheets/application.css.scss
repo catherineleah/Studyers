@@ -316,7 +316,7 @@ ul {
       width: 90px !important;
     }
   }
-  .user-info {
+  .user-info, .prshr {
     max-width: 90px;
     font-size: 12px;
   }
@@ -1022,6 +1022,17 @@ p.gravatar {
   
   span {
     text-decoration: underline;
+  }
+}
+
+#upload-class_resource {
+  .new {
+    #new {
+      color: red;
+    }
+    #note {
+      font-size: 11.5px;
+    }
   }
 }
 

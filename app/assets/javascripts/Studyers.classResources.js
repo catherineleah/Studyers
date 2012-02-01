@@ -35,7 +35,8 @@ $(document).ready(function() {
           return;
         }
         $(this).parent().find(".block-message").hide();
-        $(".presentation-embed").prepend('<div class="side-message block-message info"><div id="sharing-info">The ID for sharing is: <span>'+rId+'</span>. </div>To add the presentation into the lesson <br /><a href="#" id="photocopy" class="btn">Click here</a><br /> or click on each slide to embed seperately</div>');
+        $(".presentation-embed").prepend('<div class="side-message block-message info"><a class="close" href="#">×</a><div id="sharing-info">The ID for sharing is: <span>'+rId+'</span>. </div>To add the presentation into the lesson <br /><a href="#" id="photocopy" class="btn">Click here</a><br /> or click on each slide to embed seperately</div>');
+        $("section.mini").append('<div class="prshr">Presentation ID for this lesson:' + rId +'</div>');
       });
     }
   });

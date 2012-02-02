@@ -13,7 +13,7 @@
       <div class="user_info">
         <%= form_for("user", :html => {:class => "home-signin-form"}, :url => user_session_path) do |f| %>
           <div class="field">
-            <%= f.email_field :email, :class => "email-field login-input-field" %>
+            <%= f.email_field :email, :class => "email-field login-input-field", :placeholder => "email address" %>
           </div>
 
           <div class="field">

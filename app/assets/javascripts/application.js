@@ -24,7 +24,9 @@ $(document).ready(function() {
   
   $("#wiki-term-input").watermark("Search on Wikipedia");
   $("#lesson_title").watermark("Lesson title");
-
+  $(".home #user_email").watermark("email address");
+  $(".home #user_password").watermark("password");
+  
 });
 
 function exposeImages(ID) {

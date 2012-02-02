@@ -381,20 +381,38 @@ ul {
       .tools {
         margin-left: 11px;
         .edit-lesson, .delete-lesson {
-          background: none repeat scroll 0 0 #9D9D9D;
-          border-radius: 2px;
-          float: left;
-          margin-left: 15px;
-          padding: 5px 20px;
           
           a {
-            color: black;
+            background: #9D9D9D;
+            border-radius: 2px;
+            float: left;
+            margin-left: 15px;
+            padding: 5px 20px;
+            color: white;
             
             &:hover { 
-              color: white;
+              background: white;
+              color: #9d9d9d;
             }
           }
         }
+      }
+    }
+  }
+
+  .lesson-show {}
+  .user-menu {     
+    a {
+      background: #9D9D9D;
+      border-radius: 2px 2px 2px 2px;
+      float: left;
+      margin: 7px;
+      padding: 5px 20px;
+      color: white;
+      
+      &:hover {
+        color: #9d9d9d;
+        background: white;
       }
     }
   }
@@ -405,14 +423,16 @@ ul {
   width: 700px;
   
   .new-notebook{
-    background: none repeat scroll 0 0 #9D9D9D;
+    background: #9D9D9D;
     border-radius: 2px;
     float: left;
     margin: 7px 0px;
     padding: 5px 20px;
+    color: white;
  
     &:hover { 
-      color: white;
+      color: #9d9d9d;
+      background: white;
     }
   }
   
@@ -484,17 +504,18 @@ ul {
        }
      }
      .edit-notebook, .delete-notebook {
-       background: none repeat scroll 0 0 #9D9D9D;
-       border-radius: 2px;
-       float: left;
-       margin: 7px;
-       padding: 5px 20px;
        
        a {
-         color: black;
+         background: #9D9D9D;
+         border-radius: 2px;
+         float: left;
+         margin: 7px;
+         padding: 5px 20px;
+         color: white;
          
-         &:hover { 
-           color: white;
+         &:hover {
+           background: white;
+           color: #9d9d9d;
          }
        }
      }

@@ -10,7 +10,13 @@ class User < ActiveRecord::Base
   has_many :notebooks
   has_many :lessons, :through => :notebooks
   
+  after_create :send_welcome_mail
+  
   private
+    def send_welcome_mail
+      UserMailer.welcome_email(self.email, self.name).deliver
+    end
+  
     def ensure_an_admin_remains
       if User.find_by_admin(true)
         raise "Can't delete admin user"

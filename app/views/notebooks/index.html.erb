@@ -11,12 +11,12 @@
   <% if @notebooks.length > 0 %>
   <div id="notebooks">
     <% @notebooks.each_with_index do |notebook, key| %>
-      <div class="notebook notebook-<%= key %>">
+      <div class="notebook notebook-<%= key%2 %>">
         <h3 class="notebook-name">
           <%= link_to notebook.name, notebook_lessons_path(notebook), :class => "lesson-title" %>
         </h3>
-        <div class="notebook-details">
-          Created <%= notebook.created_at.month %>, <%= notebook.created_at.year %> | Lecturer: <%= notebook.lecturer %> | <%= notebook.lessons.count %> lessons
+        <div class="notebook-details-index">
+          <div>Lecturer: <%= notebook.lecturer %> </div> 
         </div>
         <%= link_to "new lesson", new_notebook_lesson_path(notebook), :class => "new-lesson" %>
         <% @lessons = notebook.lessons.order("updated_at DESC") %>
@@ -43,9 +43,9 @@
   </div>
   <% else %>
   <div class="clear-both">
-    Welcome to Studyers<br />
-    It appears you don't have notebooks yet (notebooks are where you save all your class lessons).<br />
-    <%= link_to 'Click here to add your first notebook', new_notebook_path, :title => "Add a new notebook", :class => "btn small"%>
+    It appears you don't have notebooks yet 
+    <div class="small">(notebooks are where you save all your class lessons).</div>
+    <%= link_to 'Click here to add your first notebook', new_notebook_path, :title => "Add a new notebook", :class => "btn"%>
   </div> 
   <% end %>
 </section>

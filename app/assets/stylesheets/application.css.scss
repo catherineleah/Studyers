@@ -27,8 +27,12 @@ a {
   }
 }
 
+img {
+  border: 0px none;
+}
+
 section.content {
-  background: #f0f0f0;
+  background: #f0f0f0 url(images/tile.jpg);
   float: left;
   width: 100%;
   min-height: 450px;
@@ -290,7 +294,7 @@ ul {
 
 .sidebar   {
    float: left;
-   width: 242px;
+   width: 23%;
    
    nav {
      
@@ -420,7 +424,11 @@ ul {
 
 .pr_dash {
   float: left;
-  width: 700px;
+  width: 76%;
+  
+  h2, h3 {
+   text-shadow: 0 1px 0 white; 
+  }
   
   .new-notebook{
     background: #9D9D9D;
@@ -440,39 +448,52 @@ ul {
    
    .notebook {
      position: relative;
-     margin-bottom: 26px;
+     margin: 10px;
      padding: 5px;
-     border-left: 6px solid #d6ef66;
-     border-bottom: 2px solid #d6ef66;
+     background: #f57c3d;
      float: left;
-     width: 100%
-     ;
-     &:hover {
-       background: whiteSmoke;
-       border-left: 6px solid #d6ef66;
+     border-radius: 16px;
+     box-shadow: 2px 2px 20px gray;
+     min-height: 200px;
+     
+     &.notebook-1 {
+       background: #e26a72;
+     }
+     a:hover {
+       color: white;
      }
      
      h3 {
-       font-size: 20px;
-       margin: 0px 0px 4px;
+       font-size: 30px;
+       margin: 30px;
+       text-shadow: 0 1px 0 white;
+       line-height: 30px;
      }
      
      .notebook-details {
        font-size: 12px;
-       margin: 0px 0px 10px;
+       margin: 0px 34px 10px;
+       position: absolute;
+       bottom: 0px;
+     }
+     
+     .notebook-details-index {
+       margin: -10px 30px 10px;
      }
      
      .new-lesson {
        position: absolute;
-       right: -12px;
+       right: 0px;
        top: 2px;
-       background: transparent url(images/add_lesson.png) no-repeat 0px 0px;
-       font-size: 12px;
+       /*background: transparent url(images/add_lesson.png) no-repeat 0px 0px;*/
+       font-size: 13px;
+       font-weight: bold;
        text-transform: uppercase;
        height: 50px;
        padding: 20px 6px;
-       width: 85px;
+       width: auto;
        color: white;
+       text-shadow: 0px 1px 0px #333;
        
        &:hover {
          color: antiqueWhite;
@@ -520,6 +541,26 @@ ul {
        }
      }
    } 
+  }
+}
+
+.notebooks.index #notebooks .notebook {
+  width: 100%;
+}
+
+.users.show #notebooks .notebook {
+  width: 28%;
+  
+  h3 {
+    font-size: 15px;
+    line-height: 20px;
+    margin: 70px 30px 30px;
+    
+    a {
+      &:hover {
+        color: white;
+      }
+    }
   }
 }
 
@@ -1121,12 +1162,16 @@ p.gravatar {
   .add_new {
     background: none repeat scroll 0 0 #9D9D9D;
     border-radius: 2px;
-    float: left;
     margin: 7px 0px;
-    padding: 5px 20px;
+    padding: 3px 5px;
     
     &:hover {
       color: white;
     }
   }
+}
+
+.small {
+  padding: 5px 0px;
+  font-size: 12px;
 }

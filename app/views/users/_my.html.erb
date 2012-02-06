@@ -2,37 +2,37 @@
   <% if @notebooks.length > 0 %>
   <div id="notebooks">
     <% @notebooks.each_with_index do |notebook, key| %>
-      <div class="notebook notebook-<%= key %>">
+      <div class="notebook pr-notebook-<%= key %>">
         <h3 class="notebook-name">
           <%= link_to notebook.name, notebook_lessons_path(notebook), :class => "lesson-title" %>
         </h3>
         <div class="notebook-details">
-          Created <%= notebook.created_at.month %>, <%= notebook.created_at.year %> | Lecturer: <%= notebook.lecturer %> | <%= notebook.lessons.count %> lessons
+          <div>Created <%= notebook.created_at.month %>, <%= notebook.created_at.year %> </div> 
+          <div>Lecturer: <%= notebook.lecturer %> </div> 
+          <div><%= notebook.lessons.count %> lessons</div>
         </div>
         <%= link_to "new lesson", new_notebook_lesson_path(notebook), :class => "new-lesson" %>
-        <% @lessons = notebook.lessons.limit(3).order("updated_at DESC") %>
-        <% if @lessons.size > 0 %>
-          <div class="notebook-lessons">
-            <div class="lessons-title">Recent lessons:</div>
-              <div class="lessons">
-                <% @lessons.each do |lesson| %>
-                  <div class="lesson"><%= link_to lesson.title, notebook_lesson_path(notebook, lesson) %> </div>
-                <% end %>
-              </div>
-            </div>
-        <% else %>
-          <div class="notebook-lessons">
-            <div class="lessons-title"><%= link_to "Create a first lesson", new_notebook_lesson_path(notebook), :class => "no-lessons" %></div>
-          </div>
-        <% end %>
+        
       </div>
     <% end %>
   </div>
   <% else %>
   <div id="nontbks">
-    <h2>Welcome to Studyers</h2>
-    <div>It appears you don't have notebooks yet (notebooks are where you save all your class lessons).</div>
-    <%= link_to 'Click here to add your first notebook', new_notebook_path, :title => "Add a new notebook", :class => "add_new"%>
-  </div> 
+    <% if current_user.sign_in_count <= 2%>
+      <h2>Hey, <%= current_user.name %>!</h2>
+      <h3>Welcome to Studyers.</h3>
+      <div>
+        To start using Studyers, <%= link_to 'add your first notebook', new_notebook_path, :title => "Add a new notebook", :class => "add_new"%>
+        <br />
+        <div class="small">(Notebooks are the place were you save all your lesson's notes)</div>
+      </div>
+    <% else %>
+      <h3>Hey, <%= current_user.name %>!</h3>
+      <div>
+      You don't have a notebook yet, <%= link_to 'add your first notebook', new_notebook_path, :title => "Add a new notebook", :class => "add_new"%>
+      <br />
+      <div class="small">(Notebooks are the place were you save all your lesson's notes)</div>
+      </div>
+    <% end %> 
   <% end %>
 </section>

@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  include SessionsHelper
+  #include SessionsHelper
+  
+  before_filter :mobile_view_path
   
   ## Cancan
   rescue_from CanCan::AccessDenied do |exception|
@@ -13,6 +15,10 @@ class ApplicationController < ActionController::Base
   end
   
   private
+    def mobile_view_path
+      prepend_view_path "app/views/#{request.subdomain}_subdomain" if request.subdomain.present?
+    end
+  
     def authenticate
       deny_access unless user_signed_in?
     end

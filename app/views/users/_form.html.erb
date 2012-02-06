@@ -27,6 +27,28 @@
     <%= f.label :password_confirmation, 'Password Confirmation' %><br />
     <%= f.password_field :password_confirmation %>
   </div>
+  
+  <div class="prext">
+    <div>
+      Extend my profile
+    </div>
+    <div class="field">
+      <%= f.label :study_at, 'I study at' %><br />
+      <%= f.text_field :study_at %>
+    </div>
+    <div class="field">
+      <%= f.label :major, 'My major is' %><br />
+      <%= f.text_field :major %>
+    </div>
+    <div class="field">
+      <%= f.label :minor, 'My minor is' %><br />
+      <%= f.text_field :minor %>
+    </div>
+    <div class="field">
+      <%= f.label :language, 'I prefer see Studyers in' %><br />
+      <%= f.select :language, [['English', 'en'], ['Spanish', 'es'], ['French', 'fr'], ['Hebrew', 'he']] %>
+    </div>
+  </div>
   <div class="save">
     <%= f.submit :class =>"btn primary"%>
   </div>

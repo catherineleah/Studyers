@@ -101,11 +101,6 @@ function DrawEditor(ID, putAfter) {
       canvas.addEventListener('mousedown', ev_canvas, false);
       canvas.addEventListener('mousemove', ev_canvas, false);
       canvas.addEventListener('mouseup', ev_canvas, false);
-      // Touch support
-      canvas.addEventListener('touchdown', ev_canvas, false);
-      canvas.addEventListener('touchmove', ev_canvas, false);
-      canvas.addEventListener('touchup', ev_canvas, false);
-      
   }
 
   //color handling:

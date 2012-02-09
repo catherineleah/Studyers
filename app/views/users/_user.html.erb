@@ -13,21 +13,10 @@
         <h4 class="notebook-name">
           <%= link_to notebook.name, notebook_lessons_path(notebook), :class => "lesson-title" %>
         </h4>
-        <div class="notebook-lessons">
-        <%@lessons = notebook.lessons.order("updated_at DESC") %>
-        <% if @lessons.size > 0 %>
-          <div class="lessons">
-          <% @lessons.each do |lesson| %>
-            <% if can? :read, lesson %>
-              <div class="lesson shared">
-                <%= link_to lesson.title, notebook_lesson_path(notebook, lesson) %> [shared with you] 
-              </div>
-            <% else %>
-              <div class="lesson"><%= lesson.title %> </div>
-            <% end %>
-          <% end %>
-          </div>
-        <% end %>
+        <div class="notebook-details">
+          <div>Created <%= notebook.created_at.month %>, <%= notebook.created_at.year %> </div> 
+          <div>Lecturer: <%= notebook.lecturer %> </div> 
+          <div><%= notebook.lessons.count %> lessons</div>
         </div> 
       </div>
     <% end %>

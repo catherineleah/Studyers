@@ -31,7 +31,9 @@
             </div>
         <% else %>
           <div class="notebook-lessons">
-            <div class="lessons-title"><%= link_to "Create a first lesson", new_notebook_lesson_path(notebook), :class => "no-lessons" %></div>
+            <div class="lessons-title">
+              Time to add your first lesson note: <br />
+              <%= link_to "Click here to add your first lesson notes", new_notebook_lesson_path(notebook), :class => "no-lessons" %></div>
           </div>
         <% end %>
         <div class="tools">

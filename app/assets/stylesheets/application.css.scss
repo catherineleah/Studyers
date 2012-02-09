@@ -466,15 +466,12 @@ ul {
      position: relative;
      margin: 10px;
      padding: 5px;
-     background: #f57c3d;
+     border: 2px solid gray ;
      float: left;
      border-radius: 16px;
-     box-shadow: 2px 2px 20px gray;
+     box-shadow: 2px 2px 20px #f57c3d;
      min-height: 200px;
      
-     &.notebook-1 {
-       background: #e26a72;
-     }
      a:hover {
        color: white;
      }
@@ -566,6 +563,7 @@ ul {
 
 .users.show #notebooks .notebook {
   width: 28%;
+  background: #f57c3d;
   
   h3 {
     font-size: 15px;
@@ -601,11 +599,11 @@ ul {
 }
 
 
-.edit-lesson {
+.edit-lesson, #new_lesson {
   position: relative;
   
   .edit-title {
-    width: 585px;
+    width: 580px;
     height: 35px;
     border: 0px;
     margin: -5px 5px;
@@ -1045,6 +1043,10 @@ span.new {
       font-size: 18px;
       border: 0px none;
       border-radius: 3px;
+      
+      &#user_remember_me {
+        width: auto;
+      }
     }
   }
   .save {

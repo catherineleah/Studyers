@@ -11,28 +11,23 @@
           <div>Lecturer: <%= notebook.lecturer %> </div> 
           <div><%= notebook.lessons.count %> lessons</div>
         </div>
-        <%= link_to "new lesson", new_notebook_lesson_path(notebook), :class => "new-lesson" %>
+        <% if notebook.lessons.count == 0 %>
+          <%= link_to "Add your 1st. lesson", new_notebook_lesson_path(notebook), :class => "new-lesson" %>
+        <% else %>
+          <%= link_to "new lesson", new_notebook_lesson_path(notebook), :class => "new-lesson" %>
+        <% end %>
         
       </div>
     <% end %>
   </div>
   <% else %>
-  <div id="nontbks">
-    <% if current_user.sign_in_count <= 2%>
+  <div id="nontbks"> 
       <h2>Hey, <%= current_user.name %>!</h2>
       <h3>Welcome to Studyers.</h3>
       <div>
-        To start using Studyers, <%= link_to 'add your first notebook', new_notebook_path, :title => "Add a new notebook", :class => "add_new"%>
-        <br />
+        To start using Studyers, add your first notebook: <br />
         <div class="small">(Notebooks are the place were you save all your lesson's notes)</div>
+        <%= render 'notebooks/form' %>
       </div>
-    <% else %>
-      <h3>Hey, <%= current_user.name %>!</h3>
-      <div>
-      You don't have a notebook yet, <%= link_to 'add your first notebook', new_notebook_path, :title => "Add a new notebook", :class => "add_new"%>
-      <br />
-      <div class="small">(Notebooks are the place were you save all your lesson's notes)</div>
-      </div>
-    <% end %> 
   <% end %>
 </section>

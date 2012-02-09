@@ -29,6 +29,9 @@ class UsersController < ApplicationController
     end 
     @title = @user.name
     @notebooks = @user.notebooks.order("updated_at DESC")
+    if @notebooks.length == 0
+      @notebook = Notebook.new
+    end
     #@lesson = Lesson.new
     #@lesson.shares.build
   end

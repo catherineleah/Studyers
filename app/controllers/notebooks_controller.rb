@@ -16,6 +16,9 @@ class NotebooksController < ApplicationController
     @notebook = @user.notebooks.find(params[:id])
     @title = @notebook.name
     @lessons = @notebook.lessons
+    if @lessons.length == 0
+      @lesson = Lesson.new
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @notebook }
@@ -42,7 +45,7 @@ class NotebooksController < ApplicationController
     
       if @notebook.save
         flash[:success] ="Saved a new notebook"
-        redirect_to notebooks_path
+        redirect_to @notebook
       else
         render :action => "new" 
       end

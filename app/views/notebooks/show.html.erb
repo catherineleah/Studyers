@@ -1,16 +1,27 @@
-<p id="notice"><%= notice %></p>
-
-<div>
-  <%= @notebook.name %>
+<div class="banner lessons notebooks">
+  <div class="container">
+    <h2>
+      <% if @lessons.empty? %>
+        Create a first lesson
+      <% else %>
+        <%= @notebook.name %> lessons
+      <%end%>
+    </h2>
+  </div>
 </div>
-<% if @lessons.empty? %>
-	<div>You have no lessons. Would you like to <%= link_to 'Create a lesson?', new_notebook_lesson_path(@notebook) %></div>
-<% else %>
-	<% @lessons.each do |lesson| %>
-    <div><%= link_to lesson.title, notebook_lesson_path(@notebook, lesson) %></div> 
-	<% end %>
-<% end %>
-
-
-<%= link_to 'Change notebook title', edit_user_notebook_path(@user) %> |
- <%=link_to 'Back notebooks index', notebooks_path %>
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <%= render 'layouts/profile-mini' %>
+  <div class="lessons_dash">
+    <div class="notebook">
+      <% if @lessons.empty? %>
+        <%= render 'lessons/form' %>
+      <% else %>
+        <h1 class="notebook-name"><%= @notebook.name %></h1>
+        <% @lessons.each do |lesson| %>
+          <div><%= link_to lesson.title, notebook_lesson_path(@notebook, lesson) %></div> 
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -5,16 +5,20 @@
 </div>
 <div class="container">
 <p id="notice"><%= notice %></p>
-<%= render 'layouts/profile' %>
+<% if @lessons.count > 0 %>
+  <%= render 'layouts/profile' %>
+<% else %>
+  <%= render 'layouts/profile-mini' %>
+<% end %>
 <div class="lessons_dash">
   <div class="notebook">
   <h1 class="notebook-name"><%= @notebook.name %></h1>
-  <% if @current_user.id == @notebook.user_id %>
-    <%= link_to 'new Lesson', new_notebook_lesson_path, :class => "new-lesson" %>
-  <% end %>
-  <h3 class="lessons-list">list of lessons</h3>
 
   <% if @lessons.count > 0 %>
+    <% if @current_user.id == @notebook.user_id %>
+      <%= link_to 'new Lesson', new_notebook_lesson_path, :class => "new-lesson" %>
+    <% end %>
+    <h3 class="lessons-list">list of lessons</h3>
     <% @lessons.each do |lesson| %>
       <div class="lesson">  
         <h3 class="lesson-title"><%= link_to lesson.title, notebook_lesson_path(@notebook, lesson) %></h3>
@@ -29,7 +33,8 @@
     <% end %>
   <% else %>
     <% if @current_user.id == @notebook.user_id %>
-      <div class="empty-lesson">Add a <%= link_to 'first lesson', new_notebook_lesson_path %></div>
+      <h3 class="lessons-list">Create a first lesson</h3>
+      <%=  render 'lessons/form'%>
     <% end %>
   <% end %>
   </div>

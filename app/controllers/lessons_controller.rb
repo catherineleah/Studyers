@@ -11,6 +11,9 @@ class LessonsController < ApplicationController
     @user = current_user
     @notebook = Notebook.find(params[:notebook_id])
     @lessons = @notebook.lessons.order("updated_at DESC")
+    if @lessons.count == 0
+      @lesson = Lesson.new
+    end
     @title = @notebook.name   
   end
 

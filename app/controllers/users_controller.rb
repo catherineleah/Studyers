@@ -9,10 +9,10 @@ class UsersController < ApplicationController
     @title = "Who to follow"
     if (!current_user.study_at or current_user.study_at.empty?) and (!current_user.major or current_user.major.empty?)
       @users = User.order("RANDOM()").limit(16)
-    elsif  (!current_user.study_at or current_user.study_at.empty?) or (!current_user.major or current_user.major.empty?)
-      @users = User.where("(study_at like ? or major like ?) and id != ?", "%#{current_user.study_at}%", "%#{current_user.major}%", current_user.id).limit(16)
+    #elsif  (!current_user.study_at or current_user.study_at.empty?) or (!current_user.major or current_user.major.empty?)
+      
     else
-      User.where("study_at like ? and major like ? and id != ?", "%#{current_user.study_at}%", "%#{current_user.major}%", current_user.id).limit(16)
+      @users = User.where("(study_at like ? or major like ?) and id != ?", "%#{current_user.study_at}%", "%#{current_user.major}%", current_user.id).limit(16)
     end
 
     #json_users is an api to all users but current user

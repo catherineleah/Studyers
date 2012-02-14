@@ -1,6 +1,6 @@
 <div class="banner profile notebooks">
   <div class="container">
-    <h2>Edit "<%= @notebook.name %>" properties</h2>
+    <h2><%=t 'edit_notebook', :notebook => @notebook.name %></h2>
   </div>
 </div>
 <div class="container">
@@ -9,5 +9,5 @@
 <section class="pr_dash">
 <%= render 'form' %>
 
-<%= link_to 'Back', notebooks_path %>
+<%= link_to t(:back), notebooks_path %>
 </section>

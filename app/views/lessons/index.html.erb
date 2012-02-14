@@ -35,6 +35,8 @@
     <% if @current_user.id == @notebook.user_id %>
       <h3 class="lessons-list">Create a first lesson</h3>
       <%=  render 'lessons/form'%>
+    <% else %>
+      No lessons created yet.
     <% end %>
   <% end %>
   </div>

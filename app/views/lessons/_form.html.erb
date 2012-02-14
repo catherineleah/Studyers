@@ -12,12 +12,12 @@
     </div>
   <% end %>
 <div class="side-menu">
-  <a class="resource btn" id="show-embed" href="#" title="Add your lecturer's presentation">lecturer presentation</a>
-  <a class="resource btn" id="share-lesson" href="#" title="Share with your friends">Share this lesson</a>
+  <a class="resource btn" id="show-embed" href="#" title="Add your lecturer's presentation"><%=t :lecturer_presentation %></a>
+  <a class="resource btn" id="share-lesson" href="#" title="Share with your friends"><%=t :share_this_lesson %></a>
 </div>
 <div id="wiki-find-form">
   <input type="text" class="wiki-value" id="wiki-term-input" autocomplete="off" />
-  <a class="wiki-find btn" id="wiki-submit">Search</a>
+  <a class="wiki-find btn" id="wiki-submit"><%=t :search %></a>
 </div>
 <div id="side-resources">
   <div class="pull-resource" id="show-embed-form">
@@ -36,11 +36,6 @@
   <div class="pull-resource" id="share-lesson-form">
     <div class="block-message side-message info">
       <a class="close" href="#">×</a>
-      <%# f.fields_for :shares do |builder| %>
-        <%# builder.label :shared_token, "Type the user names you wish to share the lesson with:" %>
-        <%# builder.text_field :shared_token, "data-pre" => @shared_ids %>
-      <%# end %>
-      <%# Ugly hack until we find a way to add alway only one (id=0) text field. #%>
       <label for="lesson_shares_attributes_0_shared_token">Type the user names you wish to share the lesson with:</label>
       <input data-pre="<%= @shared_ids %>" id="lesson_shares_attributes_0_shared_token" name="lesson[shares_attributes][0][shared_token]" size="30" type="text" style="display: none; ">
       <br />

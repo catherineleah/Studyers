@@ -7,11 +7,15 @@
   <p id="notice"><%= notice %></p>
   <%= render 'layouts/profile' %>
   <section class="pr_dash">
-    <%= will_paginate %>
-      <ul class="all-user">
-        <% @users.each do |user| %>
-          <li><%= link_to user.name, user %></li>
-        <% end %>
-      </ul>
-    <%= will_paginate %>
+    <h3>Who to follow</h3>
+    <ul class="all-user">
+      <% @users.each do |similar| %>
+        <% @person = "#{t(:studyer_at)}: #{similar.study_at} <br /> #{t(:Major)}: #{similar.major}" %>
+        <li><%= link_to (gravatar_for similar, :size => 40), similar, :"data-title" => similar.name, :"data-content" => @person , :class => "similar" %></li>
+      <% end %>
+    </ul>
+    <div class="explain">(<%=t :following_coming_soon %>)</div>
   </section>
+  
+  
+    

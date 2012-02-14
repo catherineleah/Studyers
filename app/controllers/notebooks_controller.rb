@@ -6,6 +6,9 @@ class NotebooksController < ApplicationController
   def index
     @user = current_user
     @notebooks = @user.notebooks.order("updated_at DESC")
+    if @notebooks.length == 0
+      @notebook = Notebook.new
+    end
     @title = "My notebooks"
   end
 

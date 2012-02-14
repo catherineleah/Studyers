@@ -77,6 +77,9 @@ section.content {
         line-height: 30px;
         a {
           color: #AEAEAE;
+          &.noprofile {
+            color: #F57C3D;
+          }
         }
       }
       .user_name {
@@ -86,16 +89,18 @@ section.content {
       }
       
       .user_logout {
-        background: #9d9d9d url(images/icons.png) no-repeat;
+        background: transparent url(images/icons.png) no-repeat;
         background-position: 7px -115px;
         border-radius: 3px 3px 3px 3px;
         height: 21px;
-        padding: 5px;
+        padding: 3px;
         text-align: center;
         width: 80px;
         line-height: 20px;
+        float: left;
+        margin-top: 2px;
         a {
-          color: #fff;
+          color: #9d9d9d;
         }
       }
       
@@ -106,6 +111,7 @@ section.content {
         border: 0px none;
         border-radius: 4px;
         margin: 0px 4px;
+        font-size: 14px;
       }
     
       .btn.signin {
@@ -123,7 +129,7 @@ section.content {
       }
     }
     .user_info.user {
-      width: 320px;
+      width: 380px;
     }
   }
 }
@@ -147,58 +153,44 @@ section.content {
       top: -10px;
       
       #tp_text_spl {
-        position: absolute;
-        right: 50px;
-        top: 50px;
-        width: 350px;
-        
-        #e {
+        float: left;
+        padding: 3%;
+        width: 44%;
+        #slogan {
+          font-size: 18px;
+          margin: -42px 26px;
+          line-height: 56px;
           color: #F4702A;
-          font-size: 45px;
         }
-        #to {
-          font-size: 30px;
-          color: gray;
-          line-height: 38px;
-          opacity: 0.6;
-        }
-        #tn {
-          font-size: 40px;
-          text-transform: uppercase;
-          position: absolute;
-          top: 40px;
-          left: 33px;
-          line-height: 38px;
-          width: 290px;
-        }
-        #and {
-          position: absolute;
-          top: 102px;
-          font-size: 60px;
-          color: gray;
-          right: 116px;
-          opacity: 0.6;
-        }
-        #shr {
-          position: absolute;
-          top: 118px;
-          font-size: 44px;
-          left: 62px;
+        #sunow {
           color: #0087AB;
-          line-height: 37px;
+          font-size: 26px;
+          line-height: 34px;
+          text-align: center;
+        }
+      }
+      .home-signup-form {
+        float: left;
+        padding: 4% 6%;
+        width: 38%;
+        
+        input#user_name, input#user_email, input#user_password {
+          border: 0 none;
+          border-radius: 4px;
+          font-size: 17px;
+          height: 34px;
+          margin: 4px 0px;
+          width: 333px;
         }
         #home-signup {
-          background: #FFC012;
+          background: #86C246;
+          border: 0px none;
           border-radius: 10px;
-          bottom: -200px;
-          box-shadow: 6px 7px 7px #333333;
-          color: white;
-          font-size: 42px;
-          left: 60px;
-          padding: 12px 18px 20px;
-          position: absolute;
-          text-shadow: 2px 3px 1px #333;
-          line-height: 24px;
+          box-shadow: 3px 3px 3px gray;
+          color: whiteSmoke;
+          font-size: 22px;
+          height: 40px;
+          margin: 7px auto;
         }
       }
     }
@@ -611,6 +603,22 @@ ul {
     font-size: 15px;
     border-radius: 4px;
   }
+}
+
+.all-user {
+  width: 56%;
+  li {
+    float: left;
+    margin: 8px;
+    img {
+      width: 40px;
+    }
+  }
+  
+}
+.explain {
+  clear: both;
+  font-size: 11px;
 }
 
 .pull-resource::-webkit-scrollbar{
@@ -1116,7 +1124,9 @@ p.gravatar {
   }
 }
 
-.tip-twitter {
+
+.tooltip {
+  position: absolute;
 	opacity:0.8;
 	z-index:1000;
 	text-align:left;
@@ -1127,37 +1137,16 @@ p.gravatar {
 	max-width:200px;
 	color:#fff;
 	background-color:#000;
-	/**
-	 * - If you set a background-image, border/padding/background-color will be ingnored.
-	 *   You can set any padding to .tip-inner instead if you need.
-	 * - If you want a tiled background-image and border/padding for the tip,
-	 *   set the background-image to .tip-inner instead.
-	 */
+	margin-bottom: 6px;
+
 }
-.tip-twitter .tip-inner {
+.tooltip .tooltip-inner {
 	font:bold 11px/14px 'Lucida Grande',sans-serif;
 }
 
-/* Configure an arrow image - the script will automatically position it on the correct side of the tip */
-.tip-twitter .tip-arrow-top {
-	margin-top:-5px;
-	margin-left:-5px; /* approx. half the width to center it */
-	top:0;
-	left:50%;
-	width:9px;
-	height:5px;
-	background:url(images/tip-twitter_arrows.gif) no-repeat;
-}
-.tip-twitter .tip-arrow-right {
-	margin-top:-4px; /* approx. half the height to center it */
-	margin-left:0;
-	top:50%;
-	left:100%;
-	width:5px;
-	height:9px;
-	background:url(images/tip-twitter_arrows.gif) no-repeat -9px 0;
-}
-.tip-twitter .tip-arrow-bottom {
+
+.tooltip .tooltip-arrow{
+  position: absolute;
 	margin-top:0;
 	margin-left:-5px; /* approx. half the width to center it */
 	top:100%;
@@ -1166,14 +1155,52 @@ p.gravatar {
 	height:5px;
 	background:url(images/tip-twitter_arrows.gif) no-repeat -18px 0;
 }
-.tip-twitter .tip-arrow-left {
-	margin-top:-4px; /* approx. half the height to center it */
-	margin-left:-5px;
-	top:50%;
-	left:0;
-	width:5px;
-	height:9px;
-	background:url(images/tip-twitter_arrows.gif) no-repeat -27px 0;
+
+.popover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  display: none;
+  padding: 5px;
+  &.top    { margin-top:  -5px; }
+  &.right  { margin-left:  5px; }
+  &.bottom { margin-top:   5px; }
+  &.left   { margin-left: -5px; }
+  /*&.top .arrow    { #popoverArrow > .top(); }
+    &.right .arrow  { #popoverArrow > .right(); }
+    &.bottom .arrow { #popoverArrow > .bottom(); }
+    &.left .arrow   { #popoverArrow > .left();  }*/
+  .arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+  }
+}
+.popover-inner {
+  padding: 3px;
+  max-width: 280px;
+  min-width: 160px;
+  overflow: hidden;
+  background: #333; // has to be full background declaration for IE fallback
+  background: rgba(0,0,0,.4);
+  border-radius: 6px;
+  box-shadow:0 3px 7px rgba(0,0,0,0.9);
+}
+.popover-title {
+  padding: 9px 15px;
+  line-height: 1;
+  background-color: #f5f5f5;
+  border-bottom:1px solid #eee;
+  margin: 3px 0px;
+}
+.popover-content {
+  padding: 14px;
+  background-color: white;
+  
+  p, ul, ol {
+    margin-bottom: 0;
+  }
 }
 
 #nontbks {
@@ -1192,4 +1219,54 @@ p.gravatar {
 .small {
   padding: 5px 0px;
   font-size: 12px;
+}
+
+.profile-settings {
+  background: #86C246;
+  border-radius: 6px 6px 6px 6px;
+  color: white;
+  cursor: pointer;
+  padding: 7px;
+  margin: 10px 0px;
+  &.inactive {
+    background: #9d9d9d;
+  }
+}
+.basic .field { 
+  display: none;
+}
+
+body.he {
+  direction: rtl;
+  
+  .topbar .container #logo {
+    float: right;
+  }
+  
+  .topbar .container .user_info {
+    float: left;
+  }
+  
+  .topbar .container .user_info .logged_in {
+    float: right;
+  }
+  .sidebar, .pr_dash, .lessons_dash {
+    float: right;
+  }
+  
+  .pr_dash #notebooks .notebook {
+    float: right;
+  }
+  
+  .side-menu {
+    float: left;
+  }
+  
+  #wiki-find-form {
+    left: -2px;
+    top: 342px;
+  }
+  #side-resources {
+    left: 20px;
+  }
 }

@@ -1,11 +1,17 @@
 //= require jquery  
 //= require jquery-ui
 //= require jquery_ujs
-//= require jquery.poshytip
 //= require jquery.watermark.min
+//= require bootstrap-tooltip
+//= require bootstrap-popover
 //= require_self  
 
 $(document).ready(function() {
+  
+  $(".basic .basic-settings, .prext .ext-settings").click(function() {
+    $(this).toggleClass("inactive");
+    $(this).parent().find(".field").toggle("slow");
+  });
   
   $('.del-lesson, .del-notebook').bind('ajax:success', function() {  
       $(this).parent().parent().parent().hide("slow");  
@@ -19,8 +25,10 @@ $(document).ready(function() {
     $('div.alert-message').fadeOut('slow');
   }, 7000);
       
-  $("#show-embed, #share-lesson, #clear").poshytip();
-  $(".add").poshytip({alignY: 'bottom'});
+  $("#show-embed, #share-lesson, #clear").tooltip('hide');
+  $(".add").tooltip('hide');
+  
+  $(".similar").popover('hide', 'delay: {show: 10000, hide: 10000}');
   
   $("#wiki-term-input").watermark("Search on Wikipedia");
   $("#lesson_title").watermark("Lesson title");

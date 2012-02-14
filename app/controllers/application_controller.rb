@@ -3,6 +3,15 @@ class ApplicationController < ActionController::Base
   #include SessionsHelper
   
   before_filter :mobile_view_path
+  before_filter :set_locale
+
+  def set_locale
+    if current_user
+      I18n.locale = current_user.language || I18n.default_locale
+    else
+      I18n.locale = I18n.default_locale
+    end
+  end
   
   ## Cancan
   rescue_from CanCan::AccessDenied do |exception|

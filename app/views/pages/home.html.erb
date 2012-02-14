@@ -1,7 +1,24 @@
 <div class="tp_spl">
   <div class="container">
     <div class="tp_text">
-      <div id="tp_text_spl"><span id="e">The easiest way</span> <span id="to">to</span> <span id="tn">take notes in class</span><span id="and"> &</span> <span id="shr">share with friends</span><%= link_to "Sign up", new_user_registration_path, :id => "home-signup" %></div>
+      <div id="tp_text_spl">
+        <div id="slogan">Create & <span>Share</span> lesson notes</div> 
+      </div>
+      <%= form_for("user", :html => {:class => "home-signup-form"}, :url => user_registration_path) do |f| %>
+        Signing up is free and easy!
+        <div class="field">
+          <%= f.text_field :name,:placeholder => "Your name" %>
+        </div>
+        <div class="field">
+          <%= f.email_field :email, :placeholder => "Email address" %>
+        </div>
+        <div class="field">
+          <%= f.password_field :password, :placeholder => "Password", :autocomplete => "off" %>
+        </div>
+
+
+        <div class="save"><%= f.submit "Start taking notes!", :class => "primary", :id => "home-signup" %></div>
+      <% end %>
     </div>
   </div>
 </div>
@@ -9,11 +26,15 @@
   <div class="container">
     <div class="span3">
       <div class="title first">
-        <h2>Easy to use</h2>
+        <h2>Easiest note taking</h2>
       </div>
       <div class="content">
         <%= image_tag("take_notes.png") %>
-        Studyers note taking is the the easiest way to take notes on lessons.
+        With Studyers you can: <br />
+        - Add lecturer's presentation <br />
+        - Write down notes <br />
+        - Draw and add graphs <br />
+      
       </div>
     </div>
     <div class="span3">

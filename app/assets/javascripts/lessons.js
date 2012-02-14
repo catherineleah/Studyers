@@ -46,71 +46,70 @@ $(document).ready(function() {
     hintText: 'Type in friends names...'
   });
   
-	var lessonText = $("#lesson_body").val();
+  var lessonText = $("#lesson_body").val();
   //console.log(lessonText);
   $("#lesson_body").hide();
   $("#lesson_body").after('<div id="text-editor"></div>');
-	var text = new TextEditor();
-	text.showControls();
-	if (lessonText)
-		text.savedText(lessonText);
-	
-	
-	$("#add-text").click(function() {
-  	var text = new TextEditor();
-		text.showControls();
+  var text = new TextEditor();
+  text.showControls();
+  if (lessonText)
+    text.savedText(lessonText);
+
+
+  $("#add-text").click(function() {
+    var text = new TextEditor();
+    text.showControls();
   });
 
-	$(".text-after").live('click', function() {
-		var putAfter = $(this).attr('after');
-  	var text = new TextEditor(putAfter);
-		text.showControls();
+  $(".text-after").live('click', function() {
+    var putAfter = $(this).attr('after');
+    var text = new TextEditor(putAfter);
+    text.showControls();
   });
 
-	$(".draw-after").live('click', function() {
-		var putAfter = $(this).attr('after');
-		var ID = uniqueId();
-  	var draw = new DrawEditor(ID, putAfter);
-		draw.drawInit(ID);
+  $(".draw-after").live('click', function() {
+    var putAfter = $(this).attr('after');
+    var ID = uniqueId();
+    var draw = new DrawEditor(ID, putAfter);
+    draw.drawInit(ID);
   });
   
   $(".graph-after").live('click', function() {
-		var putAfter = $(this).attr('after');
-		var ID = uniqueId();
-  	var graph = new graphEditor(ID, putAfter);
+    var putAfter = $(this).attr('after');
+    var ID = uniqueId();
+    var graph = new graphEditor(ID, putAfter);
   });
   
-	$("#add-draw").click(function() {
-		var ID = uniqueId();
-		var draw = new DrawEditor(ID);
-		draw.drawInit(ID);
-	});
+  $("#add-draw").click(function() {
+    var ID = uniqueId();
+    var draw = new DrawEditor(ID);
+    draw.drawInit(ID);
+  });
 
   $("#lesson_submit").click(function(e){
-		// Cleanup tools
-	  $("#text-editor .buttons, #text-editor .dtool, #text-editor .dont-save").remove();
-		// create images from canvases
-		var canvases = document.getElementsByClassName('imageView');
-		for (var i = 0; i < canvases.length; i++) {
-			var data = canvases[i].toDataURL();
-			var container = canvases[i].parentNode;
-			
-			var img = document.createElement('img');
-			img.src = data;
-			container.insertBefore(img);
-		}
-		$(".canvas-container canvas").remove();
-		$(".canvas-container img").addClass("SavedImage");
+    // Cleanup tools
+    $("#text-editor .buttons, #text-editor .dtool, #text-editor .dont-save").remove();
+    // create images from canvases
+    var canvases = document.getElementsByClassName('imageView');
+    for (var i = 0; i < canvases.length; i++) {
+      var data = canvases[i].toDataURL();
+      var container = canvases[i].parentNode;
+      var img = document.createElement('img');
+      img.src = data;
+      container.insertBefore(img);
+    }
+    $(".canvas-container canvas").remove();
+    $(".canvas-container img").addClass("SavedImage");
     $(".field-container").removeClass();
-		$(".text").removeClass().addClass('SavedText');
+    $(".text").removeClass().addClass('SavedText');
     $(".SavedText div:empty").remove();
     var textSave = $("#text-editor").html();
-		//console.log(textSave);
+    //console.log(textSave);
     $("#lesson_body").val(textSave);
     
     if (!$("#lesson_title").val()){
-			var today = new Date();
-			$("#lesson_title").val(today + "- auto title");
+      var today = new Date();
+      $("#lesson_title").val(today + "- auto title");
     }
   });
   

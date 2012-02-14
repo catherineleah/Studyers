@@ -1,0 +1,49 @@
+he:
+  hello: "שלום עולם!"
+  add_first_lesson: "צור שיעור ראשון"
+  new_lesson: "שיעור חדש"
+  created: "נוצר ב-"
+  lecturer: "מרצה"
+  lessons: "שיעורים"
+  hey: "היי"
+  welcome: "ברוך הבא אל Studyers."
+  nonotebooks_html: 'כדי להתחיל להשתמש, צור את המחברת הראשונה שלך: <br /><div class="small">(סיכומי שיעור נשמרים במחברת)</div>'
+  notebook_name: "שם המחברת / קורס"
+  course_code: "קוד הקורס"
+  notebooks: "מחברות"
+  lessons_shared: "שיעורים ששיתפו עימי"
+  users: "משתמשים ב- Studyers"
+  complete_profile: "השלם את הפרופיל שלך"
+  settings: "הגדרות"
+  logout: "התנתק"
+  sign_in: "התחבר"
+  remember_me: "זכור אותי"
+  edit_notebook: 'עריכת פרטי "%{notebook}"'
+  back: 'חזרה'
+  my_notebooks: "המחברות שלי"
+  new_notebook: "+ מחברת חדשה"
+  time_to_add_first_lesson: "הוסף את סיכום השיעור הראשון שלך"
+  click_to_add_first_lesson: "הקלק כאן כדי ליצור סיכום שיעור ראשון"
+  edit_notebook: 'עריכת מחברת'
+  delete_notebook: '- מחיקת מחברת'
+  create_new_notebook: "צור מחברת חדשה"
+  profile: "פרופיל"
+  email: "כתובת מייל"
+  name: "שם"
+  password: 'סיסמא'
+  study_at: 'אני לומד ב:'
+  major: 'החוג הראשי'
+  Major: 'חוג ראשי'
+  minor: 'החוג המשני'
+  language: 'שפת ממשק'
+  english: 'אנגלית'
+  spanish: 'ספרדית'
+  french: 'צרפתית'
+  hebrew: 'עברית'
+  following_coming_soon: "Actual following coming soon"
+  studyer_at: "לומד ב"
+  who_to_follow: "Who to follow"
+  hi: "היי"
+  lecturer_presentation: "מצגת השיעור"
+  share_this_lesson: "שתף שיעור זה"
+  search: "חפש"

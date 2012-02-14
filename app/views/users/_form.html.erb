@@ -10,43 +10,43 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :password, 'Password' %><br />
-    <%= f.password_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation, 'Password Confirmation' %><br />
-    <%= f.password_field :password_confirmation %>
+  <div class="basic">
+    <div class="basic-settings profile-settings inactive">
+      Basic Settings
+    </div>
+    <div class="field">
+      <%= f.label t(:name) %><br />
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label t(:email) %><br />
+      <%= f.text_field :email %>
+    </div>
+    <div class="field">
+      <%= f.label t(:password) %><br />
+      <%= f.password_field :password, :autocomplete => "off" %>
+    </div>
   </div>
   
   <div class="prext">
-    <div>
+    <div class="ext-settings profile-settings">
       Extend my profile
     </div>
     <div class="field">
-      <%= f.label :study_at, 'I study at' %><br />
+      <%= f.label t(:study_at) %><br />
       <%= f.text_field :study_at %>
     </div>
     <div class="field">
-      <%= f.label :major, 'My major is' %><br />
+      <%= f.label t(:major) %><br />
       <%= f.text_field :major %>
     </div>
     <div class="field">
-      <%= f.label :minor, 'My minor is' %><br />
+      <%= f.label t(:minor) %><br />
       <%= f.text_field :minor %>
     </div>
     <div class="field">
-      <%= f.label :language, 'I prefer see Studyers in' %><br />
-      <%= f.select :language, [['English', 'en'], ['Spanish', 'es'], ['French', 'fr'], ['Hebrew', 'he']] %>
+      <%= f.label t(:language) %><br />
+      <%= f.select :language, [[t(:english), 'en'], [t(:spanish), 'es'], [t(:french), 'fr'], [t(:hebrew), 'he']] %>
     </div>
   </div>
   <div class="save">

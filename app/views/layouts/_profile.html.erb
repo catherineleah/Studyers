@@ -4,9 +4,9 @@
 <div class="user-info"><%= link_to current_user.name, profile_path %></div>
 <nav>
   <ul>
-    <li class="notebooks-title side-links"><%= link_to "Notebooks", notebooks_path %></li>
-    <li class="lessons-shared side-links"><%= link_to "Lessons shared with me", lessons_shared_path %></li>
-    <li class="users-path side-links"><%= link_to "Users on Studyers", users_path %></li>
+    <li class="notebooks-title side-links"><%= link_to t(:notebooks), notebooks_path %></li>
+    <li class="lessons-shared side-links"><%= link_to t(:lessons_shared), lessons_shared_path %></li>
+    <li class="users-path side-links"><%= link_to t(:who_to_follow), users_path %></li>
   </ul>
 </nav>
 </section>

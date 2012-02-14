@@ -37,7 +37,7 @@ function DrawEditor(ID, putAfter) {
 	//Attach controls
 	$("#canvas-container-" + this.ID).append('<div class="dtools"><div class="dtool dtool-'+ this.ID +'" id="text" title="Add text to canvas">Text</div><div class="dtool dtool-'+ this.ID +'" id="pencil" title="Pencil draw">p</div><div class="dtool dtool-'+ this.ID +'" id="line" title="Line draw">l</div><div class="dtool dtool-'+ this.ID +'" id="rect" title="Rectangle draw">r</div><div class="dtool dtool-'+ this.ID +'" id="circle" title="Circle draw">c</div><div class="dtool dtool-'+ this.ID +'" id="clear" title="Clear this canvas">cls</div></div>');
 	$("#canvas-container-" + this.ID).append(buttonsAppend("#canvas-container-" + this.ID, 'drawpad'));
-	$('.dtool').poshytip();
+	$('.dtool').tooltip('hide');;
 	var canvas = this.canvas;
 	var context = this.context;
 	var canvaso = this.canvaso

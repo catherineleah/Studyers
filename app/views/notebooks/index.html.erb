@@ -1,13 +1,13 @@
 <div class="banner profile notebooks">
   <div class="container">
-    <h2>My notebooks</h2>
+    <h2><%=t :my_notebooks %></h2>
   </div>
 </div>
 <div class="container">
 <p id="notice"><%= notice %></p>
 <%= render 'layouts/profile' %>
 <section class="pr_dash">
-  <%= link_to "+ New notebook", new_notebook_path, :class => "new-notebook"%>
+  <%= link_to t(:new_notebook), new_notebook_path, :class => "new-notebook"%>
   <% if @notebooks.length > 0 %>
   <div id="notebooks">
     <% @notebooks.each_with_index do |notebook, key| %>
@@ -16,13 +16,13 @@
           <%= link_to notebook.name, notebook_lessons_path(notebook), :class => "lesson-title" %>
         </h3>
         <div class="notebook-details-index">
-          <div>Lecturer: <%= notebook.lecturer %> </div> 
+          <div><%=t :lecturer %>: <%= notebook.lecturer %> </div> 
         </div>
-        <%= link_to "new lesson", new_notebook_lesson_path(notebook), :class => "new-lesson" %>
+        <%= link_to t(:new_lesson), new_notebook_lesson_path(notebook), :class => "new-lesson" %>
         <% @lessons = notebook.lessons.order("updated_at DESC") %>
         <% if @lessons.size > 0 %>
           <div class="notebook-lessons">
-            <div class="lessons-title">Lessons</div>
+            <div class="lessons-title"><%=t :lessons %></div>
               <div class="lessons">
                 <% @lessons.each do |lesson| %>
                   <div class="lesson"><%= link_to lesson.title, notebook_lesson_path(notebook, lesson) %> </div>
@@ -32,22 +32,21 @@
         <% else %>
           <div class="notebook-lessons">
             <div class="lessons-title">
-              Time to add your first lesson note: <br />
-              <%= link_to "Click here to add your first lesson notes", new_notebook_lesson_path(notebook), :class => "no-lessons" %></div>
+              <%=t :time_to_add_first_lesson %>: <br />
+              <%= link_to t(:click_to_add_first_lesson), new_notebook_lesson_path(notebook), :class => "no-lessons" %></div>
           </div>
         <% end %>
         <div class="tools">
-          <div class="edit-notebook"><%= link_to 'Edit notebook', edit_user_notebook_path(@user, notebook), :title => "Edit notebook"  %></div>
-          <div class="delete-notebook"><%= link_to '- Delete notebook', notebook, :class =>"del-notebook", :method => :delete, :remote => true, confirm: 'Are you sure you want to delete this notebook?', :title => "Delete notebook" %></div>
+          <div class="edit-notebook"><%= link_to t(:edit_notebook), edit_user_notebook_path(@user, notebook), :title => "Edit notebook"  %></div>
+          <div class="delete-notebook"><%= link_to t(:delete_notebook), notebook, :class =>"del-notebook", :method => :delete, :remote => true, confirm: 'Are you sure you want to delete this notebook?', :title => "Delete notebook" %></div>
         </div>
       </div>
     <% end %>
   </div>
   <% else %>
   <div class="clear-both">
-    It appears you don't have notebooks yet 
-    <div class="small">(notebooks are where you save all your class lessons).</div>
-    <%= link_to 'Click here to add your first notebook', new_notebook_path, :title => "Add a new notebook", :class => "btn"%>
+    <%=t :nonotebooks_html %>
+    <%= render 'form' %>
   </div> 
   <% end %>
 </section>

@@ -7,14 +7,14 @@
           <%= link_to notebook.name, notebook_lessons_path(notebook), :class => "lesson-title" %>
         </h3>
         <div class="notebook-details">
-          <div>Created <%= notebook.created_at.month %>, <%= notebook.created_at.year %> </div> 
-          <div>Lecturer: <%= notebook.lecturer %> </div> 
-          <div><%= notebook.lessons.count %> lessons</div>
+          <div><%=t :created %> <%= notebook.created_at.month %>, <%= notebook.created_at.year %> </div> 
+          <div><%=t :lecturer %>: <%= notebook.lecturer %> </div> 
+          <div><%= notebook.lessons.count %> <%=t :lessons %></div>
         </div>
         <% if notebook.lessons.count == 0 %>
-          <%= link_to "Add your 1st. lesson", new_notebook_lesson_path(notebook), :class => "new-lesson" %>
+          <%= link_to t(:add_first_lesson), new_notebook_lesson_path(notebook), :class => "new-lesson" %>
         <% else %>
-          <%= link_to "new lesson", new_notebook_lesson_path(notebook), :class => "new-lesson" %>
+          <%= link_to t(:new_lesson), new_notebook_lesson_path(notebook), :class => "new-lesson" %>
         <% end %>
         
       </div>
@@ -22,11 +22,10 @@
   </div>
   <% else %>
   <div id="nontbks"> 
-      <h2>Hey, <%= current_user.name %>!</h2>
-      <h3>Welcome to Studyers.</h3>
+      <h2><%=t :hey %>, <%= current_user.name %>!</h2>
+      <h3><%=t :welcome %></h3>
       <div>
-        To start using Studyers, add your first notebook: <br />
-        <div class="small">(Notebooks are the place were you save all your lesson's notes)</div>
+        <%=t :nonotebooks_html %>
         <%= render 'notebooks/form' %>
       </div>
   <% end %>

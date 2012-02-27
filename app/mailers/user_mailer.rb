@@ -4,7 +4,7 @@ class UserMailer < ActionMailer::Base
   def welcome_email(email, name)
     @user = name
     @mail = email
-    @url  = "http://studyers.com/users/sign_up"
+    @url  = "http://studyers.com/users/password/new"
     mail(:to => email, :subject => "Welcome to Studyers")
     end
 end

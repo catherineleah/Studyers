@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   
   ## Cancan
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:error] = "You have no permission to view this lesson"
+    flash[:error] = "I am sorry, you can access that resource"
     redirect_to profile_path
   end
   

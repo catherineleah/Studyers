@@ -35,9 +35,16 @@ class UsersController < ApplicationController
       @user = current_user
     end 
     @title = @user.name
-    @notebooks = @user.notebooks.order("updated_at DESC")
-    if @notebooks.length == 0
-      @notebook = Notebook.new
+    if role?(@user) == 'student'
+      @notebooks = @user.notebooks.order("updated_at DESC")
+      if @notebooks.length == 0
+        @notebook = Notebook.new
+      end
+    elsif role?(@user) == 'teacher'
+      @courses = @user.courses.order("updated_at DESC")
+      if @courses.length == 0
+        @course = Course.new
+      end
     end
     #@lesson = Lesson.new
     #@lesson.shares.build
@@ -119,5 +126,9 @@ class UsersController < ApplicationController
     
     def current_user?(user)
       user == current_user
+    end
+    
+    def role?(user)
+      return user.role
     end
 end

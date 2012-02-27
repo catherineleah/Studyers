@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120202221040) do
+ActiveRecord::Schema.define(:version => 20120221202222) do
 
   create_table "class_resources", :force => true do |t|
     t.string   "title"
@@ -29,6 +29,30 @@ ActiveRecord::Schema.define(:version => 20120202221040) do
     t.datetime "updated_at"
   end
 
+  create_table "course_lessons", :force => true do |t|
+    t.integer  "course_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.string   "file"
+  end
+
+  add_index "course_lessons", ["course_id"], :name => "index_course_lessons_on_course_id"
+
+  create_table "courses", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "number"
+    t.string   "department"
+    t.string   "term"
+    t.string   "school"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "courses", ["user_id"], :name => "index_courses_on_user_id"
+
   create_table "friendships", :force => true do |t|
     t.integer "user_id"
     t.integer "friend_id"
@@ -37,6 +61,14 @@ ActiveRecord::Schema.define(:version => 20120202221040) do
   end
 
   add_index "friendships", ["user_id", "friend_id"], :name => "index_friendships_on_user_id_and_friend_id", :unique => true
+
+  create_table "lessonfiles", :force => true do |t|
+    t.integer  "course_lesson_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "lessonfiles", ["course_lesson_id"], :name => "index_lessonfiles_on_course_lesson_id"
 
   create_table "lessons", :force => true do |t|
     t.string   "title"
@@ -92,6 +124,7 @@ ActiveRecord::Schema.define(:version => 20120202221040) do
     t.string   "major"
     t.string   "minor"
     t.string   "language"
+    t.string   "role",                   :default => "student"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

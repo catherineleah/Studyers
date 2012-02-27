@@ -5,11 +5,23 @@
 </div>
 <div id="profile" class="container">
   <p id="notice"><%= notice %></p>
-  <% if current_user?(@user) %>
-    <%= render 'layouts/profile' %>
-    <%= render 'my' %>
+  <%if role?(@user) == 'teacher'%>
+    <div>
+      Dear <%= @user.name%>,<br />
+      We are working real hard on creating your space in Studyers. </br>
+      Soon you would be able to create courses & lessons<br />
+      and to upload your lesson resources into them. <br />
+      The lesson resources will include your presentations, links, videos and images. <br />
+      We are about to finish the development of the teacher's space in Studyers real soon,<br />
+      We will let you know when we're done.
+    </div>
+    <%# render 'teacher' %>
   <% else %>
-    <%= render 'layouts/profile' %>
-    <%= render 'user' %>
+    <%# render 'layouts/profile' %>
+    <% if current_user?(@user) %>      
+      <%= render 'my' %>
+    <% else %>
+      <%= render 'user' %>
+    <% end %>
   <% end %>
 </div>

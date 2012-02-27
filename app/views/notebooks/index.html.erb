@@ -5,7 +5,6 @@
 </div>
 <div class="container">
 <p id="notice"><%= notice %></p>
-<%= render 'layouts/profile' %>
 <section class="pr_dash">
   <%= link_to t(:new_notebook), new_notebook_path, :class => "new-notebook"%>
   <% if @notebooks.length > 0 %>

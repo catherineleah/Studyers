@@ -7,7 +7,9 @@ class User < ActiveRecord::Base
   after_destroy :ensure_an_admin_remains
   
   has_many :notebooks
+  has_many :courses
   has_many :lessons, :through => :notebooks
+  has_many :course_lessons, :through => :courses
   
   after_create :send_welcome_mail
   

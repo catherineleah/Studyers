@@ -19,4 +19,8 @@ module ApplicationHelper
   def current_user?(user)
     user == current_user
   end
+  
+  def role?(user)
+    return user.role
+  end
 end

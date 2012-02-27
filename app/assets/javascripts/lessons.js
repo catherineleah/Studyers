@@ -13,6 +13,12 @@
 
 $(document).ready(function() {
   
+  $("#swiper").live('click', function(e) {
+    $(this).toggleClass("open");
+    $("#note-take").toggleClass("left");
+    $("#lesson-helpers").toggleClass("open");
+  });
+  
   $(".remove-object").live('click', function(e) {
     $(this).parent().remove();
   });
@@ -28,7 +34,7 @@ $(document).ready(function() {
     var option = $(this).attr("id") + "-form";
     $("#side-resources").show("slide", {direction: "right"});
     $("#" + option).show("slide", {direction: "right"});
-    $("#text-editor").addClass("minified");
+    //$("#text-editor").addClass("minified");
     modifyCanvasAndImageWidth();
   });
   
@@ -87,6 +93,11 @@ $(document).ready(function() {
   });
 
   $("#lesson_submit").click(function(e){
+    
+    $(this).before($("lesson_shares_attributes_0_shared_token").clone());
+    
+    ////////// Need to fix the shared part removal /////////////////////
+    
     // Cleanup tools
     $("#text-editor .buttons, #text-editor .dtool, #text-editor .dont-save").remove();
     // create images from canvases

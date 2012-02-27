@@ -25,7 +25,7 @@ $(document).ready(function() {
     $('div.alert-message').fadeOut('slow');
   }, 7000);
       
-  $("#show-embed, #share-lesson, #clear").tooltip('hide');
+  $("#show-embed, #share-lesson, #clear, #search-on-wiki").tooltip('hide');
   $(".add").tooltip('hide');
   
   $(".similar").popover('hide', 'delay: {show: 10000, hide: 10000}');

@@ -38,5 +38,11 @@ class Ability
     
     can :manage, Lesson, :user_id => user.id
     
+    can :read, Course
+    can :manage, Course, :user_id => user.id ##&& user.role? == 'teacher'
+    
+    can :read, Notebook
+    can :manage, Notebook, :user_id => user.id
+    
   end
 end

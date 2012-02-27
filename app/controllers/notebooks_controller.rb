@@ -1,6 +1,8 @@
 class NotebooksController < ApplicationController
-  before_filter :authenticate_user!, :only => [:index, :show, :edit, :update]
-  before_filter :correct_user, :only => [:edit, :update]
+  # cancan authorize
+  load_and_authorize_resource
+
+  before_filter :authenticate_user!, :only => [:index, :new, :show, :edit, :update]
   # GET /notebooks
   # GET /notebooks.xml
   def index

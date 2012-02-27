@@ -1,5 +1,6 @@
 <%= javascript_include_tag 'lessons.js', 'jquery.tokeninput.js' %>
-<%= form_for([@notebook, @lesson], :html => { :class => "span16"} ) do |f| %>
+<%= form_for([@notebook, @lesson], :html => { :class => "lesson-form"} ) do |f| %>
+<section id="note-take">
   <% if @lesson.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@lesson.errors.count, "error") %> prohibited this lesson from being saved:</h2>
@@ -11,51 +12,57 @@
       </ul>
     </div>
   <% end %>
-<div class="side-menu">
-  <a class="resource btn" id="show-embed" href="#" title="Add your lecturer's presentation"><%=t :lecturer_presentation %></a>
-  <a class="resource btn" id="share-lesson" href="#" title="Share with your friends"><%=t :share_this_lesson %></a>
-</div>
-<div id="wiki-find-form">
-  <input type="text" class="wiki-value" id="wiki-term-input" autocomplete="off" />
-  <a class="wiki-find btn" id="wiki-submit"><%=t :search %></a>
-</div>
-<div id="side-resources">
-  <div class="pull-resource" id="show-embed-form">
-    <div class="block-message side-message info">
-      <a class="close" href="#">×</a>
-      <div>If you or a classmate already uploaded the presentation, type in the ID here:</div>
-      <div class="alert-actions">
-        (/class_resources/<input type="text" id="get-resource" class="span1 mini" />)
-        <a href="#" class="btn" id="fetch-resource">Get</a><br />
-        Or <a href="#" class="btn small" id="upload-resource" >upload</a> your presentation
-      </div>
-    </div>
-      <div class="presentation-embed">
-      </div>
-  </div>
-  <div class="pull-resource" id="share-lesson-form">
-    <div class="block-message side-message info">
-      <a class="close" href="#">×</a>
-      <label for="lesson_shares_attributes_0_shared_token">Type the user names you wish to share the lesson with:</label>
-      <input data-pre="<%= @shared_ids %>" id="lesson_shares_attributes_0_shared_token" name="lesson[shares_attributes][0][shared_token]" size="30" type="text" style="display: none; ">
-      <br />
-      <a class="close-btn btn small" href="#">Done</a>
-    </div>
-  </div>
-  <div class="pull-resource" id="wiki-results">
-    <div class="block-message side-message info loading" id="wiki-finder-results">
-      <a class="close" href="#">×</a>
-    </div>
-  </div>
-</div>
   <div class="field">
     <%= f.text_field :title, :class => "edit-title" %>
   </div>
+  <div id="swiper">Resources</div>
   <div class="field">
     <%= f.text_area :body%>
   </div> 
+  
   <div class="field-submit">
     <%= f.submit :id => "lesson_submit", :class => "btn primary" %>
   </div>
-
+  </section>
+  <div id="lesson-helpers">
+  <div class="side-menu">
+    <a class="resource btn" id="show-embed" href="#" title="Add your lecturer's presentation"><%=t :lecturer_presentation %></a>
+    <a class="resource btn" id="share-lesson" href="#" title="Share with your friends"><%=t :share_this_lesson %></a>
+    <a class="resource btn" id="search-on-wiki" href="#" title="Search on Wikipedia"><%=t :Wikipedia %></a>
+  </div>
+  <div id="side-resources">
+    <div class="pull-resource" id="show-embed-form">
+      <div class="block-message side-message info">
+        <a class="close" href="#">×</a>
+        <div>If you or a classmate already uploaded the presentation, type in the ID here:</div>
+        <div class="alert-actions">
+          (/class_resources/<input type="text" id="get-resource" class="span1 mini" />)
+          <a href="#" class="btn" id="fetch-resource">Get</a><br />
+          Or <a href="#" class="btn small" id="upload-resource" >upload</a> your presentation
+        </div>
+      </div>
+        <div class="presentation-embed">
+        </div>
+    </div>
+    <div class="pull-resource" id="share-lesson-form">
+      <div class="block-message side-message info">
+        <label for="lesson_shares_attributes_0_shared_token">Type the user names you wish to share the lesson with:</label>
+        <input data-pre="<%= @shared_ids %>" id="lesson_shares_attributes_0_shared_token" name="lesson[shares_attributes][0][shared_token]" size="30" type="text" style="display: none; ">
+        <br />
+        <a class="close-btn btn small" href="#">Done</a>
+      </div>
+    </div>
+    <div class="pull-resource" id="search-on-wiki-form">
+      <div id="wiki-find-form" class="block-message side-message info">
+        <input type="text" class="wiki-value" id="wiki-term-input" autocomplete="off" />
+        <a class="wiki-find btn" id="wiki-submit"><%=t :search %></a>
+      </div>
+    </div>
+    <div class="pull-resource" id="wiki-results">
+      <div class="block-message side-message info loading" id="wiki-finder-results">
+        <a class="close" href="#">×</a>
+      </div>
+    </div>
+  </div>
+  </div>
 <% end %>

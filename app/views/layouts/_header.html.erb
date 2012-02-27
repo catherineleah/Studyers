@@ -5,7 +5,9 @@
     <div id="logo"><%= link_to image_tag("Studyers_logo.png"), root_path %></div>
     <% if current_user %>
       <div class="user_info user">
-        <div class="user_name logged_in"><%=t :hi %>, <span><%= current_user.name %></span></div>
+        <div class="user_name logged_in"><%= gravatar_for current_user, :size => 17 %><%=t :hi %>, <span><%= current_user.name %></span></div>
+        <div class="notebooks-title logged_in"><%= link_to t(:notebooks), notebooks_path %></div>
+        <div class="lessons-shared logged_in"><%= link_to t("lessons shared"), lessons_shared_path %></div>
         <% if (!current_user.study_at or current_user.study_at.empty?) and (!current_user.major or current_user.major.empty?) %>
           <div class="user_settings logged_in"><%= link_to t(:complete_profile), edit_user_path(current_user), :class => "noprofile" %></div>
         <% else %>
@@ -13,6 +15,7 @@
         <% end %>
         <div class="user_logout logged_in"><%= link_to t(:logout), destroy_user_session_path, :method => :delete %></div>
       </div>
+      
     <% else %>
       <div class="user_info">
         <%= form_for("user", :html => {:class => "home-signin-form"}, :url => user_session_path) do |f| %>

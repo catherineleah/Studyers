@@ -1,5 +1,11 @@
 Studyr::Application.routes.draw do
   
+  resources :course_lessons
+  
+  resources :courses do
+    resources :course_lessons
+  end
+
   devise_for :users
 
   resources :class_resources

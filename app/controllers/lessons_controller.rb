@@ -2,7 +2,7 @@ class LessonsController < ApplicationController
   # cancan authorize
   load_and_authorize_resource
   
-  before_filter :authenticate_user!, :only => [:index, :show, :edit, :update, :destroy, :shared]
+  before_filter :authenticate_user!, :only => [:index, :show, :edit, :update, :destroy, :shared, :new]
     
   before_filter :find_notebook, :only => [:new]
   
@@ -11,8 +11,8 @@ class LessonsController < ApplicationController
     @user = current_user
     @notebook = Notebook.find(params[:notebook_id])
     @lessons = @notebook.lessons.order("updated_at DESC")
-    if @lessons.count == 0
-      @lesson = Lesson.new
+    if @lessons.count == 0 && current_user.id == @notebook.user_id
+      redirect_to(new_notebook_lesson_path(@notebook))
     end
     @title = @notebook.name   
   end

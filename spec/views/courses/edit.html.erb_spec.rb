@@ -1,0 +1,28 @@
+require 'spec_helper'
+
+describe "courses/edit.html.erb" do
+  before(:each) do
+    @course = assign(:course, stub_model(Course,
+      :user_id => nil,
+      :name => "MyString",
+      :number => "MyString",
+      :department => "MyString",
+      :term => "MyString",
+      :school => "MyString"
+    ))
+  end
+
+  it "renders the edit course form" do
+    render
+
+    # Run the generator again with the --webrat flag if you want to use webrat matchers
+    assert_select "form", :action => courses_path(@course), :method => "post" do
+      assert_select "input#course_user_id", :name => "course[user_id]"
+      assert_select "input#course_name", :name => "course[name]"
+      assert_select "input#course_number", :name => "course[number]"
+      assert_select "input#course_department", :name => "course[department]"
+      assert_select "input#course_term", :name => "course[term]"
+      assert_select "input#course_school", :name => "course[school]"
+    end
+  end
+end

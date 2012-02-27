@@ -1,0 +1,21 @@
+<section class="pr_dash">
+  <% if @courses.length > 0 %>
+  <div id="notebooks">
+    <% @courses.each_with_index do |course, key| %>
+      <div class="notebook pr-notebook-<%= key %>">
+        <h3 class="notebook-name">
+          <%= link_to course.name, course_path(course), :class => "lesson-title" %>
+        </h3>
+      </div>
+    <% end %>
+  </div>
+  <% else %>
+  <div id="nontbks"> 
+      <h2><%=t :hey %>, <%= current_user.name %>!</h2>
+      <h3><%=t :welcome %></h3>
+      <div>
+        <%=t :nonotebooks_html %>
+        <%= render 'courses/form' %>
+      </div>
+  <% end %>
+</section>

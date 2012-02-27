@@ -6,6 +6,7 @@
 <div id="profile" class="container">
   <p id="notice"><%= notice %></p>
   <%if role?(@user) == 'teacher'%>
+    <% if current_user?(@user) %>
     <div>
       Dear <%= @user.name%>,<br />
       We are working real hard on creating your space in Studyers. </br>
@@ -15,6 +16,9 @@
       We are about to finish the development of the teacher's space in Studyers real soon,<br />
       We will let you know when we're done.
     </div>
+    <% else %>
+      <div><%= @user.name %> teacher's space coming soon.</div>
+    <% end%>
     <%# render 'teacher' %>
   <% else %>
     <%# render 'layouts/profile' %>

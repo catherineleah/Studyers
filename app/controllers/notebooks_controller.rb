@@ -21,9 +21,8 @@ class NotebooksController < ApplicationController
     @notebook = @user.notebooks.find(params[:id])
     @title = @notebook.name
     @lessons = @notebook.lessons
-    if @lessons.count == 0 && current_user.id == @notebook.user_id
-      flash[:success] ="Create a first lesson"
-      redirect_to(new_notebook_lesson_path(@notebook))
+    if @lessons.length == 0 && current_user.id == @notebook.user_id
+      @lesson = Lesson.new
     end
     respond_to do |format|
       format.html # show.html.erb

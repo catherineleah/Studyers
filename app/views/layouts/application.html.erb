@@ -35,7 +35,7 @@
     <%= yield %>		
   </section>
   <%= render 'layouts/footer' %>
-  
+  <% if controller.controller_name != "pages"%>
   <script type="text/javascript">
     var uvOptions = {};
     (function() {
@@ -44,5 +44,6 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
     })();
   </script>
+  <% end %>
 </body>
 </html>

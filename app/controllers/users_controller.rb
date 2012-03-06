@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!, :only => [:index, :show, :edit, :update, :destroy, :new]
   before_filter :correct_user, :only => [:edit, :update]
   before_filter :admin_user, :only => [:new, :destroy]
+  before_filter :remove_admin_params, :only => [:create, :update]
+  
   # GET /users
   # GET /users.xml
   def index
@@ -130,5 +132,10 @@ class UsersController < ApplicationController
     
     def role?(user)
       return user.role
+    end
+    
+    # protect vs. mass assignment of admin.
+    def remove_admin_params
+      params[:user].delete(:admin) unless current_user.admin?
     end
 end

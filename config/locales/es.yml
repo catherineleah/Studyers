@@ -1,11 +1,11 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
-en:
+es:
   hello: "Hello world"
-  add_first_lesson: "Add your 1st. lesson"
-  new_lesson: "New lesson"
-  created: "Created"
+  add_first_lesson: "agregar su primera lección"
+  new_lesson: "new lesson"
+  created: "creado"
   lecturer: "Lecturer"
   lessons: "lessons"
   hey: "Hey"

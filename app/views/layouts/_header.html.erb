@@ -7,7 +7,7 @@
       <div class="user_info user">
         <div class="user_name logged_in"><%= gravatar_for current_user, :size => 17 %><%=t :hi %>, <span><%= link_to current_user.name, profile_path %></span></div>
         <div class="notebooks-title logged_in"><%= link_to t(:notebooks), notebooks_path %></div>
-        <div class="lessons-shared logged_in"><%= link_to t("lessons shared"), lessons_shared_path %></div>
+        <div class="lessons-shared logged_in"><%= link_to t(:lessons_shared), lessons_shared_path %></div>
         <% if (!current_user.study_at or current_user.study_at.empty?) and (!current_user.major or current_user.major.empty?) %>
           <div class="user_settings logged_in"><%= link_to t(:complete_profile), edit_user_path(current_user), :class => "noprofile" %></div>
         <% else %>

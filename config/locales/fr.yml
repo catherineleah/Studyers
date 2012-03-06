@@ -1,52 +1,52 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
-en:
+fr:
   hello: "Hello world"
-  add_first_lesson: "Add your 1st. lesson"
-  new_lesson: "New lesson"
-  created: "Created"
-  lecturer: "Lecturer"
-  lessons: "lessons"
-  hey: "Hey"
-  welcome: "Welcome to Studyers."
-  nonotebooks_html: 'To start using Studyers, add your first notebook: <br /><div class="small">(Notebooks are the place were you save all your lesson notes)</div>'
-  notebook_name: "Notebook / course name"
-  course_code: "Course code / ID"
-  notebooks: "Notebooks"
-  lessons_shared: "Lessons shared with me"
-  users: "Users on Studyers"
-  complete_profile: "complete your profile"
-  settings: "Settings"
-  logout: "Logout"
-  sign_in: "Sign in"
-  remember_me: "remember me"
-  edit_notebook: 'Edit "%{notebook}" properties'
-  back: 'Back'
-  my_notebooks: "My notebooks"
-  new_notebook: "+ New notebook"
-  time_to_add_first_lesson: "Time to add your first lesson note"
-  click_to_add_first_lesson: "Click here to add your first lesson notes"
-  edit_notebook: 'Edit notebook'
-  delete_notebook: '- Delete notebook'
-  create_new_notebook: "Create a new notebook"
-  profile: "profile"
-  email: "Email address"
-  name: "Name"
-  password: 'Password'
-  study_at: 'I study at'
-  major: 'My major is'
-  Major: 'Major'
-  minor: 'My minor is'
-  language: 'I prefer to see Studyers in'
-  english: 'English'
-  spanish: 'Spanish'
-  french: 'French'
-  hebrew: 'Hebrew'
+  add_first_lesson: "Ajouter votre premier leçon"
+  new_lesson: "Nouveau leçon"
+  created: "Cree"
+  lecturer: "conférencier"
+  lessons: "cours"
+  hey: "hé"
+  welcome: "Bienvenue aux Studyers."
+  nonotebooks_html: 'Pour commencer à utiliser Studyers, ajoutez votre premier cahier: <br /><div class="small">(Les cahieres sont l"endroit ont vous enregistrez toutes vos notes de cours)</div>'
+  notebook_name: "Cahier / Nom du cours"
+  course_code: "Code du cours / ID"
+  notebooks: "Cahiers"
+  lessons_shared: "Cours partagés  avec moi"
+  users: "Utilisateurs sur Studyers"
+  complete_profile: "compléter votre profil"
+  settings: "paramètres"
+  logout: "Déconnexion"
+  sign_in: "connectez-vous"
+  remember_me: "souvenez vous de moi"
+  edit_notebook: 'modifier %{notebook} les propriétés'
+  back: 'arrière'
+  my_notebooks: "Mes cahiers"
+  new_notebook: "+ Nouveau cahier"
+  time_to_add_first_lesson: "Il est temps d'ajouter votre note première leçon"
+  click_to_add_first_lesson: "Cliquez ici pour ajouter les notes de votre première leçon"
+  edit_notebook: 'modifier un cahier'
+  delete_notebook: '- supprimer un cahier'
+  create_new_notebook: "Créer un nouveau cahier"
+  profile: "profil"
+  email: "adresse Email"
+  name: "Nom"
+  password: 'mot de passe'
+  study_at: "j'étudie à"
+  major: 'Ma matière principale est'
+  Major: 'principale'
+  minor: 'Ma matière secondaire est'
+  language: 'je préfère voir Studyers en'
+  english: 'Anglais'
+  spanish: 'Espagnol'
+  french: 'Français'
+  hebrew: 'Hebreu'
   following_coming_soon: "Actual following coming soon"
-  studyer_at: "Studyer at"
-  who_to_follow: "Who to follow"
-  hi: "Hi"
-  lecturer_presentation: "lecturer presentation"
-  share_this_lesson: "Share this lesson"
-  search: "Search"
+  studyer_at: "Studyer à"
+  who_to_follow: "qui suivre"
+  hi: "Salut"
+  lecturer_presentation: "présentation du conférencier"
+  share_this_lesson: "partager ce leçon"
+  search: "Recherche"

@@ -1,3 +1,6 @@
+<%= javascript_tag do %>
+  studyersLocale = '<%= j I18n.locale.to_s %>';
+<% end %>
 <%= javascript_include_tag 'lessons.js', 'jquery.tokeninput.js' %>
 <%= form_for([@notebook, @lesson], :html => { :class => "lesson-form"} ) do |f| %>
 <section id="note-take">

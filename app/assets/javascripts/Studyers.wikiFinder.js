@@ -18,9 +18,11 @@ $("#wiki-submit").live('click', function(e) {
   modifyCanvasAndImageWidth();
   
   var checkIfExists = false;
-  
+  var locale = studyersLocale ? studyersLocale : 'en';
+  wikiUrl = 'http://' + locale + '.wikipedia.org/w/api.php';
   $.ajax({
-    url: 'http://en.wikipedia.org/w/api.php',
+    //url: 'http://en.wikipedia.org/w/api.php',
+    url: wikiUrl,
     data: {
       action:'opensearch',
       search:title,
@@ -33,7 +35,8 @@ $("#wiki-submit").live('click', function(e) {
       }
       title = title.replace(' ', '_');
       $.ajax({
-        url: 'http://en.wikipedia.org/w/api.php',
+        //url: 'http://en.wikipedia.org/w/api.php',
+        url: wikiUrl,
         data: {
         action:'parse',
         prop:'text',
@@ -47,13 +50,13 @@ $("#wiki-submit").live('click', function(e) {
         wikipage.find('sup').remove();
         wikipage.find('a').each(function() {
           $(this)
-          .attr('href', 'http://en.wikipedia.org'+$(this).attr('href'))
+          .attr('href', 'http://'+ locale +'.wikipedia.org'+$(this).attr('href'))
           .attr('target','wikipedia');
         });
         $("#wiki-finder-results").removeClass("loading");
         $("#wiki-finder-results #not-found").remove();
         $("#wiki-finder-results").append(wikipage);
-        $("#wiki-finder-results").append('<a class="wiki-read-more" href="http://en.wikipedia.org/wiki/'+title+'" target="wikipedia"">Read more on Wikipedia</a>');
+        $("#wiki-finder-results").append('<a class="wiki-read-more" href="http://' + locale + '.wikipedia.org/wiki/'+ title +'" target="wikipedia"">Read more on Wikipedia</a>');
         $("#wiki-finder-results").append('<p><a href="#" class="btn" id="copy-wiki">Copy to the lesson</a></p>');
       }
       });

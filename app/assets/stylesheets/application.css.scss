@@ -35,10 +35,9 @@ section.content {
   background: #f0f0f0 url(images/tile.jpg);
   float: left;
   width: 100%;
-  min-height: 450px;
   position: absolute;
   top: 70px;
-  bottom: 0px;
+  min-height: 100%;
 }
 
 .topbar {

@@ -12,9 +12,9 @@
   <% else %>
   <div id="nontbks"> 
       <h2><%=t :hey %>, <%= current_user.name %>!</h2>
-      <h3><%=t :welcome %></h3>
+      <h3><%=t :welcome_teacher %></h3>
       <div>
-        <%=t :nonotebooks_html %>
+        <%=t :nocourses_html %>
         <%= render 'courses/form' %>
       </div>
   <% end %>

@@ -1,6 +1,12 @@
-<h1>Editing course</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @course %> |
-<%= link_to 'Back', courses_path %>
+<div class="banner profile notebooks">
+  <div class="container">
+    <h2><%=t :edit_course %></h2>
+  </div>
+</div>
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <section class="pr_dash">
+    <%= render 'form' %>
+    <%= link_to 'Back', courses_path %>
+  </section>
+</div>

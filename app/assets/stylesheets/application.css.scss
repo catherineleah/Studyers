@@ -806,11 +806,11 @@ h2.lesson-list {
     background: transparent url(images/lesson_edits.png) no-repeat -238px 2px;
   }
   
-  &#hilitecolor[attribute="yellow"] {
+  &#hilitecolor[attribute="#ffff56"] {
     background: transparent url(images/lesson_edits.png) no-repeat -105px -40px;
   }
   
-  &#hilitecolor[attribute="#659b41"] {
+  &#hilitecolor[attribute="#56ff56"] {
     background: transparent url(images/lesson_edits.png) no-repeat -139px -40px;
   }
   
@@ -1137,7 +1137,7 @@ span.new {
 }
 
 
-.new_user, .edit_user, .new_notebook, .edit_notebook, .user_new {
+.new_user, .edit_user, .new_notebook, .edit_notebook, .user_new, .new_course, .lesson-form {
   
   .field {
     padding: 10px;

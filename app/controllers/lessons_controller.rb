@@ -65,7 +65,11 @@ class LessonsController < ApplicationController
     
     if @lesson.save
       flash[:success] ="Saved lesson successfully"
-      redirect_to notebook_lessons_path
+      if params[:commit] == "save+close"
+        redirect_to notebook_lessons_path        
+      else
+        redirect_to edit_notebook_lesson_path(@notebook, @lesson)
+      end
     else
        render :action => "new" 
     end
@@ -80,7 +84,11 @@ class LessonsController < ApplicationController
     @lesson.build_shares_from_list @ids
     if @lesson.update_attributes(params[:lesson])
       flash[:success] = 'Lesson was successfully updated.'
-      redirect_to notebook_lessons_path
+      if params[:commit] == "save+close"
+        redirect_to notebook_lessons_path        
+      else
+        redirect_to edit_notebook_lesson_path(@notebook, @lesson)
+      end
     else
       render :action => "edit" 
     end

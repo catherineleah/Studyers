@@ -7,7 +7,9 @@
   <% if I18n.locale == 'he' %>
     <%= stylesheet_link_tag 'application_rtl' %>
   <% end %>
+  <meta name="viewport" content="width=device-width; initial-scale=1.0">
   <%= stylesheet_link_tag "application_print", :media => "print" %>
+  <%= stylesheet_link_tag "application_ipad", :media => "screen and (max-width: 768px)" %>
 
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tag %>

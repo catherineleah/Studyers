@@ -20,7 +20,12 @@ $(document).ready(function() {
   });
   
   $(".remove-object").live('click', function(e) {
-    $(this).parent().remove();
+    if (confirm("Really remove this?")) {
+      $(this).parent().remove();
+    } else {
+      return false;
+    }
+    
   });
   
   $(".graph-remove").live('click', function(e) {
@@ -92,7 +97,9 @@ $(document).ready(function() {
     draw.drawInit(ID);
   });
 
-  $("#lesson_submit").click(function(e){
+  $("#lesson_submit, #lesson_edit").click(function(e){
+    
+    window.onbeforeunload = null;
     
     $(this).before($("lesson_shares_attributes_0_shared_token").clone());
     
@@ -125,3 +132,37 @@ $(document).ready(function() {
   });
   
 });
+
+
+window.onbeforeunload = confirmExit;
+function confirmExit() {
+  return "You are about to leave a lesson note without saving. Are you sure you want to leave?";
+}
+
+/*if(!window.Kolich){
+  Kolich = {};
+}
+
+Kolich.Selector = {};
+Kolich.Selector.getSelected = function(){
+  var t = '';
+  if(window.getSelection){
+    t = window.getSelection();
+  }else if(document.getSelection){
+    t = document.getSelection();
+  }else if(document.selection){
+    t = document.selection.createRange().text;
+  }
+  return t;
+}
+
+Kolich.Selector.mouseup = function(){
+  var st = Kolich.Selector.getSelected();
+  if(st!=''){
+    alert("You selected:\n"+st);
+  }
+}
+
+$(document).ready(function(){
+  $(document).bind("mouseup", Kolich.Selector.mouseup);
+});*/

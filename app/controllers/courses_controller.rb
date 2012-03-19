@@ -72,7 +72,7 @@ class CoursesController < ApplicationController
   # PUT /courses/1.json
   def update
     @user = current_user
-    @course = @user.courses.build(params[:id])
+    @course = @user.courses.find(params[:id])
 
     respond_to do |format|
       if @course.update_attributes(params[:course])

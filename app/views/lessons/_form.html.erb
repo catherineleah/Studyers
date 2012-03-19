@@ -23,8 +23,9 @@
     <%= f.text_area :body%>
   </div> 
   
-  <div class="field-submit">
-    <%= f.submit :id => "lesson_submit", :class => "btn primary" %>
+  <div class="field-submit save">
+    <%= f.submit :value => "save", :id => "lesson_submit", :class => "btn primary" %>
+    <%= f.submit :value => "save+close", :id => "lesson_edit", :class => "btn primary" %>
   </div>
   </section>
   <div id="lesson-helpers">

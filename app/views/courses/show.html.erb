@@ -1,25 +1,17 @@
-<p id="notice"><%= notice %></p>
+<div class="banner profile notebooks">
+  <div class="container">
+    <h2><%= @course.name %></h2>
+  </div>
+</div>
+<div class="container">
+  <section class="pr_dash">
+  <div class="course-details">
+  <% if !@course.number.empty? %><%= @course.number %> <% end %>
+  <% if !@course.department.empty? %>| <%= @course.department %> <% end %>
+  <% if !@course.term.empty? %> | <%= @course.term %><% end %>
+  </div>
 
 
-<p>
-  <b>Course name:</b>
-  <%= @course.name %>
-</p>
-
-<p>
-  <b>Course code:</b>
-  <%= @course.number %>
-</p>
-
-<p>
-  <b>Department:</b>
-  <%= @course.department %>
-</p>
-
-<p>
-  <b>Term:</b>
-  <%= @course.term %>
-</p>
 <ul>
 <% @course_lessons.each do |lesson| %>
 <li>
@@ -36,3 +28,5 @@
 
 <%= link_to 'Edit', edit_course_path(@course) %> |
 <%= link_to 'Back', courses_path %>
+  </section>
+</div>

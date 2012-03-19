@@ -678,7 +678,9 @@ html.lessons.new, html.lessons.edit {
 }
 
 .edit-lesson, #new_lesson {
-  
+  .title-field {
+    margin-right: 34px;
+  }
   .edit-title {
     width: 99%;
     height: 35px;
@@ -1335,59 +1337,6 @@ p.gravatar {
 }
 .basic .field { 
   display: none;
-}
-
-body.he {
-  direction: rtl;
-  
-  .topbar .container #logo {
-    float: right;
-  }
-  
-  .topbar .container .user_info {
-    float: left;
-  }
-  
-  .topbar .container .user_info .logged_in {
-    float: right;
-  }
-  .sidebar, .pr_dash, .lessons_dash {
-    float: right;
-  }
-  
-  .lessons_dash .notebook .new-lesson {
-    right: auto;
-    left: -12px;
-    padding: 20px 0px;
-  }
-  
-  .pr_dash #notebooks .notebook .new-lesson {
-    left: 0px;
-    right: auto;
-  }
-  .pr_dash #notebooks .notebook {
-    float: right;
-  }
-  
-  .side-menu {
-    float: right;
-  }
-  
-  #wiki-find-form {
-    
-  }
-  #side-resources {
-    left: 20px;
-  }
-  
-  #lesson-helpers {
-    right: 0px;
-    left: auto;
-  }
-  
-  #swiper {
-    float: left;
-  }
 }
 
 body.fr {

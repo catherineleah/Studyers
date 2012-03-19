@@ -4,7 +4,7 @@
   <title><%= title %></title>
   <%= favicon_link_tag %>
   <%= stylesheet_link_tag 'application' %>
-  <% if I18n.locale == 'he' %>
+  <% if I18n.locale.to_s == 'he' %>
     <%= stylesheet_link_tag 'application_rtl' %>
   <% end %>
   <meta name="viewport" content="width=device-width; initial-scale=1.0">

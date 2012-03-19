@@ -1,3 +1,49 @@
-body {
+body.he {
   direction: rtl;
+  
+  .topbar .container #logo {
+    float: right;
+  }
+  
+  .topbar .container .user_info {
+    float: left;
+  }
+  
+  .topbar .container .user_info .logged_in {
+    float: right;
+  }
+  .sidebar, .pr_dash, .lessons_dash {
+    float: right;
+  }
+  
+  .lessons_dash .notebook .new-lesson {
+    right: auto;
+    left: -12px;
+    padding: 20px 0px;
+  }
+  
+  .pr_dash #notebooks .notebook .new-lesson {
+    left: 0px;
+    right: auto;
+  }
+  .pr_dash #notebooks .notebook {
+    float: right;
+  }
+  
+  .side-menu {
+    float: right;
+  }
+  
+  #wiki-find-form {
+    
+  }
+  #side-resources {
+    left: 20px;
+  }
+  
+  .edit-lesson, #new_lesson {
+    .field {
+      margin-right: 24px;
+    }
+  }
 }

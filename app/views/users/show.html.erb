@@ -15,6 +15,9 @@
       The lesson resources will include your presentations, links, videos and images. <br />
       We are about to finish the development of the teacher's space in Studyers real soon,<br />
       We will let you know when we're done.
+      <% 
+        # The teacher render is currently for dev only, as it is not finished
+      %>
       <% if Rails.env != "development" >
         <%= render 'teacher' %>
       <% end %>

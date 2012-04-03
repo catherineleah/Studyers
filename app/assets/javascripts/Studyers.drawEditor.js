@@ -10,7 +10,7 @@ function DrawEditor(ID, putAfter) {
   this.containerDiv.className = "canvas-container clear-both";
   this.containerDiv.id = "canvas-container-" + this.ID;
   if (putAfter) {
-    $(putAfter).after(this.containerDiv)/*.animate({opacity: 0.25}, 2500, function() {})*/;
+    $(putAfter).after(this.containerDiv);
     $(this.containerDiv).hide().show("slow");
   }
 	else {

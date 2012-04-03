@@ -1,0 +1,12 @@
+defaults: &defaults
+  ganalytics: UA-29328484-1
+  uservoice: BAUiaogtg0ZuE0BycdCM9A.js
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

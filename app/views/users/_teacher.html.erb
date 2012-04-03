@@ -4,7 +4,7 @@
     <% @courses.each_with_index do |course, key| %>
       <div class="notebook pr-notebook-<%= key %>">
         <h3 class="notebook-name">
-          <%= link_to course.name, course_path(course), :class => "lesson-title" %>
+          <%= link_to course.name, course_course_lessons_path(course), :class => "lesson-title" %>
         </h3>
       </div>
     <% end %>

@@ -136,7 +136,7 @@ $(document).ready(function() {
 
 window.onbeforeunload = confirmExit;
 function confirmExit() {
-  return "You are about to leave a lesson note without saving. Are you sure you want to leave?";
+  return "You are about to leave a lesson note without saving.";
 }
 
 /*if(!window.Kolich){

@@ -36,7 +36,7 @@ class CourseLessonsController < ApplicationController
   def new
     @user = current_user
     @course_lesson = CourseLesson.new
-
+    3.times { @course_lesson.videos.build }
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @course_lesson }
@@ -58,7 +58,7 @@ class CourseLessonsController < ApplicationController
 
     respond_to do |format|
       if @course_lesson.save
-        format.html { redirect_to @course, notice: 'Course lesson was successfully created.' }
+        format.html { redirect_to profile_path, notice: 'Course lesson was successfully created.' }
         format.json { render json: @course_course_lesson, status: :created, location: @course_lesson }
       else
         format.html { render action: "new" }

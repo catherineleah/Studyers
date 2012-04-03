@@ -12,22 +12,10 @@ module Studyers
   module Docsplit
     VERSION = 0.1
 
-    def pdf?
-      current_path[-3,3] == 'pdf'
-    end
-
-    def pdf
-      current_path
-    end
-
     def length
       ::Docsplit.extract_length(current_path)
     end
 
-    def create_pdf
-      ::Docsplit.extract_pdf(current_path, output: output_path) unless pdf?
-      self
-    end
 
     def extract_images
       ::Docsplit.extract_images(current_path, :size => %w{1000x}, :format => :png, output: output_path)

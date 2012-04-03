@@ -6,6 +6,11 @@
 //= require bootstrap-popover
 //= require_self  
 
+/*
+ * Studyers main javascript file
+ */
+
+
 $(document).ready(function() {
   
   $(".basic .basic-settings, .prext .ext-settings").click(function() {

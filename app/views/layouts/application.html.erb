@@ -9,15 +9,19 @@
   <% end %>
   <meta name="viewport" content="width=device-width; initial-scale=1.0">
   <%= stylesheet_link_tag "application_print", :media => "print" %>
-  <%= stylesheet_link_tag "application_ipad", :media => "screen and (max-width: 768px)" %>
-
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tag %>
   
+  <% 
+    ##
+    # Integration to Google Analytics
+    # Add your ID via config/studyers.yml
+    ##
+  %>
   <script type="text/javascript">
-
+    
     var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-29328484-1']);
+    _gaq.push(['_setAccount', '<%= STUDYERS_CONFIG['ganalytics'] %>']);
     _gaq.push(['_trackPageview']);
 
     (function() {
@@ -37,12 +41,18 @@
     <%= yield %>		
   </section>
   <%= render 'layouts/footer' %>
-  <% if controller.controller_name != "pages"%>
+  <% if controller.controller_name != "pages" && Rails.env != "development" %>
+  <% 
+    ##
+    # Integration to User Voice
+    # Add your ID via config/studyers.yml
+    ##
+  %>
   <script type="text/javascript">
     var uvOptions = {};
     (function() {
       var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
-      uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/BAUiaogtg0ZuE0BycdCM9A.js';
+      uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/<%= STUDYERS_CONFIG['uservoice'] %>' ;
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
     })();
   </script>

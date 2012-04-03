@@ -1,27 +1,24 @@
-<div id="lesson">
-  <p id="notice"><%= notice %></p>
+<div class="banner profile notebooks">
+  <div class="container">
+    <h2><%= @course_lesson.course.name %> / <%= @course_lesson.name %></h2>
+  </div>
+</div>
+<div class="container">
+  <section class="pr_dash">
+    <%= link_to "File for presentation / download", @course_lesson.file.url %>
 
-<p>
-  <b>Course name:</b>
-  <%= @course_lesson.course.name %>
-</p>
+    <p>Sharing url</p> http://studyers.com/course_lessons/<%= @course_lesson.id %>
 
-<p>
-  <b>Lesson name:</b>
-  <%= @course_lesson.name %>
-</p>
-
-
-
-<%= link_to "File for presentation / download", @course_lesson.file.url %>
-
-<p>Sharing url</p> http://studyers.com/course_lessons/<%= @course_lesson.id %>
-
-<ul class="images media-grid">
-  <% Dir["public/" + @course_lesson.file.store_dir + "/*.png"].each do |image| %>
-    <% #Bad way to display - need to fix... %>
-    <li><a href="#" class="one-slide"><%= image_tag(image[6..-1]) %></a></li>
-  <% end %>
-</ul>
-
+    <ul class="images media-grid">
+      <% Dir["public/" + @course_lesson.file.store_dir + "/*.png"].each do |image| %>
+        <% #Bad way to display - need to fix... %>
+        <li><a href="#" class="one-slide"><%= image_tag(image[6..-1]) %></a></li>
+      <% end %>
+    </ul>
+    <div>
+      <% for video in @course_lesson.videos %>
+        <div><%= sanitize video.link %></div>
+      <% end %>
+    </div>
+  </section>
 </div>

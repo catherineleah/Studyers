@@ -1,23 +1,37 @@
-<h1>course lessons</h1>
+<div class="banner lessons notebooks">
+  <div class="container">
+    <h2><%= @course.name %> lessons</h2>
+  </div>
+</div>
+<div class="container">
+<p id="notice"><%= notice %></p>
+<div class="lessons_dash">
+  <div class="notebook">
+  <h1 class="notebook-name"><%= @course.name %></h1>
 
-<table>
-  <tr>
-    <th>Course</th>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @course_lessons.each do |course_lesson| %>
-  <tr>
-    <td><%= course_lesson.course.name %></td>
-    <td><%= link_to course_lesson.name, course_course_lesson_path(@course, course_lesson) %></td>
-    
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Course lesson', new_course_course_lesson_path %>
+  <% if @course_lessons.count > 0 %>
+    <% if @current_user.id == @course.user_id %>
+      <%= link_to 'new Lesson', new_course_course_lesson_path, :class => "new-lesson" %>
+    <% end %>
+    <h3 class="lessons-list">list of lessons</h3>
+    <% @course_lessons.each do |lesson| %>
+      <div class="lesson">  
+        <h3 class="lesson-title"><%= link_to lesson.name, course_course_lesson_path(@course, lesson) %></h3>
+        <%# if can? :update, lesson %>
+        <div class="tools">
+          <div class="edit-lesson"><%= link_to 'Edit lesson', edit_course_course_lesson_path(@course, lesson), :class =>"btn info", :title => "Edit lesson"  %></div>
+          <div class="delete-lesson"><%= link_to '- Delete lesson', [@course, lesson], :class =>"del-lesson", :method => :delete, :remote => true, confirm: 'Are you sure you want to delete this lesson?', :title => "Delete lesson" %></div>
+        </div>
+        <% #end %>
+      </div>
+    <% end %>
+  <% else %>
+    <% if @current_user.id == @course.user_id %>
+      <h3 class="lessons-list">Create a first lesson</h3>
+      <%= link_to 'new Lesson', new_course_course_lesson_path, :class => "new-lesson" %>
+    <% else %>
+      No lessons created yet.
+    <% end %>
+  <% end %>
+  </div>
+</div>

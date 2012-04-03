@@ -27,6 +27,10 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     @course_lessons = @course.course_lessons
     @title = @course.name
+    if @course_lessons.length == 0 && current_user.id == @course.user_id
+      redirect_to new_course_course_lesson_path(@course)
+      return
+    end
 
     respond_to do |format|
       format.html # show.html.erb

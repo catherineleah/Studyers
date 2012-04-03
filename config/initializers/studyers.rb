@@ -1,0 +1,1 @@
+STUDYERS_CONFIG = YAML.load_file("#{Rails.root}/config/studyers.yml")[Rails.env]

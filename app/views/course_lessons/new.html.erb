@@ -1,5 +1,12 @@
-<h1>New lesson</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', course_course_lessons_path %>
+<div class="banner profile notebooks">
+  <div class="container">
+    <h2><%=t :new_lesson %></h2>
+  </div>
+</div>
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <section class="pr_dash">
+    <%= render 'form' %>
+    <%= link_to 'Back', courses_path %>
+  </section>
+</div>

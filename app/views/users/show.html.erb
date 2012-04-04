@@ -18,7 +18,7 @@
       <% 
         # The teacher render is currently for dev only, as it is not finished
       %>
-      <% if Rails.env != "development" %>
+      <% if Rails.env == "development" %>
         <%= render 'teacher' %>
       <% end %>
     </div>

@@ -9,7 +9,7 @@ class LessonsController < ApplicationController
   # GET notebook/:id/lessons
   def index
     @user = current_user
-    @notebook = @user.notebooks.find(params[:notebook_id])
+    @notebook = Notebook.find(params[:notebook_id])
     @lessons = @notebook.lessons.order("updated_at DESC")
     if @lessons.count == 0 && current_user.id == @notebook.user_id
       redirect_to(new_notebook_lesson_path(@notebook))

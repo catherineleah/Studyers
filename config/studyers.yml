@@ -1,7 +1,7 @@
 defaults: &defaults
   ganalytics: UA-29328484-1
   uservoice: BAUiaogtg0ZuE0BycdCM9A.js
-  newrelic: '37de85c7976a6c402e2ff6a3be7eef23ed65c7cb'
+  newrelic: 37de85c7976a6c402e2ff6a3be7eef23ed65c7cb
 
 development:
   <<: *defaults

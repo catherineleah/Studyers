@@ -12,7 +12,8 @@ class User < ActiveRecord::Base
   has_many :course_lessons, :through => :courses
   
   after_create :send_welcome_mail
-  after_create :create_default_notebook
+  # => Need to decide if this should be added.
+  # after_create :create_default_notebook
   
   private
     def send_welcome_mail

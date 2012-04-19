@@ -10,4 +10,5 @@ tmp/**/*
 public/uploads/*
 public/assets/*
 google150f67f895757147.html
+!config/studyers.yml
 

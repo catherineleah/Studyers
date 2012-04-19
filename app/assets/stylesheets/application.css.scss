@@ -37,7 +37,8 @@ section.content {
   width: 100%;
   position: absolute;
   top: 70px;
-  min-height: 100%;
+  bottom: 0px;
+  min-height: 545px;
 }
 
 .topbar {
@@ -175,6 +176,7 @@ section.content {
 
 .pages.home section.content {
   position: inherit;
+  min-height: 300px;
 }
 
 

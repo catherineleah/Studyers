@@ -22,7 +22,8 @@ class NotebooksController < ApplicationController
     @title = @notebook.name
     @lessons = @notebook.lessons
     if @lessons.length == 0 && current_user.id == @notebook.user_id
-      @lesson = Lesson.new
+      redirect_to new_notebook_lesson_path(@notebook)
+      return
     end
     respond_to do |format|
       format.html # show.html.erb

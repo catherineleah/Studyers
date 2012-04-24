@@ -11,7 +11,10 @@
  */
 
 
-$(document).ready(function() {
+$(function() {
+
+  if (!window.Studyers)
+      Studyers = {};
   
   $(".basic .basic-settings, .prext .ext-settings").click(function() {
     $(this).toggleClass("inactive");

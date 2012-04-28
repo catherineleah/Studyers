@@ -37,6 +37,7 @@ class UsersController < ApplicationController
       @user = current_user
     end 
     @title = @user.name
+
     if role?(@user) == 'student'
       @notebooks = @user.notebooks.order("updated_at DESC")
       if @notebooks.length == 0

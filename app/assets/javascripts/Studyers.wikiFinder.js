@@ -8,11 +8,12 @@ $("#wiki-submit").live('click', function(e) {
     return;
   }
   e.preventDefault();
-  $(".pull-resource").hide();
+  
   $("#wiki-finder-results #not-found").remove();
   $("#wiki-finder-results").addClass("loading");
-  $("#wiki-finder-results p, #wiki-finder-results a.wiki-read-more").remove();
-  $("#side-resources").show("slide", {direction: "right"});
+  $("#wiki-finder-results").find("*").remove(); 
+  $("#wiki-finder-results a.wiki-read-more").remove();
+  //$("#side-resources").show("slide", {direction: "right"});
   $("#wiki-results").show("slide", {direction: "right"});
   $("#text-editor").addClass("minified");
   modifyCanvasAndImageWidth();
@@ -45,7 +46,9 @@ $("#wiki-submit").live('click', function(e) {
       },
       dataType:'jsonp',
       success: function(data) {
-        wikipage = $("<div>"+data.parse.text['*']+"<div>").children('p:first');
+        wikipage = $("<div>"+data.parse.text['*']+"<div>").children('p');
+        wikipage.find('#toc').nextAll().remove();
+        wikipage.find('#toc').remove();
         wikipage.addClass("wiki-content");
         wikipage.find('sup').remove();
         wikipage.find('a').each(function() {

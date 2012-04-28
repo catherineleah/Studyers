@@ -13,6 +13,11 @@
 
 $(function() {
 
+  $(".hm-shw-frm").click(function() {
+    $(".home-signin-form").show("slide", {direction: "right"});
+    $(this).remove();
+  });
+
   if (!window.Studyers)
       Studyers = {};
   

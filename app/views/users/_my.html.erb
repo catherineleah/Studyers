@@ -12,7 +12,7 @@
           <div><%= notebook.lessons.count %> <%=t :lessons %></div>
         </div>
         <% if notebook.lessons.count == 0 %>
-          <%= link_to t(:add_first_lesson), new_notebook_lesson_path(notebook), :class => "new-lesson" %>
+          <%= link_to t(:add_first_lesson), new_notebook_lesson_path(notebook), :class => "new-lesson first-lesson" %>
         <% else %>
           <%= link_to t(:new_lesson), new_notebook_lesson_path(notebook), :class => "new-lesson" %>
         <% end %>

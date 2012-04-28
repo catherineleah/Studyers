@@ -1,5 +1,7 @@
 Studyr::Application.routes.draw do
   
+  resources :admin
+
   resources :course_lessons
   
   resources :courses do

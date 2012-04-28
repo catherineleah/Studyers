@@ -12,8 +12,8 @@ class User < ActiveRecord::Base
   has_many :course_lessons, :through => :courses
   
   after_create :send_welcome_mail
-  # => Need to decide if this should be added.
-  # after_create :create_default_notebook
+  # TODO: Need to decide if this should be added.
+  ## after_create :create_default_notebook
   
   private
     def send_welcome_mail
@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
       if self.role == "student"
         default = Notebook.new
         default.user_id = self.id
-        default.name = "default notebook"
+        default.name = "#{self.name} default notebook"
         default.save
       end
     end

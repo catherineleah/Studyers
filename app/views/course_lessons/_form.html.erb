@@ -27,23 +27,23 @@ $(function () {
     <li><a href="#videos" data-toggle="tab">Add videos</a></li>
   </ul>
   <div id="myTabContent" class="tab-content">
-  <div class="field" id="presentation">
-    <%= f.file_field :file %>
-  </div>
-  <div class="field" id="links">
-    Here I put links
-  </div>
-  <div class="field" id="images">
-    Here I put images
-  </div>
-  <div class="field" id="videos">
-    <%= f.fields_for :videos do |builder| %>
-      <div class="videos">
-        <%= builder.text_field :link %>
-      </div>
-    <% end %>
-    <span class="description">e.g youtube: K_o2MZaM584</span>
-  </div>
+    <div class="field" id="presentation">
+      <%= f.file_field :file %>
+    </div>
+    <div class="field" id="links">
+      Here I put links
+    </div>
+    <div class="field" id="images">
+      Here I put images
+    </div>
+    <div class="field" id="videos">
+      <%= f.fields_for :videos do |builder| %>
+        <div class="videos">
+          <%= builder.text_field :link %>
+        </div>
+      <% end %>
+      <span class="description">e.g youtube: K_o2MZaM584</span>
+    </div>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -13,12 +13,16 @@
 
 $(document).ready(function() {
   
-  $("#swiper").live('click', function(e) {
-    $(this).toggleClass("open");
-    $("#note-take").toggleClass("left");
-    $("#lesson-helpers").toggleClass("open");
-  });
+  // $("#swiper").live('click', function(e) {
+  //   $(this).toggleClass("open");
+  //    $("#note-take").toggleClass("left");
+  //    $("#lesson-helpers").toggleClass("open");
+  //  });
   
+  $('#share-lesson-form h3').live('click', function(e) {
+    $(this).nextAll().toggle();
+  })
+
   $(".remove-object").live('click', function(e) {
     if (confirm("Really remove this?")) {
       $(this).parent().remove();
@@ -33,15 +37,15 @@ $(document).ready(function() {
     $(this).remove();
   })
   
-  $(".resource").live('click', function(e) {
-    e.preventDefault();
-    $(".pull-resource").hide();
-    var option = $(this).attr("id") + "-form";
-    $("#side-resources").show("slide", {direction: "right"});
-    $("#" + option).show("slide", {direction: "right"});
-    //$("#text-editor").addClass("minified");
-    modifyCanvasAndImageWidth();
-  });
+  // $(".resource").live('click', function(e) {
+  //   e.preventDefault();
+  //   $(".pull-resource").hide();
+  //   var option = $(this).attr("id") + "-form";
+  //   $("#side-resources").show("slide", {direction: "right"});
+  //   $("#" + option).show("slide", {direction: "right"});
+  //   //$("#text-editor").addClass("minified");
+  //   modifyCanvasAndImageWidth();
+  // });
   
   $(".pull-resource .close, .pull-resource .close-btn").live('click', function(e) {
     e.preventDefault();
@@ -100,10 +104,6 @@ $(document).ready(function() {
   $("#lesson_submit, #lesson_edit").click(function(e){
     
     window.onbeforeunload = null;
-    
-    $(this).before($("lesson_shares_attributes_0_shared_token").clone());
-    
-    ////////// Need to fix the shared part removal /////////////////////
     
     // Cleanup tools
     $("#text-editor .buttons, #text-editor .dtool, #text-editor .dont-save").remove();

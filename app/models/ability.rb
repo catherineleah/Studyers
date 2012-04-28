@@ -29,7 +29,7 @@ class Ability
       # If owner | if public | if friends & permission for friends.
       shared_ids = []
       shared_ids = Share.where("lesson_id = ?", lesson.id).map(&:shared_ids)
-      lesson.try(:user_id) == user.id || shared_ids.include?(user.id.to_s) 
+      lesson.try(:user_id) == user.id || shared_ids.include?(user.id.to_s) || lesson.try(:permission) == 1
     end
     
     #can :manage, Lesson do |lesson|

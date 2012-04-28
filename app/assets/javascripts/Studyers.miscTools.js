@@ -11,7 +11,7 @@ function uniqueId() {
 }
 
 function modifyCanvasAndImageWidth() {
-  var newWidth = $("#text-editor").width();
+  var newWidth = $("#text-editor").width() - 14;
 
   var images = $("#text-editor img.resource-image");
   for (i = 0; i < images.length; i++) {

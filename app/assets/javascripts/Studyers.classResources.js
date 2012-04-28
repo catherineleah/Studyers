@@ -12,7 +12,7 @@ function classResources(imageSrc, imageIndex){
   this.image = document.createElement('img');
   this.image.className = "resource-image";
   this.image.src = imageSrc;
-  var imageWidth = $("#text-editor").width()-5;
+  var imageWidth = $("#text-editor").width() - 20;
   this.image.width = imageWidth;
   this.image.id = "resource-image-" + this.ID;
   

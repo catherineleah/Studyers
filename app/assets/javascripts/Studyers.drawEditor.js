@@ -7,7 +7,7 @@ function DrawEditor(ID, putAfter) {
   this.tool_select;
   // Create container and append it to text editor.
   this.containerDiv = document.createElement("div");
-  this.containerDiv.className = "canvas-container clear-both";
+  this.containerDiv.className = "canvas-container field-container clear-both";
   this.containerDiv.id = "canvas-container-" + this.ID;
   if (putAfter) {
     $(putAfter).after(this.containerDiv);
@@ -17,7 +17,7 @@ function DrawEditor(ID, putAfter) {
 		$("#text-editor").append(this.containerDiv);
 		$(this.containerDiv).hide().show("slow");
 	}
-	var canvasWidth = $("#text-editor").width();
+	var canvasWidth = $("#text-editor").width() - 10;
 	//Create first canvas
 	this.canvaso = document.createElement("canvas");
 	this.canvaso.id = "imageView-" + this.ID;
